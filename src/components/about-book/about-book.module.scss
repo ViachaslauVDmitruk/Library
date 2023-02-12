@@ -1,0 +1,115 @@
+@import '../../index.scss';
+
+.aboutBook {
+  margin-top: 42px;
+}
+
+.container {
+  @include container();
+  column-gap: 30px;
+  display: grid;
+  grid-template-columns: minmax(250px, 445px) auto;
+  grid-template-areas:
+    'A  B  '
+    'A  C';
+  @include tablets() {
+    grid-template-columns: minmax(100px, 136px) auto;
+    grid-template-areas:
+      'A B '
+      'C C';
+  }
+
+  @media screen and (max-width: 580px) {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.discribeTop {
+  display: flex;
+  @media screen and (max-width: 580px) {
+    margin-top: 15px;
+  }
+}
+
+.discribeTop {
+  grid-area: B;
+  display: flex;
+  flex-direction: column;
+}
+
+.discribeBottom {
+  grid-area: C;
+}
+
+.title {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 40px;
+  letter-spacing: 0.1px;
+  color: $mainTextColor;
+  @include tablets() {
+    font-size: 24px;
+    line-height: 30px;
+  }
+  @include phones() {
+    font-size: 18px;
+    line-height: 28px;
+  }
+}
+
+.author {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 28px;
+  letter-spacing: 0.1px;
+  color: #a7a7a7;
+  margin-top: 25px;
+  @include tablets() {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 18px;
+  }
+}
+
+.button {
+  margin-top: 32px;
+  @include activeColor();
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  letter-spacing: 0.2px;
+  text-transform: uppercase;
+  color: #ffffff;
+  padding: 10px 23px;
+
+  border-radius: 20px;
+  width: 350px;
+  @include tablets() {
+    width: 270px;
+    align-self: center;
+  }
+}
+
+.about {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 28px;
+  letter-spacing: 0.1px;
+  color: $mainTextColor;
+  margin-top: 62px;
+}
+
+.text {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.1px;
+  color: $mainTextColor;
+  margin-top: 30px;
+}

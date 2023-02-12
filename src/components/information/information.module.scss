@@ -1,0 +1,131 @@
+@import '../../index.scss';
+
+.container {
+  @include container();
+}
+
+.information {
+  display: flex;
+  flex-direction: column;
+  margin-top: 62px;
+
+  @media screen and (max-width: 650px) {
+    margin-top: 24px;
+  }
+}
+
+.title {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 28px;
+  letter-spacing: 0.1px;
+  color: $mainTextColor;
+  padding-bottom: 16px;
+  width: 305px;
+  border-bottom: 1px solid #f9f9fa;
+
+  @include tablets() {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  @media screen and (max-width: 650px) {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 28px;
+    width: 100%;
+  }
+}
+
+.parametrs {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: 1.5fr 2fr;
+  column-gap: 145px;
+  @include tablets() {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  @media screen and (max-width: 650px) {
+    flex-direction: column;
+  }
+}
+
+.parametrsItems {
+  //   display: flex;
+  //   flex-direction: column;
+  //   justify-content: space-between;
+  //   column-gap: 70px;
+  //   @include tablets() {
+  //     flex: 1 1 50%;
+  //   }
+
+  //   & .parametrsItem:not(:last-child) {
+  //     margin-bottom: 16px;
+  //   }
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 16px;
+}
+
+.firstItem {
+  @media screen and (max-width: 650px) {
+    grid-template-columns: 1fr 2fr;
+  }
+}
+
+.secondItem {
+  grid-template-columns: 1fr 2fr;
+}
+
+.parametrsItem {
+  //   display: flex;
+  //   justify-content: space-between;
+  //   flex-direction: column;
+  //   & .discribe:not(:last-child) {
+  //     margin-bottom: 16px;
+  //   }
+  //   & .text:not(:last-child) {
+  //     margin-bottom: 16px;
+  //   }
+}
+
+.discribe {
+  width: 120px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.1px;
+  color: #a7a7a7;
+  @include laptop() {
+    font-size: 14px;
+    line-height: 28px;
+  }
+
+  @include phones() {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+  }
+}
+
+.text {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.1px;
+  color: $mainTextColor;
+  @include laptop() {
+    font-size: 14px;
+    line-height: 28px;
+  }
+
+  @include phones() {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+  }
+}

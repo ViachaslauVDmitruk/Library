@@ -1,0 +1,45 @@
+@import '../../index.scss';
+
+.imageBook {
+  grid-area: A;
+  //   width: 445px;
+  img {
+    width: 100%;
+    display: block;
+    height: 100%;
+  }
+
+  @media screen and (max-width: 580px) {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+
+  @include phones() {
+    //  display: flex;
+    //  justify-content: center;
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+}
+
+.sliderMini {
+  cursor: pointer;
+  border: 1px solid #bfc4c9;
+  border-radius: 3px;
+  :hover {
+    border: 1px solid red;
+    border-radius: 3px;
+  }
+
+  img {
+    object-fit: cover;
+    //  display: inline-block;
+  }
+  @include tablets() {
+    display: none;
+  }
+}
+
+.sliderWrapper {
+  display: none;
+}

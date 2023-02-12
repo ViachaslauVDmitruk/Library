@@ -1,0 +1,71 @@
+@import '../../index.scss';
+
+.wrapper {
+  @include wrapper();
+}
+
+.main {
+  @include main();
+}
+
+.navigatePath {
+  background: #f9f9fa;
+}
+
+.container {
+  @include container();
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.1px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color: #a7a7a7;
+  @include phones() {
+    font-size: 12px;
+    line-height: 16px;
+  }
+}
+
+.title {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 28px;
+  letter-spacing: 0.1px;
+  color: $mainTextColor;
+  padding-top: 16px;
+  width: 305px;
+  border: 1px solid #f9f9fa;
+
+  @include tablets() {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  @media screen and (max-width: 650px) {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 28px;
+    width: 100%;
+  }
+}
+
+.ratingBox {
+  display: flex;
+  flex-direction: column;
+}
+
+.stars {
+  display: flex;
+  align-items: center;
+  margin-top: 32px;
+  & li:not(:last-child) {
+    margin-right: 12px;
+  }
+  span {
+    margin-left: 10px;
+  }
+}

@@ -1,0 +1,45 @@
+@import '../../index.scss';
+
+.mySwiper2 {
+  cursor: pointer;
+  .swiper-horizontal > .swiper-pagination-bullets,
+  .swiper-pagination-bullets.swiper-pagination-horizontal,
+  .swiper-pagination-custom,
+  .swiper-pagination-fraction {
+    bottom: var(--swiper-pagination-bottom, 8px);
+    left: 0;
+    width: 100%;
+  }
+  display: flex;
+  flex-direction: column;
+}
+
+.mySwiper2 .swiper-pagination-bullets.swiper-pagination-horizontal,
+.mySwiper2 .swiper-pagination-custom,
+.mySwiper2 .swiper-pagination-fraction {
+  bottom: var(--swiper-pagination-bottom, 8px);
+  left: 0;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.mySwiper2 .swiper-pagination {
+  display: none;
+
+  @include tablets {
+    display: block;
+    position: inherit;
+    text-align: center;
+    transition: 0.3s opacity;
+    transform: translate3d(0, 0, 0);
+    z-index: 50;
+  }
+}
+
+.mySwiper2 .swiper-pagination-bullet-active {
+  opacity: var(--swiper-pagination-bullet-opacity, 1);
+  // background: var(--swiper-pagination-color,var(--swiper-theme-color));
+  background-color: #363636;
+  width: var(--swiper-pagination-bullet-width, var(--swiper-pagination-bullet-size, 9px));
+  height: var(--swiper-pagination-bullet-height, var(--swiper-pagination-bullet-size, 9px));
+}

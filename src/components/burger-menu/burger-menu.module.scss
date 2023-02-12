@@ -1,0 +1,109 @@
+@import '../../index.scss';
+
+.burgerMenu {
+  //   position: absolute;
+  position: fixed;
+  top: 0;
+  left: 0;
+  //   -webkit-transform: translateX(-130%);
+  //   transform: translateX(-130%);
+  //   transition: all, 0.4s;
+  width: 100%;
+  height: 100vh;
+
+  //   height: calc(100vh + 96px);
+  overflow: scroll;
+  top: 96px;
+  padding-left: 45px;
+  padding-right: 45px;
+  @include phones() {
+    top: 84px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+// .burgerNavigateShow {
+//   -webkit-transform: translateX(0);
+//   transform: translateX(0%);
+//   transition: all, 0.4s;
+// }
+
+.navigateTitle {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 28px;
+  letter-spacing: 0.1px;
+  color: $mainTextColor;
+  cursor: pointer;
+  padding-bottom: 8px;
+}
+
+.navigateTitle:hover {
+  @include activeColor();
+  background-color: #f83600;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.active {
+  @include activeColor();
+  background-color: #f83600;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  border-bottom: 1px solid rgb(230, 97, 20);
+  padding-bottom: 8px;
+}
+
+.listItems {
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+  padding-left: 20px;
+  margin-bottom: 42px;
+  & li:not(:last-child) {
+    margin-bottom: 16px;
+  }
+}
+
+.listItem {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.1px;
+  color: $mainTextColor;
+  cursor: pointer;
+  & span {
+    font-size: 14px;
+    display: inline-block;
+    color: #a7a7a7;
+  }
+}
+
+.listItem:hover {
+  @include activeColor();
+  background-color: #f83600;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/*--------------burger-menu------------------*/
+
+.burgerNavigate {
+  display: none;
+
+  @include tablets() {
+    display: block;
+    background: #f9f9fa;
+    box-shadow: 0px 2px 4px rgba(191, 196, 201, 0.2), 0px 3px 4px rgba(191, 196, 201, 0.18),
+      0px 1px 5px rgba(191, 196, 201, 0.24);
+    border-radius: 10px;
+
+    padding: 32px;
+    width: calc(100% - 185px);
+  }
+
+  @media screen and (max-width: 550px) {
+    width: 100%;
+  }
+}
