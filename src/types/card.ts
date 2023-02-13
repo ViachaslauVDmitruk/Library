@@ -1,6 +1,5 @@
 export type CardProps = {
   src: CardImages | null;
-  //   src: string[];
   rating: number | null;
   title: string;
   authors: string[];

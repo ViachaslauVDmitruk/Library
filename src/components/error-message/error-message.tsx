@@ -9,7 +9,7 @@ export const ErrorMessage = () => {
   const [isClosedMessage, setIsClosedMessage] = useState<boolean>(false);
 
   return (
-    <div className={classNames(styles.container, { [styles.closeError]: isClosedMessage })}>
+    <div className={classNames(styles.container, { [styles.closeError]: isClosedMessage })} data-test-id='error'>
       <div className={styles.errorMessage}>
         <div className={styles.textError}>
           <div className={styles.image}>
