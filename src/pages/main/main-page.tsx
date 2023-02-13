@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Outlet } from 'react-router-dom';
+import { ErrorMessage } from '../../components/error-message';
 
 import { Loader } from '../../components/loader';
 import { NavigateList } from '../../components/navigate-list';
@@ -11,7 +12,7 @@ import styles from './main-page.module.scss';
 
 export const MainPage = () => {
   const dispatch = useDispatch();
-  const { isLoading } = useSelector(booksSelector);
+  const { isLoading, isError } = useSelector(booksSelector);
 
   useEffect(() => {
     dispatch(getBooks());
@@ -20,6 +21,7 @@ export const MainPage = () => {
   return (
     <div className={styles.container}>
       {isLoading && <Loader />}
+      {isError && <ErrorMessage />}
       <NavigateList />
       <Outlet />
     </div>
