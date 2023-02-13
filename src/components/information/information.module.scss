@@ -54,18 +54,6 @@
 }
 
 .parametrsItems {
-  //   display: flex;
-  //   flex-direction: column;
-  //   justify-content: space-between;
-  //   column-gap: 70px;
-  //   @include tablets() {
-  //     flex: 1 1 50%;
-  //   }
-
-  //   & .parametrsItem:not(:last-child) {
-  //     margin-bottom: 16px;
-  //   }
-
   display: grid;
   grid-template-columns: 1fr 1fr;
   row-gap: 16px;
@@ -82,15 +70,6 @@
 }
 
 .parametrsItem {
-  //   display: flex;
-  //   justify-content: space-between;
-  //   flex-direction: column;
-  //   & .discribe:not(:last-child) {
-  //     margin-bottom: 16px;
-  //   }
-  //   & .text:not(:last-child) {
-  //     margin-bottom: 16px;
-  //   }
 }
 
 .discribe {

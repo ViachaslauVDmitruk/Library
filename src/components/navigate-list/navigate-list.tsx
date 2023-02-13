@@ -9,6 +9,7 @@ import classNames from 'classnames';
 import { NAVIGATE_LIST } from '../../const/navigate-list';
 import { burgeMenuSelector } from '../../selectors';
 import { closeBurgerMenu } from '../../store/burger-menu';
+import { getCategories } from '../../store/categories';
 
 import arrowHidden from './assets/list-hidden-color.png';
 import arrowShow from './assets/list-show-color.png';
@@ -36,7 +37,7 @@ export const NavigateList = () => {
           data-test-id={activeBurger ? 'burger-showcase' : 'navigation-showcase'}
           onClick={() => ToggleNavigateShow()}
         >
-          <div className={styles.titleTop}>
+          <div className={styles.titleTop} onClick={() => dispatch(getCategories())}>
             <NavLink to='/' className={styles.title}>
               Витрина книг
             </NavLink>
