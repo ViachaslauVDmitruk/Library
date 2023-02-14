@@ -53,7 +53,10 @@ export const Review = ({ comments }: CommentsState) => {
               <div className={styles.content} key={item.id}>
                 <div className={styles.information}>
                   <div className={styles.avatar}>
-                    <img src={item.user.avatarUrl || ava} alt='img' />
+                    <img
+                      src={item.user.avatarUrl ? `https://strapi.cleverland.by${item.user.avatarUrl}` : ava}
+                      alt='img'
+                    />
                   </div>
                   <div className={styles.accountData}>
                     <div className={styles.account}>
