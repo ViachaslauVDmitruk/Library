@@ -6,7 +6,7 @@ import noImage from '../assets/no-image.png';
 
 import styles from './card-list-view.module.scss';
 
-export const CardListView = ({ src, rating, title, authors, id }: CardProps) => (
+export const CardListView = ({ src, rating, title, authors, id, issueYear }: CardProps) => (
   <Link to={`/books/category/${id}`} data-test-id='card' className={styles.cardList} key={id}>
     <div className={styles.image}>
       <img src={src?.url == null ? noImage : `https://strapi.cleverland.by${src?.url}`} alt='img' />
@@ -17,9 +17,10 @@ export const CardListView = ({ src, rating, title, authors, id }: CardProps) => 
         {authors.map((item) => (
           <span>{item},</span>
         ))}
+        <span>{issueYear}</span>
       </div>
       <div className={styles.ratingButton}>
-        {/* <StarsRating ratingStars={rating} /> */}
+        {rating && <StarsRating ratingStars={rating} />}
         <button type='button' className={styles.button}>
           Забронировать
         </button>

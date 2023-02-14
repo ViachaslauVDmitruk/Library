@@ -2,7 +2,6 @@
 
 .imageBook {
   grid-area: A;
-  //   width: 445px;
   img {
     width: 100%;
     display: block;
@@ -15,8 +14,6 @@
   }
 
   @include phones() {
-    //  display: flex;
-    //  justify-content: center;
     padding-left: 50px;
     padding-right: 50px;
   }
@@ -33,7 +30,6 @@
 
   img {
     object-fit: cover;
-    //  display: inline-block;
   }
   @include tablets() {
     display: none;
@@ -42,4 +38,19 @@
 
 .sliderWrapper {
   display: none;
+}
+
+.image {
+  img {
+    object-fit: cover;
+    border: 1px solid #a7a7a7;
+    border-radius: 10px;
+  }
+}
+
+.imageMini {
+  img {
+    border: 1px solid #a7a7a7;
+    border-radius: 3px;
+  }
 }

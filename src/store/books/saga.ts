@@ -10,6 +10,7 @@ export function* booksWorker() {
     yield put(setBooks(data));
   } catch {
     yield booksError();
+    console.log('error');
   }
 }
 

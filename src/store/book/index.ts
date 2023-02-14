@@ -48,7 +48,7 @@ export const oneBookSlice = createSlice({
   name: 'onebook',
   initialState,
   reducers: {
-    getOneBook: (state, action: PayloadAction<number>) => {
+    getOneBook: (state, action: PayloadAction<number | string>) => {
       state.isLoading = true;
     },
     setOneBook: (state, action: PayloadAction<OneBookProps>) => {

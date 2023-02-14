@@ -9,10 +9,17 @@ type StarsProps = {
   ratingStars: number | null;
 };
 
-export const StarsRating = ({ ratingStars }: StarsProps) => (
-  <ul className={styles.rating}>
-    {stars.map(({ count }) => (
-      <li key={count}>{/* <img src={count <= ratingStars ? fullStar : emptyStar} alt='img' /> */}</li>
-    ))}
-  </ul>
-);
+export const StarsRating = ({ ratingStars }: StarsProps) => {
+  const grade = ratingStars || 0;
+
+  return (
+    <ul className={styles.rating}>
+      {stars.map(({ count }) => (
+        <li key={count}>
+          {}
+          <img src={count <= grade ? fullStar : emptyStar} alt='img' />
+        </li>
+      ))}
+    </ul>
+  );
+};

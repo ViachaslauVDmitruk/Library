@@ -1,28 +1,17 @@
-import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
 
-import { BOOKS } from '../../const/card';
 import { oneBookSelector } from '../../selectors';
 import { SliderBook } from '../slider';
 
 import styles from './about-book.module.scss';
 
 export const AboutBook = () => {
-  const { id } = useParams();
-  const [parametrs, setParametrs] = useState(BOOKS.find((item) => item.id === id));
   const { book } = useSelector(oneBookSelector);
-
-  useEffect(() => {
-    const book = BOOKS.find((item) => item.id === id);
-
-    setParametrs(book);
-  }, [id]);
 
   return (
     <div className={styles.aboutBook}>
       <div className={styles.container}>
-        <SliderBook src={parametrs?.src} />
+        <SliderBook src={book.images} />
         <div className={styles.discribeTop}>
           <div className={styles.title}>{book.title}</div>
           <div className={styles.author}>

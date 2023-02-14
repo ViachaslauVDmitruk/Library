@@ -3,11 +3,11 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 
 import { NAVIGATE_LIST } from '../../const/navigate-list';
-import { burgeMenuSelector } from '../../selectors';
+import { burgeMenuSelector, categoriesSelector } from '../../selectors';
 import { closeBurgerMenu } from '../../store/burger-menu';
 import { getCategories } from '../../store/categories';
 
@@ -18,8 +18,8 @@ import styles from './navigate-list.module.scss';
 
 export const NavigateList = () => {
   const [isShowNavigate, setIsShowNavigate] = useState<boolean>(true);
-
   const { activeBurger } = useSelector(burgeMenuSelector);
+  const { categories } = useSelector(categoriesSelector);
 
   const dispatch = useDispatch();
 
@@ -54,9 +54,11 @@ export const NavigateList = () => {
           >
             Все книги
           </li>
-          {NAVIGATE_LIST.map(({ title, id, number }) => (
-            <li className={styles.listItem} key={id} onClick={() => dispatch(closeBurgerMenu())}>
-              {title} <span>{number}</span>
+          {categories.map(({ name, id, path }) => (
+            <li key={id}>
+              <Link to='/' className={styles.listItem} onClick={() => dispatch(closeBurgerMenu())}>
+                {name} <span> </span>
+              </Link>
             </li>
           ))}
         </ul>

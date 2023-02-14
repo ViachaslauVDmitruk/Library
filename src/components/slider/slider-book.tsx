@@ -15,7 +15,11 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
 type SliderProps = {
-  src?: string[];
+  src: SlideUrl[];
+};
+
+type SlideUrl = {
+  url: string | null;
 };
 
 export const SliderBook = ({ src }: SliderProps) => {
@@ -35,9 +39,11 @@ export const SliderBook = ({ src }: SliderProps) => {
         className='mySwiper2'
         data-test-id='slide-big'
       >
-        {src2.map((item) => (
+        {src2.map(({ url }) => (
           <SwiperSlide>
-            <img src={item} alt='img' />
+            <div className={styles.image}>
+              <img src={`https://strapi.cleverland.by${url}`} alt='img' />
+            </div>
           </SwiperSlide>
         ))}
       </Swiper>
@@ -51,9 +57,11 @@ export const SliderBook = ({ src }: SliderProps) => {
           modules={[FreeMode, Thumbs]}
           className='mySwiper'
         >
-          {src2.map((item) => (
+          {src2.map(({ url }) => (
             <SwiperSlide data-test-id='slide-mini' className={styles.sliderMini}>
-              <img src={item} alt='img' />
+              <div className={styles.imageMini}>
+                <img src={`https://strapi.cleverland.by${url}`} alt='img' />
+              </div>
             </SwiperSlide>
           ))}
         </Swiper>
