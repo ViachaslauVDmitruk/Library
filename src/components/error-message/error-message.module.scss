@@ -9,12 +9,18 @@
   border: 1.5px solid #f42c4f;
   border-radius: 5px;
   padding: 27px 52px;
+  @include phones() {
+    padding: 12px 15px;
+    align-items: flex-start;
+  }
 }
 
 .container {
   @include container();
   position: fixed;
-  top: 62px;
+  top: 64px;
+  left: 50%;
+  transform: translate(-50%);
   width: 100%;
   display: flex;
   justify-content: center;
@@ -27,6 +33,9 @@
 .textError {
   display: flex;
   align-items: center;
+  @include phones() {
+    align-items: flex-start;
+  }
 }
 
 .text {

@@ -47,6 +47,7 @@
   align-self: flex-start;
 
   @media screen and (max-width: 580px) {
+    justify-self: flex-start;
     & li {
       img {
         height: 16px;
@@ -118,6 +119,7 @@
     height: 170px;
     width: 120px;
     display: block;
+    object-fit: contain;
 
     @include phones {
       height: 100px;

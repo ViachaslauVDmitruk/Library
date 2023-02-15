@@ -5,14 +5,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 
-import { getBooks } from '../../store/books';
+import { burgeMenuSelector } from '../../selectors';
 import { closeBurgerMenu, openBurgerMenu } from '../../store/burger-menu';
 
 import avatar from './assets/avatar.png';
 import logo from './assets/logo.png';
 
 import styles from './header.module.scss';
-import { burgeMenuSelector } from '../../selectors';
 
 export const Header = () => {
   const { activeBurger } = useSelector(burgeMenuSelector);
@@ -55,13 +54,7 @@ export const Header = () => {
         </button>
         <div className={styles.title}>Библиотека</div>
       </div>
-      <div
-        className={styles.account}
-        onClick={() => {
-          console.log('click');
-          dispatch(getBooks());
-        }}
-      >
+      <div className={styles.account}>
         <span className={styles.accountName}>Привет, Иван!</span>
         <img src={avatar} alt='img' />
       </div>

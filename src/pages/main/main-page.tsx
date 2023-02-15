@@ -14,11 +14,13 @@ import styles from './main-page.module.scss';
 
 export const MainPage = () => {
   const dispatch = useDispatch();
-  const { isLoading, isError } = useSelector(booksSelector);
+  const { isLoading, isError, books } = useSelector(booksSelector);
 
   useEffect(() => {
-    dispatch(getBooks());
-    dispatch(getCategories());
+    if (books.length === 0) {
+      dispatch(getCategories());
+      dispatch(getBooks());
+    }
   }, []);
 
   return (

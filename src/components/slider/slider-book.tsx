@@ -3,6 +3,8 @@ import { FreeMode, Navigation, Pagination, Thumbs } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperClass from 'swiper/types/swiper-class';
 
+import { API_HOST } from '../../api/const';
+
 import './slider-book.css';
 import './slider-book.scss';
 import styles from './slider-book.module.scss';
@@ -42,7 +44,7 @@ export const SliderBook = ({ src }: SliderProps) => {
         {src2.map(({ url }) => (
           <SwiperSlide>
             <div className={styles.image}>
-              <img src={`https://strapi.cleverland.by${url}`} alt='img' />
+              <img src={`${API_HOST}${url}`} alt='img' />
             </div>
           </SwiperSlide>
         ))}
@@ -60,7 +62,7 @@ export const SliderBook = ({ src }: SliderProps) => {
           {src2.map(({ url }) => (
             <SwiperSlide data-test-id='slide-mini' className={styles.sliderMini}>
               <div className={styles.imageMini}>
-                <img src={`https://strapi.cleverland.by${url}`} alt='img' />
+                <img src={`${API_HOST}${url}`} alt='img' />
               </div>
             </SwiperSlide>
           ))}

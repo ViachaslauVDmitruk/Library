@@ -3,6 +3,8 @@ import { call, put, takeLatest } from 'redux-saga/effects';
 import { PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+import { API } from '../../api/const';
+
 import { getOneBook, oneBookError, setOneBook } from '.';
 
 export const GetId = () => {
@@ -13,11 +15,11 @@ export const GetId = () => {
 
 export function* oneBookWoker({ payload }: PayloadAction) {
   try {
-    const { data } = yield call(axios.get, `https://strapi.cleverland.by/api/books/${payload}`);
+    const { data } = yield call(axios.get, `${API.booksUrl}${payload}`);
 
     yield put(setOneBook(data));
   } catch {
-    yield oneBookError();
+    yield put(oneBookError());
   }
 }
 

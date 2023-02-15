@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { format } from 'date-fns';
 
+import { API_HOST } from '../../api/const';
 import { UserProps } from '../../store/book/types';
 import { StarsRating } from '../stars-rating';
 
@@ -49,14 +50,11 @@ export const Review = ({ comments }: CommentsState) => {
 
         {isShowReview && (
           <div className={styles.reviewItems}>
-            {comments.map((item) => (
+            {comments?.map((item) => (
               <div className={styles.content} key={item.id}>
                 <div className={styles.information}>
                   <div className={styles.avatar}>
-                    <img
-                      src={item.user.avatarUrl ? `https://strapi.cleverland.by${item.user.avatarUrl}` : ava}
-                      alt='img'
-                    />
+                    <img src={item.user.avatarUrl ? `${API_HOST}${item.user.avatarUrl}` : ava} alt='img' />
                   </div>
                   <div className={styles.accountData}>
                     <div className={styles.account}>

@@ -1,14 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
-// import { BOOKS } from '../../const/card';
 import { booksSelector } from '../../selectors';
-import { booksSlice } from '../../store/books';
 import { CardWindowView } from '../card';
 import { CardListView } from '../card/card-list-view';
 import { Filter } from '../filter';
-
-import noImage from '../card/assets/no-image.png';
 
 import styles from './books.module.scss';
 
@@ -29,7 +25,7 @@ export const Books = () => {
     <div className={styles.content}>
       <Filter changeView={setView} viewWindow={isWindow} />
       <div className={styles[view]}>
-        {books?.map(({ image, rating, title, authors, id, issueYear }) =>
+        {books.map(({ image, rating, title, authors, id, issueYear }) =>
           isWindow ? (
             <CardWindowView
               src={image}

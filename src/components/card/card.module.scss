@@ -16,22 +16,29 @@
 
 .image {
   margin-bottom: 16px;
-
+  flex: 1 1 242px;
+  border: 1px solid #a7a7a7;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   img {
     width: 100%;
     height: 100%;
     display: block;
-    border: 1px solid #a7a7a7;
     border-radius: 10px;
+    object-fit: cover;
   }
 
   @include phones() {
-    display: flex;
-    justify-content: center;
     padding-left: 50px;
     padding-right: 50px;
   }
 }
+
+// .imageBox {
+//   display: flex;
+// }
 
 .noRaring {
   font-weight: 400;
@@ -49,6 +56,11 @@
   display: flex;
   letter-spacing: 0.1px;
   color: $mainTextColor;
+  overflow: hidden;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  line-height: 1.3em;
+  height: 3.9em;
 }
 
 .author {
@@ -59,7 +71,6 @@
   display: flex;
   letter-spacing: 0.1px;
   color: #727272;
-  flex: 1 0 auto;
 }
 
 .button {

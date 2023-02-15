@@ -2,7 +2,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
-import { HashRouter, Route, Routes } from 'react-router-dom';
+import { HashRouter, Navigate, Route, Routes } from 'react-router-dom';
 
 import { Books } from './components/books';
 import { Contract } from './components/contract';
@@ -17,22 +17,23 @@ import './index.scss';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
-	<React.StrictMode>
+	// <React.StrictMode>
 
-		<Provider store={store}>
-			<HashRouter>
-				<Routes>
-					<Route path='/' element={<Layout />} >
-						<Route path='/' element={<MainPage />} >
-							<Route path='/' element={<Books />} />
-							<Route path='/terms' element={<Rules />} />
-							<Route path='/contract' element={<Contract />} />
-						</Route>
-						<Route path='/books/category/:id' element={<BookPage />} />
-					</Route >
-				</Routes>
-			</HashRouter>
-		</Provider>
+	<Provider store={store}>
+		<HashRouter>
+			<Routes>
+				<Route path='/' element={<Layout />} >
+					<Route path='/' element={<MainPage />} >
+						<Route path='/' element={<Navigate to='/books/all' />} />
+						<Route path='/books/:category' element={<Books />} />
+						<Route path='/terms' element={<Rules />} />
+						<Route path='/contract' element={<Contract />} />
+					</Route>
+					<Route path='/books/:category/:id' element={<BookPage />} />
+				</Route >
+			</Routes>
+		</HashRouter>
+	</Provider>
 
-	</React.StrictMode>
+	// </React.StrictMode>
 );

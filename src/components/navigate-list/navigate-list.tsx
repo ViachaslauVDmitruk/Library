@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 
-import { NAVIGATE_LIST } from '../../const/navigate-list';
 import { burgeMenuSelector, categoriesSelector } from '../../selectors';
 import { closeBurgerMenu } from '../../store/burger-menu';
 import { getCategories } from '../../store/categories';
@@ -52,11 +51,11 @@ export const NavigateList = () => {
             onClick={() => dispatch(closeBurgerMenu())}
             data-test-id={activeBurger ? 'burger-books' : 'navigation-books'}
           >
-            Все книги
+            <Link to='/'>Все книги</Link>
           </li>
           {categories.map(({ name, id, path }) => (
             <li key={id}>
-              <Link to='/' className={styles.listItem} onClick={() => dispatch(closeBurgerMenu())}>
+              <Link to={`/books/${path}`} className={styles.listItem} onClick={() => dispatch(closeBurgerMenu())}>
                 {name} <span> </span>
               </Link>
             </li>
