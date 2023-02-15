@@ -34,22 +34,24 @@ export const BookPage = () => {
       {isError && <ErrorMessage />}
       <div className={styles.navigatePath}>
         <div className={styles.container}>
-          Бизнес книги / Грокаем алгоритмы. Иллюстрированное пособие для программистов и любопытствующих
+          {book.categories} / {book.title}
         </div>
       </div>
       {activeBurger && <NavigateList />}
-      <AboutBook />
-      <div className={styles.container}>
-        <div className={styles.ratingBox}>
-          <div className={styles.title}>Рейтинг</div>
-          <div className={styles.stars}>
-            <StarsRating ratingStars={book.rating} />
-            <span>{book.rating}</span>
+      {!isError && <AboutBook />}
+      {!isError && (
+        <div className={styles.container}>
+          <div className={styles.ratingBox}>
+            <div className={styles.title}>Рейтинг</div>
+            <div className={styles.stars}>
+              <StarsRating ratingStars={book.rating} />
+              <span>{book.rating}</span>
+            </div>
           </div>
         </div>
-      </div>
-      <Information />
-      <Review comments={book.comments} />
+      )}
+      {!isError && <Information />}
+      {!isError && <Review comments={book.comments} />}
     </div>
   );
 };

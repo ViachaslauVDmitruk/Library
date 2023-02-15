@@ -28,7 +28,7 @@ export const MainPage = () => {
       {isLoading && <Loader />}
       {isError && <ErrorMessage />}
       <NavigateList />
-      <Outlet />
+      {!isError && <Outlet />}
     </div>
   );
 };

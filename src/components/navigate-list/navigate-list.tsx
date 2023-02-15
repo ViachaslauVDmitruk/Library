@@ -18,7 +18,7 @@ import styles from './navigate-list.module.scss';
 export const NavigateList = () => {
   const [isShowNavigate, setIsShowNavigate] = useState<boolean>(true);
   const { activeBurger } = useSelector(burgeMenuSelector);
-  const { categories } = useSelector(categoriesSelector);
+  const { categories, isError } = useSelector(categoriesSelector);
 
   const dispatch = useDispatch();
 
@@ -51,7 +51,7 @@ export const NavigateList = () => {
             onClick={() => dispatch(closeBurgerMenu())}
             data-test-id={activeBurger ? 'burger-books' : 'navigation-books'}
           >
-            <Link to='/'>Все книги</Link>
+            {!isError && <Link to='/'>Все книги</Link>}
           </li>
           {categories.map(({ name, id, path }) => (
             <li key={id}>
