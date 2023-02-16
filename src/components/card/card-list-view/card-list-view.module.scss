@@ -58,6 +58,14 @@
   }
 }
 
+.noRaring {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0.1px;
+  color: #a7a7a7;
+}
+
 .button {
   @include activeColor();
   display: inline-block;

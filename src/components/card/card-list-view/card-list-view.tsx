@@ -24,7 +24,7 @@ export const CardListView = ({ src, rating, title, authors, id, issueYear }: Car
           <span>{issueYear}</span>
         </div>
         <div className={styles.ratingButton}>
-          {rating && <StarsRating ratingStars={rating} />}
+          {rating ? <StarsRating ratingStars={rating} /> : <div className={styles.noRaring}>еще нет оценок</div>}
           <button type='button' className={styles.button}>
             Забронировать
           </button>
