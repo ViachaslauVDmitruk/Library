@@ -1,0 +1,30 @@
+@import '../../index.scss';
+
+.window {
+  margin-top: 40px;
+  display: grid;
+  grid-template: auto / repeat(auto-fit, minmax(190px, 1fr));
+  gap: 20px;
+  @include phones() {
+    margin-top: 15px;
+  }
+}
+
+.list {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+  margin-left: 5px;
+  @include phones() {
+    margin-top: 15px;
+  }
+}
+
+.content {
+  flex: 1 1 auto;
+  margin-left: 30px;
+  @include tablets() {
+    margin-left: 0;
+  }
+}

@@ -1,0 +1,56 @@
+@import '../../index.scss';
+
+.imageBook {
+  grid-area: A;
+  img {
+    width: 100%;
+    display: block;
+    height: 100%;
+  }
+
+  @media screen and (max-width: 580px) {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+
+  @include phones() {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+}
+
+.sliderMini {
+  cursor: pointer;
+  border: 1px solid #bfc4c9;
+  border-radius: 3px;
+  :hover {
+    border: 1px solid red;
+    border-radius: 3px;
+  }
+
+  img {
+    object-fit: cover;
+  }
+  @include tablets() {
+    display: none;
+  }
+}
+
+.sliderWrapper {
+  display: none;
+}
+
+.image {
+  img {
+    object-fit: cover;
+    border: 1px solid #a7a7a7;
+    border-radius: 10px;
+  }
+}
+
+.imageMini {
+  img {
+    border: 1px solid #a7a7a7;
+    border-radius: 3px;
+  }
+}

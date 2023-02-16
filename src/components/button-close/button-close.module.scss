@@ -1,0 +1,52 @@
+@import '../../index.scss';
+
+.closeButton {
+  height: 14px;
+  width: 14px;
+  position: relative;
+  cursor: pointer;
+  &:hover::before {
+    background-image: $activeColor;
+  }
+  &:hover::after {
+    background-image: $activeColor;
+  }
+  &:hover span {
+    background-image: $activeColor;
+  }
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 14px;
+    height: 2px;
+    background-position: center;
+    background-color: #363636;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    top: 7px;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 14px;
+    height: 2px;
+    background-color: #363636;
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    bottom: 5px;
+  }
+}
+
+.closeSearchButton {
+  display: none;
+  margin-right: 13px;
+}
+
+.searchActive {
+  display: block;
+}

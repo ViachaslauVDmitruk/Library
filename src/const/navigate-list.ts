@@ -1,0 +1,17 @@
+export const NAVIGATE_LIST = [
+  //   { title: 'Все книги', id: 1, number: null },
+  { title: 'Бизнес-книги', id: 2, number: 14 },
+  { title: 'Детективы', id: 3, number: 8 },
+  { title: 'Детсие книги', id: 4, number: 14 },
+  { title: 'Зарубежная литература', id: 5, number: 2 },
+  { title: 'История', id: 6, number: 5 },
+  { title: 'Классическая литература', id: 7, number: 12 },
+  { title: 'Книги по психологии', id: 8, number: 11 },
+  { title: 'Компьютерная литература', id: 9, number: 54 },
+  { title: 'Культура и исусство', id: 10, number: 5 },
+  { title: 'Наука и образование', id: 11, number: 2 },
+  { title: 'Публицестическая литература', id: 12, number: 0 },
+  { title: 'Справочники', id: 13, number: 10 },
+  { title: 'Фантастика', id: 14, number: 12 },
+  { title: 'Юмористическая литература', id: 15, number: 8 },
+];

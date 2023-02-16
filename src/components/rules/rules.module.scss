@@ -1,0 +1,66 @@
+@import '../../index.scss';
+
+.rules {
+  margin-left: 30px;
+  flex: 1 1;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 40px;
+  letter-spacing: 0.1px;
+  color: $mainTextColor;
+}
+
+ol {
+  counter-reset: section;
+  list-style-type: none;
+  & li::before {
+    counter-increment: section;
+    content: counters(section, '.') ' ';
+  }
+}
+
+.levelOne {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.1px;
+  margin-top: 32px;
+  color: $mainTextColor;
+
+  @include phones() {
+    font-size: 15px;
+    line-height: 20px;
+  }
+}
+
+.levelTwo {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.1px;
+  margin-left: 30px;
+  margin-top: 16px;
+  color: $mainTextColor;
+  @include phones() {
+    font-size: 15px;
+    line-height: 20px;
+  }
+}
+
+.levelThree {
+  margin-left: 20px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.1px;
+  margin-left: 30px;
+  margin-top: 16px;
+  color: $mainTextColor;
+  @include phones() {
+    font-size: 15px;
+    line-height: 20px;
+  }
+}

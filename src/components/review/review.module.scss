@@ -1,0 +1,158 @@
+@import '../../index.scss';
+
+.review {
+  margin-top: 62px;
+  margin-bottom: 42px;
+  @include phones() {
+    margin-bottom: 20px;
+  }
+}
+
+.container {
+  @include container();
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 42px;
+  @include phones() {
+    margin-bottom: 32px;
+  }
+}
+
+.title {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 28px;
+  letter-spacing: 0.1px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #ebebeb;
+  width: 305px;
+  display: flex;
+  align-items: center;
+
+  @include phones() {
+    width: 100%;
+  }
+}
+
+.textTitle {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 28px;
+  letter-spacing: 0.1px;
+  margin-right: 16px;
+
+  & span {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: 0.1px;
+    color: #a7a7a7;
+    margin-left: 6px;
+  }
+}
+
+.viewReview {
+  cursor: pointer;
+  img {
+    display: block;
+  }
+}
+
+.information {
+  display: flex;
+  align-items: center;
+  margin-top: 16px;
+  & :not(:last-child) {
+    margin-right: 24px;
+  }
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+  }
+}
+
+.accountData {
+  display: flex;
+  @include phones() {
+    flex-direction: column;
+  }
+}
+
+.account {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.1px;
+  color: #727272;
+
+  @include phones() {
+    font-size: 15px;
+    line-height: 20px;
+  }
+}
+
+.data {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.1px;
+  color: #727272;
+  @include phones() {
+    font-size: 15px;
+    line-height: 20px;
+  }
+}
+
+.stars {
+  display: flex;
+  align-items: center;
+  margin-top: 16px;
+  & li:not(:last-child) {
+    margin-right: 12px;
+  }
+}
+
+.text {
+  margin-top: 16px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.1px;
+  color: $mainTextColor;
+  @include phones() {
+    margin-top: 8px;
+    font-size: 15px;
+    line-height: 20px;
+  }
+}
+
+.button {
+  margin-top: 28px;
+  @include activeColor();
+  display: inline-block;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  letter-spacing: 0.2px;
+  text-transform: uppercase;
+  color: #ffffff;
+  padding: 10px 23px;
+  border-radius: 20px;
+  width: 350px;
+  @include tablets() {
+    width: 100%;
+  }
+}
