@@ -37,12 +37,14 @@ export const NavigateList = () => {
           onClick={() => ToggleNavigateShow()}
         >
           <div className={styles.titleTop} onClick={() => dispatch(getCategories())}>
-            <NavLink to='/' className={styles.title}>
+            <NavLink to='/books/all' className={styles.title}>
               Витрина книг
             </NavLink>
-            <div className={styles.arrow}>
-              <img src={isShowNavigate ? arrowHidden : arrowShow} alt='img' />
-            </div>
+            {categories.length > 0 && (
+              <div className={styles.arrow}>
+                <img src={isShowNavigate ? arrowHidden : arrowShow} alt='img' />
+              </div>
+            )}
           </div>
         </div>
         <ul className={classNames(styles.listItems, { [styles.disableListItems]: !isShowNavigate })}>

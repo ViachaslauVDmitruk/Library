@@ -1,7 +1,7 @@
 @import '../../index.scss';
 
 .navigate {
-  flex: 1 0 255px;
+  flex: 0 0 255px;
   @include tablets() {
     display: none;
   }
