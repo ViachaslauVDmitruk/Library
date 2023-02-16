@@ -1,0 +1,27 @@
+@import '../../index.scss';
+
+.navigatePath {
+  background: #f9f9fa;
+}
+
+.container {
+  @include container();
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.1px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color: #a7a7a7;
+  @include phones() {
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  & span {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}

@@ -8,6 +8,7 @@ import { ErrorMessage } from '../../components/error-message';
 import { Information } from '../../components/information';
 import { Loader } from '../../components/loader';
 import { NavigateList } from '../../components/navigate-list';
+import { NavigatePath } from '../../components/navigate-path';
 import { Review } from '../../components/review';
 import { StarsRating } from '../../components/stars-rating';
 import { burgeMenuSelector, oneBookSelector } from '../../selectors';
@@ -32,11 +33,7 @@ export const BookPage = () => {
     <div className={styles.main}>
       {isLoading && <Loader />}
       {isError && <ErrorMessage />}
-      <div className={styles.navigatePath}>
-        <div className={styles.container}>
-          {book.categories} / {book.title}
-        </div>
-      </div>
+      <NavigatePath categories={book.categories} title={book.title} />
       {activeBurger && <NavigateList />}
       {!isError && <AboutBook />}
       {!isError && (
