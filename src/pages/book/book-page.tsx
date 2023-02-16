@@ -35,8 +35,8 @@ export const BookPage = () => {
       {isError && <ErrorMessage />}
       <NavigatePath categories={book.categories} title={book.title} />
       {activeBurger && <NavigateList />}
-      {!isError && <AboutBook />}
-      {!isError && (
+      {!isError && !isLoading && <AboutBook />}
+      {!isError && !isLoading && (
         <div className={styles.container}>
           <div className={styles.ratingBox}>
             <div className={styles.title}>Рейтинг</div>
@@ -47,8 +47,8 @@ export const BookPage = () => {
           </div>
         </div>
       )}
-      {!isError && <Information />}
-      {!isError && <Review comments={book.comments} />}
+      {!isError && !isLoading && <Information />}
+      {!isError && !isLoading && <Review comments={book.comments} />}
     </div>
   );
 };

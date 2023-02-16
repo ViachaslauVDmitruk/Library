@@ -11,7 +11,7 @@ import styles from './books.module.scss';
 export const Books = () => {
   const [view, setView] = useState<string>('window');
   const [isWindow, setIsWindow] = useState<boolean>(true);
-  const { books } = useSelector(booksSelector);
+  const { books, isError, isLoading } = useSelector(booksSelector);
 
   useEffect(() => {
     if (view === 'window') {
@@ -23,7 +23,7 @@ export const Books = () => {
 
   return (
     <div className={styles.content}>
-      <Filter changeView={setView} viewWindow={isWindow} />
+      {!isError && !isLoading && <Filter changeView={setView} viewWindow={isWindow} />}
       <div className={styles[view]}>
         {books.map(({ image, rating, title, authors, id, issueYear }) =>
           isWindow ? (
