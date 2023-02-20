@@ -9,6 +9,7 @@ import classNames from 'classnames';
 import { burgeMenuSelector, categoriesSelector } from '../../selectors';
 import { closeBurgerMenu } from '../../store/burger-menu';
 import { getCategories } from '../../store/categories';
+import { selectCategoryAction } from '../../store/selected-category';
 
 import arrowHidden from './assets/list-hidden-color.png';
 import arrowShow from './assets/list-show-color.png';
@@ -53,11 +54,22 @@ export const NavigateList = () => {
             onClick={() => dispatch(closeBurgerMenu())}
             data-test-id={activeBurger ? 'burger-books' : 'navigation-books'}
           >
-            {!isError && <Link to='/'>Все книги</Link>}
+            {!isError && (
+              <Link to='/' onClick={() => dispatch(selectCategoryAction(''))}>
+                Все книги
+              </Link>
+            )}
           </li>
           {categories.map(({ name, id, path }) => (
             <li key={id}>
-              <Link to={`/books/${path}`} className={styles.listItem} onClick={() => dispatch(closeBurgerMenu())}>
+              <Link
+                to={`/books/${path}`}
+                className={styles.listItem}
+                onClick={() => {
+                  dispatch(closeBurgerMenu());
+                  dispatch(selectCategoryAction(name));
+                }}
+              >
                 {name} <span> </span>
               </Link>
             </li>

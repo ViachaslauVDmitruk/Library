@@ -21,10 +21,8 @@ export const booksSlice = createSlice({
       state.books = action.payload;
     },
     booksError: (state, action: PayloadAction) => {
-      console.log('state error work', state);
       state.isLoading = false;
       state.isError = true;
-      console.log('state', state);
     },
   },
 });

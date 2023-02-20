@@ -42,7 +42,7 @@ export const SliderBook = ({ src }: SliderProps) => {
         data-test-id='slide-big'
       >
         {src2.map(({ url }) => (
-          <SwiperSlide>
+          <SwiperSlide key={url}>
             <div className={styles.image}>
               <img src={`${API_HOST}${url}`} alt='img' />
             </div>
@@ -60,7 +60,7 @@ export const SliderBook = ({ src }: SliderProps) => {
           className='mySwiper'
         >
           {src2.map(({ url }) => (
-            <SwiperSlide data-test-id='slide-mini' className={styles.sliderMini}>
+            <SwiperSlide data-test-id='slide-mini' className={styles.sliderMini} key={url}>
               <div className={styles.imageMini}>
                 <img src={`${API_HOST}${url}`} alt='img' />
               </div>

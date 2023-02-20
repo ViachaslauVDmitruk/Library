@@ -19,7 +19,7 @@ export const CardListView = ({ src, rating, title, authors, id, issueYear }: Car
         <div className={styles.title}>{title}</div>
         <div className={styles.author}>
           {authors.map((item) => (
-            <span>{item},</span>
+            <span key={item}>{item},</span>
           ))}
           <span>{issueYear}</span>
         </div>

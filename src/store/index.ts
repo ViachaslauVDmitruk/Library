@@ -7,6 +7,7 @@ import { burgerMenuSlice } from './burger-menu';
 import { categoriesSlice } from './categories';
 import { errorSlice } from './error-request';
 import { rootSaga } from './saga';
+import { selectedCategorySlice } from './selected-category';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -16,6 +17,7 @@ export const rootReducer = {
   error: errorSlice.reducer,
   onebook: oneBookSlice.reducer,
   categories: categoriesSlice.reducer,
+  selectedCategory: selectedCategorySlice.reducer,
 };
 
 export const store = configureStore({

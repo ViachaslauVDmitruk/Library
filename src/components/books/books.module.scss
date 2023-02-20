@@ -19,6 +19,9 @@
   @include phones() {
     margin-top: 15px;
   }
+  @include tablets() {
+    margin-left: 0;
+  }
 }
 
 .content {
