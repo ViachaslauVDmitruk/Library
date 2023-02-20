@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
-import { booksSelector, selectedCategorySelector } from '../../selectors';
+import { booksSelector, inputSearchSelector, selectedCategorySelector } from '../../selectors';
 import { CardWindowView } from '../card';
 import { CardListView } from '../card/card-list-view';
 import { Filter } from '../filter';
@@ -13,9 +13,12 @@ export const Books = () => {
   const [isWindow, setIsWindow] = useState<boolean>(true);
   const { books, isError, isLoading } = useSelector(booksSelector);
   const { selectedCategory } = useSelector(selectedCategorySelector);
+  const { searchValue } = useSelector(inputSearchSelector);
 
   const categoryMode =
     selectedCategory === '' ? books : books.filter((book) => book.categories.some((item) => item === selectedCategory));
+
+  const filteredCategoryBySearch = categoryMode.filter(({ title }) => title.toLowerCase().includes(searchValue));
 
   useEffect(() => {
     if (view === 'window') {
@@ -29,7 +32,7 @@ export const Books = () => {
     <div className={styles.content}>
       {!isError && !isLoading && <Filter changeView={setView} viewWindow={isWindow} />}
       <div className={styles[view]}>
-        {categoryMode.map(({ image, rating, title, authors, id, issueYear }) =>
+        {filteredCategoryBySearch.map(({ image, rating, title, authors, id, issueYear }) =>
           isWindow ? (
             <CardWindowView
               src={image}

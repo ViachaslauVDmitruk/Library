@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import classNames from 'classnames';
 
 import { sortRatingDown, sortRatingUp } from '../../store/books';
+import { setSearchValue } from '../../store/input-search';
 
 import sortDown from './assets/icon-sort-ascending.png';
 import sortUp from './assets/icon-sort-descending.png';
@@ -40,7 +41,12 @@ export const Filter = ({ viewWindow, changeView }: ChangeViewProps) => {
     <div className={styles.filter}>
       <div className={styles.inputItems}>
         <div className={classNames(styles.itemInput, { [styles.search]: isActiveSearch })}>
-          <input type='text' placeholder='Поиск книги или автора…' data-test-id='input-search' />
+          <input
+            type='text'
+            placeholder='Поиск книги или автора…'
+            data-test-id='input-search'
+            onChange={(event) => dispatch(setSearchValue(event.target.value))}
+          />
           <button
             type='button'
             className={classNames(styles.closeSearchButton, { [styles.searchActive]: isActiveSearch })}
