@@ -1,9 +1,13 @@
+import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import classNames from 'classnames';
-import { useState } from 'react';
 
+import { sortRatingDown, sortRatingUp } from '../../store/books';
+
+import sortDown from './assets/icon-sort-ascending.png';
+import sortUp from './assets/icon-sort-descending.png';
 import listActive from './assets/list-active.png';
 import listDisable from './assets/list-disable.png';
-import rating from './assets/rating.png';
 import search from './assets/search-button.png';
 import windowActive from './assets/window-active.png';
 import windowDisable from './assets/window-disable.png';
@@ -17,6 +21,20 @@ export type ChangeViewProps = {
 
 export const Filter = ({ viewWindow, changeView }: ChangeViewProps) => {
   const [isActiveSearch, setIsActiveSearch] = useState<boolean>(false);
+  const [sortRatingMode, setSortRatingMode] = useState<boolean>(true);
+  const dispatch = useDispatch();
+
+  const ToggleSortRating = () => {
+    setSortRatingMode(!sortRatingMode);
+  };
+
+  useEffect(() => {
+    if (sortRatingMode) {
+      dispatch(sortRatingDown());
+    } else {
+      dispatch(sortRatingUp());
+    }
+  }, [sortRatingMode, dispatch]);
 
   return (
     <div className={styles.filter}>
@@ -43,8 +61,12 @@ export const Filter = ({ viewWindow, changeView }: ChangeViewProps) => {
           </button>
         )}
         {!isActiveSearch && (
-          <button type='button' className={classNames(styles.itemInput, styles.itemButton)}>
-            <img src={rating} alt='img' />
+          <button
+            type='button'
+            className={classNames(styles.itemInput, styles.itemButton)}
+            onClick={() => ToggleSortRating()}
+          >
+            <img src={sortRatingMode ? sortDown : sortUp} alt='img' />
             По рейтингу
           </button>
         )}
