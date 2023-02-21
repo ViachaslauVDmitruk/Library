@@ -18,7 +18,9 @@ export const Books = () => {
   const categoryMode =
     selectedCategory === '' ? books : books.filter((book) => book.categories.some((item) => item === selectedCategory));
 
-  const filteredCategoryBySearch = categoryMode.filter(({ title }) => title.toLowerCase().includes(searchValue));
+  const filteredCategoryBySearch = categoryMode.filter(({ title }) =>
+    title.toLowerCase().includes(searchValue.toLocaleLowerCase())
+  );
 
   useEffect(() => {
     if (view === 'window') {
@@ -51,6 +53,7 @@ export const Books = () => {
                 key={id}
                 id={id}
                 issueYear={issueYear}
+                searchValue={searchValue}
               />
             ) : (
               <CardListView
@@ -61,6 +64,7 @@ export const Books = () => {
                 key={id}
                 id={id}
                 issueYear={issueYear}
+                searchValue={searchValue}
               />
             )
           )

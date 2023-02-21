@@ -76,6 +76,7 @@ export const Filter = ({ viewWindow, changeView }: ChangeViewProps) => {
             type='button'
             className={classNames(styles.itemInput, styles.itemButton)}
             onClick={() => ToggleSortRating()}
+            data-test-id='sort-rating-button'
           >
             <img src={sortRatingMode ? sortDown : sortUp} alt='img' />
             По рейтингу

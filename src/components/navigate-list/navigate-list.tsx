@@ -57,7 +57,11 @@ export const NavigateList = () => {
             data-test-id={activeBurger ? 'burger-books' : 'navigation-books'}
           >
             {!isError && (
-              <Link to='/' onClick={() => dispatch(selectCategoryAction(''))}>
+              <Link
+                to='/books/all'
+                onClick={() => dispatch(selectCategoryAction(''))}
+                data-test-id={activeBurger ? 'burger-books' : 'navigation-books'}
+              >
                 Все книги
               </Link>
             )}
@@ -75,8 +79,12 @@ export const NavigateList = () => {
                     dispatch(selectCategoryAction(name));
                   }}
                 >
-                  {name}
-                  <span>{counter} </span>
+                  <p data-test-id={activeBurger ? `burger-${path}` : `navigation-${path}`}>{name}</p>
+                  <span
+                    data-test-id={activeBurger ? `burger-book-count-for-${path}` : `navigation-book-count-for-${path}`}
+                  >
+                    {counter}{' '}
+                  </span>
                 </Link>
               </li>
             );

@@ -44,7 +44,9 @@
     background-repeat: no-repeat;
     background-position: 5% 50%;
     background-image: url('../../components/filter/search.png');
+    caret-color: rgb(248, 54, 0);
   }
+
   input::-webkit-input-placeholder {
     opacity: 1;
     transition: opacity 0.3s ease;

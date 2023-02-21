@@ -5,6 +5,7 @@ export type CardProps = {
   authors: string[];
   id: number;
   issueYear: string;
+  searchValue: string;
 };
 export type CardImages = {
   url: string | null;
