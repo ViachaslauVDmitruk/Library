@@ -31,3 +31,24 @@
     margin-left: 0;
   }
 }
+
+.notFound {
+  margin-top: 200px;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 40px;
+  text-align: center;
+  letter-spacing: 0.1px;
+  color: #a7a7a7;
+  @include tablets() {
+    margin-top: 226px;
+  }
+
+  @include phones() {
+    margin-top: 135px;
+    font-size: 18px;
+    line-height: 28px;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
