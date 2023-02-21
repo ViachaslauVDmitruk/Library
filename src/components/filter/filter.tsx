@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import classNames from 'classnames';
@@ -46,6 +47,10 @@ export const Filter = ({ viewWindow, changeView }: ChangeViewProps) => {
             placeholder='Поиск книги или автора…'
             data-test-id='input-search'
             onChange={(event) => dispatch(setSearchValue(event.target.value))}
+            onBlur={(event) => {
+              dispatch(setSearchValue(''));
+              event.target.value = '';
+            }}
           />
           <button
             type='button'

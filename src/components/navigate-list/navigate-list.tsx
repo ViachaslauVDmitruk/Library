@@ -6,7 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 
-import { burgeMenuSelector, categoriesSelector } from '../../selectors';
+import { CounterBooks } from '../../helpers/counter-books';
+import { booksSelector, burgeMenuSelector, categoriesSelector } from '../../selectors';
 import { closeBurgerMenu } from '../../store/burger-menu';
 import { getCategories } from '../../store/categories';
 import { selectCategoryAction } from '../../store/selected-category';
@@ -20,6 +21,7 @@ export const NavigateList = () => {
   const [isShowNavigate, setIsShowNavigate] = useState<boolean>(true);
   const { activeBurger } = useSelector(burgeMenuSelector);
   const { categories, isError } = useSelector(categoriesSelector);
+  const { books } = useSelector(booksSelector);
 
   const dispatch = useDispatch();
 
@@ -60,20 +62,25 @@ export const NavigateList = () => {
               </Link>
             )}
           </li>
-          {categories.map(({ name, id, path }) => (
-            <li key={id}>
-              <Link
-                to={`/books/${path}`}
-                className={styles.listItem}
-                onClick={() => {
-                  dispatch(closeBurgerMenu());
-                  dispatch(selectCategoryAction(name));
-                }}
-              >
-                {name} <span> </span>
-              </Link>
-            </li>
-          ))}
+          {categories?.map(({ name, id, path }) => {
+            const counter = CounterBooks({ name, books });
+
+            return (
+              <li key={id}>
+                <Link
+                  to={`/books/${path}`}
+                  className={styles.listItem}
+                  onClick={() => {
+                    dispatch(closeBurgerMenu());
+                    dispatch(selectCategoryAction(name));
+                  }}
+                >
+                  {name}
+                  <span>{counter} </span>
+                </Link>
+              </li>
+            );
+          })}
         </ul>
         <div className={classNames(styles.navigateTitle)}>
           <NavLink
