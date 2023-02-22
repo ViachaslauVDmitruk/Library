@@ -4,6 +4,8 @@
   margin-top: 40px;
   display: grid;
   grid-template: auto / repeat(auto-fit, 190px);
+  grid-auto-rows: 1fr;
+  justify-content: center;
   gap: 20px;
   @include phones() {
     margin-top: 15px;

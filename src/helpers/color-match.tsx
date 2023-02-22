@@ -17,7 +17,7 @@ export const ColorMatch = ({ searchValue, title }: ColorMatchProps) => {
 
         return (
           <React.Fragment>
-            {s}
+            <span>{s}</span>
             <span style={{ color: '#FF5253' }} data-test-id='highlight-matches'>
               {colorStr}
             </span>
