@@ -23,7 +23,7 @@ export const CardListView = ({ src, rating, title, authors, id, issueYear, searc
         </div>
         <div className={styles.author}>
           {authors.map((item) => (
-            <span key={item}>{item},</span>
+            <span key={item}>{item}, </span>
           ))}
           <span>{issueYear}</span>
         </div>

@@ -27,7 +27,7 @@ export const CardWindowView = ({ src, rating, title, authors, id, issueYear, sea
       </div>
       <div className={styles.author}>
         {authors.map((item) => (
-          <span key={item}>{item},</span>
+          <span key={item}>{item}, </span>
         ))}
         <span>{issueYear}</span>
       </div>
