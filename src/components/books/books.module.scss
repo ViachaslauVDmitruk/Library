@@ -3,7 +3,7 @@
 .window {
   margin-top: 40px;
   display: grid;
-  grid-template: auto / repeat(auto-fit, minmax(190px, 1fr));
+  grid-template: auto / repeat(auto-fit, 190px);
   gap: 20px;
   @include phones() {
     margin-top: 15px;
@@ -19,7 +19,7 @@
   @include phones() {
     margin-top: 15px;
   }
-  @include tablets() {
+  @include laptop() {
     margin-left: 0;
   }
 }
@@ -27,7 +27,7 @@
 .content {
   flex: 1 1 auto;
   margin-left: 30px;
-  @include tablets() {
+  @include laptop() {
     margin-left: 0;
   }
 }

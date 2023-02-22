@@ -1,4 +1,3 @@
-import { useCallback } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
 import { API_HOST } from '../../../api/const';

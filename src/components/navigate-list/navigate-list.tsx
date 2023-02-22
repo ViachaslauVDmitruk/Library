@@ -3,7 +3,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 
 import { CounterBooks } from '../../helpers/counter-books';
@@ -20,7 +20,7 @@ import styles from './navigate-list.module.scss';
 export const NavigateList = () => {
   const [isShowNavigate, setIsShowNavigate] = useState<boolean>(true);
   const { activeBurger } = useSelector(burgeMenuSelector);
-  const { categories, isError } = useSelector(categoriesSelector);
+  const { categories, isError, isLoading } = useSelector(categoriesSelector);
   const { books } = useSelector(booksSelector);
 
   const dispatch = useDispatch();
@@ -50,46 +50,49 @@ export const NavigateList = () => {
             )}
           </div>
         </div>
-        <ul className={classNames(styles.listItems, { [styles.disableListItems]: !isShowNavigate })}>
-          <li
-            className={classNames(styles.listItem, styles.active)}
-            onClick={() => dispatch(closeBurgerMenu())}
-            data-test-id={activeBurger ? 'burger-books' : 'navigation-books'}
-          >
-            {!isError && (
-              <Link
+        {!isError && !isLoading && (
+          <ul className={classNames(styles.listItems, { [styles.disableListItems]: !isShowNavigate })}>
+            <li
+              className={classNames(styles.listItem)}
+              onClick={() => dispatch(closeBurgerMenu())}
+              // data-test-id={activeBurger ? 'burger-books' : 'navigation-books'}
+            >
+              <NavLink
                 to='/books/all'
                 onClick={() => dispatch(selectCategoryAction(''))}
                 data-test-id={activeBurger ? 'burger-books' : 'navigation-books'}
+                // data-test-id='navigation-books'
               >
                 Все книги
-              </Link>
-            )}
-          </li>
-          {categories?.map(({ name, id, path }) => {
-            const counter = CounterBooks({ name, books });
+              </NavLink>
+            </li>
+            {categories?.map(({ name, id, path }) => {
+              const counter = CounterBooks({ name, books });
 
-            return (
-              <li key={id}>
-                <Link
-                  to={`/books/${path}`}
-                  className={styles.listItem}
-                  onClick={() => {
-                    dispatch(closeBurgerMenu());
-                    dispatch(selectCategoryAction(name));
-                  }}
-                >
-                  <p data-test-id={activeBurger ? `burger-${path}` : `navigation-${path}`}>{name}</p>
-                  <span
-                    data-test-id={activeBurger ? `burger-book-count-for-${path}` : `navigation-book-count-for-${path}`}
+              return (
+                <li key={id}>
+                  <NavLink
+                    to={`/books/${path}`}
+                    className={styles.listItem}
+                    onClick={() => {
+                      dispatch(closeBurgerMenu());
+                      dispatch(selectCategoryAction(name));
+                    }}
                   >
-                    {counter}{' '}
-                  </span>
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
+                    <p data-test-id={activeBurger ? `burger-${path}` : `navigation-${path}`}>{name}</p>
+                    <span
+                      data-test-id={
+                        activeBurger ? `burger-book-count-for-${path}` : `navigation-book-count-for-${path}`
+                      }
+                    >
+                      {counter}{' '}
+                    </span>
+                  </NavLink>
+                </li>
+              );
+            })}
+          </ul>
+        )}
         <div className={classNames(styles.navigateTitle)}>
           <NavLink
             to='/terms'
@@ -105,7 +108,7 @@ export const NavigateList = () => {
         <div className={classNames(styles.navigateTitle)}>
           <NavLink
             to='/contract'
-            className={classNames(styles.title)}
+            className={styles.title}
             onClick={() => {
               setIsShowNavigate(false);
             }}
@@ -115,8 +118,8 @@ export const NavigateList = () => {
           </NavLink>
         </div>
         <div className={styles.loginNavigate}>
-          <div className={classNames(styles.title)}>Профиль</div>
-          <div className={classNames(styles.title)}>Выход</div>
+          <div className={styles.title}>Профиль</div>
+          <div className={styles.title}>Выход</div>
         </div>
       </div>
     </div>
