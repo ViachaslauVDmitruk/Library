@@ -33,43 +33,46 @@ export const Books = () => {
   return (
     <div className={styles.content}>
       {!isError && !isLoading && <Filter changeView={setView} viewWindow={isWindow} />}
-      <div className={styles[view]}>
-        {categoryMode.length === 0 ? (
-          <div className={styles.notFound} data-test-id='empty-category'>
-            В этой категории книг ещё нет
+
+      {categoryMode.length ? (
+        filteredCategoryBySearch.length ? (
+          <div className={styles[view]}>
+            {filteredCategoryBySearch.map(({ image, rating, title, authors, id, issueYear }) =>
+              isWindow ? (
+                <CardWindowView
+                  src={image}
+                  rating={rating}
+                  title={title}
+                  authors={authors}
+                  key={id}
+                  id={id}
+                  issueYear={issueYear}
+                  searchValue={searchValue}
+                />
+              ) : (
+                <CardListView
+                  src={image}
+                  rating={rating}
+                  title={title}
+                  authors={authors}
+                  key={id}
+                  id={id}
+                  issueYear={issueYear}
+                  searchValue={searchValue}
+                />
+              )
+            )}
           </div>
-        ) : filteredCategoryBySearch.length === 0 ? (
+        ) : (
           <div className={styles.notFound} data-test-id='search-result-not-found'>
             По запросу ничего не найдено
           </div>
-        ) : (
-          filteredCategoryBySearch.map(({ image, rating, title, authors, id, issueYear }) =>
-            isWindow ? (
-              <CardWindowView
-                src={image}
-                rating={rating}
-                title={title}
-                authors={authors}
-                key={id}
-                id={id}
-                issueYear={issueYear}
-                searchValue={searchValue}
-              />
-            ) : (
-              <CardListView
-                src={image}
-                rating={rating}
-                title={title}
-                authors={authors}
-                key={id}
-                id={id}
-                issueYear={issueYear}
-                searchValue={searchValue}
-              />
-            )
-          )
-        )}
-      </div>
+        )
+      ) : (
+        <div className={styles.notFound} data-test-id='empty-category'>
+          В этой категории книг ещё нет
+        </div>
+      )}
     </div>
   );
 };

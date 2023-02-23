@@ -52,16 +52,11 @@ export const NavigateList = () => {
         </div>
         {!isError && !isLoading && (
           <ul className={classNames(styles.listItems, { [styles.disableListItems]: !isShowNavigate })}>
-            <li
-              className={classNames(styles.listItem)}
-              onClick={() => dispatch(closeBurgerMenu())}
-              // data-test-id={activeBurger ? 'burger-books' : 'navigation-books'}
-            >
+            <li className={classNames(styles.listItem)} onClick={() => dispatch(closeBurgerMenu())}>
               <NavLink
                 to='/books/all'
                 onClick={() => dispatch(selectCategoryAction(''))}
                 data-test-id={activeBurger ? 'burger-books' : 'navigation-books'}
-                // data-test-id='navigation-books'
               >
                 Все книги
               </NavLink>
