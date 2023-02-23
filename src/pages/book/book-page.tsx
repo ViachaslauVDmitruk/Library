@@ -1,10 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
 import { AboutBook } from '../../components/about-book';
 import { ErrorMessage } from '../../components/error-message';
+import { useAppDispatch } from '../../components/hooks';
 import { Information } from '../../components/information';
 import { Loader } from '../../components/loader';
 import { NavigateList } from '../../components/navigate-list';
@@ -21,7 +22,8 @@ export const BookPage = () => {
   const { activeBurger } = useSelector(burgeMenuSelector);
   const { isLoading, isError } = useSelector(oneBookSelector);
   const { book } = useSelector(oneBookSelector);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
+  const isGettingData = !isError && !isLoading;
 
   useEffect(() => {
     if (id) {
@@ -33,10 +35,10 @@ export const BookPage = () => {
     <div className={styles.main}>
       {isLoading && <Loader />}
       {isError && <ErrorMessage />}
-      <NavigatePath categories={book.categories} title={book.title} />
+      <NavigatePath title={book.title} />
       {activeBurger && <NavigateList />}
-      {!isError && !isLoading && <AboutBook />}
-      {!isError && !isLoading && (
+      {isGettingData && <AboutBook />}
+      {isGettingData && (
         <div className={styles.container}>
           <div className={styles.ratingBox}>
             <div className={styles.title}>Рейтинг</div>
@@ -47,8 +49,8 @@ export const BookPage = () => {
           </div>
         </div>
       )}
-      {!isError && !isLoading && <Information />}
-      {!isError && !isLoading && <Review comments={book.comments} />}
+      {isGettingData && <Information />}
+      {isGettingData && <Review comments={book.comments} />}
     </div>
   );
 };

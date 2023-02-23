@@ -35,5 +35,6 @@ root.render(
 		</HashRouter>
 	</Provider>
 
-	// </React.StrictMode>
+	// {/* </React.StrictMode> */}
+
 );

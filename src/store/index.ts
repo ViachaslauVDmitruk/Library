@@ -7,6 +7,8 @@ import { burgerMenuSlice } from './burger-menu';
 import { categoriesSlice } from './categories';
 import { errorSlice } from './error-request';
 import { rootSaga } from './saga';
+import { selectedCategorySlice } from './selected-category';
+import { inputSearchSlice } from './input-search';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -16,6 +18,8 @@ export const rootReducer = {
   error: errorSlice.reducer,
   onebook: oneBookSlice.reducer,
   categories: categoriesSlice.reducer,
+  selectedCategory: selectedCategorySlice.reducer,
+  inputSearch: inputSearchSlice.reducer,
 };
 
 export const store = configureStore({
@@ -26,3 +30,4 @@ export const store = configureStore({
 sagaMiddleware.run(rootSaga);
 
 export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;

@@ -19,16 +19,21 @@ export const booksSlice = createSlice({
     setBooks: (state, action: PayloadAction<BookProps[]>) => {
       state.isLoading = false;
       state.books = action.payload;
+      state.books = state.books.sort((a, b) => (a.rating == null ? 0 : a.rating) - (b.rating == null ? 0 : b.rating));
     },
     booksError: (state, action: PayloadAction) => {
-      console.log('state error work', state);
       state.isLoading = false;
       state.isError = true;
-      console.log('state', state);
+    },
+    sortRatingUp: (state, action: PayloadAction) => {
+      state.books = state.books.sort((a, b) => (a.rating == null ? 0 : a.rating) - (b.rating == null ? 0 : b.rating));
+    },
+    sortRatingDown: (state, action: PayloadAction) => {
+      state.books = state.books.sort((a, b) => (b.rating == null ? 0 : b.rating) - (a.rating == null ? 0 : a.rating));
     },
   },
 });
 
-export const { getBooks, setBooks, booksError } = booksSlice.actions;
+export const { getBooks, setBooks, booksError, sortRatingDown, sortRatingUp } = booksSlice.actions;
 
 export const bookSliceReduser = booksSlice.reducer;

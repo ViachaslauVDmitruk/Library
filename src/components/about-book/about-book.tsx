@@ -13,7 +13,9 @@ export const AboutBook = () => {
       <div className={styles.container}>
         <SliderBook src={book.images} />
         <div className={styles.discribeTop}>
-          <div className={styles.title}>{book.title}</div>
+          <div className={styles.title} data-test-id='book-title'>
+            {book.title}
+          </div>
           <div className={styles.author}>
             {book.authors.map((item) => (
               <span key={item}>{item}</span>

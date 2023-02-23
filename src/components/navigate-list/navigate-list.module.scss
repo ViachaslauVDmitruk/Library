@@ -2,7 +2,10 @@
 
 .navigate {
   flex: 0 0 255px;
-  @include tablets() {
+  //   @include tablets() {
+  //     display: none;
+  //   }
+  @include laptop {
     display: none;
   }
 }
@@ -86,6 +89,11 @@
     font-size: 14px;
     display: inline-block;
     color: #a7a7a7;
+    margin-left: 6px;
+  }
+
+  & p {
+    display: inline;
   }
 }
 
@@ -126,7 +134,7 @@
 
 .burgerMenu {
   display: none;
-  @include tablets() {
+  @include laptop {
     display: block;
     position: fixed;
     z-index: 50;
@@ -148,7 +156,7 @@
 }
 
 .burgerNavigate {
-  @include tablets() {
+  @include laptop {
     background: #f9f9fa;
     box-shadow: 0px 2px 4px rgba(191, 196, 201, 0.2), 0px 3px 4px rgba(191, 196, 201, 0.18),
       0px 1px 5px rgba(191, 196, 201, 0.24);

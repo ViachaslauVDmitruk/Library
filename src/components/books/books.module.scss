@@ -3,7 +3,8 @@
 .window {
   margin-top: 40px;
   display: grid;
-  grid-template: auto / repeat(auto-fit, minmax(190px, 1fr));
+  grid-template: auto / repeat(auto-fit, 190px);
+  grid-auto-rows: 1fr;
   gap: 20px;
   @include phones() {
     margin-top: 15px;
@@ -19,12 +20,36 @@
   @include phones() {
     margin-top: 15px;
   }
+  @include laptop() {
+    margin-left: 0;
+  }
 }
 
 .content {
   flex: 1 1 auto;
   margin-left: 30px;
-  @include tablets() {
+  @include laptop() {
     margin-left: 0;
+  }
+}
+
+.notFound {
+  margin-top: 200px;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 40px;
+  text-align: center;
+  letter-spacing: 0.1px;
+  color: #a7a7a7;
+  @include tablets() {
+    margin-top: 226px;
+  }
+
+  @include phones() {
+    margin-top: 135px;
+    font-size: 18px;
+    line-height: 28px;
+    padding-left: 40px;
+    padding-right: 40px;
   }
 }
