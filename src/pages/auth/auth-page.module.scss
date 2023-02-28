@@ -30,13 +30,6 @@
 }
 
 .formContainer {
-  width: 100%;
-  max-width: 530px;
-  padding: 46px 58px;
   border-radius: 16px;
   background: #fff;
-  @include middle() {
-    max-width: none;
-    padding: 24px 16px;
-  }
 }

@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import classNames from 'classnames';
 
-import { LoginFormProps } from '../../types/login-form';
+import { FormData } from '../../types/registration-form';
 
 import arrowNext from './assets/arrow-next.png';
 import eyeClose from './assets/eye-close.png';
@@ -15,7 +15,7 @@ import styles from './registration-form.module.scss';
 
 export const RegistrationForm = () => {
   const [isShowPassword, setIsShowPassword] = useState<boolean>(false);
-  const methods = useForm<LoginFormProps>({ mode: 'onBlur', reValidateMode: 'onChange' });
+  const methods = useForm<FormData>({ mode: 'onBlur', reValidateMode: 'onChange' });
   const ShowPassword = () => {
     setIsShowPassword(!isShowPassword);
   };
