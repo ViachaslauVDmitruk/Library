@@ -13,16 +13,19 @@ import { MainPage } from './pages/main';
 import { store } from './store';
 
 import './index.scss';
+import { AuthPage } from './pages/auth';
+import { LoginForm } from './components/login-form';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
-	// <React.StrictMode>
+	<React.StrictMode>
 
-	<Provider store={store}>
-		<HashRouter>
-			<Routes>
-				<Route path='/' element={<Layout />} >
+		<Provider store={store}>
+			<HashRouter>
+				<Routes>
+					<Route path='/auth' element={<AuthPage><LoginForm /></AuthPage>} />
+					{/* <Route path='/' element={<Layout />} >
 					<Route path='/' element={<MainPage />} >
 						<Route path='/' element={<Navigate to='/books/all' />} />
 						<Route path='/books/:category' element={<Books />} />
@@ -30,11 +33,11 @@ root.render(
 						<Route path='/contract' element={<Contract />} />
 					</Route>
 					<Route path='/books/:category/:id' element={<BookPage />} />
-				</Route >
-			</Routes>
-		</HashRouter>
-	</Provider>
+				</Route > */}
+				</Routes>
+			</HashRouter>
+		</Provider >
 
-	// {/* </React.StrictMode> */}
+	</React.StrictMode>
 
 );
