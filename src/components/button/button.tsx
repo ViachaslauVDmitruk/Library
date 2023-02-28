@@ -1,0 +1,25 @@
+/* eslint-disable react/button-has-type */
+import classNames from 'classnames';
+
+import { ButtonProps } from '../../types/button';
+
+import styles from './button.module.scss';
+
+export const Button = ({
+  buttonText,
+  disabled = false,
+  src,
+  onClick,
+  passStyle,
+  type = 'button',
+  textStyle,
+}: ButtonProps) => {
+  const buttonStyles = classNames(passStyle, styles.button);
+
+  return (
+    <button className={buttonStyles} type={type} onClick={onClick} disabled={disabled}>
+      {buttonText && <span className={textStyle}>{buttonText}</span>}
+      {src && <img src={src} alt='img' />}
+    </button>
+  );
+};

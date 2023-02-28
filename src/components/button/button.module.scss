@@ -1,0 +1,7 @@
+@import '../../index.scss';
+
+.button {
+  cursor: pointer;
+  text-transform: uppercase;
+  background-image: $activeColor;
+}

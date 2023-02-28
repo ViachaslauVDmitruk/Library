@@ -1,3 +1,4 @@
+import { Button } from '../button';
 import styles from './result-window.module.scss';
 
 export const ResultWindow = () => (
@@ -8,6 +9,7 @@ export const ResultWindow = () => (
       neque officia dicta asperiores, voluptatum facere eum suscipit corporis pariatur debitis, ducimus molestiae
       soluta.
     </p>
-    <button type='button'>вернуться</button>
+    {/* <button type='button'>вернуться</button> */}
+    <Button type='button' buttonText='вернись' passStyle={styles.resultButtton} textStyle={styles.textButton} />
   </div>
 );
