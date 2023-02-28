@@ -15,6 +15,7 @@ import { store } from './store';
 import './index.scss';
 import { AuthPage } from './pages/auth';
 import { LoginForm } from './components/login-form';
+import { RegistrationForm } from './components/registation-form';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -25,6 +26,7 @@ root.render(
 			<HashRouter>
 				<Routes>
 					<Route path='/auth' element={<AuthPage><LoginForm /></AuthPage>} />
+					<Route path='/registration' element={<AuthPage><RegistrationForm /></AuthPage>} />
 					{/* <Route path='/' element={<Layout />} >
 					<Route path='/' element={<MainPage />} >
 						<Route path='/' element={<Navigate to='/books/all' />} />

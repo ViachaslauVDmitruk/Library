@@ -1,0 +1,155 @@
+@import '../../index.scss';
+
+.wrapper {
+  h2 {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 30px;
+    letter-spacing: 0.1px;
+    margin-bottom: 8px;
+  }
+  h3 {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0.1px;
+    margin-bottom: 32px;
+  }
+}
+
+.formInput {
+  position: relative;
+  height: 56px;
+  background: #f9f9fa;
+  border-radius: 4px 4px 0px 0px;
+  width: 100%;
+
+  border-bottom: 1px solid #bfc4c9;
+  input {
+    height: 100%;
+    width: 100%;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0.1px;
+    padding-left: 12px;
+  }
+  & input:focus + label,
+  input:not(:placeholder-shown) + label {
+    top: 10px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0.2px;
+    color: #a7a7a7;
+  }
+
+  label {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    transform: translateY(-50%);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0.1px;
+    color: #363636;
+  }
+}
+
+.lastInput {
+  margin-top: 18px;
+}
+
+.discription {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.2px;
+  color: #a7a7a7;
+  margin-top: 2px;
+}
+
+.eyeImage {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.forgottenPassword {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.2px;
+  color: #a7a7a7;
+  margin-bottom: 32px;
+  margin-top: 20px;
+}
+
+.button {
+  width: 100%;
+  @include activeColor();
+  display: inline-block;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 18px;
+  margin-bottom: 16px;
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  letter-spacing: 0.2px;
+  text-transform: uppercase;
+  color: #ffffff;
+  padding: 10px 23px;
+  border-radius: 30px;
+  height: 50px;
+  cursor: pointer;
+  @include middle() {
+    height: 40px;
+    border-radius: 20px;
+    font-size: 12px;
+    line-height: 18px;
+  }
+}
+
+.bottom {
+  display: flex;
+  span {
+    display: block;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    letter-spacing: 0.1px;
+    color: #727272;
+    margin-right: 16px;
+  }
+  @include middle() {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.registrationButton {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 18px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.2px;
+  text-transform: uppercase;
+  margin-left: 16px;
+  img {
+    display: block;
+    margin-left: 15px;
+  }
+  @include middle() {
+    margin-left: 0;
+    margin-top: 6px;
+  }
+}
