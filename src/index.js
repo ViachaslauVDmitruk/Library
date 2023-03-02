@@ -27,7 +27,7 @@ root.render(
 			<HashRouter>
 				<Routes>
 					<Route path='/auth' element={<AuthPage><LoginForm /></AuthPage>} />
-					<Route path='/registration' element={<AuthPage><ResultWindow /></AuthPage>} />
+					<Route path='/' element={<AuthPage><RegistrationForm /></AuthPage>} />
 					{/* <Route path='/' element={<Layout />} >
 					<Route path='/' element={<MainPage />} >
 						<Route path='/' element={<Navigate to='/books/all' />} />

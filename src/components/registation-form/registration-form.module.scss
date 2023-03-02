@@ -1,6 +1,9 @@
 @import '../../index.scss';
 
 .wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 48px 56px;
   h2 {
     font-weight: 700;
     font-size: 24px;
@@ -15,6 +18,12 @@
     letter-spacing: 0.1px;
     margin-bottom: 32px;
   }
+  @include middle() {
+    padding: 24px 16px;
+  }
+}
+.form {
+  width: 100%;
 }
 
 .formInput {
@@ -58,7 +67,7 @@
 }
 
 .lastInput {
-  margin-top: 18px;
+  margin-top: 36px;
 }
 
 .discription {
@@ -96,7 +105,7 @@
   font-size: 16px;
   line-height: 18px;
   margin-bottom: 16px;
-  margin-top: 50px;
+  margin-top: 68px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -113,43 +122,5 @@
     border-radius: 20px;
     font-size: 12px;
     line-height: 18px;
-  }
-}
-
-.bottom {
-  display: flex;
-  span {
-    display: block;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
-    text-align: center;
-    letter-spacing: 0.1px;
-    color: #727272;
-    margin-right: 16px;
-  }
-  @include middle() {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-}
-
-.registrationButton {
-  font-weight: 600;
-  font-size: 12px;
-  line-height: 18px;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  letter-spacing: 0.2px;
-  text-transform: uppercase;
-  margin-left: 16px;
-  img {
-    display: block;
-    margin-left: 15px;
-  }
-  @include middle() {
-    margin-left: 0;
-    margin-top: 6px;
   }
 }
