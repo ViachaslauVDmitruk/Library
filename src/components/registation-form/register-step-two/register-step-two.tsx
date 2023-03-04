@@ -3,24 +3,29 @@
 
 import classNames from 'classnames';
 
+import { RegisterStepProps } from '../../../types/registration-form';
 import { Button } from '../../button';
 import { RegisterLoginRow } from '../register-login-row';
 
 import styles from '../registration-form.module.scss';
 
-export const RegisterStepTwo = () => (
-  <form className={styles.form}>
-    <div className={styles.formInput}>
-      <input id='username' name='firstname' placeholder=' ' type='text' />
-      <label htmlFor='username'>Имя</label>
-    </div>
+export const RegisterStepTwo = ({ setStep }: RegisterStepProps) => {
+  const nextStep = () => {
+    setStep(3);
+  };
 
-    <div className={classNames(styles.formInput, styles.lastInput)}>
-      <input id='password' name='lastname' type='text' placeholder=' ' />
-      <label htmlFor='password'>Фамилия</label>
-    </div>
-
-    <Button buttonText='Последний шаг' type='submit' passStyle={styles.button} />
-    <RegisterLoginRow />
-  </form>
-);
+  return (
+    <form className={styles.form}>
+      <div className={styles.formInput}>
+        <input id='username' name='firstname' placeholder=' ' type='text' />
+        <label htmlFor='username'>Имя</label>
+      </div>
+      <div className={classNames(styles.formInput, styles.lastInput)}>
+        <input id='password' name='lastname' type='text' placeholder=' ' />
+        <label htmlFor='password'>Фамилия</label>
+      </div>
+      <Button buttonText='Последний шаг' type='submit' passStyle={styles.button} onClick={nextStep} />
+      <RegisterLoginRow />
+    </form>
+  );
+};

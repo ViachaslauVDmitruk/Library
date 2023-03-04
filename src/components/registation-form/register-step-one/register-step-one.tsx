@@ -4,20 +4,23 @@
 import { useState } from 'react';
 import classNames from 'classnames';
 
+import { RegisterStepProps } from '../../../types/registration-form';
 import { Button } from '../../button';
+import { RegisterLoginRow } from '../register-login-row';
 
-import arrowNext from './assets/arrow-next.png';
 import eyeClose from './assets/eye-close.png';
 import eyeOpen from './assets/eye-open.png';
 
 import styles from '../registration-form.module.scss';
-import { RegisterStepTwo } from '../register-step-two';
-import { RegisterLoginRow } from '../register-login-row';
 
-export const RegisterStepOne = () => {
+export const RegisterStepOne = ({ setStep }: RegisterStepProps) => {
   const [isShowPassword, setIsShowPassword] = useState<boolean>(false);
   const ShowPassword = () => {
     setIsShowPassword(!isShowPassword);
+  };
+
+  const nextStep = () => {
+    setStep(2);
   };
 
   return (
@@ -29,7 +32,6 @@ export const RegisterStepOne = () => {
           Используйте для логина <span>латинский алфавит</span> и <span>цифры</span>
         </div>
       </div>
-
       <div className={classNames(styles.formInput, styles.lastInput)}>
         <input id='password' name='password' type={isShowPassword ? 'text' : 'password'} placeholder=' ' />
         <label htmlFor='password'>Пароль</label>
@@ -40,8 +42,7 @@ export const RegisterStepOne = () => {
           Пароль <span>не менее 8 символов</span>, с <span>заглавной буквой</span> и <span>цифрой</span>
         </div>
       </div>
-
-      <Button buttonText='Следующий шаг' type='submit' passStyle={styles.button} />
+      <Button buttonText='Следующий шаг' type='submit' passStyle={styles.button} onClick={nextStep} />
       <RegisterLoginRow />
     </form>
   );

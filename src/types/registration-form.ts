@@ -7,3 +7,8 @@ export type FormData = {
   email: string;
   phoneNumber: string;
 };
+
+export type RegisterStepProps = {
+  step: number;
+  setStep: (step: number) => void;
+};

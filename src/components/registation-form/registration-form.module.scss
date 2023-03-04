@@ -33,7 +33,7 @@
   border-radius: 4px 4px 0px 0px;
   width: 100%;
 
-  border-bottom: 1px solid #bfc4c9;
+  //   border-bottom: 1px solid #bfc4c9;
   input {
     height: 100%;
     width: 100%;
@@ -42,6 +42,7 @@
     line-height: 18px;
     letter-spacing: 0.1px;
     padding-left: 12px;
+    border-bottom: 1px solid #bfc4c9;
   }
   & input:focus + label,
   input:not(:placeholder-shown) + label {
