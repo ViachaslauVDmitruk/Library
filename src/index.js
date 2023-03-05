@@ -21,14 +21,14 @@ import { ResultWindow } from './components/result-window';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
-	<React.StrictMode>
+	// <React.StrictMode>
 
-		<Provider store={store}>
-			<HashRouter>
-				<Routes>
-					<Route path='/auth' element={<AuthPage><LoginForm /></AuthPage>} />
-					<Route path='/' element={<AuthPage><RegistrationForm /></AuthPage>} />
-					{/* <Route path='/' element={<Layout />} >
+	<Provider store={store}>
+		<HashRouter>
+			<Routes>
+				<Route path='/auth' element={<AuthPage><LoginForm /></AuthPage>} />
+				<Route path='/' element={<AuthPage><RegistrationForm /></AuthPage>} />
+				{/* <Route path='/' element={<Layout />} >
 					<Route path='/' element={<MainPage />} >
 						<Route path='/' element={<Navigate to='/books/all' />} />
 						<Route path='/books/:category' element={<Books />} />
@@ -37,10 +37,10 @@ root.render(
 					</Route>
 					<Route path='/books/:category/:id' element={<BookPage />} />
 				</Route > */}
-				</Routes>
-			</HashRouter>
-		</Provider >
+			</Routes>
+		</HashRouter>
+	</Provider >
 
-	</React.StrictMode>
+	// </React.StrictMode>
 
 );

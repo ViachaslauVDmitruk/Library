@@ -1,11 +1,10 @@
 export type FormData = {
-  login: string;
+  username: string;
   password: string;
-  retryPassword: string;
   firstName: string;
   lastName: string;
   email: string;
-  phoneNumber: string;
+  phone: string;
 };
 
 export type RegisterStepProps = {

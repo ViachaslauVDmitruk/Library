@@ -1,52 +1,45 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 
-import { useForm } from 'react-hook-form';
+import { useForm, useFormContext } from 'react-hook-form';
 import InputMask from 'react-input-mask';
 import { yupResolver } from '@hookform/resolvers/yup';
 import classNames from 'classnames';
 import * as yup from 'yup';
 
 import { regExMail, regExPhone } from '../../../const/reg-ex';
+import { RegisterSchemaThree, required } from '../../../const/register-schema';
 import { Button } from '../../button';
 import { ErrorFormMessage } from '../../error-form-message';
 import { RegisterLoginRow } from '../register-login-row';
 
 import styles from '../registration-form.module.scss';
 
-const schema = yup
-  .object({
-    email: yup.string().matches(regExMail, 'неверный E-mail').required('поле должно быть заполнено'),
-    phone: yup.string().matches(regExPhone, 'введите нормер телефона').required('поле должно быть заполнено'),
-  })
-  .required();
-
-type FormData = yup.InferType<typeof schema>;
-
 export const RegisterStepThree = () => {
   const {
     register,
+    formState: { errors },
     handleSubmit,
+  } = useFormContext();
 
-    formState: { touchedFields, errors },
-  } = useForm<FormData>({
-    defaultValues: {
-      email: '',
-      phone: '',
-    },
-    resolver: yupResolver(schema),
-  });
+  //   {yupResolver(RegisterSchemaThree)}
 
-  const onSubmit = (data: FormData) => console.log('data', data);
+  console.log('step 3');
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+    <div className={styles.form}>
       <div className={styles.formInput}>
         <InputMask
           id='phone'
-          {...register('phone')}
+          {...register('phone', {
+            required,
+            pattern: {
+              value: regExPhone,
+              message: 'В формате +375 (хх) ххх-хх-хх',
+            },
+          })}
           name='phone'
-          mask='+375 (99) 9999999'
+          mask='+375 (99) 999-99-99'
           placeholder=' '
           type='text'
           style={errors.phone?.message ? { borderBottom: '1px solid red' } : {}}
@@ -57,7 +50,13 @@ export const RegisterStepThree = () => {
       <div className={classNames(styles.formInput, styles.lastInput)}>
         <input
           id='email'
-          {...register('email')}
+          {...register('email', {
+            required,
+            pattern: {
+              value: regExMail,
+              message: 'Введите корректный e-mail',
+            },
+          })}
           name='email'
           type='text'
           placeholder=' '
@@ -68,6 +67,6 @@ export const RegisterStepThree = () => {
       </div>
       <Button buttonText='Зарегистрироваться' type='submit' passStyle={styles.button} />
       <RegisterLoginRow />
-    </form>
+    </div>
   );
 };
