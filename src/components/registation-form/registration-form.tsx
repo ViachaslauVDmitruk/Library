@@ -6,11 +6,13 @@ import { useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { RegisterSchemaOne, RegisterSchemaThree, RegisterSchemaTwo, schema } from '../../const/register-schema';
 
-import { FormData } from '../../types/registration-form';
+import { RegisterSchemaOne, RegisterSchemaThree, RegisterSchemaTwo, schema } from '../../const/register-schema';
+import { Button } from '../button';
+// import { FormData } from '../../types/registration-form';
 import { useAppDispatch } from '../hooks';
 
+import { RegisterLoginRow } from './register-login-row';
 import { RegisterStepOne } from './register-step-one';
 import { RegisterStepThree } from './register-step-three';
 import { RegisterStepTwo } from './register-step-two';
@@ -24,6 +26,12 @@ export const RegistrationForm = () => {
   const dispatch = useAppDispatch();
 
   const [step, setStep] = useState<number>(1);
+
+  const changeStepRegister = () => {
+    if (step < 3) {
+      setStep(step + 1);
+    }
+  };
 
   const currentValidationSchema = (step: number) => {
     switch (step) {
@@ -43,8 +51,8 @@ export const RegistrationForm = () => {
 
   const methods = useForm<FormData>({
     mode: 'onBlur',
-    reValidateMode: 'onBlur',
-    //  resolver: yupResolver(currentValidationSchema),
+    reValidateMode: 'onChange',
+    //  resolver: yupResolver(schema),
 
     //  defaultValues: {
     //    username: '',
@@ -61,10 +69,10 @@ export const RegistrationForm = () => {
   const currentStepRegister = (step: number) => {
     switch (step) {
       case 1: {
-        return <RegisterStepOne step={step} setStep={setStep} />;
+        return <RegisterStepOne />;
       }
       case 2: {
-        return <RegisterStepTwo step={step} setStep={setStep} />;
+        return <RegisterStepTwo />;
       }
       case 3: {
         return <RegisterStepThree />;
@@ -81,7 +89,16 @@ export const RegistrationForm = () => {
       <h2>Регистрация</h2>
       <h3>{step} шаг из 3</h3>
       <FormProvider {...methods}>
-        <form onSubmit={handleSubmit(onSubmit)}>{currentStepRegister(step)}</form>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          {currentStepRegister(step)}
+          <Button
+            buttonText={step < 2 ? 'Следующий шаг' : step < 3 ? 'Последний шаг' : 'Зарегистрироваться'}
+            type='submit'
+            passStyle={styles.button}
+            onClick={changeStepRegister}
+          />
+          <RegisterLoginRow link='/auth' buttonText='Войти' text='Есть учетная запись?' />
+        </form>
       </FormProvider>
     </div>
   );

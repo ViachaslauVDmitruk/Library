@@ -2,39 +2,29 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 
 import { useState } from 'react';
-import { useForm, useFormContext } from 'react-hook-form';
+import { useFormContext } from 'react-hook-form';
 import classNames from 'classnames';
 import * as yup from 'yup';
 
 import { RegisterSchemaOne, required } from '../../../const/register-schema';
-import { RegisterStepProps } from '../../../types/registration-form';
-import { Button } from '../../button';
-import { RegisterLoginRow } from '../register-login-row';
-
 import eyeClose from './assets/eye-close.png';
 import eyeOpen from './assets/eye-open.png';
 
 import styles from '../registration-form.module.scss';
 import { regExPassword, regExUsername } from '../../../const/reg-ex';
 
-type FormData = yup.InferType<typeof RegisterSchemaOne>;
+// type FormData = yup.InferType<typeof RegisterSchemaOne>;
 
-export const RegisterStepOne = ({ setStep }: RegisterStepProps) => {
+export const RegisterStepOne = () => {
   const [isShowPassword, setIsShowPassword] = useState<boolean>(false);
   const ShowPassword = () => {
     setIsShowPassword(!isShowPassword);
   };
 
-  const nextStep = () => {
-    setStep(2);
-  };
-
   const {
     register,
     formState: { errors },
-    handleSubmit,
-  } = useFormContext<any>();
-  const onSubmit = (data: FormData) => console.log('data', data);
+  } = useFormContext();
 
   return (
     <div className={styles.form}>
@@ -79,8 +69,6 @@ export const RegisterStepOne = ({ setStep }: RegisterStepProps) => {
           Пароль <span>не менее 8 символов</span>, с <span>заглавной буквой</span> и <span>цифрой</span>
         </div>
       </div>
-      <Button buttonText='Следующий шаг' type='button' passStyle={styles.button} onClick={nextStep} />
-      <RegisterLoginRow />
     </div>
   );
 };
