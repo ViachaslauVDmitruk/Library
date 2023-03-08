@@ -4,16 +4,16 @@
 import { useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import classNames from 'classnames';
-import * as yup from 'yup';
 
-import { RegisterSchemaOne, required } from '../../../const/register-schema';
+import { regExPassword, regExUsername } from '../../../const/reg-ex';
+import { required } from '../../../const/register-schema';
+import { ErrorFormMessage } from '../../error-form-message';
+
+import check from './assets/check.png';
 import eyeClose from './assets/eye-close.png';
 import eyeOpen from './assets/eye-open.png';
 
 import styles from '../registration-form.module.scss';
-import { regExPassword, regExUsername } from '../../../const/reg-ex';
-
-// type FormData = yup.InferType<typeof RegisterSchemaOne>;
 
 export const RegisterStepOne = () => {
   const [isShowPassword, setIsShowPassword] = useState<boolean>(false);
@@ -23,7 +23,7 @@ export const RegisterStepOne = () => {
 
   const {
     register,
-    formState: { errors },
+    formState: { errors, isDirty, defaultValues },
   } = useFormContext();
 
   return (
@@ -41,8 +41,11 @@ export const RegisterStepOne = () => {
           name='username'
           placeholder=' '
           type='text'
+          style={errors.username?.message ? { borderBottom: '1px solid red' } : {}}
         />
+
         <label htmlFor='username'>Придумайте логин для входа</label>
+        {errors.username?.message && <ErrorFormMessage message={errors.username?.message} />}
         <div className={styles.discription}>
           Используйте для логина <span>латинский алфавит</span> и <span>цифры</span>
         </div>
@@ -60,9 +63,13 @@ export const RegisterStepOne = () => {
           name='password'
           type={isShowPassword ? 'text' : 'password'}
           placeholder=' '
+          style={errors.password?.message ? { borderBottom: '1px solid red' } : {}}
         />
+
         <label htmlFor='password'>Пароль</label>
+        {errors.password?.message && <ErrorFormMessage message={errors.password?.message} />}
         <div className={styles.eyeImage} onClick={ShowPassword}>
+          {!errors.password && <img src={check} alt='img' />}
           <img src={isShowPassword ? eyeOpen : eyeClose} alt='img' />
         </div>
         <div className={styles.discription}>

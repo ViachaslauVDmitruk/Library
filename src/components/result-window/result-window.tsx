@@ -2,14 +2,23 @@ import { Button } from '../button';
 
 import styles from './result-window.module.scss';
 
-export const ResultWindow = () => (
+type ResultWindowProps = {
+  title: string;
+  text: string;
+  textButton: string;
+  onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
+};
+
+export const ResultWindow = ({ title, text, textButton, onClick }: ResultWindowProps) => (
   <div className={styles.wrapper}>
-    <h2 className={styles.title}>привет</h2>
-    <p className={styles.text}>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, nesciunt omnis! Ut officiis earum quia, veritatis
-      neque officia dicta asperiores, voluptatum facere eum suscipit corporis pariatur debitis, ducimus molestiae
-      soluta.
-    </p>
-    <Button type='button' buttonText='вернись' passStyle={styles.resultButtton} textStyle={styles.textButton} />
+    <h2 className={styles.title}>{title}</h2>
+    <p className={styles.text}>{text}</p>
+    <Button
+      type='button'
+      buttonText={textButton}
+      passStyle={styles.resultButtton}
+      textStyle={styles.textButton}
+      onClick={onClick}
+    />
   </div>
 );

@@ -6,9 +6,10 @@ import { booksSlice } from './books';
 import { burgerMenuSlice } from './burger-menu';
 import { categoriesSlice } from './categories';
 import { errorSlice } from './error-request';
+import { inputSearchSlice } from './input-search';
+import { registrationFormSlice } from './registration';
 import { rootSaga } from './saga';
 import { selectedCategorySlice } from './selected-category';
-import { inputSearchSlice } from './input-search';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -20,6 +21,7 @@ export const rootReducer = {
   categories: categoriesSlice.reducer,
   selectedCategory: selectedCategorySlice.reducer,
   inputSearch: inputSearchSlice.reducer,
+  registration: registrationFormSlice.reducer,
 };
 
 export const store = configureStore({
