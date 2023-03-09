@@ -118,7 +118,7 @@
   & .title:not(:last-child) {
     margin-bottom: 42px;
   }
-  @include tablets() {
+  @include laptop() {
     display: block;
   }
 }

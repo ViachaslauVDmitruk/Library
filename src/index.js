@@ -16,7 +16,7 @@ import './index.scss';
 import { AuthPage } from './pages/auth';
 import { LoginForm } from './components/login-form';
 import { RegistrationForm } from './components/registation-form';
-import { ResultWindow } from './components/result-window';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -28,7 +28,7 @@ root.render(
 			<Routes>
 				<Route path='/auth' element={<AuthPage><LoginForm /></AuthPage>} />
 				<Route path='/registration' element={<AuthPage><RegistrationForm /></AuthPage>} />
-				{/* <Route path='/' element={<Layout />} >
+				<Route path='/' element={<Layout />} >
 					<Route path='/' element={<MainPage />} >
 						<Route path='/' element={<Navigate to='/books/all' />} />
 						<Route path='/books/:category' element={<Books />} />
@@ -36,7 +36,7 @@ root.render(
 						<Route path='/contract' element={<Contract />} />
 					</Route>
 					<Route path='/books/:category/:id' element={<BookPage />} />
-				</Route > */}
+				</Route >
 			</Routes>
 		</HashRouter>
 	</Provider >

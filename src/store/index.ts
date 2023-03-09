@@ -7,6 +7,7 @@ import { burgerMenuSlice } from './burger-menu';
 import { categoriesSlice } from './categories';
 import { errorSlice } from './error-request';
 import { inputSearchSlice } from './input-search';
+import { loginFormSlice } from './login';
 import { registrationFormSlice } from './registration';
 import { rootSaga } from './saga';
 import { selectedCategorySlice } from './selected-category';
@@ -22,6 +23,7 @@ export const rootReducer = {
   selectedCategory: selectedCategorySlice.reducer,
   inputSearch: inputSearchSlice.reducer,
   registration: registrationFormSlice.reducer,
+  login: loginFormSlice.reducer,
 };
 
 export const store = configureStore({

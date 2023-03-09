@@ -1,4 +1,4 @@
 export type LoginFormProps = {
-  email: string;
+  identifier: string;
   password: string;
 };

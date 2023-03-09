@@ -1,9 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { Outlet } from 'react-router-dom';
 
 import { ErrorMessage } from '../../components/error-message';
+import { useAppDispatch, useAppSelector } from '../../components/hooks';
 import { Loader } from '../../components/loader';
 import { NavigateList } from '../../components/navigate-list';
 import { booksSelector } from '../../selectors';
@@ -13,8 +13,8 @@ import { getCategories } from '../../store/categories';
 import styles from './main-page.module.scss';
 
 export const MainPage = () => {
-  const dispatch = useDispatch();
-  const { isLoading, isError, books } = useSelector(booksSelector);
+  const dispatch = useAppDispatch();
+  const { isLoading, isError, books } = useAppSelector(booksSelector);
 
   useEffect(() => {
     if (books.length === 0) {

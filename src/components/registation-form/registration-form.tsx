@@ -75,7 +75,7 @@ export const RegistrationForm = () => {
             username: data.username,
             password: data.password,
             phone: data.phone,
-            // email: data.email,
+            email: data.email,
           })
         );
         break;
@@ -87,6 +87,7 @@ export const RegistrationForm = () => {
   const navigate = useNavigate();
   const navigateTo = () => {
     navigate('/auth');
+    dispatch(resetRagistrationState());
   };
 
   const resetStateRegistration = () => {

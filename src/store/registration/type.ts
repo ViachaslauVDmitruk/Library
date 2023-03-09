@@ -4,7 +4,7 @@ export type RegistrationDataPayload = {
   username: string;
   password: string;
   phone: string;
-  //   email: string;
+  email: string;
 };
 
 export type RegistrationStateTypes = {

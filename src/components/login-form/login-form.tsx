@@ -1,14 +1,20 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 
 import { useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
+import { Navigate } from 'react-router-dom';
 import classNames from 'classnames';
 
 import { required } from '../../const/register-schema';
+import { loginSelector } from '../../selectors';
+import { sendLogin } from '../../store/login';
 import { LoginFormProps } from '../../types/login-form';
 import { Button } from '../button';
 import { ErrorFormMessage } from '../error-form-message';
+import { useAppDispatch, useAppSelector } from '../hooks';
+import { Loader } from '../loader';
 import { RegisterLoginRow } from '../registation-form/register-login-row';
 
 import eyeClose from './assets/eye-close.png';
@@ -18,6 +24,9 @@ import styles from './login-form.module.scss';
 
 export const LoginForm = () => {
   const [isShowPassword, setIsShowPassword] = useState<boolean>(false);
+  const dispatch = useAppDispatch();
+
+  const { isLoading, isSuccess, errorType, errorMessage, user } = useAppSelector(loginSelector);
   const methods = useForm<LoginFormProps>({ mode: 'onBlur', reValidateMode: 'onChange' });
   const ShowPassword = () => {
     setIsShowPassword(!isShowPassword);
@@ -29,23 +38,30 @@ export const LoginForm = () => {
     formState: { errors },
   } = methods;
 
-  const onSubmit = (data: LoginFormProps) => console.log('data', data);
+  const onSubmit = (data: LoginFormProps) => {
+    dispatch(sendLogin({ identifier: data.identifier, password: data.password }));
+  };
+
+  if (user) {
+    return <Navigate to='/' />;
+  }
 
   return (
     <div className={styles.wrapper}>
+      {isLoading && <Loader />}
       <h2>Вход в личный кабинет</h2>
       <FormProvider {...methods}>
-        <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+        <form className={styles.form} onSubmit={handleSubmit(onSubmit)} data-test-id='auth-form'>
           <div className={classNames(styles.formInput, styles.firstInput)}>
             <input
-              id='email'
-              {...register('email', { required })}
-              name='email'
+              id='identifier'
+              {...register('identifier', { required })}
+              name='identifier'
               placeholder=' '
-              style={errors.email?.message ? { borderBottom: '1px solid red' } : {}}
+              style={errors.identifier?.message ? { borderBottom: '1px solid red' } : {}}
             />
-            <label htmlFor='email'>Логин</label>
-            {errors.email?.message && <ErrorFormMessage message={errors.email?.message} />}
+            <label htmlFor='username'>Логин</label>
+            {errors.identifier?.message && <ErrorFormMessage message={errors.identifier?.message} />}
           </div>
           <div className={styles.formInput}>
             <input

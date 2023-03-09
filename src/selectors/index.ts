@@ -4,6 +4,7 @@ import { BooksState } from '../store/books/types';
 import { BurgerStateTypes } from '../store/burger-menu/types';
 import { CategoriesState } from '../store/categories/types';
 import { InputSearchState } from '../store/input-search/types';
+import { LoginStateTypes } from '../store/login/type';
 import { RegistrationStateTypes } from '../store/registration/type';
 import { SelectedCategoryState } from '../store/selected-category/types';
 
@@ -20,3 +21,5 @@ export const selectedCategorySelector = (state: RootState): SelectedCategoryStat
 export const inputSearchSelector = (state: RootState): InputSearchState => state.inputSearch;
 
 export const registrationSelector = (state: RootState): RegistrationStateTypes => state.registration;
+
+export const loginSelector = (state: RootState): LoginStateTypes => state.login;
