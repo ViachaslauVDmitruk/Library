@@ -4,7 +4,7 @@
 
 import { useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import classNames from 'classnames';
 
 import { required } from '../../const/register-schema';
@@ -25,6 +25,7 @@ import styles from './login-form.module.scss';
 export const LoginForm = () => {
   const [isShowPassword, setIsShowPassword] = useState<boolean>(false);
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const { isLoading, isSuccess, errorType, errorMessage, user } = useAppSelector(loginSelector);
   const methods = useForm<LoginFormProps>({ mode: 'onBlur', reValidateMode: 'onChange' });
@@ -37,6 +38,10 @@ export const LoginForm = () => {
     handleSubmit,
     formState: { errors },
   } = methods;
+
+  const navigateToRecovery = () => {
+    navigate('/forgot-pass');
+  };
 
   const onSubmit = (data: LoginFormProps) => {
     dispatch(sendLogin({ identifier: data.identifier, password: data.password }));
@@ -78,9 +83,13 @@ export const LoginForm = () => {
             </div>
             {errors.password?.message && <ErrorFormMessage message={errors.password?.message} />}
           </div>
-          <button type='button' className={styles.forgottenPassword}>
-            Забыли логин или пароль?
-          </button>
+          <Button
+            type='button'
+            passStyle={styles.forgottenPassword}
+            buttonText='Забыли логин или пароль?'
+            onClick={navigateToRecovery}
+          />
+
           <Button type='submit' buttonText='Вход' passStyle={styles.button} />
           <RegisterLoginRow link='/registration' buttonText='Регистрация' text='Нет учётной записи?' />
         </form>

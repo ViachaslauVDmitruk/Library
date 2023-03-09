@@ -70,13 +70,19 @@
 }
 
 .forgottenPassword {
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 16px;
-  letter-spacing: 0.2px;
-  color: #a7a7a7;
+  margin-left: 12px;
   margin-bottom: 32px;
   margin-top: 20px;
+  background-image: none;
+
+  span {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0.2px;
+    color: #a7a7a7;
+    text-transform: none;
+  }
 }
 
 .button {
