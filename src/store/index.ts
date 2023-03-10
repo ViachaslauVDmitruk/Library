@@ -8,7 +8,9 @@ import { categoriesSlice } from './categories';
 import { errorSlice } from './error-request';
 import { inputSearchSlice } from './input-search';
 import { loginFormSlice } from './login';
+import { profileMenuSlice } from './profile-menu';
 import { recoveryEmailSlice } from './recovery-email';
+import { recoveryPasswordSlice } from './recovery-password';
 import { registrationFormSlice } from './registration';
 import { rootSaga } from './saga';
 import { selectedCategorySlice } from './selected-category';
@@ -26,6 +28,8 @@ export const rootReducer = {
   registration: registrationFormSlice.reducer,
   login: loginFormSlice.reducer,
   recoveryEmail: recoveryEmailSlice.reducer,
+  recoveryPassword: recoveryPasswordSlice.reducer,
+  profileMenu: profileMenuSlice.reducer,
 };
 
 export const store = configureStore({

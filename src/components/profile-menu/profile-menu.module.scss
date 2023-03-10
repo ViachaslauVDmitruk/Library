@@ -1,0 +1,43 @@
+@import '../../index.scss';
+
+.profile {
+  position: absolute;
+  z-index: 10;
+  top: 70px;
+  right: 50px;
+  width: 270px;
+  height: 152px;
+  display: none;
+  background: #ffffff;
+  box-shadow: 4px 4px 4px rgba(54, 54, 54, 0.05), -4px 4px 4px rgba(54, 54, 54, 0.05);
+  border-radius: 0px 0px 10px 10px;
+  padding-bottom: 32px;
+  padding-top: 32px;
+  padding-right: 24px;
+}
+
+.visible {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  @include laptop() {
+    display: none;
+  }
+}
+.button {
+  background-image: none;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 28px;
+  letter-spacing: 0.1px;
+  color: #363636;
+  text-transform: none;
+}
+
+.button:hover {
+  @include activeColor();
+  background-color: #f83600;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
