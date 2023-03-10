@@ -21,6 +21,7 @@ import eyeClose from './assets/eye-close.png';
 import eyeOpen from './assets/eye-open.png';
 
 import styles from './login-form.module.scss';
+import { ResultWindow } from '../result-window';
 
 export const LoginForm = () => {
   const [isShowPassword, setIsShowPassword] = useState<boolean>(false);

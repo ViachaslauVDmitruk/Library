@@ -29,8 +29,7 @@
 }
 
 .formContainer {
-  border-radius: 16px;
-  background: #fff;
-  max-width: 530px;
   width: 100%;
+  display: flex;
+  justify-content: center;
 }

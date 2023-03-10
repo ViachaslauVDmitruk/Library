@@ -3,6 +3,10 @@
 .wrapper {
   display: flex;
   flex-direction: column;
+  max-width: 530px;
+  width: 100%;
+  background: #ffffff;
+  border-radius: 16px;
 
   h2 {
     font-weight: 700;

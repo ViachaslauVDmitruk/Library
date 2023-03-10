@@ -5,6 +5,7 @@ import { BurgerStateTypes } from '../store/burger-menu/types';
 import { CategoriesState } from '../store/categories/types';
 import { InputSearchState } from '../store/input-search/types';
 import { LoginStateTypes } from '../store/login/type';
+import { RecoveryEmailProps } from '../store/recovery-email/type';
 import { RegistrationStateTypes } from '../store/registration/type';
 import { SelectedCategoryState } from '../store/selected-category/types';
 
@@ -23,3 +24,5 @@ export const inputSearchSelector = (state: RootState): InputSearchState => state
 export const registrationSelector = (state: RootState): RegistrationStateTypes => state.registration;
 
 export const loginSelector = (state: RootState): LoginStateTypes => state.login;
+
+export const recoveryEmailSelector = (state: RootState): RecoveryEmailProps => state.recoveryEmail;
