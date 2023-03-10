@@ -69,8 +69,12 @@ export const RegisterStepOne = () => {
         <label htmlFor='password'>Пароль</label>
         {errors.password?.message && <ErrorFormMessage message={errors.password?.message} />}
         <div className={styles.eyeImage} onClick={ShowPassword}>
-          {!errors.password && <img src={check} alt='img' />}
-          <img src={isShowPassword ? eyeOpen : eyeClose} alt='img' />
+          {!errors.password && <img src={check} alt='img' data-test-id='checkmark' />}
+          <img
+            src={isShowPassword ? eyeOpen : eyeClose}
+            alt='img'
+            data-test-id={isShowPassword ? 'eye-open' : 'eye-closed'}
+          />
         </div>
         <div className={styles.discription}>
           Пароль <span>не менее 8 символов</span>, с <span>заглавной буквой</span> и <span>цифрой</span>

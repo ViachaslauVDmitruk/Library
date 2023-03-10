@@ -10,7 +10,7 @@ type ResultWindowProps = {
 };
 
 export const ResultWindow = ({ title, text, textButton, onClick }: ResultWindowProps) => (
-  <div className={styles.wrapper}>
+  <div className={styles.wrapper} data-test-id='status-block'>
     <h2 className={styles.title}>{title}</h2>
     <p className={styles.text}>{text}</p>
     <Button

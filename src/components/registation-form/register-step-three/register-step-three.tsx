@@ -32,7 +32,7 @@ export const RegisterStepThree = () => {
           name='phone'
           mask='+375 (99) 999-99-99'
           placeholder=' '
-          type='text'
+          type='tel'
           style={errors.phone?.message ? { borderBottom: '1px solid red' } : {}}
         />
         <label htmlFor='phone'>Номер телефона</label>
@@ -49,7 +49,7 @@ export const RegisterStepThree = () => {
             },
           })}
           name='email'
-          type='text'
+          type='email'
           placeholder=' '
           style={errors.email?.message ? { borderBottom: '1px solid red' } : {}}
         />
