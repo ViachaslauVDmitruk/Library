@@ -24,7 +24,7 @@ export const RegisterStepTwo = () => {
             required,
           })}
           name='firstName'
-          placeholder=' '
+          placeholder='Имя'
           type='text'
           style={errors.firstName?.message ? { borderBottom: '1px solid red' } : {}}
         />
@@ -39,7 +39,7 @@ export const RegisterStepTwo = () => {
           })}
           name='lastName'
           type='text'
-          placeholder=' '
+          placeholder='Фамилия'
           style={errors.lastName?.message ? { borderBottom: '1px solid red' } : {}}
         />
         <label htmlFor='lastName'>Фамилия</label>

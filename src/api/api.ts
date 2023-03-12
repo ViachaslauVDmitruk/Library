@@ -1,22 +1,23 @@
+/* eslint-disable consistent-return */
 /* eslint-disable no-param-reassign */
 
 import axiosAPI, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
 import Cookies from 'js-cookie';
 
-export const axios = axiosAPI.create();
+export const axios = axiosAPI.create({ withCredentials: true });
 
 const onRequest = (config: AxiosRequestConfig) => {
-  const token = Cookies.get('token');
+  const token = localStorage.getItem('token');
 
-  if (!config) {
-    config = {};
+  if (token) {
+    return {
+      ...config,
+      headers: {
+        ...config.headers,
+        Authorization: `Bearer ${token}`,
+      },
+    };
   }
-  if (!config.headers) {
-    config.headers = {};
-  }
-  config.headers.Authorization = `Bearer ${token}`;
-
-  return config;
 };
 
 const onRequestError = (error: AxiosError) => error;
@@ -25,8 +26,9 @@ const onResponse = (response: AxiosResponse) => response;
 
 const onResponseError = (error: AxiosError) => {
   if (error.response?.status === 403) {
-    Cookies.remove('token');
-    sessionStorage.removeItem('user');
+    //  Cookies.remove('token');
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
     window.location.replace('/auth');
   }
 

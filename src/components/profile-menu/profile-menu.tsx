@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import classNames from 'classnames';
+import Cookies from 'js-cookie';
 
 import { profileMenuSelector } from '../../selectors';
 import { loginResetState } from '../../store/login';
@@ -14,16 +15,19 @@ export const ProfileMenu = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const logOut = () => {
-    sessionStorage.removeItem('user');
+    //  Cookies.remove('token');
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
     dispatch(loginResetState());
     dispatch(closeProfileMenu());
     navigate('/auth');
+    console.log('token in local storage', localStorage.getItem('token'));
   };
 
   return (
     <div className={classNames(styles.profile, { [styles.visible]: isOpenProfileMenu })}>
       <Button buttonText='Профиль' type='button' passStyle={styles.button} />
-      <Button buttonText='Выход' type='button' passStyle={styles.button} onClick={logOut} id='exit-button' />
+      <Button buttonText='Выход' type='button' passStyle={styles.button} onClick={logOut} />
     </div>
   );
 };

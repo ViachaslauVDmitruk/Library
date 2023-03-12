@@ -7,6 +7,7 @@ import classNames from 'classnames';
 
 import { regExPassword, regExUsername } from '../../../const/reg-ex';
 import { required } from '../../../const/register-schema';
+import { ColorPasswordMatch, ColorUserMatch } from '../../color-input-help';
 import { ErrorFormMessage } from '../../error-form-message';
 
 import check from './assets/check.png';
@@ -23,8 +24,11 @@ export const RegisterStepOne = () => {
 
   const {
     register,
-    formState: { errors, isDirty, defaultValues },
+    formState: { errors, isDirty },
+    watch,
   } = useFormContext();
+
+  console.log('useFormContext', useFormContext());
 
   return (
     <div className={styles.form}>
@@ -35,20 +39,18 @@ export const RegisterStepOne = () => {
             required,
             pattern: {
               value: regExUsername,
-              message: 'латинский алфавит и цифры',
+              message: '',
             },
           })}
           name='username'
-          placeholder=' '
+          placeholder=' Придумайте логин для входа'
           type='text'
           style={errors.username?.message ? { borderBottom: '1px solid red' } : {}}
         />
 
         <label htmlFor='username'>Придумайте логин для входа</label>
         {errors.username?.message && <ErrorFormMessage message={errors.username?.message} />}
-        <div className={styles.discription}>
-          Используйте для логина <span>латинский алфавит</span> и <span>цифры</span>
-        </div>
+        {(!errors.username || isDirty) && <ColorUserMatch inputValue={watch('username')} />}
       </div>
       <div className={classNames(styles.formInput, styles.lastInput)}>
         <input
@@ -57,28 +59,28 @@ export const RegisterStepOne = () => {
             required,
             pattern: {
               value: regExPassword,
-              message: 'Введите корректный пароль',
+              message: '',
             },
           })}
           name='password'
           type={isShowPassword ? 'text' : 'password'}
-          placeholder=' '
+          placeholder='Пароль'
           style={errors.password?.message ? { borderBottom: '1px solid red' } : {}}
         />
 
         <label htmlFor='password'>Пароль</label>
         {errors.password?.message && <ErrorFormMessage message={errors.password?.message} />}
         <div className={styles.eyeImage} onClick={ShowPassword}>
-          {!errors.password && <img src={check} alt='img' data-test-id='checkmark' />}
+          {!errors.password && isDirty && <img src={check} alt='img' data-test-id='checkmark' />}
           <img
             src={isShowPassword ? eyeOpen : eyeClose}
             alt='img'
-            data-test-id={isShowPassword ? 'eye-open' : 'eye-closed'}
+            data-test-id={isShowPassword ? 'opened' : 'eye-closed'}
           />
         </div>
-        <div className={styles.discription}>
-          Пароль <span>не менее 8 символов</span>, с <span>заглавной буквой</span> и <span>цифрой</span>
-        </div>
+        {(!errors.password || isDirty) && (
+          <ColorPasswordMatch isError={errors.password} inputValue={watch('password')} />
+        )}
       </div>
     </div>
   );

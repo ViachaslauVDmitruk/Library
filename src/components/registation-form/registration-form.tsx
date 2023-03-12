@@ -5,13 +5,13 @@
 import { useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 
-import { registrationSelector } from '../../selectors';
+import { loginSelector, registrationSelector } from '../../selectors';
 import { resetRagistrationState, sendRagistrationData } from '../../store/registration';
 import { FormData } from '../../types/registration-form';
 import { Button } from '../button';
-import { useAppDispatch } from '../hooks';
+import { useAppDispatch, useAppSelector } from '../hooks';
 import { Loader } from '../loader';
 import { ResultWindow } from '../result-window';
 
@@ -23,14 +23,15 @@ import { RegisterStepTwo } from './register-step-two';
 import styles from './registration-form.module.scss';
 
 export const RegistrationForm = () => {
-  const { isSuccess, isLoading, errorType, errorMessage } = useSelector(registrationSelector);
+  const { isSuccess, isLoading, errorType, errorMessage } = useAppSelector(registrationSelector);
+  const { user } = useAppSelector(loginSelector);
   const dispatch = useAppDispatch();
 
   const [step, setStep] = useState<number>(1);
 
   const methods = useForm<FormData>({
-    mode: 'all',
-    reValidateMode: 'onChange',
+    mode: 'onBlur',
+    reValidateMode: 'onBlur',
     defaultValues: {
       username: '',
       password: '',
@@ -41,7 +42,11 @@ export const RegistrationForm = () => {
     },
   });
 
-  const { handleSubmit, reset } = methods;
+  const {
+    handleSubmit,
+    reset,
+    formState: { isValid },
+  } = methods;
 
   const currentStepRegister = (step: number) => {
     switch (step) {
@@ -101,6 +106,10 @@ export const RegistrationForm = () => {
     }
   };
 
+  if (user) {
+    return <Navigate to='/' />;
+  }
+
   return (
     <FormProvider {...methods}>
       {isLoading && <Loader />}
@@ -110,6 +119,7 @@ export const RegistrationForm = () => {
           <h3>{step} шаг из 3</h3>
           {currentStepRegister(step)}
           <Button
+            disabled={!isValid}
             buttonText={step < 2 ? 'Следующий шаг' : step < 3 ? 'Последний шаг' : 'Зарегистрироваться'}
             type='submit'
             passStyle={styles.button}
@@ -121,7 +131,7 @@ export const RegistrationForm = () => {
         <ResultWindow
           title='Регистрация успешна'
           text='Регистрация прошла успешно. Зайдите в личный кабинет, используя свои логин и пароль'
-          textButton='Вход'
+          textButton='вход'
           onClick={navigateTo}
         />
       )}

@@ -1,9 +1,10 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 import { PayloadAction } from '@reduxjs/toolkit';
-import { AxiosResponse } from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import Cookies from 'js-cookie';
 
-import { axios } from '../../api/api';
+// import { axios } from '../../api/api';
+
 import { API } from '../../api/const';
 import { loginSuccess } from '../login';
 import { LoginResponseType } from '../login/type';
@@ -16,8 +17,8 @@ export function* recoveryPasswordWorker({ payload }: PayloadAction<RecoveryPassw
     const response: AxiosResponse<LoginResponseType> = yield call(axios.post, API.passwordUrl, payload);
     const { jwt, user } = response.data;
 
-    sessionStorage.setItem('user', JSON.stringify(user));
-    Cookies.set('token', jwt);
+    localStorage.setItem('user', JSON.stringify(user));
+    localStorage.setItem('token', jwt);
     yield put(loginSuccess(user));
     yield put(recoveryPasswordSuccess());
   } catch (e) {

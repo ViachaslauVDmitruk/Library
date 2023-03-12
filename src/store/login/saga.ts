@@ -1,7 +1,6 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 import { PayloadAction } from '@reduxjs/toolkit';
 import axios, { AxiosError, AxiosResponse } from 'axios';
-import Cookies from 'js-cookie';
 
 import { API } from '../../api/const';
 
@@ -13,8 +12,8 @@ export function* loginFormWorcker({ payload }: PayloadAction<Credentials>) {
     const response: AxiosResponse<LoginResponseType> = yield call(axios.post, API.loginUrl, payload);
     const { jwt, user } = response.data;
 
-    sessionStorage.setItem('user', JSON.stringify(user));
-    Cookies.set('token', jwt);
+    localStorage.setItem('user', JSON.stringify(user));
+    localStorage.setItem('token', jwt);
     yield put(loginSuccess(user));
   } catch (e) {
     const { response } = e as AxiosError;

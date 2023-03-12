@@ -4,4 +4,8 @@ type ErrorProps = {
   message: any;
 };
 
-export const ErrorFormMessage = ({ message }: ErrorProps) => <div className={styles.error}>{message}</div>;
+export const ErrorFormMessage = ({ message }: ErrorProps) => (
+  <div className={styles.error} data-test-id='hint'>
+    {message}
+  </div>
+);

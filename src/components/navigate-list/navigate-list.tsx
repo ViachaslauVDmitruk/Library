@@ -4,11 +4,13 @@
 import { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import classNames from 'classnames';
+import Cookies from 'js-cookie';
 
 import { CounterBooks } from '../../helpers/counter-books';
 import { booksSelector, burgeMenuSelector, categoriesSelector } from '../../selectors';
 import { closeBurgerMenu } from '../../store/burger-menu';
 import { getCategories } from '../../store/categories';
+import { loginResetState } from '../../store/login';
 import { selectCategoryAction } from '../../store/selected-category';
 import { useAppDispatch, useAppSelector } from '../hooks';
 
@@ -16,7 +18,6 @@ import arrowHidden from './assets/list-hidden-color.png';
 import arrowShow from './assets/list-show-color.png';
 
 import styles from './navigate-list.module.scss';
-import { loginResetState } from '../../store/login';
 
 export const NavigateList = () => {
   const [isShowNavigate, setIsShowNavigate] = useState<boolean>(true);
@@ -34,7 +35,8 @@ export const NavigateList = () => {
   };
 
   const logOut = () => {
-    sessionStorage.removeItem('user');
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
     dispatch(loginResetState());
     dispatch(closeBurgerMenu());
     navigate('/auth');
@@ -123,7 +125,7 @@ export const NavigateList = () => {
         </div>
         <div className={styles.loginNavigate}>
           <div className={styles.title}>Профиль</div>
-          <div className={styles.title} onClick={logOut}>
+          <div className={styles.title} onClick={logOut} data-test-id='exit-button'>
             Выход
           </div>
         </div>

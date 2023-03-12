@@ -1,9 +1,9 @@
 import { FormProvider, useForm } from 'react-hook-form';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { Navigate, useNavigate, useSearchParams } from 'react-router-dom';
 
 import { regExMail } from '../../const/reg-ex';
 import { required } from '../../const/register-schema';
-import { recoveryEmailSelector } from '../../selectors';
+import { loginSelector, recoveryEmailSelector } from '../../selectors';
 import { sendRecoveryEmail } from '../../store/recovery-email';
 import { RecoveryEmailType } from '../../store/recovery-email/type';
 import { Button } from '../button';
@@ -20,6 +20,7 @@ import styles from './recovery-form.module.scss';
 
 export const RecoveryForm = () => {
   const [searchParams, setSearchParams] = useSearchParams();
+  const { user } = useAppSelector(loginSelector);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const forgotPass = searchParams.get('code');
@@ -29,7 +30,7 @@ export const RecoveryForm = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isValid },
   } = methods;
 
   const navigateToLogin = () => {
@@ -41,6 +42,10 @@ export const RecoveryForm = () => {
 
   if (forgotPass) {
     return <RecoveryPassword />;
+  }
+
+  if (user) {
+    return <Navigate to='/' />;
   }
 
   return (
@@ -70,18 +75,21 @@ export const RecoveryForm = () => {
                       message: 'Введите корректный e-mail',
                     },
                   })}
+                  required={true}
                   name='email'
                   type='email'
-                  placeholder=' '
+                  placeholder='E-mail'
                   style={errors.email?.message ? { borderBottom: '1px solid red' } : {}}
                 />
                 <label htmlFor='email'>E-mail</label>
                 {errors.email?.message && <ErrorFormMessage message={errors.email?.message} />}
               </div>
+
               <div className={styles.discription}>
+                {isError && <span data-test-id='hint'>error</span>}
                 На это email будет отправлено письмо с инструкциями по восстановлению пароля
               </div>
-              <Button type='submit' buttonText='Восстановить' passStyle={styles.button} />
+              <Button disabled={!isValid} type='submit' buttonText='Восстановить' passStyle={styles.button} />
               <RegisterLoginRow link='/registration' buttonText='Регистрация' text='Нет учётной записи?' />
             </form>
           </FormProvider>

@@ -16,12 +16,12 @@ import { ErrorFormMessage } from '../error-form-message';
 import { useAppDispatch, useAppSelector } from '../hooks';
 import { Loader } from '../loader';
 import { RegisterLoginRow } from '../registation-form/register-login-row';
+import { ResultWindow } from '../result-window';
 
 import eyeClose from './assets/eye-close.png';
 import eyeOpen from './assets/eye-open.png';
 
 import styles from './login-form.module.scss';
-import { ResultWindow } from '../result-window';
 
 export const LoginForm = () => {
   const [isShowPassword, setIsShowPassword] = useState<boolean>(false);
@@ -29,7 +29,15 @@ export const LoginForm = () => {
   const navigate = useNavigate();
 
   const { isLoading, isSuccess, errorType, errorMessage, user } = useAppSelector(loginSelector);
-  const methods = useForm<LoginFormProps>({ mode: 'onBlur', reValidateMode: 'onChange' });
+  const methods = useForm<LoginFormProps>({
+    mode: 'all',
+    reValidateMode: 'onBlur',
+    defaultValues: {
+      identifier: '',
+      password: '',
+    },
+  });
+
   const ShowPassword = () => {
     setIsShowPassword(!isShowPassword);
   };
@@ -38,6 +46,7 @@ export const LoginForm = () => {
     register,
     handleSubmit,
     formState: { errors },
+    watch,
   } = methods;
 
   const navigateToRecovery = () => {
@@ -55,45 +64,72 @@ export const LoginForm = () => {
   return (
     <div className={styles.wrapper}>
       {isLoading && <Loader />}
-      <h2>Вход в личный кабинет</h2>
-      <FormProvider {...methods}>
-        <form className={styles.form} onSubmit={handleSubmit(onSubmit)} data-test-id='auth-form'>
-          <div className={classNames(styles.formInput, styles.firstInput)}>
-            <input
-              id='identifier'
-              {...register('identifier', { required })}
-              name='identifier'
-              placeholder=' '
-              style={errors.identifier?.message ? { borderBottom: '1px solid red' } : {}}
-            />
-            <label htmlFor='username'>Логин</label>
-            {errors.identifier?.message && <ErrorFormMessage message={errors.identifier?.message} />}
-          </div>
-          <div className={styles.formInput}>
-            <input
-              id='password'
-              {...register('password', { required })}
-              name='password'
-              type={isShowPassword ? 'text' : 'password'}
-              placeholder=' '
-              style={errors.password?.message ? { borderBottom: '1px solid red' } : {}}
-            />
-            <label htmlFor='password'>Пароль</label>
-            <div className={styles.eyeImage} onClick={ShowPassword}>
-              <img src={isShowPassword ? eyeOpen : eyeClose} alt='img' />
-            </div>
-            {errors.password?.message && <ErrorFormMessage message={errors.password?.message} />}
-          </div>
-          <Button
-            type='button'
-            passStyle={styles.forgottenPassword}
-            buttonText='Забыли логин или пароль?'
-            onClick={navigateToRecovery}
-          />
+      {!isSuccess && errorType !== 'server' && <h2>Вход в личный кабинет</h2>}
 
-          <Button type='submit' buttonText='Вход' passStyle={styles.button} />
-          <RegisterLoginRow link='/registration' buttonText='Регистрация' text='Нет учётной записи?' />
-        </form>
+      <FormProvider {...methods}>
+        {(!isSuccess || errorType === 'app') && (
+          <form className={styles.form} onSubmit={handleSubmit(onSubmit)} data-test-id='auth-form'>
+            <div className={classNames(styles.formInput, styles.firstInput)}>
+              <input
+                id='identifier'
+                {...register('identifier', { required })}
+                name='identifier'
+                placeholder=' '
+                style={errors.identifier?.message ? { borderBottom: '1px solid red' } : {}}
+              />
+              <label htmlFor='username'>Логин</label>
+              {errors.identifier?.message && <ErrorFormMessage message={errors.identifier?.message} />}
+            </div>
+            <div className={styles.formInput}>
+              <input
+                id='password'
+                {...register('password', { required })}
+                name='password'
+                type={isShowPassword ? 'text' : 'password'}
+                placeholder=' '
+                style={errors.password?.message ? { borderBottom: '1px solid red' } : {}}
+              />
+              <label htmlFor='password'>Пароль</label>
+              {watch('password').length > 0 && (
+                <div className={styles.eyeImage} onClick={ShowPassword}>
+                  <img
+                    src={isShowPassword ? eyeOpen : eyeClose}
+                    alt='img'
+                    data-test-id={isShowPassword ? 'eye-opened' : 'eye-closed'}
+                  />
+                </div>
+              )}
+              {errors.password?.message && <ErrorFormMessage message={errors.password?.message} />}
+            </div>
+            {!errorType && (
+              <Button
+                type='button'
+                passStyle={styles.forgottenPassword}
+                buttonText='Забыли логин или пароль?'
+                onClick={navigateToRecovery}
+              />
+            )}
+            {errorType === 'app' && (
+              <div className={styles.errorBlock}>
+                <span data-test-id='hint'>Неверный логин или пароль!</span>
+                <Button
+                  type='button'
+                  passStyle={styles.restorePassword}
+                  buttonText='Восстановить?'
+                  onClick={navigateToRecovery}
+                />
+              </div>
+            )}
+
+            <Button type='submit' buttonText='вход' passStyle={styles.button} />
+            <RegisterLoginRow link='/registration' buttonText='Регистрация' text='Нет учётной записи?' />
+          </form>
+        )}
+        {errorType === 'server' && (
+          <form>
+            <ResultWindow title='Вход не выполнен' text={errorMessage} textButton='Повторить' type='submit' />
+          </form>
+        )}
       </FormProvider>
     </div>
   );

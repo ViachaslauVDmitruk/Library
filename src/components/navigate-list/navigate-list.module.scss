@@ -2,9 +2,6 @@
 
 .navigate {
   flex: 0 0 255px;
-  //   @include tablets() {
-  //     display: none;
-  //   }
   @include laptop {
     display: none;
   }
@@ -110,7 +107,7 @@
 
 .loginNavigate {
   display: none;
-  margin-top: 34px;
+  margin-top: 14px;
   padding-top: 32px;
   padding-bottom: 52px;
   border-top: 1px solid #bfc4c9;
@@ -164,6 +161,7 @@
     padding: 32px;
     width: calc(100% - 185px);
     margin-bottom: 96px;
+    //  overflow: scroll;
   }
 
   @media screen and (max-width: 550px) {

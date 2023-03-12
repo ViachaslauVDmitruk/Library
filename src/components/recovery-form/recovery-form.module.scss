@@ -50,14 +50,12 @@
   flex-direction: row-reverse;
   align-items: center;
   justify-content: flex-end;
-  span {
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 18px;
-    letter-spacing: 0.2px;
-    text-transform: uppercase;
-    color: #727272;
-  }
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.2px;
+  text-transform: uppercase;
+  color: #727272;
   img {
     margin-right: 15px;
   }
@@ -82,7 +80,8 @@
   }
   & input:focus + label,
   input:not(:placeholder-shown) + label {
-    top: 10px;
+    display: block;
+    top: 8px;
     font-weight: 500;
     font-size: 12px;
     line-height: 16px;
@@ -91,25 +90,63 @@
   }
 
   label {
+    display: none;
     position: absolute;
     top: 50%;
     left: 12px;
-    transform: translateY(-50%);
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 18px;
-    letter-spacing: 0.1px;
-    color: #363636;
+  }
+  input::-webkit-input-placeholder {
+    opacity: 1;
+    transition: opacity 0.1s ease;
+  }
+  input::-moz-placeholder {
+    opacity: 1;
+    transition: opacity 0.1s ease;
+  }
+  input:-moz-placeholder {
+    opacity: 1;
+    transition: opacity 0.1s ease;
+  }
+  input:-ms-input-placeholder {
+    opacity: 1;
+    transition: opacity 0.1s ease;
+  }
+  input:focus::-webkit-input-placeholder {
+    background-image: none;
+    opacity: 0;
+    transition: opacity 0.1s ease;
+  }
+  input:focus::-moz-placeholder {
+    background-image: none;
+    opacity: 0;
+    transition: opacity 0.1s ease;
+  }
+  input:focus:-moz-placeholder {
+    background-image: none;
+    opacity: 0;
+    transition: opacity 0.1s ease;
+  }
+  input:focus:-ms-input-placeholder {
+    background-image: none;
+    opacity: 0;
+    transition: opacity 0.1s ease;
   }
 }
 
 .discription {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   margin-left: 12px;
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
   letter-spacing: 0.2px;
   color: #727272;
+  span {
+    display: block;
+    color: #f42c4f;
+  }
 }
 
 .button {

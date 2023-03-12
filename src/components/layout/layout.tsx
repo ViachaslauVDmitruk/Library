@@ -13,21 +13,22 @@ import styles from '../../pages/main/main-page.module.scss';
 export const Layout = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const { user: userData } = useAppSelector(loginSelector);
+  //   const { user: userData } = useAppSelector(loginSelector);
 
-  useEffect(() => {
-    const token = Cookies.get('token');
-    const user = sessionStorage.getItem('user');
+  //   useEffect(() => {
 
-    if (!token || !user) {
-      Cookies.remove('token');
-      sessionStorage.removeItem('user');
-      navigate('/auth');
-    }
-    if (token && user && !userData) {
-      dispatch(loginSuccess(JSON.parse(user)));
-    }
-  }, [navigate, dispatch, userData]);
+  //     const token = localStorage.getItem('token');
+  //     const user = localStorage.getItem('user');
+  //     if (!token || !user) {
+  //       Cookies.remove('token');
+  //       localStorage.removeItem('token');
+  //       localStorage.removeItem('user');
+  //       navigate('/auth');
+  //     }
+  //     if (token && user && !userData) {
+  //       dispatch(loginSuccess(JSON.parse(user)));
+  //     }
+  //   }, [navigate, dispatch, userData]);
 
   return (
     <div className={styles.wrapper}>

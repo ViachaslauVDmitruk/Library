@@ -12,14 +12,13 @@ export const Button = ({
   onClick,
   passStyle,
   type = 'button',
-  textStyle,
   id = '',
 }: ButtonProps) => {
   const buttonStyles = classNames(passStyle, styles.button);
 
   return (
     <button className={buttonStyles} type={type} onClick={onClick} disabled={disabled} data-test-id={id}>
-      {buttonText && <span className={textStyle}>{buttonText}</span>}
+      {buttonText}
       {src && <img src={src} alt='img' />}
     </button>
   );

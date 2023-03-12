@@ -23,18 +23,15 @@
   align-items: center;
   text-align: center;
   background-image: none;
-
-  span {
-    color: #363636;
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 18px;
-    letter-spacing: 0.2px;
-    text-transform: uppercase;
-  }
-
+  color: #363636;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.2px;
+  text-transform: uppercase;
   img {
     display: block;
+    margin-left: 6px;
   }
   @include middle() {
     margin-left: 0;

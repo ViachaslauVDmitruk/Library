@@ -9,7 +9,6 @@ import { Contract } from './components/contract';
 import { Layout } from './components/layout';
 import { LoginForm } from './components/login-form';
 import { RecoveryForm } from './components/recovery-form';
-import { RecoveryPassword } from './components/recovery-password';
 import { RegistrationForm } from './components/registation-form';
 import { Rules } from './components/rules';
 import { AuthPage } from './pages/auth';
@@ -33,9 +32,6 @@ root.render(
 				</AuthPage>} />
 				<Route path='/registration' element={<AuthPage><RegistrationForm /></AuthPage>} />
 				<Route path='/forgot-pass' element={<AuthPage><RecoveryForm /></AuthPage>} />
-				<Route path='/forgot-pass@:id' element={<AuthPage>
-					<RecoveryPassword />
-				</AuthPage>} />
 				<Route path='/' element={<Layout />} >
 					<Route path='/' element={<MainPage />} >
 						<Route path='/' element={<Navigate to='/books/all' />} />

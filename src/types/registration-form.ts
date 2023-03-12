@@ -11,3 +11,8 @@ export type RegisterStepProps = {
   step: number;
   setStep: (step: number) => void;
 };
+
+export type RetryPasswordValidate = {
+  fieldValue: string;
+  passwordWatcher: string;
+};

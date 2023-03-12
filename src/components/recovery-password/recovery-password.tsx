@@ -8,7 +8,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import classNames from 'classnames';
 
 import { regExPassword } from '../../const/reg-ex';
-import { recoveryPasswordSchema, required } from '../../const/register-schema';
+import { recoveryPasswordSchema, required, validatePassword, validateRetryPassword } from '../../const/register-schema';
 import { recoveryPasswordSelector } from '../../selectors';
 import { resetRecoveryPassword, sendRecoveryPassword } from '../../store/recovery-password';
 import { RecoveryPasswordType } from '../../store/recovery-password/type';
@@ -23,20 +23,19 @@ import eyeClose from './assets/eye-close.png';
 import eyeOpen from './assets/eye-open.png';
 
 import styles from './recovery-password.module.scss';
+import { ColorPasswordMatch } from '../color-input-help';
 
 export const RecoveryPassword = () => {
   const [isShowPassword, setIsShowPassword] = useState<boolean>(false);
   const [isShowConfirmPassword, setIsShowConfirmPassword] = useState<boolean>(false);
   const [searchParams, setSearchParams] = useSearchParams();
-  //   const [passwordValue, setPasswordValue] = useState<string>('');
   const forgotPass = searchParams.get('code');
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { isLoading, isSuccess, isError } = useAppSelector(recoveryPasswordSelector);
   const methods = useForm<RecoveryPasswordType>({
     mode: 'onBlur',
-    reValidateMode: 'onChange',
-    resolver: yupResolver(recoveryPasswordSchema),
+    reValidateMode: 'onBlur',
     defaultValues: {
       password: '',
       passwordConfirmation: '',
@@ -53,8 +52,9 @@ export const RecoveryPassword = () => {
 
   const {
     register,
-    formState: { errors, isDirty, defaultValues, isValid },
+    formState: { errors, isDirty, isValid },
     handleSubmit,
+    watch,
   } = methods;
 
   const onSubmit = (data: RecoveryPasswordType) => {
@@ -87,53 +87,31 @@ export const RecoveryPassword = () => {
             <div className={classNames(styles.formInput, styles.firstInput)}>
               <input
                 id='password'
-                {...register(
-                  'password'
-                  //  ,
-                  //  {
-                  //    required,
-                  //    pattern: {
-                  //      value: regExPassword,
-                  //      message: 'Введите корректный пароль',
-                  //    },
-                  //  }
-                )}
+                {...register('password', { required, validate: { validatePassword } })}
                 name='password'
                 type={isShowPassword ? 'text' : 'password'}
-                placeholder=' '
+                placeholder='Новый пароль'
                 style={errors.password?.message ? { borderBottom: '1px solid red' } : {}}
-                //  onChange={(e) => setPasswordValue(e.target.value)}
               />
               <label htmlFor='password'>Новый пароль</label>
               {errors.password?.message && <ErrorFormMessage message={errors.password?.message} />}
               <div className={styles.eyeImage} onClick={ShowPassword}>
-                {!errors.password && <img src={check} alt='img' data-test-id='checkmark' />}
+                {!errors.password && isDirty && <img src={check} alt='img' data-test-id='checkmark' />}
                 <img
                   src={isShowPassword ? eyeOpen : eyeClose}
                   alt='img'
-                  data-test-id={isShowPassword ? 'eye-open' : 'eye-closed'}
+                  data-test-id={isShowPassword ? 'eye-opened' : 'eye-closed'}
                 />
               </div>
-              <div className={styles.discription}>
-                Пароль <span>не менее 8 символов</span>, с <span>заглавной буквой</span> и <span>цифрой</span>
-              </div>
+              {(!errors.password || isDirty) && <ColorPasswordMatch inputValue={watch('password')} />}
             </div>
             <div className={styles.formInput}>
               <input
                 id='passwordConfirmation'
-                {...register(
-                  'passwordConfirmation'
-                  //  , {
-                  //    required,
-                  //    pattern: {
-                  //      value: regExPassword,
-                  //      message: 'Пароли не совпадают',
-                  //    },
-                  //  }
-                )}
+                {...register('passwordConfirmation', { required, validate: { validateRetryPassword } })}
                 name='passwordConfirmation'
                 type={isShowConfirmPassword ? 'text' : 'password'}
-                placeholder=' '
+                placeholder='Повторите пароль'
                 style={errors.password?.message ? { borderBottom: '1px solid red' } : {}}
               />
               <label htmlFor='passwordConfirmation'>Повторите пароль</label>
@@ -141,7 +119,7 @@ export const RecoveryPassword = () => {
                 <img
                   src={isShowConfirmPassword ? eyeOpen : eyeClose}
                   alt='img'
-                  data-test-id={isShowPassword ? 'eye-open' : 'eye-closed'}
+                  data-test-id={isShowPassword ? 'eye-opened' : 'eye-closed'}
                 />
               </div>
               {errors.passwordConfirmation?.message && (
@@ -158,7 +136,7 @@ export const RecoveryPassword = () => {
         <ResultWindow
           title='Новые данные сохранены'
           text='Зайдите в личный кабинет, используя свои логин и новый пароль'
-          textButton='Вход'
+          textButton='вход'
           onClick={navigateTo}
         />
       )}
