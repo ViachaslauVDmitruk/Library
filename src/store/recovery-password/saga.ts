@@ -1,9 +1,6 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 import { PayloadAction } from '@reduxjs/toolkit';
 import axios, { AxiosResponse } from 'axios';
-import Cookies from 'js-cookie';
-
-// import { axios } from '../../api/api';
 
 import { API } from '../../api/const';
 import { loginSuccess } from '../login';

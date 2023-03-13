@@ -26,7 +26,6 @@ const onResponse = (response: AxiosResponse) => response;
 
 const onResponseError = (error: AxiosError) => {
   if (error.response?.status === 403) {
-    //  Cookies.remove('token');
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     window.location.replace('/auth');
