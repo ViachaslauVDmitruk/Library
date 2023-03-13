@@ -18,33 +18,31 @@ import { store } from './store';
 
 import './index.scss';
 
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
-	// <React.StrictMode>
+	<React.StrictMode>
 
-	<Provider store={store}>
-		<HashRouter>
-			<Routes>
-				<Route path='/auth' element={<AuthPage>
-					<LoginForm />
-				</AuthPage>} />
-				<Route path='/registration' element={<AuthPage><RegistrationForm /></AuthPage>} />
-				<Route path='/forgot-pass' element={<AuthPage><RecoveryForm /></AuthPage>} />
-				<Route path='/' element={<Layout />} >
-					<Route path='/' element={<MainPage />} >
-						<Route path='/' element={<Navigate to='/books/all' />} />
-						<Route path='/books/:category' element={<Books />} />
-						<Route path='/terms' element={<Rules />} />
-						<Route path='/contract' element={<Contract />} />
-					</Route>
-					<Route path='/books/:category/:id' element={<BookPage />} />
-				</Route >
-			</Routes>
-		</HashRouter>
-	</Provider >
+		<Provider store={store}>
+			<HashRouter>
+				<Routes>
+					<Route path='/auth' element={<AuthPage><LoginForm /></AuthPage>}
+					/>
+					<Route path='/registration' element={<AuthPage><RegistrationForm /></AuthPage>} />
+					<Route path='/forgot-pass' element={<AuthPage><RecoveryForm /></AuthPage>} />
+					<Route path='/' element={<Layout />} >
+						<Route path='/' element={<MainPage />} >
+							<Route path='/' element={<Navigate to='/books/all' />} />
+							<Route path='/books/:category' element={<Books />} />
+							<Route path='/terms' element={<Rules />} />
+							<Route path='/contract' element={<Contract />} />
+						</Route>
+						<Route path='/books/:category/:id' element={<BookPage />} />
+					</Route >
+				</Routes>
+			</HashRouter>
+		</Provider >
 
-	// </React.StrictMode>
+	</React.StrictMode>
 
 );

@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
 import { AboutBook } from '../../components/about-book';
-import { ErrorMessage } from '../../components/error-message';
+import { AlertMessage } from '../../components/error-message';
 import { useAppDispatch } from '../../components/hooks';
 import { Information } from '../../components/information';
 import { Loader } from '../../components/loader';
@@ -12,6 +12,7 @@ import { NavigateList } from '../../components/navigate-list';
 import { NavigatePath } from '../../components/navigate-path';
 import { Review } from '../../components/review';
 import { StarsRating } from '../../components/stars-rating';
+import { REQUEST_BOOK } from '../../const/message';
 import { burgeMenuSelector, oneBookSelector } from '../../selectors';
 import { getOneBook } from '../../store/book';
 
@@ -34,7 +35,7 @@ export const BookPage = () => {
   return (
     <div className={styles.main}>
       {isLoading && <Loader />}
-      {isError && <ErrorMessage />}
+      {isError && <AlertMessage message={REQUEST_BOOK} stylesAlert='error' />}
       <NavigatePath title={book.title} />
       {activeBurger && <NavigateList />}
       {isGettingData && <AboutBook />}

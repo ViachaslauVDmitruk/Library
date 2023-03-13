@@ -2,10 +2,11 @@
 import { useEffect } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 
-import { ErrorMessage } from '../../components/error-message';
+import { AlertMessage } from '../../components/error-message';
 import { useAppDispatch, useAppSelector } from '../../components/hooks';
 import { Loader } from '../../components/loader';
 import { NavigateList } from '../../components/navigate-list';
+import { REQUEST_BOOK } from '../../const/message';
 import { booksSelector, categoriesSelector } from '../../selectors';
 import { getBooks } from '../../store/books';
 import { getCategories } from '../../store/categories';
@@ -38,7 +39,7 @@ export const MainPage = () => {
   return (
     <div className={styles.container}>
       {isLoading && <Loader />}
-      {isError && <ErrorMessage />}
+      {isError && <AlertMessage message={REQUEST_BOOK} stylesAlert='error' />}
       <NavigateList />
       {!isError && <Outlet />}
     </div>

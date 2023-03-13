@@ -13,6 +13,7 @@ export const ButtonClose = ({ isActive, setIsActive }: ButtonProps) => (
     type='button'
     className={classNames(styles.closeButton, { [styles.searchActive]: isActive })}
     onClick={() => setIsActive(true)}
+    data-test-id='alert-close'
   >
     <div className={styles.close}> </div>
   </button>
