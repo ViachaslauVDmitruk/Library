@@ -31,7 +31,7 @@ export const RegistrationForm = () => {
 
   const methods = useForm<FormData>({
     mode: 'onBlur',
-    reValidateMode: 'onBlur',
+    reValidateMode: 'onChange',
     defaultValues: {
       username: '',
       password: '',
@@ -45,7 +45,7 @@ export const RegistrationForm = () => {
   const {
     handleSubmit,
     reset,
-    formState: { isValid },
+    formState: { errors },
   } = methods;
 
   const currentStepRegister = (step: number) => {
@@ -119,7 +119,7 @@ export const RegistrationForm = () => {
           <h3>{step} шаг из 3</h3>
           {currentStepRegister(step)}
           <Button
-            disabled={!isValid}
+            disabled={!!Object.keys(errors).length}
             buttonText={step < 2 ? 'Следующий шаг' : step < 3 ? 'Последний шаг' : 'Зарегистрироваться'}
             type='submit'
             passStyle={styles.button}

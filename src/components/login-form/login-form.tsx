@@ -7,12 +7,11 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { Navigate, useNavigate } from 'react-router-dom';
 import classNames from 'classnames';
 
-import { required } from '../../const/register-schema';
+import { validatePassword } from '../../const/register-schema';
 import { loginSelector } from '../../selectors';
-import { sendLogin } from '../../store/login';
+import { loginResetState, sendLogin } from '../../store/login';
 import { LoginFormProps } from '../../types/login-form';
 import { Button } from '../button';
-import { ErrorFormMessage } from '../error-form-message';
 import { useAppDispatch, useAppSelector } from '../hooks';
 import { Loader } from '../loader';
 import { RegisterLoginRow } from '../registation-form/register-login-row';
@@ -22,6 +21,7 @@ import eyeClose from './assets/eye-close.png';
 import eyeOpen from './assets/eye-open.png';
 
 import styles from './login-form.module.scss';
+import { CustomInput } from '../input';
 
 export const LoginForm = () => {
   const [isShowPassword, setIsShowPassword] = useState<boolean>(false);
@@ -30,8 +30,8 @@ export const LoginForm = () => {
 
   const { isLoading, isSuccess, errorType, errorMessage, user } = useAppSelector(loginSelector);
   const methods = useForm<LoginFormProps>({
-    mode: 'all',
-    reValidateMode: 'onBlur',
+    mode: 'onBlur',
+    reValidateMode: 'onChange',
     defaultValues: {
       identifier: '',
       password: '',
@@ -43,7 +43,6 @@ export const LoginForm = () => {
   };
 
   const {
-    register,
     handleSubmit,
     formState: { errors },
     watch,
@@ -57,39 +56,34 @@ export const LoginForm = () => {
     dispatch(sendLogin({ identifier: data.identifier, password: data.password }));
   };
 
+  const ResetLogin = () => {
+    dispatch(loginResetState());
+    navigate('/');
+  };
+
   if (user) {
     return <Navigate to='/' />;
   }
 
   return (
-    <div className={styles.wrapper}>
+    <FormProvider {...methods}>
       {isLoading && <Loader />}
-      {!isSuccess && errorType !== 'server' && <h2>Вход в личный кабинет</h2>}
+      {!isSuccess && errorType !== 'server' && (
+        <div className={styles.wrapper}>
+          <h2>Вход в личный кабинет</h2>
 
-      <FormProvider {...methods}>
-        {(!isSuccess || errorType === 'app') && (
           <form className={styles.form} onSubmit={handleSubmit(onSubmit)} data-test-id='auth-form'>
             <div className={classNames(styles.formInput, styles.firstInput)}>
-              <input
-                id='identifier'
-                {...register('identifier', { required })}
-                name='identifier'
-                placeholder=' '
-                style={errors.identifier?.message ? { borderBottom: '1px solid red' } : {}}
-              />
-              <label htmlFor='username'>Логин</label>
-              {errors.identifier?.message && <ErrorFormMessage message={errors.identifier?.message} />}
+              <CustomInput type='text' name='identifier' placeholder='Логин' required={true} />
             </div>
-            <div className={styles.formInput}>
-              <input
-                id='password'
-                {...register('password', { required })}
-                name='password'
+            <div className={styles.inputWrapper}>
+              <CustomInput
                 type={isShowPassword ? 'text' : 'password'}
-                placeholder=' '
-                style={errors.password?.message ? { borderBottom: '1px solid red' } : {}}
+                name='password'
+                placeholder='Пароль'
+                required={true}
+                validationRules={validatePassword}
               />
-              <label htmlFor='password'>Пароль</label>
               {watch('password').length > 0 && (
                 <div className={styles.eyeImage} onClick={ShowPassword}>
                   <img
@@ -99,10 +93,11 @@ export const LoginForm = () => {
                   />
                 </div>
               )}
-              {errors.password?.message && <ErrorFormMessage message={errors.password?.message} />}
             </div>
+
             {!errorType && (
               <Button
+                disabled={!!Object.keys(errors).length}
                 type='button'
                 passStyle={styles.forgottenPassword}
                 buttonText='Забыли логин или пароль?'
@@ -124,13 +119,11 @@ export const LoginForm = () => {
             <Button type='submit' buttonText='вход' passStyle={styles.button} />
             <RegisterLoginRow link='/registration' buttonText='Регистрация' text='Нет учётной записи?' />
           </form>
-        )}
-        {errorType === 'server' && (
-          <form>
-            <ResultWindow title='Вход не выполнен' text={errorMessage} textButton='Повторить' type='submit' />
-          </form>
-        )}
-      </FormProvider>
-    </div>
+        </div>
+      )}
+      {errorType === 'server' && (
+        <ResultWindow title='Вход не выполнен' text={errorMessage} textButton='Повторить' onClick={ResetLogin} />
+      )}
+    </FormProvider>
   );
 };

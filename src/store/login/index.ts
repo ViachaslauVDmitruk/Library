@@ -34,6 +34,7 @@ export const loginFormSlice = createSlice({
       state.errorMessage = '';
       state.isSuccess = false;
       state.user = null;
+      state.errorType = null;
     },
   },
 });

@@ -4,17 +4,14 @@
 import { useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { yupResolver } from '@hookform/resolvers/yup';
-import classNames from 'classnames';
 
-import { regExPassword } from '../../const/reg-ex';
-import { recoveryPasswordSchema, required, validatePassword, validateRetryPassword } from '../../const/register-schema';
+import { validatePassword, validateRetryPassword } from '../../const/register-schema';
 import { recoveryPasswordSelector } from '../../selectors';
 import { resetRecoveryPassword, sendRecoveryPassword } from '../../store/recovery-password';
 import { RecoveryPasswordType } from '../../store/recovery-password/type';
 import { Button } from '../button';
-import { ErrorFormMessage } from '../error-form-message';
 import { useAppDispatch, useAppSelector } from '../hooks';
+import { CustomInput } from '../input';
 import { Loader } from '../loader';
 import { ResultWindow } from '../result-window';
 
@@ -23,7 +20,6 @@ import eyeClose from './assets/eye-close.png';
 import eyeOpen from './assets/eye-open.png';
 
 import styles from './recovery-password.module.scss';
-import { ColorPasswordMatch } from '../color-input-help';
 
 export const RecoveryPassword = () => {
   const [isShowPassword, setIsShowPassword] = useState<boolean>(false);
@@ -51,10 +47,8 @@ export const RecoveryPassword = () => {
   };
 
   const {
-    register,
-    formState: { errors, isDirty, isValid },
+    formState: { errors, isDirty },
     handleSubmit,
-    watch,
   } = methods;
 
   const onSubmit = (data: RecoveryPasswordType) => {
@@ -84,50 +78,48 @@ export const RecoveryPassword = () => {
         <FormProvider {...methods}>
           <form onSubmit={handleSubmit(onSubmit)} data-test-id='reset-password-form' className={styles.wrapper}>
             <h2>Восствновление пароля</h2>
-            <div className={classNames(styles.formInput, styles.firstInput)}>
-              <input
-                id='password'
-                {...register('password', { required, validate: { validatePassword } })}
-                name='password'
+            <div className={styles.firstInput}>
+              <CustomInput
                 type={isShowPassword ? 'text' : 'password'}
+                name='password'
                 placeholder='Новый пароль'
-                style={errors.password?.message ? { borderBottom: '1px solid red' } : {}}
+                required={true}
+                validationRules={validatePassword}
+                Customhint='password'
               />
-              <label htmlFor='password'>Новый пароль</label>
-              {errors.password?.message && <ErrorFormMessage message={errors.password?.message} />}
               <div className={styles.eyeImage} onClick={ShowPassword}>
-                {!errors.password && isDirty && <img src={check} alt='img' data-test-id='checkmark' />}
+                {(!errors.password?.message || isDirty) && <img src={check} alt='img' data-test-id='checkmark' />}
                 <img
                   src={isShowPassword ? eyeOpen : eyeClose}
                   alt='img'
                   data-test-id={isShowPassword ? 'eye-opened' : 'eye-closed'}
                 />
               </div>
-              {(!errors.password || isDirty) && <ColorPasswordMatch inputValue={watch('password')} />}
             </div>
-            <div className={styles.formInput}>
-              <input
-                id='passwordConfirmation'
-                {...register('passwordConfirmation', { required, validate: { validateRetryPassword } })}
-                name='passwordConfirmation'
+            <div className={styles.inputWrapper}>
+              <CustomInput
                 type={isShowConfirmPassword ? 'text' : 'password'}
+                name='passwordConfirmation'
                 placeholder='Повторите пароль'
-                style={errors.password?.message ? { borderBottom: '1px solid red' } : {}}
+                required={true}
+                validationRules={validateRetryPassword}
+                Customhint='password'
               />
-              <label htmlFor='passwordConfirmation'>Повторите пароль</label>
               <div className={styles.eyeImage} onClick={ShowConfirmPassword}>
                 <img
                   src={isShowConfirmPassword ? eyeOpen : eyeClose}
                   alt='img'
-                  data-test-id={isShowPassword ? 'eye-opened' : 'eye-closed'}
+                  data-test-id={isShowConfirmPassword ? 'eye-opened' : 'eye-closed'}
                 />
               </div>
-              {errors.passwordConfirmation?.message && (
-                <ErrorFormMessage message={errors.passwordConfirmation?.message} />
-              )}
             </div>
 
-            <Button disabled={!isValid} type='submit' buttonText='Сохранить изменения' passStyle={styles.button} />
+            <Button
+              disabled={!!Object.keys(errors).length}
+              type='submit'
+              buttonText='Сохранить изменения'
+              passStyle={styles.button}
+            />
             <div className={styles.bottomText}>После сохранения войдите в библиотеку, используя новый пароль</div>
           </form>
         </FormProvider>

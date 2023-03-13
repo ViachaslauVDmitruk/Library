@@ -177,3 +177,8 @@
     margin-top: 20px;
   }
 }
+
+.button[disabled] {
+  background-image: none;
+  background-color: #ebebeb;
+}

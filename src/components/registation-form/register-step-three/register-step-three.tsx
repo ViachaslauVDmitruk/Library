@@ -3,11 +3,11 @@
 
 import { useFormContext } from 'react-hook-form';
 import InputMask from 'react-input-mask';
-import classNames from 'classnames';
 
-import { regExMail, regExPhone } from '../../../const/reg-ex';
-import { required } from '../../../const/register-schema';
+import { regExPhone } from '../../../const/reg-ex';
+import { required, validateEmail } from '../../../const/register-schema';
 import { ErrorFormMessage } from '../../error-form-message';
+import { CustomInput } from '../../input';
 
 import styles from '../registration-form.module.scss';
 
@@ -15,6 +15,7 @@ export const RegisterStepThree = () => {
   const {
     register,
     formState: { errors },
+    watch,
   } = useFormContext();
 
   return (
@@ -26,10 +27,11 @@ export const RegisterStepThree = () => {
             required,
             pattern: {
               value: regExPhone,
-              message: 'В формате +375 (хх) ххх-хх-хх',
+              message: watch('phone').length ? 'В формате +375 (xx) xxx-xx-xx' : 'Поле не может быть пустым',
             },
           })}
           name='phone'
+          maskChar='x'
           mask='+375 (99) 999-99-99'
           placeholder='Номер телефона'
           type='tel'
@@ -38,23 +40,8 @@ export const RegisterStepThree = () => {
         <label htmlFor='phone'>Номер телефона</label>
         {errors.phone?.message && <ErrorFormMessage message={errors.phone?.message} />}
       </div>
-      <div className={classNames(styles.formInput, styles.lastInput)}>
-        <input
-          id='email'
-          {...register('email', {
-            required,
-            pattern: {
-              value: regExMail,
-              message: 'Введите корректный e-mail',
-            },
-          })}
-          name='email'
-          type='email'
-          placeholder='E-mail'
-          style={errors.email?.message ? { borderBottom: '1px solid red' } : {}}
-        />
-        <label htmlFor='email'>E-mail</label>
-        {errors.email?.message && <ErrorFormMessage message={errors.email?.message} />}
+      <div className={styles.lastInput}>
+        <CustomInput type='text' name='email' placeholder='E-mail' required={true} validationRules={validateEmail} />
       </div>
     </div>
   );

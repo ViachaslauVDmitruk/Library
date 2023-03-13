@@ -1,14 +1,14 @@
 import { FormProvider, useForm } from 'react-hook-form';
 import { Navigate, useNavigate, useSearchParams } from 'react-router-dom';
 
-import { regExMail } from '../../const/reg-ex';
-import { required } from '../../const/register-schema';
+import { validateEmail } from '../../const/register-schema';
 import { loginSelector, recoveryEmailSelector } from '../../selectors';
 import { sendRecoveryEmail } from '../../store/recovery-email';
 import { RecoveryEmailType } from '../../store/recovery-email/type';
 import { Button } from '../button';
-import { ErrorFormMessage } from '../error-form-message';
+
 import { useAppDispatch, useAppSelector } from '../hooks';
+import { CustomInput } from '../input';
 import { Loader } from '../loader';
 import { RecoveryPassword } from '../recovery-password';
 import { RegisterLoginRow } from '../registation-form/register-login-row';
@@ -28,9 +28,8 @@ export const RecoveryForm = () => {
   const methods = useForm<RecoveryEmailType>({ mode: 'onBlur', reValidateMode: 'onChange' });
 
   const {
-    register,
     handleSubmit,
-    formState: { errors, isValid },
+    formState: { errors, isValid, isDirty },
   } = methods;
 
   const navigateToLogin = () => {
@@ -66,30 +65,25 @@ export const RecoveryForm = () => {
           <FormProvider {...methods}>
             <form className={styles.form} onSubmit={handleSubmit(onSubmit)} data-test-id='send-email-form'>
               <div className={styles.formInput} style={errors.email?.message ? { marginBottom: '15px' } : {}}>
-                <input
-                  id='email'
-                  {...register('email', {
-                    required,
-                    pattern: {
-                      value: regExMail,
-                      message: 'Введите корректный e-mail',
-                    },
-                  })}
-                  required={true}
+                <CustomInput
+                  type='text'
                   name='email'
-                  type='email'
                   placeholder='E-mail'
-                  style={errors.email?.message ? { borderBottom: '1px solid red' } : {}}
+                  required={true}
+                  validationRules={validateEmail}
                 />
-                <label htmlFor='email'>E-mail</label>
-                {errors.email?.message && <ErrorFormMessage message={errors.email?.message} />}
               </div>
 
               <div className={styles.discription}>
                 {isError && <span data-test-id='hint'>error</span>}
                 На это email будет отправлено письмо с инструкциями по восстановлению пароля
               </div>
-              <Button disabled={!isValid} type='submit' buttonText='Восстановить' passStyle={styles.button} />
+              <Button
+                disabled={!!Object.keys(errors).length}
+                type='submit'
+                buttonText='Восстановить'
+                passStyle={styles.button}
+              />
               <RegisterLoginRow link='/registration' buttonText='Регистрация' text='Нет учётной записи?' />
             </form>
           </FormProvider>

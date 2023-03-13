@@ -15,13 +15,11 @@ export const ProfileMenu = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const logOut = () => {
-    //  Cookies.remove('token');
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     dispatch(loginResetState());
     dispatch(closeProfileMenu());
     navigate('/auth');
-    console.log('token in local storage', localStorage.getItem('token'));
   };
 
   return (

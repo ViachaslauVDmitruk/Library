@@ -3,12 +3,9 @@
 
 import { useState } from 'react';
 import { useFormContext } from 'react-hook-form';
-import classNames from 'classnames';
 
-import { regExPassword, regExUsername } from '../../../const/reg-ex';
-import { required } from '../../../const/register-schema';
-import { ColorPasswordMatch, ColorUserMatch } from '../../color-input-help';
-import { ErrorFormMessage } from '../../error-form-message';
+import { validateLogin, validatePassword } from '../../../const/register-schema';
+import { CustomInput } from '../../input';
 
 import check from './assets/check.png';
 import eyeClose from './assets/eye-close.png';
@@ -23,64 +20,39 @@ export const RegisterStepOne = () => {
   };
 
   const {
-    register,
-    formState: { errors, isDirty },
+    formState: { errors },
     watch,
   } = useFormContext();
-
-  console.log('useFormContext', useFormContext());
 
   return (
     <div className={styles.form}>
       <div className={styles.formInput}>
-        <input
-          id='username'
-          {...register('username', {
-            required,
-            pattern: {
-              value: regExUsername,
-              message: '',
-            },
-          })}
-          name='username'
-          placeholder=' Придумайте логин для входа'
+        <CustomInput
           type='text'
-          style={errors.username?.message ? { borderBottom: '1px solid red' } : {}}
+          name='username'
+          placeholder='Придумайте логин для входа'
+          required={true}
+          validationRules={validateLogin}
+          Customhint='user'
         />
-
-        <label htmlFor='username'>Придумайте логин для входа</label>
-        {errors.username?.message && <ErrorFormMessage message={errors.username?.message} />}
-        {(!errors.username || isDirty) && <ColorUserMatch inputValue={watch('username')} />}
       </div>
-      <div className={classNames(styles.formInput, styles.lastInput)}>
-        <input
-          id='password'
-          {...register('password', {
-            required,
-            pattern: {
-              value: regExPassword,
-              message: '',
-            },
-          })}
-          name='password'
+      <div className={styles.lastInput}>
+        <CustomInput
           type={isShowPassword ? 'text' : 'password'}
-          placeholder='Пароль'
-          style={errors.password?.message ? { borderBottom: '1px solid red' } : {}}
+          name='password'
+          placeholder='Новый пароль'
+          required={true}
+          validationRules={validatePassword}
+          Customhint='password'
         />
-
-        <label htmlFor='password'>Пароль</label>
-        {errors.password?.message && <ErrorFormMessage message={errors.password?.message} />}
         <div className={styles.eyeImage} onClick={ShowPassword}>
-          {!errors.password && isDirty && <img src={check} alt='img' data-test-id='checkmark' />}
+          {watch('') && <img src={check} alt='img' data-test-id='checkmark' />}
           <img
             src={isShowPassword ? eyeOpen : eyeClose}
             alt='img'
-            data-test-id={isShowPassword ? 'opened' : 'eye-closed'}
+            data-test-id={isShowPassword ? 'eye-opened' : 'eye-closed'}
           />
         </div>
-        {(!errors.password || isDirty) && (
-          <ColorPasswordMatch isError={errors.password} inputValue={watch('password')} />
-        )}
       </div>
     </div>
   );
