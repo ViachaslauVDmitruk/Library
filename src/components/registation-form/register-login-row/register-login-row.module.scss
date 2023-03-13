@@ -1,0 +1,40 @@
+@import '../../../index.scss';
+
+.row {
+  display: flex;
+  span {
+    display: block;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    letter-spacing: 0.1px;
+    color: #727272;
+    margin-right: 16px;
+  }
+  @include middle() {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.registrationButton {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  background-image: none;
+  color: #363636;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.2px;
+  text-transform: uppercase;
+  img {
+    display: block;
+    margin-left: 6px;
+  }
+  @include middle() {
+    margin-left: 0;
+    margin-top: 6px;
+  }
+}

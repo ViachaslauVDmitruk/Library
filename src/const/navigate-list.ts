@@ -1,5 +1,4 @@
 export const NAVIGATE_LIST = [
-  //   { title: 'Все книги', id: 1, number: null },
   { title: 'Бизнес-книги', id: 2, number: 14 },
   { title: 'Детективы', id: 3, number: 8 },
   { title: 'Детсие книги', id: 4, number: 14 },

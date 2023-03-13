@@ -2,15 +2,17 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import classNames from 'classnames';
+import Cookies from 'js-cookie';
 
 import { CounterBooks } from '../../helpers/counter-books';
 import { booksSelector, burgeMenuSelector, categoriesSelector } from '../../selectors';
 import { closeBurgerMenu } from '../../store/burger-menu';
 import { getCategories } from '../../store/categories';
+import { loginResetState } from '../../store/login';
 import { selectCategoryAction } from '../../store/selected-category';
+import { useAppDispatch, useAppSelector } from '../hooks';
 
 import arrowHidden from './assets/list-hidden-color.png';
 import arrowShow from './assets/list-show-color.png';
@@ -19,16 +21,25 @@ import styles from './navigate-list.module.scss';
 
 export const NavigateList = () => {
   const [isShowNavigate, setIsShowNavigate] = useState<boolean>(true);
-  const { activeBurger } = useSelector(burgeMenuSelector);
-  const { categories, isError, isLoading } = useSelector(categoriesSelector);
-  const { books } = useSelector(booksSelector);
+  const { activeBurger } = useAppSelector(burgeMenuSelector);
+  const { categories, isError, isLoading } = useAppSelector(categoriesSelector);
+  const { books } = useAppSelector(booksSelector);
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const styleNavigate = classNames(styles.navigate, activeBurger ? styles.burgerMenu : '');
 
   const ToggleNavigateShow = () => {
     setIsShowNavigate(!isShowNavigate);
+  };
+
+  const logOut = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    dispatch(loginResetState());
+    dispatch(closeBurgerMenu());
+    navigate('/auth');
   };
 
   return (
@@ -114,7 +125,9 @@ export const NavigateList = () => {
         </div>
         <div className={styles.loginNavigate}>
           <div className={styles.title}>Профиль</div>
-          <div className={styles.title}>Выход</div>
+          <div className={styles.title} onClick={logOut} data-test-id='exit-button'>
+            Выход
+          </div>
         </div>
       </div>
     </div>

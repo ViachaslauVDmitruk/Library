@@ -2,9 +2,6 @@
 
 .navigate {
   flex: 0 0 255px;
-  //   @include tablets() {
-  //     display: none;
-  //   }
   @include laptop {
     display: none;
   }
@@ -110,7 +107,7 @@
 
 .loginNavigate {
   display: none;
-  margin-top: 34px;
+  margin-top: 14px;
   padding-top: 32px;
   padding-bottom: 52px;
   border-top: 1px solid #bfc4c9;
@@ -118,7 +115,7 @@
   & .title:not(:last-child) {
     margin-bottom: 42px;
   }
-  @include tablets() {
+  @include laptop() {
     display: block;
   }
 }

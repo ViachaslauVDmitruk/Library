@@ -1,22 +1,25 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 
-import { burgeMenuSelector } from '../../selectors';
+import { burgeMenuSelector, profileMenuSelector } from '../../selectors';
 import { closeBurgerMenu, openBurgerMenu } from '../../store/burger-menu';
+import { closeProfileMenu, openProfileMenu } from '../../store/profile-menu';
+import { useAppDispatch, useAppSelector } from '../hooks';
 
 import avatar from './assets/avatar.png';
 import logo from './assets/logo.png';
 
 import styles from './header.module.scss';
+import { ProfileMenu } from '../profile-menu';
 
 export const Header = () => {
-  const { activeBurger } = useSelector(burgeMenuSelector);
+  const { activeBurger } = useAppSelector(burgeMenuSelector);
+  const { isOpenProfileMenu } = useAppSelector(profileMenuSelector);
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   function ToggleMenu() {
     if (activeBurger) {
@@ -25,6 +28,14 @@ export const Header = () => {
       dispatch(openBurgerMenu());
     }
   }
+
+  const ToggleProfileMenu = () => {
+    if (isOpenProfileMenu) {
+      dispatch(closeProfileMenu());
+    } else {
+      dispatch(openProfileMenu());
+    }
+  };
 
   useEffect(() => {
     if (activeBurger) {
@@ -54,10 +65,11 @@ export const Header = () => {
         </button>
         <div className={styles.title}>Библиотека</div>
       </div>
-      <div className={styles.account}>
+      <div className={styles.account} onClick={ToggleProfileMenu}>
         <span className={styles.accountName}>Привет, Иван!</span>
         <img src={avatar} alt='img' />
       </div>
+      <ProfileMenu />
     </header>
   );
 };

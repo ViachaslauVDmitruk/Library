@@ -1,6 +1,6 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
-import axios from 'axios';
 
+import { axios } from '../../api/api';
 import { API } from '../../api/const';
 
 import { categoriesError, getCategories, setCategories } from '.';

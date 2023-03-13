@@ -1,0 +1,173 @@
+@import '../../index.scss';
+
+.wrapper {
+  max-width: 530px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 48px 56px;
+  background: #ffffff;
+  border-radius: 16px;
+  h2 {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 30px;
+    letter-spacing: 0.1px;
+    margin-bottom: 8px;
+  }
+  h3 {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0.1px;
+    margin-bottom: 32px;
+  }
+  @include middle() {
+    padding: 24px 16px;
+  }
+}
+.form {
+  width: 100%;
+}
+
+.formInput {
+  position: relative;
+  height: 56px;
+  background: #f9f9fa;
+  border-radius: 4px 4px 0px 0px;
+  width: 100%;
+
+  input {
+    height: 100%;
+    width: 100%;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0.1px;
+    padding-left: 12px;
+    border-bottom: 1px solid #bfc4c9;
+  }
+  & input:focus + label,
+  input:not(:placeholder-shown) + label {
+    display: block;
+    top: 8px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0.2px;
+    color: #a7a7a7;
+  }
+
+  label {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 12px;
+  }
+  input::-webkit-input-placeholder {
+    opacity: 1;
+    transition: opacity 0.1s ease;
+  }
+  input::-moz-placeholder {
+    opacity: 1;
+    transition: opacity 0.1s ease;
+  }
+  input:-moz-placeholder {
+    opacity: 1;
+    transition: opacity 0.1s ease;
+  }
+  input:-ms-input-placeholder {
+    opacity: 1;
+    transition: opacity 0.1s ease;
+  }
+  input:focus::-webkit-input-placeholder {
+    background-image: none;
+    opacity: 0;
+    transition: opacity 0.1s ease;
+  }
+  input:focus::-moz-placeholder {
+    background-image: none;
+    opacity: 0;
+    transition: opacity 0.1s ease;
+  }
+  input:focus:-moz-placeholder {
+    background-image: none;
+    opacity: 0;
+    transition: opacity 0.1s ease;
+  }
+  input:focus:-ms-input-placeholder {
+    background-image: none;
+    opacity: 0;
+    transition: opacity 0.1s ease;
+  }
+}
+
+.lastInput {
+  margin-top: 36px;
+  position: relative;
+}
+
+.discription {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.2px;
+  color: #a7a7a7;
+  margin-top: 2px;
+}
+
+.eyeImage {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  & img:last-child {
+    margin-left: 13px;
+  }
+}
+
+.forgottenPassword {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.2px;
+  color: #a7a7a7;
+  margin-bottom: 32px;
+  margin-top: 20px;
+}
+
+.button {
+  width: 100%;
+  @include activeColor();
+  display: inline-block;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 18px;
+  margin-bottom: 16px;
+  margin-top: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  letter-spacing: 0.2px;
+  text-transform: uppercase;
+  color: #ffffff;
+  padding: 10px 23px;
+  border-radius: 30px;
+  height: 50px;
+  cursor: pointer;
+  @include middle() {
+    height: 40px;
+    border-radius: 20px;
+    font-size: 12px;
+    line-height: 18px;
+  }
+}
+
+.button[disabled] {
+  background-image: none;
+  background-color: #ebebeb;
+}

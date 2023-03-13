@@ -1,8 +1,8 @@
 import { useParams } from 'react-router-dom';
 import { call, put, takeLatest } from 'redux-saga/effects';
 import { PayloadAction } from '@reduxjs/toolkit';
-import axios from 'axios';
 
+import { axios } from '../../api/api';
 import { API } from '../../api/const';
 
 import { getOneBook, oneBookError, setOneBook } from '.';

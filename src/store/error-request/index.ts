@@ -9,7 +9,7 @@ const initialState: ErrorState = {
     name: '',
     message: '',
     details: {
-      discription: '', // поменять в последующем на входящие данные
+      discription: '',
     },
   },
 };
