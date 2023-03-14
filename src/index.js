@@ -17,6 +17,7 @@ import { MainPage } from './pages/main';
 import { store } from './store';
 
 import './index.scss';
+import { ReviewForm } from './components/review-form';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -26,7 +27,10 @@ root.render(
 		<Provider store={store}>
 			<HashRouter>
 				<Routes>
-					<Route path='/auth' element={<AuthPage><LoginForm /></AuthPage>}
+					<Route path='/auth' element={
+						// <AuthPage><LoginForm /></AuthPage>
+						<ReviewForm />
+					}
 					/>
 					<Route path='/registration' element={<AuthPage><RegistrationForm /></AuthPage>} />
 					<Route path='/forgot-pass' element={<AuthPage><RecoveryForm /></AuthPage>} />

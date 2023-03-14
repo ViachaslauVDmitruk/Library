@@ -1,0 +1,43 @@
+@import '../../index.scss';
+
+.ratingStar {
+  position: relative;
+  margin-bottom: 35px;
+  font-size: 40px;
+}
+
+.rowStars {
+  display: flex;
+  flex-direction: row-reverse;
+  overflow: hidden;
+  & .starRatingLabel:not(:last-child) {
+    margin-left: 20px;
+  }
+}
+
+.starRatingItem {
+  position: absolute;
+  width: 0%;
+  height: 0%;
+  opacity: 0;
+  visibility: hidden;
+  top: 0;
+  left: 0;
+}
+
+.starRatingItem:hover ~ label > svg {
+  fill: #ffbc1f;
+}
+
+.starRatingItem:checked ~ label > svg {
+  fill: #ffbc1f;
+}
+
+.starRatingItem:checked ~ .label {
+  fill: #ffbc1f;
+  background-color: green;
+}
+
+.starRatingLabel {
+  cursor: pointer;
+}
