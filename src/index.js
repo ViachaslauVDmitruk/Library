@@ -27,10 +27,7 @@ root.render(
 		<Provider store={store}>
 			<HashRouter>
 				<Routes>
-					<Route path='/auth' element={
-						// <AuthPage><LoginForm /></AuthPage>
-						<ReviewForm />
-					}
+					<Route path='/auth' element={<AuthPage><LoginForm /></AuthPage>}
 					/>
 					<Route path='/registration' element={<AuthPage><RegistrationForm /></AuthPage>} />
 					<Route path='/forgot-pass' element={<AuthPage><RecoveryForm /></AuthPage>} />
