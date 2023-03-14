@@ -53,24 +53,28 @@ export const Review = ({ comments }: CommentsState) => {
         </div>
 
         {isShowReview && (
-          <div className={styles.reviewItems}>
+          <div className={styles.reviewItems} data-test-id='reviews'>
             {comments?.map((item) => (
-              <div className={styles.content} key={item.id}>
+              <div className={styles.content} key={item.id} data-test-id='comment-wrapper'>
                 <div className={styles.information}>
                   <div className={styles.avatar}>
                     <img src={item.user.avatarUrl ? `${API_HOST}${item.user.avatarUrl}` : ava} alt='img' />
                   </div>
                   <div className={styles.accountData}>
-                    <div className={styles.account}>
+                    <div className={styles.account} data-test-id='comment-author'>
                       {item.user.firstName} {item.user.lastName}
                     </div>
-                    <div className={styles.data}>{format(new Date(item.createdAt), 'dd LLLL yyyy')}</div>
+                    <div className={styles.data} data-test-id='comment-date'>
+                      {format(new Date(item.createdAt), 'dd LLLL yyyy')}
+                    </div>
                   </div>
                 </div>
                 <div className={styles.stars}>
                   <StarsRating ratingStars={item.rating} />
                 </div>
-                <div className={styles.text}>{item.text}</div>
+                <div className={styles.text} data-test-id='comment-text'>
+                  {item.text}
+                </div>
               </div>
             ))}
           </div>
@@ -80,6 +84,7 @@ export const Review = ({ comments }: CommentsState) => {
           passStyle={styles.button}
           onClick={() => setIsOpenReveiwModal(true)}
           buttonText='Оценить'
+          id='button-comment'
         />
       </div>
     </div>

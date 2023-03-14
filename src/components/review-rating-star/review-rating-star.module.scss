@@ -4,6 +4,9 @@
   position: relative;
   margin-bottom: 35px;
   font-size: 40px;
+  @include middle() {
+    margin-bottom: 27px;
+  }
 }
 
 .rowStars {
@@ -12,6 +15,12 @@
   overflow: hidden;
   & .starRatingLabel:not(:last-child) {
     margin-left: 20px;
+  }
+
+  @include middle() {
+    & .starRatingLabel:not(:last-child) {
+      margin-left: 12px;
+    }
   }
 }
 
@@ -23,6 +32,15 @@
   visibility: hidden;
   top: 0;
   left: 0;
+}
+
+label {
+  @include middle() {
+    svg {
+      width: 26px;
+      height: 25px;
+    }
+  }
 }
 
 .starRatingItem:hover ~ label > svg {

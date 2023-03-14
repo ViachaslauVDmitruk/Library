@@ -9,6 +9,7 @@ import { ProfileMenuType } from '../store/profile-menu/type';
 import { RecoveryEmailProps } from '../store/recovery-email/type';
 import { RecoveyPasswordProps } from '../store/recovery-password/type';
 import { RegistrationStateTypes } from '../store/registration/type';
+import { ReviewStateProps } from '../store/review/type';
 import { SelectedCategoryState } from '../store/selected-category/types';
 
 export const burgeMenuSelector = (state: RootState): BurgerStateTypes => state.burgerMenu;
@@ -32,3 +33,5 @@ export const recoveryEmailSelector = (state: RootState): RecoveryEmailProps => s
 export const recoveryPasswordSelector = (state: RootState): RecoveyPasswordProps => state.recoveryPassword;
 
 export const profileMenuSelector = (state: RootState): ProfileMenuType => state.profileMenu;
+
+export const reviewSelector = (state: RootState): ReviewStateProps => state.review;

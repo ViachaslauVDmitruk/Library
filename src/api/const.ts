@@ -7,4 +7,5 @@ export const API = {
   loginUrl: `${API_HOST}/api/auth/local`,
   emailUrl: `${API_HOST}/api/auth/forgot-password`,
   passwordUrl: `${API_HOST}/api/auth/reset-password`,
+  reviewUrl: `${API_HOST}/api/comments`,
 };

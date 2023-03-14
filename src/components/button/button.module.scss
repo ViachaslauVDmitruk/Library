@@ -5,3 +5,8 @@
   text-transform: uppercase;
   background-image: $activeColor;
 }
+
+.button[disabled] {
+  background-image: none;
+  background-color: #ebebeb;
+}

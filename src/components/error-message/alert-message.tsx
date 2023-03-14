@@ -10,7 +10,7 @@ import styles from './alert-message.module.scss';
 
 type MessageType = {
   message: string;
-  stylesAlert: 'success' | 'error';
+  stylesAlert: 'success' | 'error' | '';
 };
 
 export const AlertMessage = ({ message, stylesAlert }: MessageType) => {

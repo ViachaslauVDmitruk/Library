@@ -12,6 +12,7 @@ import { profileMenuSlice } from './profile-menu';
 import { recoveryEmailSlice } from './recovery-email';
 import { recoveryPasswordSlice } from './recovery-password';
 import { registrationFormSlice } from './registration';
+import { reviewFormSlice } from './review';
 import { rootSaga } from './saga';
 import { selectedCategorySlice } from './selected-category';
 
@@ -30,6 +31,7 @@ export const rootReducer = {
   recoveryEmail: recoveryEmailSlice.reducer,
   recoveryPassword: recoveryPasswordSlice.reducer,
   profileMenu: profileMenuSlice.reducer,
+  review: reviewFormSlice.reducer,
 };
 
 export const store = configureStore({

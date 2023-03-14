@@ -5,65 +5,32 @@ import { Star } from './star';
 import styles from './review-rating-star.module.scss';
 
 export const ReviewRatingStar = () => {
-  const { register } = useFormContext();
+  const { register, watch } = useFormContext();
+
+  //* --TODO-------------Creat Input component---/
 
   return (
     <div className={styles.ratingStar}>
-      <div className={styles.rowStars}>
-        <input
-          id='star5'
-          {...register('rating')}
-          type='radio'
-          className={styles.starRatingItem}
-          name='rating'
-          value='5'
-        />
-        <label htmlFor='star5' className={styles.starRatingLabel}>
-          <Star />
+      <div className={styles.rowStars} data-test-id='rating'>
+        <input id='5' {...register('rating')} type='radio' className={styles.starRatingItem} name='rating' value={5} />
+        <label htmlFor='5' className={styles.starRatingLabel}>
+          <Star id={watch('rating') > 4 ? 'star-active' : 'star'} />
         </label>
-        <input
-          id='star4'
-          {...register('rating')}
-          type='radio'
-          className={styles.starRatingItem}
-          name='rating'
-          value='4'
-        />
-        <label htmlFor='star4' className={styles.starRatingLabel}>
-          <Star />
+        <input id='4' {...register('rating')} type='radio' className={styles.starRatingItem} name='rating' value={4} />
+        <label htmlFor='4' className={styles.starRatingLabel}>
+          <Star id={watch('rating') > 3 ? 'star-active' : 'star'} />
         </label>
-        <input
-          id='star3'
-          {...register('rating')}
-          type='radio'
-          className={styles.starRatingItem}
-          name='rating'
-          value='3'
-        />
-        <label htmlFor='star3' className={styles.starRatingLabel}>
-          <Star />
+        <input id='3' {...register('rating')} type='radio' className={styles.starRatingItem} name='rating' value={3} />
+        <label htmlFor='3' className={styles.starRatingLabel}>
+          <Star id={watch('rating') > 2 ? 'star-active' : 'star'} />
         </label>
-        <input
-          id='star2'
-          {...register('rating')}
-          type='radio'
-          className={styles.starRatingItem}
-          name='rating'
-          value='2'
-        />
-        <label htmlFor='star2' className={styles.starRatingLabel}>
-          <Star />
+        <input id='2' {...register('rating')} type='radio' className={styles.starRatingItem} name='rating' value={2} />
+        <label htmlFor='2' className={styles.starRatingLabel}>
+          <Star id={watch('rating') > 1 ? 'star-active' : 'star'} />
         </label>
-        <input
-          id='star1'
-          {...register('rating')}
-          type='radio'
-          className={styles.starRatingItem}
-          name='rating'
-          value='1'
-        />
-        <label htmlFor='star1' className={styles.starRatingLabel}>
-          <Star />
+        <input id='1' {...register('rating')} type='radio' className={styles.starRatingItem} name='rating' value={1} />
+        <label htmlFor='1' className={styles.starRatingLabel}>
+          <Star id={watch('rating') > 0 ? 'star-active' : 'star'} />
         </label>
       </div>
     </div>
