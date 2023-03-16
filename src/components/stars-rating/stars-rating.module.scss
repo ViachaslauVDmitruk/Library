@@ -1,5 +1,6 @@
 .rating {
   display: flex;
+  align-self: center;
   & li:not(:last-child) {
     margin-right: 6px;
   }

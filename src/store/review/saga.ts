@@ -3,18 +3,23 @@ import { PayloadAction } from '@reduxjs/toolkit';
 
 import { axios } from '../../api/api';
 import { API } from '../../api/const';
+import { getOneBook } from '../book';
 
 import { ReviewProps } from './type';
 import { closeReviewAlert, reviewError, reviewSuccess, sendReviewData } from '.';
 
 export function* reviewWorcker({ payload }: PayloadAction<ReviewProps>) {
   try {
+    console.log('saga send');
+    console.log('payload id', payload.book);
     yield call(axios.post, API.reviewUrl, { data: payload });
     yield put(reviewSuccess());
+    //  yield put(getOneBook(payload.book));
     yield delay(4000);
     yield put(closeReviewAlert());
   } catch (e) {
     yield put(reviewError());
+    //  yield put(getOneBook(payload.book));
     yield delay(4000);
     yield put(closeReviewAlert());
   }

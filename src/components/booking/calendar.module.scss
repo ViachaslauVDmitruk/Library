@@ -1,0 +1,118 @@
+@import '../../index.scss';
+
+.calendar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(54, 54, 54, 0.3);
+  backdrop-filter: blur(10px);
+  display: none;
+  z-index: 80;
+  @include middle() {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+.visible {
+  display: flex;
+}
+
+.wrapperStopPropagination {
+  @include middle() {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+}
+
+.form {
+  position: relative;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 48px 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 530px;
+  @include middle() {
+    min-width: 0;
+    width: 100%;
+    padding-top: 42px;
+    padding-bottom: 32px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+.formTitle {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 30px;
+  text-align: center;
+  letter-spacing: 0.1px;
+  color: #363636;
+  margin-bottom: 32px;
+  @include middle() {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 28px;
+    letter-spacing: 0.1px;
+  }
+}
+
+.button {
+  width: 100%;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 150%;
+  text-transform: uppercase;
+  color: #ffffff;
+  border-radius: 30px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  @include middle() {
+    font-size: 12px;
+    line-height: 18px;
+  }
+}
+
+.closeButton {
+  position: absolute;
+  top: 32px;
+  right: 32px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: #f9f9fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  img {
+    display: block;
+  }
+  @include middle() {
+    width: 32px;
+    height: 32px;
+    top: 16px;
+    right: 16px;
+
+    img {
+      height: 12px;
+      width: 12px;
+    }
+  }
+}
+
+.cancel {
+  color: #363636;
+  background: #ffffff;
+  border: 1px solid #bfc4c9;
+  margin-top: 16px;
+}

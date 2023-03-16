@@ -3,10 +3,10 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { REVIEW } from '../../const/review';
 
-import { ReviewProps, ReviewStateProps } from './type';
+import { ModalStateProps, ReviewProps } from './type';
 
-export const initialState: ReviewStateProps = {
-  isLoading: false,
+export const initialState: ModalStateProps = {
+  isLoadingModal: false,
   alertMessage: '',
   message: '',
 };
@@ -16,15 +16,15 @@ export const reviewFormSlice = createSlice({
   initialState,
   reducers: {
     sendReviewData: (state, action: PayloadAction<ReviewProps>) => {
-      state.isLoading = true;
+      state.isLoadingModal = true;
     },
     reviewSuccess: (state) => {
-      state.isLoading = false;
+      state.isLoadingModal = false;
       state.alertMessage = 'success';
       state.message = 'Спасибо, что нашли время оценить книгу!';
     },
     reviewError: (state) => {
-      state.isLoading = false;
+      state.isLoadingModal = false;
       state.alertMessage = 'error';
       state.message = 'Оценка не была отправлена. Попробуйте позже!';
     },

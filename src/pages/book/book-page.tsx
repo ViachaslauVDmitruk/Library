@@ -30,7 +30,7 @@ export const BookPage = () => {
     if (id) {
       dispatch(getOneBook(id));
     }
-  }, [message]);
+  }, [id]);
 
   return (
     <div className={styles.main}>

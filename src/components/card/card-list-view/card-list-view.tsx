@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import { API_HOST } from '../../../api/const';
 import { ColorMatch } from '../../../helpers/color-match';
 import { CardProps } from '../../../types/card';
+import { Button } from '../../button';
 import { StarsRating } from '../../stars-rating';
 import noImage from '../assets/no-image.png';
 
@@ -29,9 +30,7 @@ export const CardListView = ({ src, rating, title, authors, id, issueYear, searc
         </div>
         <div className={styles.ratingButton}>
           {rating ? <StarsRating ratingStars={rating} /> : <div className={styles.noRaring}>еще нет оценок</div>}
-          <button type='button' className={styles.button}>
-            Забронировать
-          </button>
+          <Button type='button' passStyle={styles.button} buttonText='Забронировать' id='booking-button' />
         </div>
       </div>
     </Link>

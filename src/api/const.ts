@@ -8,4 +8,5 @@ export const API = {
   emailUrl: `${API_HOST}/api/auth/forgot-password`,
   passwordUrl: `${API_HOST}/api/auth/reset-password`,
   reviewUrl: `${API_HOST}/api/comments`,
+  bookingUrl: `${API_HOST}/api/bookings`,
 };

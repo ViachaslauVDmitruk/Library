@@ -17,7 +17,6 @@ import { MainPage } from './pages/main';
 import { store } from './store';
 
 import './index.scss';
-import { ReviewForm } from './components/review-form';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 

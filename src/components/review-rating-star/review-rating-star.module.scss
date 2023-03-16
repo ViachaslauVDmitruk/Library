@@ -11,15 +11,15 @@
 
 .rowStars {
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: row;
   overflow: hidden;
   & .starRatingLabel:not(:last-child) {
-    margin-left: 20px;
+    margin-right: 20px;
   }
 
   @include middle() {
     & .starRatingLabel:not(:last-child) {
-      margin-left: 12px;
+      margin-right: 12px;
     }
   }
 }

@@ -13,6 +13,10 @@
   backdrop-filter: blur(10px);
   display: none;
   z-index: 80;
+  @include middle() {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
 }
 
 .visible {
@@ -74,6 +78,14 @@
   }
 }
 
+.wrapperStopPropagination {
+  @include middle() {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+}
+
 .form {
   position: relative;
   background: #ffffff;
@@ -117,4 +129,8 @@
   border-radius: 30px;
   padding-top: 14px;
   padding-bottom: 14px;
+  @include middle() {
+    font-size: 12px;
+    line-height: 18px;
+  }
 }

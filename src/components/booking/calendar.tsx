@@ -5,35 +5,34 @@ import ReactDOM from 'react-dom';
 import { FormProvider, useForm } from 'react-hook-form';
 import classNames from 'classnames';
 
-import { loginSelector, oneBookSelector, reviewSelector } from '../../selectors';
-import { sendReviewData } from '../../store/review';
-import { ReviewProps } from '../../store/review/type';
+import { bookingSelector, loginSelector, oneBookSelector } from '../../selectors';
+import { sendBookingData } from '../../store/order';
+import { BookingDataProps } from '../../store/order/type';
 import { ModalFromState } from '../../types/modal';
 import { Button } from '../button';
 import { useAppDispatch, useAppSelector } from '../hooks';
 import { Loader } from '../loader';
-import { ReviewRatingStar } from '../review-rating-star';
 
 import closeSrc from './assets/close.png';
 
-import styles from './review-form.module.scss';
+import styles from './calendar.module.scss';
 
-const modal = document.getElementById('modal') as HTMLElement;
+const modalCalendar = document.getElementById('modalCalendar') as HTMLElement;
 
-export const ReviewForm = ({ isOpen, setIsOpen }: ModalFromState) => {
+export const Calendar = ({ isOpen, setIsOpen }: ModalFromState) => {
   const { book } = useAppSelector(oneBookSelector);
   const { user } = useAppSelector(loginSelector);
-  const { isLoadingModal, alertMessage } = useAppSelector(reviewSelector);
+  const { isLoadingModal, alertMessage } = useAppSelector(bookingSelector);
   const dispatch = useAppDispatch();
 
-  const methods = useForm<ReviewProps>({
+  const methods = useForm<BookingDataProps>({
     mode: 'onBlur',
     reValidateMode: 'onChange',
     defaultValues: {
-      text: '',
-      rating: null,
+      order: true,
+      dateOrder: new Date(),
       book: book?.id,
-      user: user?.id,
+      customer: user?.id,
     },
   });
 
@@ -45,13 +44,13 @@ export const ReviewForm = ({ isOpen, setIsOpen }: ModalFromState) => {
     formState: { isDirty },
   } = methods;
 
-  const onSubmit = (data: ReviewProps) => {
+  const onSubmit = (data: BookingDataProps) => {
     dispatch(
-      sendReviewData({
-        rating: Number(data.rating),
-        text: data.text,
+      sendBookingData({
+        order: data.order,
+        dateOrder: data.dateOrder,
         book: data.book,
-        user: data.user,
+        customer: data.customer,
       })
     );
     reset();
@@ -78,19 +77,19 @@ export const ReviewForm = ({ isOpen, setIsOpen }: ModalFromState) => {
 
   if (!isOpen) return null;
 
-  console.log('rating watch', watch('rating'));
+  console.log('rating watch', watch());
 
   return ReactDOM.createPortal(
     <FormProvider {...methods}>
       {isLoadingModal && <Loader />}
       <div
-        className={classNames(styles.reviewForm, { [styles.visible]: isOpen })}
+        className={classNames(styles.calendar, { [styles.visible]: isOpen })}
         onClick={closeReviewModal}
         data-test-id='modal-outer'
       >
         <div
           onClick={(e) => e.stopPropagation()}
-          data-test-id='modal-rate-book'
+          data-test-id='booking-modal'
           className={styles.wrapperStopPropagination}
         >
           <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
@@ -98,25 +97,20 @@ export const ReviewForm = ({ isOpen, setIsOpen }: ModalFromState) => {
               <img src={closeSrc} alt='img' />
             </div>
             <div className={styles.formTitle} data-test-id='modal-title'>
-              Оцените книгу
+              Выбор даты <br /> бронирования
             </div>
-            <div className={styles.formText}>Ваша оценка</div>
-            <ReviewRatingStar />
-            <textarea
-              {...register('text')}
-              name='text'
-              id=''
-              cols={10}
-              rows={5}
-              placeholder='Комментарии'
-              className={styles.textarea}
-              data-test-id='comment'
+
+            <Button type='submit' buttonText='Забронировать' passStyle={styles.button} id='booking-button' />
+            <Button
+              type='submit'
+              buttonText='Забронировать'
+              passStyle={classNames(styles.button, styles.cancel)}
+              id='booking-cancel-button'
             />
-            <Button type='submit' buttonText='Оценить' passStyle={styles.button} id='button-comment' />
           </form>
         </div>
       </div>
     </FormProvider>,
-    modal
+    modalCalendar
   );
 };

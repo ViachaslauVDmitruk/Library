@@ -26,7 +26,7 @@ type CommentsStateProps = {
 };
 
 export const Review = ({ comments }: CommentsState) => {
-  const [isShowReview, setIsShowReview] = useState<boolean>(false);
+  const [isShowReview, setIsShowReview] = useState<boolean>(true); //* ----под вопросом----- */
   const [isOpenReviewModal, setIsOpenReveiwModal] = useState<boolean>(false);
 
   const ToggleReview = () => {
@@ -84,7 +84,7 @@ export const Review = ({ comments }: CommentsState) => {
           passStyle={styles.button}
           onClick={() => setIsOpenReveiwModal(true)}
           buttonText='Оценить'
-          id='button-comment'
+          id='button-rate-book'
         />
       </div>
     </div>
