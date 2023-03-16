@@ -10,8 +10,6 @@ import { closeReviewAlert, reviewError, reviewSuccess, sendReviewData } from '.'
 
 export function* reviewWorcker({ payload }: PayloadAction<ReviewProps>) {
   try {
-    console.log('saga send');
-    console.log('payload id', payload.book);
     yield call(axios.post, API.reviewUrl, { data: payload });
     yield put(reviewSuccess());
     //  yield put(getOneBook(payload.book));

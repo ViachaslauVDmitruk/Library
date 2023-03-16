@@ -78,8 +78,6 @@ export const ReviewForm = ({ isOpen, setIsOpen }: ModalFromState) => {
 
   if (!isOpen) return null;
 
-  console.log('rating watch', watch('rating'));
-
   return ReactDOM.createPortal(
     <FormProvider {...methods}>
       {isLoadingModal && <Loader />}

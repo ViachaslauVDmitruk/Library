@@ -1,0 +1,107 @@
+@import '../../index.scss';
+
+.wrapper {
+  background: #ffffff;
+  box-shadow: 0px 2px 4px rgba(191, 196, 201, 0.2), 0px 3px 4px rgba(191, 196, 201, 0.18),
+    0px 1px 5px rgba(191, 196, 201, 0.24);
+  border-radius: 8px;
+  padding-top: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-bottom: 8px;
+  margin-bottom: 32px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.month {
+}
+
+.controlButtons {
+}
+
+.week {
+  text-align: center;
+  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1px 1px;
+}
+
+.weekDayName {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.2px;
+  @include activeColor();
+  background-color: #f83600;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  align-self: center;
+  justify-self: center;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dayNumber {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.2px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-image: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #bfc4c9;
+  cursor: pointer;
+}
+
+.activeNumber {
+  @include activeColor();
+  border-radius: 50%;
+  color: #363636;
+}
+
+.arrayDays {
+  font-size: 10px;
+  font-weight: 400;
+  text-align: center;
+  display: grid;
+  text-align: center;
+  align-items: center;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.todayItem {
+  background-color: #f83600;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.weekendItem {
+  background: #feebea;
+}
+
+.selectedDay {
+  @include activeColor();
+  border-radius: 50%;
+  color: #ffffff;
+}
+
+.selectArrow {
+  background-image: none;
+  cursor: pointer;
+  img {
+    padding: 7px;
+  }
+}

@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import { FormProvider, useForm } from 'react-hook-form';
 import classNames from 'classnames';
@@ -16,10 +16,12 @@ import { Loader } from '../loader';
 import closeSrc from './assets/close.png';
 
 import styles from './calendar.module.scss';
+import { CalendarForm } from '../calendar-form';
 
 const modalCalendar = document.getElementById('modalCalendar') as HTMLElement;
 
 export const Calendar = ({ isOpen, setIsOpen }: ModalFromState) => {
+  const [selectedDate, setSelectedDay] = useState(new Date());
   const { book } = useAppSelector(oneBookSelector);
   const { user } = useAppSelector(loginSelector);
   const { isLoadingModal, alertMessage } = useAppSelector(bookingSelector);
@@ -77,8 +79,6 @@ export const Calendar = ({ isOpen, setIsOpen }: ModalFromState) => {
 
   if (!isOpen) return null;
 
-  console.log('rating watch', watch());
-
   return ReactDOM.createPortal(
     <FormProvider {...methods}>
       {isLoadingModal && <Loader />}
@@ -99,7 +99,7 @@ export const Calendar = ({ isOpen, setIsOpen }: ModalFromState) => {
             <div className={styles.formTitle} data-test-id='modal-title'>
               Выбор даты <br /> бронирования
             </div>
-
+            <CalendarForm type='date' selectedDate={selectedDate} selectDate={(date) => setSelectedDay(date)} />
             <Button type='submit' buttonText='Забронировать' passStyle={styles.button} id='booking-button' />
             <Button
               type='submit'

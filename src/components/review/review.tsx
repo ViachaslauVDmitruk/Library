@@ -26,7 +26,7 @@ type CommentsStateProps = {
 };
 
 export const Review = ({ comments }: CommentsState) => {
-  const [isShowReview, setIsShowReview] = useState<boolean>(true); //* ----под вопросом----- */
+  const [isShowReview, setIsShowReview] = useState<boolean>(true);
   const [isOpenReviewModal, setIsOpenReveiwModal] = useState<boolean>(false);
 
   const ToggleReview = () => {
