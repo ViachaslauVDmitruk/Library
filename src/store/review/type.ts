@@ -8,5 +8,5 @@ export type ReviewProps = {
   text: string;
   rating: number | null;
   book: string | number;
-  user: string | number;
+  user: string | number | null;
 };

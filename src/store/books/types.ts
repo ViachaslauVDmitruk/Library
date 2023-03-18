@@ -12,7 +12,7 @@ export type BookProps = {
   image: ImageProps | null;
   categories: string[];
   id: number;
-  booking: BookProps;
+  booking: BookingProps;
   delivery: DeliveryProps;
   histories: HistoriesProps;
 };

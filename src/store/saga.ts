@@ -4,6 +4,7 @@ import { oneBookWatcher } from './book/saga';
 import { booksWatcher } from './books/saga';
 import { categoriesWatcher } from './categories/saga';
 import { loginWatcher } from './login/saga';
+import { bookingWatcher } from './order/saga';
 import { recoveryEmailWatcher } from './recovery-email/saga';
 import { recoveryPasswordWatcher } from './recovery-password/saga';
 import { registrationWatcher } from './registration/saga';
@@ -19,5 +20,6 @@ export function* rootSaga(): Generator {
     recoveryEmailWatcher(),
     recoveryPasswordWatcher(),
     reviewWatcher(),
+    bookingWatcher(),
   ]);
 }

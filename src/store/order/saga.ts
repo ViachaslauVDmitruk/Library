@@ -8,6 +8,7 @@ import { BookingDataProps } from './type';
 import { bookingError, bookingSuccess, closeBookingAlert, sendBookingData } from '.';
 
 export function* bookingWorker({ payload }: PayloadAction<BookingDataProps>) {
+  console.log('saga data booking', payload);
   try {
     yield call(axios.post, API.bookingUrl, { data: payload });
     yield put(bookingSuccess());

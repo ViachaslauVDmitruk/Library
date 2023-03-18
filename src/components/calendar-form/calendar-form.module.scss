@@ -64,6 +64,10 @@
   justify-content: center;
   color: #bfc4c9;
   cursor: pointer;
+
+  &:hover {
+    border: 1px solid #bfc4c9;
+  }
 }
 
 .activeNumber {

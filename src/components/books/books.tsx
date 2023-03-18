@@ -37,7 +37,7 @@ export const Books = () => {
       {categoryMode.length ? (
         filteredCategoryBySearch.length ? (
           <div className={styles[view]} data-test-id='content'>
-            {filteredCategoryBySearch.map(({ image, rating, title, authors, id, issueYear }) =>
+            {filteredCategoryBySearch.map(({ image, rating, title, authors, id, issueYear, booking }) =>
               isWindow ? (
                 <CardWindowView
                   src={image}
@@ -48,6 +48,7 @@ export const Books = () => {
                   id={id}
                   issueYear={issueYear}
                   searchValue={searchValue}
+                  booking={booking}
                 />
               ) : (
                 <CardListView
@@ -59,6 +60,7 @@ export const Books = () => {
                   id={id}
                   issueYear={issueYear}
                   searchValue={searchValue}
+                  booking={booking}
                 />
               )
             )}

@@ -9,6 +9,7 @@ import { errorSlice } from './error-request';
 import { inputSearchSlice } from './input-search';
 import { loginFormSlice } from './login';
 import { bookingSlice } from './order';
+import { dateOrderSlice } from './order-date';
 import { profileMenuSlice } from './profile-menu';
 import { recoveryEmailSlice } from './recovery-email';
 import { recoveryPasswordSlice } from './recovery-password';
@@ -34,11 +35,12 @@ export const rootReducer = {
   profileMenu: profileMenuSlice.reducer,
   review: reviewFormSlice.reducer,
   booking: bookingSlice.reducer,
+  dateOrder: dateOrderSlice.reducer,
 };
 
 export const store = configureStore({
   reducer: rootReducer,
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(sagaMiddleware),
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware({ serializableCheck: false }).concat(sagaMiddleware),
 });
 
 sagaMiddleware.run(rootSaga);

@@ -1,11 +1,15 @@
+import { useFormContext } from 'react-hook-form';
 import classNames from 'classnames';
 
 import { calendarState } from '../../const/calendar';
 import { checkDateIsEqual, checkIsToday } from '../../helpers/calendar';
+import { getDateOrder } from '../../store/order-date';
 import { Button } from '../button';
+import { useAppDispatch } from '../hooks';
 import { useCalendar, UseCalendarParams } from '../hooks/use-calendar';
-import prevSrc from './assets/prev.png';
+
 import nextSrc from './assets/next.png';
+import prevSrc from './assets/prev.png';
 
 import styles from './calendar-form.module.scss';
 
@@ -26,10 +30,12 @@ export const CalendarForm = ({
     firstWeekDayNumber,
   });
 
+  const dispatch = useAppDispatch();
+
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.wrapper} data-test-id='calendar'>
       <header className={styles.header}>
-        <select>
+        <select data-test-id='month-select'>
           {state.monthesNames.map((month, i) => (
             <option key={`${month.month}+1`} value={i}>
               {month.month} {state.selectedYear}
@@ -42,12 +48,14 @@ export const CalendarForm = ({
             src={prevSrc}
             passStyle={styles.selectArrow}
             onClick={() => functions.onClickArrow('left')}
+            id='button-prev-month'
           />
           <Button
             type='button'
             src={nextSrc}
             passStyle={styles.selectArrow}
             onClick={() => functions.onClickArrow('right')}
+            id='button-next-month'
           />
         </div>
       </header>
@@ -82,18 +90,20 @@ export const CalendarForm = ({
                 key={`${day.dayNumber}-${day.monthIndex}`}
                 onClick={() => {
                   functions.selectDay(day);
+                  dispatch(getDateOrder(day.date));
                 }}
-                className={[
+                className={classNames(
                   styles.dayNumber,
                   styles[isToday ? 'todayItem' : ''],
                   styles[isWeekendDay ? 'weekendItem' : ''],
                   isDateBetweenPeriod ? 'calendar__today__item' : '',
-                  styles[isSelectedDay ? 'selectedDay' : ''],
-                  isEndPeriodDate ? 'calendar__selected__item' : '',
-                  isStartPeriodDate ? 'calendar__selected__item' : '',
-                  isAdditionalDay ? 'calendar__additional__day' : '',
-                  isNotSelectedDate ? 'calendar__additional__day' : '',
-                ].join(' ')}
+                  styles[isSelectedDay ? 'selectedDay' : '']
+                  // isEndPeriodDate ? 'calendar__selected__item' : '',
+                  // isStartPeriodDate ? 'calendar__selected__item' : '',
+                  // isAdditionalDay ? 'calendar__additional__day' : '',
+                  // isNotSelectedDate ? 'calendar__additional__day' : '',
+                )}
+                data-test-id='day-button'
               >
                 {day.dayNumber}
               </tr>

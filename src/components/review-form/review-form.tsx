@@ -79,42 +79,44 @@ export const ReviewForm = ({ isOpen, setIsOpen }: ModalFromState) => {
   if (!isOpen) return null;
 
   return ReactDOM.createPortal(
-    <FormProvider {...methods}>
+    <div>
       {isLoadingModal && <Loader />}
-      <div
-        className={classNames(styles.reviewForm, { [styles.visible]: isOpen })}
-        onClick={closeReviewModal}
-        data-test-id='modal-outer'
-      >
+      <FormProvider {...methods}>
         <div
-          onClick={(e) => e.stopPropagation()}
-          data-test-id='modal-rate-book'
-          className={styles.wrapperStopPropagination}
+          className={classNames(styles.reviewForm, { [styles.visible]: isOpen })}
+          onClick={closeReviewModal}
+          data-test-id='modal-outer'
         >
-          <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-            <div className={styles.closeButton} onClick={closeReviewModal} data-test-id='modal-close-button'>
-              <img src={closeSrc} alt='img' />
-            </div>
-            <div className={styles.formTitle} data-test-id='modal-title'>
-              Оцените книгу
-            </div>
-            <div className={styles.formText}>Ваша оценка</div>
-            <ReviewRatingStar />
-            <textarea
-              {...register('text')}
-              name='text'
-              id=''
-              cols={10}
-              rows={5}
-              placeholder='Комментарии'
-              className={styles.textarea}
-              data-test-id='comment'
-            />
-            <Button type='submit' buttonText='Оценить' passStyle={styles.button} id='button-comment' />
-          </form>
+          <div
+            onClick={(e) => e.stopPropagation()}
+            data-test-id='modal-rate-book'
+            className={styles.wrapperStopPropagination}
+          >
+            <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+              <div className={styles.closeButton} onClick={closeReviewModal} data-test-id='modal-close-button'>
+                <img src={closeSrc} alt='img' />
+              </div>
+              <div className={styles.formTitle} data-test-id='modal-title'>
+                Оцените книгу
+              </div>
+              <div className={styles.formText}>Ваша оценка</div>
+              <ReviewRatingStar />
+              <textarea
+                {...register('text')}
+                name='text'
+                id=''
+                cols={10}
+                rows={5}
+                placeholder='Комментарии'
+                className={styles.textarea}
+                data-test-id='comment'
+              />
+              <Button type='submit' buttonText='Оценить' passStyle={styles.button} id='button-comment' />
+            </form>
+          </div>
         </div>
-      </div>
-    </FormProvider>,
+      </FormProvider>
+    </div>,
     modal
   );
 };

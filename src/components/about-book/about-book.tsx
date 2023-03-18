@@ -1,19 +1,23 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 
-import { oneBookSelector } from '../../selectors';
+import { bookingSelector, oneBookSelector } from '../../selectors';
 import { Calendar } from '../booking';
 import { Button } from '../button';
+import { AlertMessage } from '../error-message';
+import { useAppSelector } from '../hooks';
 import { SliderBook } from '../slider';
 
 import styles from './about-book.module.scss';
 
 export const AboutBook = () => {
   const [openModalCalendar, setIsOpenCalendar] = useState<boolean>(false);
-  const { book } = useSelector(oneBookSelector);
+  const { book } = useAppSelector(oneBookSelector);
+  const { alertMessage, message } = useAppSelector(bookingSelector);
 
   return (
     <div className={styles.aboutBook}>
+      {message && <AlertMessage message={message} stylesAlert={alertMessage} />}
       <Calendar isOpen={openModalCalendar} setIsOpen={setIsOpenCalendar} />
       <div className={styles.container}>
         <SliderBook src={book.images} />
@@ -28,8 +32,9 @@ export const AboutBook = () => {
           </div>
           <Button
             type='button'
+            disabled={!book.booking}
             passStyle={styles.button}
-            buttonText='Забронировать'
+            buttonText={book.booking ? 'Забронировать' : 'Забронирована'}
             id='booking-button'
             onClick={() => setIsOpenCalendar(true)}
           />

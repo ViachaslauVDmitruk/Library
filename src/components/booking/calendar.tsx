@@ -3,37 +3,42 @@
 import { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import { FormProvider, useForm } from 'react-hook-form';
+import { useParams } from 'react-router-dom';
 import classNames from 'classnames';
 
-import { bookingSelector, loginSelector, oneBookSelector } from '../../selectors';
+import { bookingSelector, dateOrderSelector, loginSelector, oneBookSelector } from '../../selectors';
 import { sendBookingData } from '../../store/order';
 import { BookingDataProps } from '../../store/order/type';
 import { ModalFromState } from '../../types/modal';
 import { Button } from '../button';
+import { CalendarForm } from '../calendar-form';
 import { useAppDispatch, useAppSelector } from '../hooks';
 import { Loader } from '../loader';
 
 import closeSrc from './assets/close.png';
 
 import styles from './calendar.module.scss';
-import { CalendarForm } from '../calendar-form';
 
 const modalCalendar = document.getElementById('modalCalendar') as HTMLElement;
 
 export const Calendar = ({ isOpen, setIsOpen }: ModalFromState) => {
   const [selectedDate, setSelectedDay] = useState(new Date());
+  const { id } = useParams();
   const { book } = useAppSelector(oneBookSelector);
   const { user } = useAppSelector(loginSelector);
+  const { dateOrder } = useAppSelector(dateOrderSelector);
   const { isLoadingModal, alertMessage } = useAppSelector(bookingSelector);
   const dispatch = useAppDispatch();
+
+  //   console.log('dateOrder', dateOrder.toISOString());
 
   const methods = useForm<BookingDataProps>({
     mode: 'onBlur',
     reValidateMode: 'onChange',
     defaultValues: {
       order: true,
-      dateOrder: new Date(),
-      book: book?.id,
+      dateOrder: dateOrder.toISOString(),
+      book: id,
       customer: user?.id,
     },
   });
@@ -47,6 +52,7 @@ export const Calendar = ({ isOpen, setIsOpen }: ModalFromState) => {
   } = methods;
 
   const onSubmit = (data: BookingDataProps) => {
+    console.log('data booking', data);
     dispatch(
       sendBookingData({
         order: data.order,
