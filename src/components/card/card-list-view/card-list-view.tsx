@@ -23,6 +23,10 @@ export const CardListView = ({ src, rating, title, authors, id, issueYear, searc
   const [openModalCalendar, setIsOpenCalendar] = useState<boolean>(false);
   const { user } = useAppSelector(loginSelector);
 
+  const customerId = booking?.customerId;
+
+  const userId = user?.id;
+
   return (
     <div className={styles.cardList} data-test-id='card' key={id}>
       <Link to={`/books/${category}/${id}`} className={styles.image}>
@@ -49,8 +53,8 @@ export const CardListView = ({ src, rating, title, authors, id, issueYear, searc
           {rating ? <StarsRating ratingStars={rating} /> : <div className={styles.noRaring}>еще нет оценок</div>}
           <Button
             type='button'
-            passStyle={styles.button}
-            disabled={!!booking}
+            passStyle={classNames(styles.button, { [styles.bookingUser]: customerId === userId })}
+            disabled={!!booking && customerId !== userId}
             buttonText={booking ? 'Забронирована' : 'Забронировать'}
             id='booking-button'
             onClick={() => {
@@ -59,7 +63,7 @@ export const CardListView = ({ src, rating, title, authors, id, issueYear, searc
           />
         </div>
       </div>
-      <Calendar isOpen={openModalCalendar} setIsOpen={setIsOpenCalendar} />
+      <Calendar isOpen={openModalCalendar} setIsOpen={setIsOpenCalendar} bookId={id} />
     </div>
   );
 };

@@ -22,6 +22,9 @@ export const CardWindowView = ({ src, rating, title, authors, id, issueYear, sea
   const highlight = ColorMatch({ searchValue, title });
   const [openModalCalendar, setIsOpenCalendar] = useState<boolean>(false);
   const { user } = useAppSelector(loginSelector);
+  const customerId = booking?.customerId;
+
+  const userId = user?.id;
 
   return (
     <div className={styles.cardWindow} data-test-id='card' key={id}>
@@ -42,15 +45,13 @@ export const CardWindowView = ({ src, rating, title, authors, id, issueYear, sea
       </Link>
       <Button
         type='button'
-        passStyle={styles.button}
-        //   passStyle={classNames(styles.button, { [styles.bookingUser]: booking.customerId === user.id })}
-        //   disabled={!booking || !(booking.customerId === user?.id)}
-        disabled={!!booking}
+        passStyle={classNames(styles.button, { [styles.bookingUser]: customerId === userId })}
+        disabled={!!booking && customerId !== userId}
         buttonText={booking ? 'Забронирована' : 'Забронировать'}
         id='booking-button'
         onClick={() => setIsOpenCalendar(true)}
       />
-      <Calendar isOpen={openModalCalendar} setIsOpen={setIsOpenCalendar} />
+      <Calendar isOpen={openModalCalendar} setIsOpen={setIsOpenCalendar} bookId={id} />
     </div>
   );
 };

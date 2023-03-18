@@ -8,13 +8,12 @@ import { getOneBook } from '../book';
 import { ReviewProps } from './type';
 import { closeReviewAlert, reviewError, reviewSuccess, sendReviewData } from '.';
 
-export function* reviewWorcker({ payload }: PayloadAction<ReviewProps>) {
+export function* reviewWorker({ payload }: PayloadAction<ReviewProps>) {
   console.log('review', payload);
   try {
     yield call(axios.post, API.reviewUrl, { data: payload });
-    //  yield put(getOneBook(payload.book));
+    yield put(getOneBook(payload.book));
     yield put(reviewSuccess());
-
     yield delay(4000);
     yield put(closeReviewAlert());
   } catch (e) {
@@ -26,5 +25,5 @@ export function* reviewWorcker({ payload }: PayloadAction<ReviewProps>) {
 }
 
 export function* reviewWatcher(): Generator {
-  yield takeLatest(sendReviewData.type, reviewWorcker);
+  yield takeLatest(sendReviewData.type, reviewWorker);
 }

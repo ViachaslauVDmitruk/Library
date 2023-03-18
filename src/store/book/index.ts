@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { BookStateProps, OneBookProps } from './types';
+import { BookStateProps, CommentsProps, OneBookProps } from './types';
 
 const initialState: BookStateProps = {
   isLoading: false,

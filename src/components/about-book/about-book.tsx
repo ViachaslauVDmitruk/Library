@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import classNames from 'classnames';
 
-import { bookingSelector, oneBookSelector } from '../../selectors';
+import { bookingSelector, loginSelector, oneBookSelector } from '../../selectors';
 import { Calendar } from '../booking';
 import { Button } from '../button';
 import { AlertMessage } from '../error-message';
@@ -14,11 +14,16 @@ export const AboutBook = () => {
   const [openModalCalendar, setIsOpenCalendar] = useState<boolean>(false);
   const { book } = useAppSelector(oneBookSelector);
   const { alertMessage, message } = useAppSelector(bookingSelector);
+  const { user } = useAppSelector(loginSelector);
+
+  const customerId = book.booking?.customerId;
+
+  const userId = user?.id;
 
   return (
     <div className={styles.aboutBook}>
       {message && <AlertMessage message={message} stylesAlert={alertMessage} />}
-      <Calendar isOpen={openModalCalendar} setIsOpen={setIsOpenCalendar} />
+      <Calendar isOpen={openModalCalendar} setIsOpen={setIsOpenCalendar} bookId={book.id} />
       <div className={styles.container}>
         <SliderBook src={book.images} />
         <div className={styles.discribeTop}>
@@ -32,8 +37,8 @@ export const AboutBook = () => {
           </div>
           <Button
             type='button'
-            disabled={!!book.booking}
-            passStyle={styles.button}
+            passStyle={classNames(styles.button, { [styles.bookingUser]: customerId === userId })}
+            disabled={!!book.booking && customerId !== userId}
             buttonText={book.booking ? 'Забронирована' : 'Забронировать'}
             id='booking-button'
             onClick={() => setIsOpenCalendar(true)}

@@ -10,7 +10,7 @@ import classNames from 'classnames';
 import { bookingSelector, dateOrderSelector, loginSelector, oneBookSelector } from '../../selectors';
 import { sendBookingData } from '../../store/order';
 import { BookingDataProps } from '../../store/order/type';
-import { ModalFromState } from '../../types/modal';
+
 import { Button } from '../button';
 import { CalendarForm } from '../calendar-form';
 import { useAppDispatch, useAppSelector } from '../hooks';
@@ -19,10 +19,11 @@ import { Loader } from '../loader';
 import closeSrc from './assets/close.png';
 
 import styles from './calendar.module.scss';
+import { ModalFromState } from '../../types/modal';
 
 const modalCalendar = document.getElementById('modalCalendar') as HTMLElement;
 
-export const Calendar = ({ isOpen, setIsOpen }: ModalFromState) => {
+export const Calendar = ({ isOpen, setIsOpen, bookId }: ModalFromState) => {
   const [selectedDate, setSelectedDay] = useState(new Date());
   const { id } = useParams();
   const { book } = useAppSelector(oneBookSelector);
@@ -37,7 +38,7 @@ export const Calendar = ({ isOpen, setIsOpen }: ModalFromState) => {
     defaultValues: {
       order: true,
       dateOrder: dateOrder,
-      book: id,
+      book: bookId,
       customer: user?.id,
     },
   });
@@ -51,7 +52,6 @@ export const Calendar = ({ isOpen, setIsOpen }: ModalFromState) => {
   } = methods;
 
   const onSubmit = (data: BookingDataProps) => {
-
     dispatch(
       sendBookingData({
         order: data.order,
