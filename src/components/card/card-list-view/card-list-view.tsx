@@ -44,15 +44,14 @@ export const CardListView = ({ src, rating, title, authors, id, issueYear, searc
           className={styles.ratingButton}
           onClick={(e) => {
             e.stopPropagation();
-            console.log('e', e);
           }}
         >
           {rating ? <StarsRating ratingStars={rating} /> : <div className={styles.noRaring}>еще нет оценок</div>}
           <Button
             type='button'
             passStyle={styles.button}
-            disabled={!booking}
-            buttonText={booking ? 'Забронировать' : 'Забронирована'}
+            disabled={!!booking}
+            buttonText={booking ? 'Забронирована' : 'Забронировать'}
             id='booking-button'
             onClick={() => {
               setIsOpenCalendar(true);

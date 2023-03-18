@@ -45,8 +45,8 @@ export const CardWindowView = ({ src, rating, title, authors, id, issueYear, sea
         passStyle={styles.button}
         //   passStyle={classNames(styles.button, { [styles.bookingUser]: booking.customerId === user.id })}
         //   disabled={!booking || !(booking.customerId === user?.id)}
-        disabled={!booking}
-        buttonText={booking ? 'Забронировать' : 'Забронирована'}
+        disabled={!!booking}
+        buttonText={booking ? 'Забронирована' : 'Забронировать'}
         id='booking-button'
         onClick={() => setIsOpenCalendar(true)}
       />

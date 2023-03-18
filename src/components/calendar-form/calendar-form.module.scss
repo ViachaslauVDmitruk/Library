@@ -16,6 +16,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 
 .month {
@@ -62,7 +64,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #bfc4c9;
+  color: #a7a7a7;
   cursor: pointer;
 
   &:hover {
@@ -87,9 +89,7 @@
 }
 
 .todayItem {
-  background-color: #f83600;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #f83600;
 }
 
 .weekendItem {
@@ -102,10 +102,62 @@
   color: #ffffff;
 }
 
+.bookingDay {
+  color: #363636;
+  background: #ffffff;
+}
+
 .selectArrow {
   background-image: none;
   cursor: pointer;
   img {
     padding: 7px;
   }
+}
+
+.listWrapper {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+}
+
+.listMonthes {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #ffffff;
+  padding: 8px;
+  height: 220px;
+  overflow-y: auto;
+  border: 1px solid #a7a7a7;
+  border-radius: 5px;
+}
+
+.dropDown {
+  background-image: none;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.listItemMonth {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 24px;
+  letter-spacing: 0.1px;
+  color: #a7a7a7;
+}
+.visibleMonth {
+  display: flex;
+}
+
+.selectedMonth {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.1px;
+  color: #a7a7a7;
 }

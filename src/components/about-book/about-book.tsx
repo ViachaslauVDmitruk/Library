@@ -32,9 +32,9 @@ export const AboutBook = () => {
           </div>
           <Button
             type='button'
-            disabled={!book.booking}
+            disabled={!!book.booking}
             passStyle={styles.button}
-            buttonText={book.booking ? 'Забронировать' : 'Забронирована'}
+            buttonText={book.booking ? 'Забронирована' : 'Забронировать'}
             id='booking-button'
             onClick={() => setIsOpenCalendar(true)}
           />

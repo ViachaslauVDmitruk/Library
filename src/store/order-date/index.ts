@@ -1,6 +1,8 @@
 /* eslint-disable no-param-reassign */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
 import { DATE_ORDER } from '../../const/date-order';
+
 import { DateOrderType } from './type';
 
 export const initialState: DateOrderType = {
@@ -12,7 +14,6 @@ export const dateOrderSlice = createSlice({
   reducers: {
     getDateOrder: (state, action: PayloadAction<Date>) => {
       state.dateOrder = action.payload;
-      console.log('day selected', state.dateOrder);
     },
   },
 });

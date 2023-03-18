@@ -1,3 +1,4 @@
+/* eslint-disable object-shorthand */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import { useEffect, useState } from 'react';
@@ -30,14 +31,12 @@ export const Calendar = ({ isOpen, setIsOpen }: ModalFromState) => {
   const { isLoadingModal, alertMessage } = useAppSelector(bookingSelector);
   const dispatch = useAppDispatch();
 
-  //   console.log('dateOrder', dateOrder.toISOString());
-
   const methods = useForm<BookingDataProps>({
     mode: 'onBlur',
     reValidateMode: 'onChange',
     defaultValues: {
       order: true,
-      dateOrder: dateOrder.toISOString(),
+      dateOrder: dateOrder,
       book: id,
       customer: user?.id,
     },
@@ -52,7 +51,7 @@ export const Calendar = ({ isOpen, setIsOpen }: ModalFromState) => {
   } = methods;
 
   const onSubmit = (data: BookingDataProps) => {
-    console.log('data booking', data);
+
     dispatch(
       sendBookingData({
         order: data.order,
