@@ -67,8 +67,8 @@ export const CardListView = ({
             passStyle={classNames(styles.button, { [styles.bookingUser]: customerId === userId })}
             disabled={(!!booking && customerId !== userId) || !!isDelivery}
             buttonText={
-              isDelivery
-                ? `Занята до ${format(new Date(isDelivery.dateHandedTo), 'd MM')}`
+              isDelivery?.dateHandedTo
+                ? `Занята до ${format(new Date(isDelivery.dateHandedTo), 'd.MM')}`
                 : booking
                 ? 'Забронирована'
                 : 'Забронировать'

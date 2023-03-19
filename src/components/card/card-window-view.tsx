@@ -59,7 +59,7 @@ export const CardWindowView = ({
         passStyle={classNames(styles.button, { [styles.bookingUser]: customerId === userId })}
         disabled={(!!booking && customerId !== userId) || !!isDelivery}
         buttonText={
-          isDelivery
+          isDelivery?.dateHandedTo
             ? `Занята до ${format(new Date(isDelivery.dateHandedTo), 'd.MM')}`
             : booking
             ? 'Забронирована'
