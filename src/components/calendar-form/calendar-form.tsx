@@ -118,7 +118,7 @@ export const CalendarForm = ({
                   styles[isSelectedWeekend ? 'selectWeekend' : '']
                 )}
                 data-test-id='day-button'
-                disabled={!isBookingDay}
+                //  disabled={!isBookingDay || !isToday || !isWeekendDay}
               >
                 {day.dayNumber}
               </button>

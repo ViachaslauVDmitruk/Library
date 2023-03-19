@@ -19,6 +19,7 @@ import { Loader } from '../loader';
 import closeSrc from './assets/close.png';
 
 import styles from './calendar.module.scss';
+import { getBooks } from '../../store/books';
 
 const modalCalendar = document.getElementById('modalCalendar') as HTMLElement;
 
@@ -55,8 +56,6 @@ export const Calendar = ({ isOpen, setIsOpen, bookId }: ModalFromState) => {
 
   const userId = user?.id;
 
-  const dateFormat = new Date(dateOrder);
-
   const onSubmit = (data: BookingDataProps) => {
     dispatch(
       sendBookingData({
@@ -66,6 +65,7 @@ export const Calendar = ({ isOpen, setIsOpen, bookId }: ModalFromState) => {
         customer: data.customer,
       })
     );
+    dispatch(getBooks());
     dispatch(clearDateOrder());
     setSelectedDay(new Date());
     reset();
@@ -74,6 +74,7 @@ export const Calendar = ({ isOpen, setIsOpen, bookId }: ModalFromState) => {
 
   const CancelBooking = () => {
     dispatch(sendCancelBooking({ bookingId, bookIdUpdate }));
+    dispatch(clearDateOrder());
   };
 
   useEffect(() => {

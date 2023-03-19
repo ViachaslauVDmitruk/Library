@@ -8,7 +8,15 @@ interface CreateDateParams {
 export const createDate = (params?: CreateDateParams) => {
   const locale = params?.locale ?? 'default';
 
-  const d = params?.date ?? new Date();
+  const tzOffset = new Date().getTimezoneOffset() * 60000;
+
+  const startOfToday = new Date();
+
+  startOfToday.setHours(0, 0, 0, 0);
+
+  const defaultDateWithOffset = startOfToday.getTime() - tzOffset;
+
+  const d = params?.date ? new Date(params.date.getTime() - tzOffset) : new Date(defaultDateWithOffset);
   const dayNumber = d.getDate();
   const day = d.toLocaleDateString(locale, { weekday: 'long' });
   const dayNumberInWeek = d.getDay() + 1;
