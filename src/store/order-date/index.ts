@@ -6,7 +6,7 @@ import { DATE_ORDER } from '../../const/date-order';
 import { DateOrderType } from './type';
 
 export const initialState: DateOrderType = {
-  dateOrder: new Date(),
+  dateOrder: '',
 };
 export const dateOrderSlice = createSlice({
   name: DATE_ORDER,
@@ -15,9 +15,12 @@ export const dateOrderSlice = createSlice({
     getDateOrder: (state, action: PayloadAction<Date>) => {
       state.dateOrder = action.payload;
     },
+    clearDateOrder: (state) => {
+      state.dateOrder = '';
+    },
   },
 });
 
-export const { getDateOrder } = dateOrderSlice.actions;
+export const { getDateOrder, clearDateOrder } = dateOrderSlice.actions;
 
 export const dateOrderReducer = dateOrderSlice.reducer;

@@ -5,3 +5,8 @@ export type BookingDataProps = {
   book: string | number;
   customer: string | number;
 };
+
+export type BookingIdTypes = {
+  bookingId: string | number;
+  bookIdUpdate: string | number;
+};

@@ -4,7 +4,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { BOOKING } from '../../const/booking';
 import { ModalStateProps } from '../review/type';
 
-import { BookingDataProps } from './type';
+import { BookingDataProps, BookingIdTypes } from './type';
 
 export const initialState: ModalStateProps = {
   isLoadingModal: false,
@@ -33,9 +33,30 @@ export const bookingSlice = createSlice({
       state.alertMessage = '';
       state.message = '';
     },
+    sendCancelBooking: (state, action: PayloadAction<BookingIdTypes>) => {
+      state.isLoadingModal = true;
+    },
+    cancelBookingSuccess: (state) => {
+      state.isLoadingModal = false;
+      state.alertMessage = 'success';
+      state.message = 'Бронирование книги успешно отменено!';
+    },
+    cancelBookingError: (state) => {
+      state.isLoadingModal = false;
+      state.alertMessage = 'error';
+      state.message = 'Не удалось отменить бронирование книги. Попробуйте позже!';
+    },
   },
 });
 
-export const { sendBookingData, bookingError, bookingSuccess, closeBookingAlert } = bookingSlice.actions;
+export const {
+  sendBookingData,
+  bookingError,
+  bookingSuccess,
+  closeBookingAlert,
+  sendCancelBooking,
+  cancelBookingSuccess,
+  cancelBookingError,
+} = bookingSlice.actions;
 
 export const bookingReducer = bookingSlice.reducer;

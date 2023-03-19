@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { format } from 'date-fns';
+import { format, intlFormat } from 'date-fns';
 
 import { API_HOST } from '../../api/const';
 import { UserProps } from '../../store/book/types';
@@ -65,7 +65,13 @@ export const Review = ({ comments }: CommentsState) => {
                       {item.user.firstName} {item.user.lastName}
                     </div>
                     <div className={styles.data} data-test-id='comment-date'>
-                      {format(new Date(item.createdAt), 'dd LLLL yyyy')}
+                      {intlFormat(
+                        new Date(item.createdAt),
+                        { year: 'numeric', month: 'long', day: 'numeric' },
+                        {
+                          locale: 'ru-Ru',
+                        }
+                      )}
                     </div>
                   </div>
                 </div>

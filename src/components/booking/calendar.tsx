@@ -8,9 +8,9 @@ import { useParams } from 'react-router-dom';
 import classNames from 'classnames';
 
 import { bookingSelector, dateOrderSelector, loginSelector, oneBookSelector } from '../../selectors';
-import { sendBookingData } from '../../store/order';
+import { sendBookingData, sendCancelBooking } from '../../store/order';
 import { BookingDataProps } from '../../store/order/type';
-
+import { ModalFromState } from '../../types/modal';
 import { Button } from '../button';
 import { CalendarForm } from '../calendar-form';
 import { useAppDispatch, useAppSelector } from '../hooks';
@@ -19,7 +19,7 @@ import { Loader } from '../loader';
 import closeSrc from './assets/close.png';
 
 import styles from './calendar.module.scss';
-import { ModalFromState } from '../../types/modal';
+import { clearDateOrder } from '../../store/order-date';
 
 const modalCalendar = document.getElementById('modalCalendar') as HTMLElement;
 
@@ -31,13 +31,16 @@ export const Calendar = ({ isOpen, setIsOpen, bookId }: ModalFromState) => {
   const { dateOrder } = useAppSelector(dateOrderSelector);
   const { isLoadingModal, alertMessage } = useAppSelector(bookingSelector);
   const dispatch = useAppDispatch();
+  const bookingId = book.booking?.id ?? '';
+  const bookIdUpdate = bookId ?? '';
 
+  console.log('day order', dateOrder);
   const methods = useForm<BookingDataProps>({
     mode: 'onBlur',
     reValidateMode: 'onChange',
     defaultValues: {
       order: true,
-      dateOrder: dateOrder,
+      dateOrder: '',
       book: bookId,
       customer: user?.id,
     },
@@ -51,16 +54,25 @@ export const Calendar = ({ isOpen, setIsOpen, bookId }: ModalFromState) => {
     formState: { isDirty },
   } = methods;
 
+  const customerId = book.booking?.customerId;
+
+  const userId = user?.id;
+
   const onSubmit = (data: BookingDataProps) => {
     dispatch(
       sendBookingData({
         order: data.order,
-        dateOrder: data.dateOrder,
+        dateOrder: dateOrder,
         book: data.book,
         customer: data.customer,
       })
     );
+    dispatch(clearDateOrder());
     reset();
+  };
+
+  const CancelBooking = () => {
+    dispatch(sendCancelBooking({ bookingId, bookIdUpdate }));
   };
 
   useEffect(() => {
@@ -102,16 +114,33 @@ export const Calendar = ({ isOpen, setIsOpen, bookId }: ModalFromState) => {
               <img src={closeSrc} alt='img' />
             </div>
             <div className={styles.formTitle} data-test-id='modal-title'>
-              Выбор даты <br /> бронирования
+              {customerId === userId ? (
+                <div>
+                  Изменение даты <br /> бронирования
+                </div>
+              ) : (
+                <div>
+                  Выбор даты <br /> бронирования
+                </div>
+              )}
             </div>
             <CalendarForm type='date' selectedDate={selectedDate} selectDate={(date) => setSelectedDay(date)} />
-            <Button type='submit' buttonText='Забронировать' passStyle={styles.button} id='booking-button' />
             <Button
               type='submit'
+              disabled={customerId === userId || !!dateOrder === false}
               buttonText='Забронировать'
-              passStyle={classNames(styles.button, styles.cancel)}
-              id='booking-cancel-button'
+              passStyle={styles.button}
+              id='booking-button'
             />
+            {customerId === userId && (
+              <Button
+                type='button'
+                buttonText='Отменить бронь'
+                passStyle={classNames(styles.button, styles.cancel)}
+                id='booking-cancel-button'
+                onClick={CancelBooking}
+              />
+            )}
           </form>
         </div>
       </div>
