@@ -1,8 +1,10 @@
-import { useState } from 'react';
 import classNames from 'classnames';
 
-import { ButtonClose } from '../button-close/button-close';
+import { closeBookingAlert } from '../../store/order';
+import { Button } from '../button';
+import { useAppDispatch } from '../hooks';
 
+import closeSrc from './assets/close.png';
 import errorSrc from './assets/error.png';
 import successSrc from './assets/success.png';
 
@@ -14,7 +16,7 @@ type MessageType = {
 };
 
 export const AlertMessage = ({ message, stylesAlert }: MessageType) => {
-  const [isClosedMessage, setIsClosedMessage] = useState<boolean>(false);
+  const dispatch = useAppDispatch();
 
   return (
     <div className={classNames(styles.container, { [styles.closeError]: isClosedMessage })}>
@@ -25,7 +27,7 @@ export const AlertMessage = ({ message, stylesAlert }: MessageType) => {
           </div>
           <div className={styles.text}>{message}</div>
         </div>
-        <ButtonClose isActive={isClosedMessage} setIsActive={setIsClosedMessage} />
+        <Button type='button' onClick={() => dispatch(closeBookingAlert())} src={closeSrc} id='alert-close' />
       </div>
     </div>
   );
