@@ -7,7 +7,7 @@ import { useAppDispatch, useAppSelector } from '../../components/hooks';
 import { Loader } from '../../components/loader';
 import { NavigateList } from '../../components/navigate-list';
 import { REQUEST_BOOK } from '../../const/message';
-import { booksSelector, categoriesSelector } from '../../selectors';
+import { booksSelector, categoriesSelector, reviewSelector } from '../../selectors';
 import { getBooks } from '../../store/books';
 import { getCategories } from '../../store/categories';
 import { loginSuccess } from '../../store/login';
@@ -19,6 +19,7 @@ export const MainPage = () => {
   const navigate = useNavigate();
   const { isError } = useAppSelector(booksSelector);
   const { isLoading } = useAppSelector(categoriesSelector);
+  const { alertMessage, message } = useAppSelector(reviewSelector);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -39,6 +40,7 @@ export const MainPage = () => {
   return (
     <div className={styles.container}>
       {isLoading && <Loader />}
+      {message && <AlertMessage message={message} stylesAlert={alertMessage} />}
       {isError && <AlertMessage message={REQUEST_BOOK} stylesAlert='error' />}
       <NavigateList />
       {!isError && <Outlet />}

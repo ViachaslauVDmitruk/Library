@@ -4,12 +4,12 @@
 import { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import { FormProvider, useForm } from 'react-hook-form';
-import { useParams } from 'react-router-dom';
 import classNames from 'classnames';
 
 import { bookingSelector, dateOrderSelector, loginSelector, oneBookSelector } from '../../selectors';
 import { sendBookingData, sendCancelBooking } from '../../store/order';
 import { BookingDataProps } from '../../store/order/type';
+import { clearDateOrder } from '../../store/order-date';
 import { ModalFromState } from '../../types/modal';
 import { Button } from '../button';
 import { CalendarForm } from '../calendar-form';
@@ -19,13 +19,11 @@ import { Loader } from '../loader';
 import closeSrc from './assets/close.png';
 
 import styles from './calendar.module.scss';
-import { clearDateOrder } from '../../store/order-date';
 
 const modalCalendar = document.getElementById('modalCalendar') as HTMLElement;
 
 export const Calendar = ({ isOpen, setIsOpen, bookId }: ModalFromState) => {
   const [selectedDate, setSelectedDay] = useState(new Date());
-  const { id } = useParams();
   const { book } = useAppSelector(oneBookSelector);
   const { user } = useAppSelector(loginSelector);
   const { dateOrder } = useAppSelector(dateOrderSelector);
@@ -34,7 +32,6 @@ export const Calendar = ({ isOpen, setIsOpen, bookId }: ModalFromState) => {
   const bookingId = book.booking?.id ?? '';
   const bookIdUpdate = bookId ?? '';
 
-  console.log('day order', dateOrder);
   const methods = useForm<BookingDataProps>({
     mode: 'onBlur',
     reValidateMode: 'onChange',

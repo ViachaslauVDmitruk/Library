@@ -1,5 +1,4 @@
 import axiosAPI, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
-import Cookies from 'js-cookie';
 
 export const axios = axiosAPI.create({
   headers: {

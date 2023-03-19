@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import classNames from 'classnames';
+import { format } from 'date-fns';
 
 import { API_HOST } from '../../api/const';
 import { ColorMatch } from '../../helpers/color-match';
@@ -17,13 +18,23 @@ import noImage from './assets/no-image.png';
 
 import styles from './card.module.scss';
 
-export const CardWindowView = ({ src, rating, title, authors, id, issueYear, searchValue, booking }: CardProps) => {
+export const CardWindowView = ({
+  src,
+  rating,
+  title,
+  authors,
+  id,
+  issueYear,
+  searchValue,
+  booking,
+  delivery,
+}: CardProps) => {
   const { category } = useParams();
   const highlight = ColorMatch({ searchValue, title });
   const [openModalCalendar, setIsOpenCalendar] = useState<boolean>(false);
   const { user } = useAppSelector(loginSelector);
   const customerId = booking?.customerId;
-
+  const isDelivery = delivery;
   const userId = user?.id;
 
   return (
@@ -46,8 +57,14 @@ export const CardWindowView = ({ src, rating, title, authors, id, issueYear, sea
       <Button
         type='button'
         passStyle={classNames(styles.button, { [styles.bookingUser]: customerId === userId })}
-        disabled={!!booking && customerId !== userId}
-        buttonText={booking ? 'Забронирована' : 'Забронировать'}
+        disabled={(!!booking && customerId !== userId) || !!isDelivery}
+        buttonText={
+          isDelivery
+            ? `Занята до ${format(new Date(isDelivery.dateHandedTo), 'd MM')}`
+            : booking
+            ? 'Забронирована'
+            : 'Забронировать'
+        }
         id='booking-button'
         onClick={() => setIsOpenCalendar(true)}
       />

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import classNames from 'classnames';
+import { format } from 'date-fns';
 
 import { bookingSelector, loginSelector, oneBookSelector } from '../../selectors';
 import { Calendar } from '../booking';
@@ -17,7 +18,7 @@ export const AboutBook = () => {
   const { user } = useAppSelector(loginSelector);
 
   const customerId = book.booking?.customerId;
-
+  const isDelivery = book.delivery;
   const userId = user?.id;
 
   return (
@@ -38,8 +39,14 @@ export const AboutBook = () => {
           <Button
             type='button'
             passStyle={classNames(styles.button, { [styles.bookingUser]: customerId === userId })}
-            disabled={!!book.booking && customerId !== userId}
-            buttonText={book.booking ? 'Забронирована' : 'Забронировать'}
+            disabled={(!!book.booking && customerId !== userId) || !!isDelivery}
+            buttonText={
+              isDelivery
+                ? `Занята до ${format(new Date(isDelivery.dateHandedTo), 'd.MM')}`
+                : book.booking
+                ? 'Забронирована'
+                : 'Забронировать'
+            }
             id='booking-button'
             onClick={() => setIsOpenCalendar(true)}
           />

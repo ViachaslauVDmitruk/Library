@@ -1,4 +1,4 @@
-import { BookingProps } from '../store/book/types';
+import { BookingProps, DeliveryProps } from '../store/book/types';
 
 export type CardProps = {
   src: CardImages | null;
@@ -9,6 +9,7 @@ export type CardProps = {
   issueYear: string;
   searchValue: string;
   booking: BookingProps;
+  delivery: DeliveryProps;
 };
 export type CardImages = {
   url: string | null;

@@ -79,8 +79,10 @@
   letter-spacing: 0.2px;
   text-transform: uppercase;
   color: #ffffff;
-  padding: 10px 23px;
-
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
   border-radius: 20px;
   @media screen and (max-width: 580px) {
     margin-top: 15px;
