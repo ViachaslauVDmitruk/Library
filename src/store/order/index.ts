@@ -46,6 +46,19 @@ export const bookingSlice = createSlice({
       state.alertMessage = 'error';
       state.message = 'Не удалось отменить бронирование книги. Попробуйте позже!';
     },
+    sendChangeBooking: (state, action: PayloadAction<BookingDataProps>) => {
+      state.isLoadingModal = true;
+    },
+    changeBookingSuccess: (state) => {
+      state.isLoadingModal = false;
+      state.alertMessage = 'success';
+      state.message = 'Бронирование новой даты успешно изменено. Подробности можно посмотреть на странице Профиль';
+    },
+    changeBookingError: (state) => {
+      state.isLoadingModal = false;
+      state.alertMessage = 'error';
+      state.message = 'Что-то пошло не так, дату бронирования не удалось изменить. Попробуйте позже!';
+    },
   },
 });
 
@@ -57,6 +70,9 @@ export const {
   sendCancelBooking,
   cancelBookingSuccess,
   cancelBookingError,
+  sendChangeBooking,
+  changeBookingError,
+  changeBookingSuccess,
 } = bookingSlice.actions;
 
 export const bookingReducer = bookingSlice.reducer;

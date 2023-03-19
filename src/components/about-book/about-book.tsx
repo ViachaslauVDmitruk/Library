@@ -22,9 +22,6 @@ export const AboutBook = () => {
 
   const userId = user?.id;
 
-  console.log('customer ID ', customerId);
-  console.log('user ID ', userId);
-
   return (
     <div className={styles.aboutBook}>
       {message && <AlertMessage message={message} stylesAlert={alertMessage} />}

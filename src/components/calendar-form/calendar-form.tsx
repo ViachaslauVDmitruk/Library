@@ -5,7 +5,9 @@ import { useState } from 'react';
 import classNames from 'classnames';
 
 import { calendarState } from '../../const/calendar';
-import { checkBookingDay, checkDateIsEqual, checkIsToday } from '../../helpers/calendar';
+import { checkBookingDay, checkIsToday } from '../../helpers/calendar';
+import { checkIsBlockedDate } from '../../helpers/calendar/check-is-bloked';
+import { dateOrderSelector } from '../../selectors';
 import { getDateOrder } from '../../store/order-date';
 import { Button } from '../button';
 import { useAppDispatch, useAppSelector } from '../hooks';
@@ -16,8 +18,6 @@ import nextSrc from './assets/next.png';
 import prevSrc from './assets/prev.png';
 
 import styles from './calendar-form.module.scss';
-import { checkIsBlockedDate } from '../../helpers/calendar/check-is-bloked';
-import { dateOrderSelector } from '../../selectors';
 
 export const CalendarForm = ({
   type = 'date',
@@ -25,6 +25,7 @@ export const CalendarForm = ({
   selectedDate: date,
   selectDate,
   firstWeekDayNumber = 2,
+  bookDateOrder,
 }: UseCalendarParams) => {
   const { weekDayNames } = calendarState;
 
@@ -97,12 +98,15 @@ export const CalendarForm = ({
           {state.calendarDays.map((day) => {
             const isToday = checkIsToday(day.date);
 
-            const isSelectedDay = dateOrder && dateOrder.toISOString() === day.date.toISOString();
+            const isSelectedDay =
+              (dateOrder && dateOrder.toISOString() === day.date.toISOString()) ||
+              bookDateOrder === day.date.toISOString();
             const isAdditionalDay = day.monthIndex !== state.selectedMonth.monthIndex;
 
             const isWeekendDay = day.dayNumberInWeek === 7 || day.dayNumberInWeek === 1;
             const isBookingDay = checkBookingDay(day.dayNumber);
             const isSelectedWeekend = isSelectedDay && isWeekendDay;
+            const isOrderDay = bookDateOrder === day.date.toISOString();
 
             return (
               <button
@@ -121,7 +125,7 @@ export const CalendarForm = ({
                   styles[isSelectedWeekend ? 'selectWeekend' : '']
                 )}
                 data-test-id='day-button'
-                disabled={checkIsBlockedDate(day)}
+                disabled={checkIsBlockedDate(day) || isOrderDay}
               >
                 {day.dayNumber}
               </button>

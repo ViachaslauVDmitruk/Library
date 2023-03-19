@@ -1,4 +1,5 @@
 import { Dispatch, SetStateAction } from 'react';
+
 import { BookingProps } from '../store/book/types';
 
 export type ModalFromState = {

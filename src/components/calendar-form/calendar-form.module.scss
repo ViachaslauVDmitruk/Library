@@ -41,8 +41,9 @@
   letter-spacing: 0.2px;
   @include activeColor();
   background-color: #f83600;
+  background-clip: text;
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: transparent;
   align-self: center;
   justify-self: center;
   width: 32px;
@@ -76,8 +77,6 @@
   @include activeColor();
   border-radius: 50%;
   color: #363636;
-
-  color: rgb(248, 54, 0);
 }
 
 .arrayDays {

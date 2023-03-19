@@ -7,8 +7,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 import classNames from 'classnames';
 
 import { bookingSelector, dateOrderSelector, loginSelector, oneBookSelector } from '../../selectors';
-import { getBooks } from '../../store/books';
-import { sendBookingData, sendCancelBooking } from '../../store/order';
+import { sendBookingData, sendCancelBooking, sendChangeBooking } from '../../store/order';
 import { BookingDataProps } from '../../store/order/type';
 import { clearDateOrder } from '../../store/order-date';
 import { ModalFromState } from '../../types/modal';
@@ -32,6 +31,7 @@ export const Calendar = ({ isOpen, setIsOpen, bookId, booking }: ModalFromState)
   const dispatch = useAppDispatch();
   const bookingId = book.booking?.id ?? '';
   const bookIdUpdate = bookId ?? '';
+  const bookDateOrder = booking?.dateOrder || book.booking?.dateOrder;
 
   const methods = useForm<BookingDataProps>({
     mode: 'onBlur',
@@ -56,18 +56,28 @@ export const Calendar = ({ isOpen, setIsOpen, bookId, booking }: ModalFromState)
 
   const userId = user?.id;
 
-  console.log('customer ID ', customerId);
-  console.log('user ID ', userId);
-
   const onSubmit = (data: BookingDataProps) => {
-    dispatch(
-      sendBookingData({
-        order: data.order,
-        dateOrder: dateOrder,
-        book: data.book,
-        customer: data.customer,
-      })
-    );
+    if (booking?.dateOrder || book.booking?.dateOrder) {
+      dispatch(
+        sendChangeBooking({
+          order: data.order,
+          dateOrder: dateOrder,
+          book: data.book,
+          customer: data.customer,
+          bookingId: bookingId,
+        })
+      );
+    } else {
+      dispatch(
+        sendBookingData({
+          order: data.order,
+          dateOrder: dateOrder,
+          book: data.book,
+          customer: data.customer,
+        })
+      );
+    }
+
     dispatch(clearDateOrder());
     setSelectedDay(new Date());
     reset();
@@ -134,11 +144,11 @@ export const Calendar = ({ isOpen, setIsOpen, bookId, booking }: ModalFromState)
               type='date'
               selectedDate={selectedDate}
               selectDate={(date) => setSelectedDay(date)}
-              //   bookId={booking?.dateOrder || book.booking?.dateOrder}
+              bookDateOrder={booking?.dateOrder || book.booking?.dateOrder}
             />
             <Button
               type='submit'
-              disabled={customerId === userId || !!dateOrder === false}
+              disabled={customerId === userId || !!dateOrder === false || bookDateOrder === dateOrder}
               buttonText='Забронировать'
               passStyle={styles.button}
               id='booking-button'

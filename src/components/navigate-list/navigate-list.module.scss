@@ -15,9 +15,10 @@
 .navigateTitle:hover {
   @include activeColor();
   background-color: #f83600;
+  background-clip: text;
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   border-bottom: 1px solid rgb(230, 97, 20);
+  color: transparent;
 }
 
 .bottomMargin {
@@ -49,8 +50,9 @@
 .active {
   @include activeColor();
   background-color: #f83600;
+  background-clip: text;
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: transparent;
   font-size: 18px;
   line-height: 28px;
 }
@@ -97,8 +99,9 @@
 .listItem:hover {
   @include activeColor();
   background-color: #f83600;
+  background-clip: text;
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 
 .arrow {
@@ -123,8 +126,9 @@
 .loginNavigate .title:hover {
   @include activeColor();
   background-color: #f83600;
+  background-clip: text;
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: transparent;
   border-bottom: 1px solid rgb(230, 97, 20);
 }
 /*----------burger-menu-------------*/
