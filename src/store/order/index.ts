@@ -52,7 +52,7 @@ export const bookingSlice = createSlice({
     changeBookingSuccess: (state) => {
       state.isLoadingModal = false;
       state.alertMessage = 'success';
-      state.message = 'Бронирование новой даты успешно изменено. Подробности можно посмотреть на странице Профиль';
+      state.message = 'Изменения успешно сохранены!';
     },
     changeBookingError: (state) => {
       state.isLoadingModal = false;
