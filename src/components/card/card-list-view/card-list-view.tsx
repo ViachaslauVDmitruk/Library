@@ -80,7 +80,7 @@ export const CardListView = ({
           />
         </div>
       </div>
-      <Calendar isOpen={openModalCalendar} setIsOpen={setIsOpenCalendar} bookId={id} />
+      <Calendar isOpen={openModalCalendar} setIsOpen={setIsOpenCalendar} bookId={id} booking={booking} />
     </div>
   );
 };

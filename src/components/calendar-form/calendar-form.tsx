@@ -8,7 +8,7 @@ import { calendarState } from '../../const/calendar';
 import { checkBookingDay, checkDateIsEqual, checkIsToday } from '../../helpers/calendar';
 import { getDateOrder } from '../../store/order-date';
 import { Button } from '../button';
-import { useAppDispatch } from '../hooks';
+import { useAppDispatch, useAppSelector } from '../hooks';
 import { useCalendar, UseCalendarParams } from '../hooks/use-calendar';
 
 import dropDown from './assets/drop-down.png';
@@ -17,6 +17,7 @@ import prevSrc from './assets/prev.png';
 
 import styles from './calendar-form.module.scss';
 import { checkIsBlockedDate } from '../../helpers/calendar/check-is-bloked';
+import { dateOrderSelector } from '../../selectors';
 
 export const CalendarForm = ({
   type = 'date',
@@ -35,7 +36,7 @@ export const CalendarForm = ({
     firstWeekDayNumber,
   });
   const [isShowMonthes, setIsShowMonthes] = useState<boolean>(false);
-
+  const { dateOrder } = useAppSelector(dateOrderSelector);
   const dispatch = useAppDispatch();
 
   return (
@@ -95,7 +96,8 @@ export const CalendarForm = ({
         <tbody className={styles.arrayDays}>
           {state.calendarDays.map((day) => {
             const isToday = checkIsToday(day.date);
-            const isSelectedDay = type === 'date' && checkDateIsEqual(day.date, state.selectedDay.date);
+
+            const isSelectedDay = dateOrder && dateOrder.toISOString() === day.date.toISOString();
             const isAdditionalDay = day.monthIndex !== state.selectedMonth.monthIndex;
 
             const isWeekendDay = day.dayNumberInWeek === 7 || day.dayNumberInWeek === 1;

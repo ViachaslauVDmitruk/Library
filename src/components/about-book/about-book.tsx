@@ -16,11 +16,14 @@ export const AboutBook = () => {
   const { book } = useAppSelector(oneBookSelector);
   const { alertMessage, message } = useAppSelector(bookingSelector);
   const { user } = useAppSelector(loginSelector);
-
+  const booking = book?.booking;
   const customerId = book.booking?.customerId;
   const isDelivery = book.delivery;
 
   const userId = user?.id;
+
+  console.log('customer ID ', customerId);
+  console.log('user ID ', userId);
 
   return (
     <div className={styles.aboutBook}>

@@ -4,6 +4,7 @@ import { PayloadAction } from '@reduxjs/toolkit';
 import { axios } from '../../api/api';
 import { API } from '../../api/const';
 import { getOneBook } from '../book';
+import { getBooks } from '../books';
 
 import { BookingDataProps, BookingIdTypes } from './type';
 import {
@@ -15,17 +16,15 @@ import {
   sendBookingData,
   sendCancelBooking,
 } from '.';
-import { getBooks } from '../books';
 
 export function* bookingWorker({ payload }: PayloadAction<BookingDataProps>) {
   try {
     yield call(axios.post, API.bookingUrl, { data: payload });
     yield put(bookingSuccess());
-	 yield put(getBooks());
+    yield put(getBooks());
     yield delay(4000);
     yield put(closeBookingAlert());
     yield put(getOneBook(payload.book));
-    
   } catch (e) {
     yield put(bookingError());
     yield delay(4000);
@@ -37,11 +36,10 @@ export function* cancelBookingWorker({ payload }: PayloadAction<BookingIdTypes>)
   try {
     yield call(axios.delete, `${API.bookingUrl}/${payload.bookingId}`);
     yield put(cancelBookingSuccess());
-	 yield put(getBooks());
     yield delay(4000);
     yield put(closeBookingAlert());
     yield put(getOneBook(payload.bookIdUpdate));
-   
+    yield put(getBooks());
   } catch (e) {
     yield put(cancelBookingError());
     yield delay(4000);

@@ -23,7 +23,7 @@ import styles from './calendar.module.scss';
 
 const modalCalendar = document.getElementById('modalCalendar') as HTMLElement;
 
-export const Calendar = ({ isOpen, setIsOpen, bookId }: ModalFromState) => {
+export const Calendar = ({ isOpen, setIsOpen, bookId, booking }: ModalFromState) => {
   const [selectedDate, setSelectedDay] = useState(new Date());
   const { book } = useAppSelector(oneBookSelector);
   const { user } = useAppSelector(loginSelector);
@@ -52,15 +52,18 @@ export const Calendar = ({ isOpen, setIsOpen, bookId }: ModalFromState) => {
     formState: { isDirty },
   } = methods;
 
-  const customerId = book.booking?.customerId;
+  const customerId = book.booking?.customerId || booking?.customerId;
 
   const userId = user?.id;
+
+  console.log('customer ID ', customerId);
+  console.log('user ID ', userId);
 
   const onSubmit = (data: BookingDataProps) => {
     dispatch(
       sendBookingData({
         order: data.order,
-        dateOrder: selectedDate,
+        dateOrder: dateOrder,
         book: data.book,
         customer: data.customer,
       })
@@ -127,7 +130,12 @@ export const Calendar = ({ isOpen, setIsOpen, bookId }: ModalFromState) => {
                 </div>
               )}
             </div>
-            <CalendarForm type='date' selectedDate={selectedDate} selectDate={(date) => setSelectedDay(date)} />
+            <CalendarForm
+              type='date'
+              selectedDate={selectedDate}
+              selectDate={(date) => setSelectedDay(date)}
+              //   bookId={booking?.dateOrder || book.booking?.dateOrder}
+            />
             <Button
               type='submit'
               disabled={customerId === userId || !!dateOrder === false}

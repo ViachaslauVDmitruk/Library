@@ -68,7 +68,7 @@ export const CardWindowView = ({
         id='booking-button'
         onClick={() => setIsOpenCalendar(true)}
       />
-      <Calendar isOpen={openModalCalendar} setIsOpen={setIsOpenCalendar} bookId={id} />
+      <Calendar isOpen={openModalCalendar} setIsOpen={setIsOpenCalendar} bookId={id} booking={booking} />
     </div>
   );
 };
