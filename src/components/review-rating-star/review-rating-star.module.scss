@@ -43,19 +43,10 @@ label {
   }
 }
 
-.starRatingItem:hover ~ label > svg {
-  fill: #ffbc1f;
-}
-
-.starRatingItem:checked ~ label > svg {
-  fill: #ffbc1f;
-}
-
-.starRatingItem:checked ~ .label {
-  fill: #ffbc1f;
-  background-color: green;
-}
-
 .starRatingLabel {
   cursor: pointer;
+}
+
+.colorStar {
+  fill: #ffbc1f;
 }
