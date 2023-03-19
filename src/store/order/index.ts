@@ -57,7 +57,7 @@ export const bookingSlice = createSlice({
     changeBookingError: (state) => {
       state.isLoadingModal = false;
       state.alertMessage = 'error';
-      state.message = 'Что-то пошло не так, дату бронирования не удалось изменить. Попробуйте позже!';
+      state.message = 'Изменения не были сохранены. Попробуйте позже!';
     },
   },
 });
