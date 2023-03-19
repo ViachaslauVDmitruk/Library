@@ -40,7 +40,7 @@ export const CalendarForm = ({
   return (
     <div className={styles.wrapper} data-test-id='calendar'>
       <header className={styles.header}>
-        <div className={styles.listWrapper}>
+        <div className={styles.listWrapper} data-test-id='month-select'>
           <ul className={classNames(styles.listMonthes, { [styles.visibleMonth]: isShowMonthes })}>
             {state.monthesNames.map((monthesName) => (
               <li
