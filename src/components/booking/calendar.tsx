@@ -31,6 +31,7 @@ export const Calendar = ({ isOpen, setIsOpen, bookId, booking }: ModalFromState)
   const dispatch = useAppDispatch();
   const bookingId = (book.booking?.id || booking?.id) ?? '';
   const bookIdUpdate = bookId ?? '';
+
   const bookDateOrder = booking?.dateOrder || book.booking?.dateOrder;
 
   const methods = useForm<BookingDataProps>({
@@ -57,7 +58,7 @@ export const Calendar = ({ isOpen, setIsOpen, bookId, booking }: ModalFromState)
   const userId = user?.id;
 
   const onSubmit = (data: BookingDataProps) => {
-    if (booking?.dateOrder || book.booking?.dateOrder) {
+    if (bookDateOrder) {
       dispatch(
         sendChangeBooking({
           order: data.order,

@@ -44,7 +44,7 @@ export const bookingSlice = createSlice({
     cancelBookingError: (state) => {
       state.isLoadingModal = false;
       state.alertMessage = 'error';
-      state.message = 'Не удалось отменить бронирование книги. Попробуйте позже!';
+      state.message = 'Не удалось снять бронирование книги. Попробуйте позже!';
     },
     sendChangeBooking: (state, action: PayloadAction<BookingDataProps>) => {
       state.isLoadingModal = true;
