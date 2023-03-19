@@ -60,7 +60,7 @@ export const CardWindowView = ({
         disabled={(!!booking && customerId !== userId) || !!isDelivery}
         buttonText={
           isDelivery
-            ? `Занята до ${format(new Date(isDelivery.dateHandedTo), 'd MM')}`
+            ? `Занята до ${format(new Date(isDelivery.dateHandedTo), 'd.MM')}`
             : booking
             ? 'Забронирована'
             : 'Забронировать'

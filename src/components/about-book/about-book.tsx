@@ -45,7 +45,7 @@ export const AboutBook = () => {
             disabled={(!!book.booking && customerId !== userId) || !!isDelivery}
             buttonText={
               isDelivery?.dateHandedTo
-                ? `Занята до ${format(new Date(isDelivery.dateHandedTo), 'd MM')}`
+                ? `Занята до ${format(new Date(isDelivery.dateHandedTo), 'd.MM')}`
                 : book.booking
                 ? 'Забронирована'
                 : 'Забронировать'
