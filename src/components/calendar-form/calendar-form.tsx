@@ -99,6 +99,7 @@ export const CalendarForm = ({
 
             const isWeekendDay = day.dayNumberInWeek === 7 || day.dayNumberInWeek === 1;
             const isBookingDay = checkBookingDay(day.dayNumber);
+            const isSelectedWeekend = isSelectedDay && isWeekendDay;
 
             return (
               <tr
@@ -109,10 +110,11 @@ export const CalendarForm = ({
                 }}
                 className={classNames(
                   styles.dayNumber,
+                  styles[isSelectedDay ? 'selectedDay' : ''],
                   styles[isToday ? 'todayItem' : ''],
                   styles[isWeekendDay ? 'weekendItem' : ''],
-                  styles[isSelectedDay ? 'selectedDay' : ''],
-                  styles[isBookingDay ? 'bookingDay' : '']
+                  styles[isBookingDay ? 'bookingDay' : ''],
+                  styles[isSelectedWeekend ? 'selectWeekend' : '']
                 )}
                 data-test-id='day-button'
               >

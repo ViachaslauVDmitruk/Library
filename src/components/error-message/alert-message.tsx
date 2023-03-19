@@ -17,8 +17,8 @@ export const AlertMessage = ({ message, stylesAlert }: MessageType) => {
   const [isClosedMessage, setIsClosedMessage] = useState<boolean>(false);
 
   return (
-    <div className={classNames(styles.container, { [styles.closeError]: isClosedMessage })} data-test-id='error'>
-      <div className={classNames(styles.errorMessage, styles[stylesAlert])}>
+    <div className={classNames(styles.container, { [styles.closeError]: isClosedMessage })}>
+      <div className={classNames(styles.errorMessage, styles[stylesAlert])} data-test-id='error'>
         <div className={styles.textError}>
           <div className={styles.image}>
             <img src={stylesAlert === 'success' ? successSrc : errorSrc} alt='img' />
