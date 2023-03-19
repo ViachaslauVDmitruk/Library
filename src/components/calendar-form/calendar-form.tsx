@@ -102,7 +102,8 @@ export const CalendarForm = ({
             const isSelectedWeekend = isSelectedDay && isWeekendDay;
 
             return (
-              <tr
+              <button
+                type='button'
                 key={`${day.dayNumber}-${day.monthIndex}`}
                 onClick={() => {
                   functions.selectDay(day);
@@ -117,9 +118,10 @@ export const CalendarForm = ({
                   styles[isSelectedWeekend ? 'selectWeekend' : '']
                 )}
                 data-test-id='day-button'
+                disabled={!isBookingDay}
               >
                 {day.dayNumber}
-              </tr>
+              </button>
             );
           })}
         </tbody>

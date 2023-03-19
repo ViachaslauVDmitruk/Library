@@ -55,6 +55,8 @@ export const Calendar = ({ isOpen, setIsOpen, bookId }: ModalFromState) => {
 
   const userId = user?.id;
 
+  const dateFormat = new Date(dateOrder);
+
   const onSubmit = (data: BookingDataProps) => {
     dispatch(
       sendBookingData({
