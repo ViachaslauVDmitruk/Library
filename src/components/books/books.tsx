@@ -2,13 +2,17 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import { booksSelector, inputSearchSelector, selectedCategorySelector } from '../../selectors';
+import { getBooks } from '../../store/books';
+import { getCategories } from '../../store/categories';
 import { CardWindowView } from '../card';
 import { CardListView } from '../card/card-list-view';
 import { Filter } from '../filter';
+import { useAppDispatch } from '../hooks';
 
 import styles from './books.module.scss';
 
 export const Books = () => {
+  const dispatch = useAppDispatch();
   const [view, setView] = useState<string>('window');
   const [isWindow, setIsWindow] = useState<boolean>(true);
   const { books, isError, isLoading } = useSelector(booksSelector);
@@ -29,6 +33,11 @@ export const Books = () => {
       setIsWindow(false);
     }
   }, [view]);
+
+  useEffect(() => {
+    dispatch(getCategories());
+    dispatch(getBooks());
+  }, [dispatch]);
 
   return (
     <div className={styles.content}>

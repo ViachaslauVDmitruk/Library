@@ -19,7 +19,10 @@ export const AboutBook = () => {
 
   const customerId = book.booking?.customerId;
   const isDelivery = book.delivery;
+
   const userId = user?.id;
+
+  //   console.log('is delivery handed', isDelivery?.handed);
 
   return (
     <div className={styles.aboutBook}>
@@ -39,14 +42,8 @@ export const AboutBook = () => {
           <Button
             type='button'
             passStyle={classNames(styles.button, { [styles.bookingUser]: customerId === userId })}
-            disabled={(!!book.booking && customerId !== userId) || !!isDelivery}
-            buttonText={
-              isDelivery
-                ? `Занята до ${format(new Date(isDelivery.dateHandedTo), 'd.MM')}`
-                : book.booking
-                ? 'Забронирована'
-                : 'Забронировать'
-            }
+            disabled={!!book.booking && customerId !== userId}
+            buttonText={book.booking ? 'Забронирована' : 'Забронировать'}
             id='booking-button'
             onClick={() => setIsOpenCalendar(true)}
           />
