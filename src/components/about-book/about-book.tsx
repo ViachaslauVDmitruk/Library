@@ -42,7 +42,7 @@ export const AboutBook = () => {
           <Button
             type='button'
             passStyle={classNames(styles.button, { [styles.bookingUser]: customerId === userId })}
-            disabled={!!book.booking && customerId !== userId}
+            disabled={(!!book.booking && customerId !== userId) || !!isDelivery}
             buttonText={
               isDelivery?.dateHandedTo
                 ? `Занята до ${format(new Date(isDelivery.dateHandedTo), 'd MM')}`
