@@ -15,7 +15,7 @@ export const GetId = () => {
 
 export function* oneBookWoker({ payload }: PayloadAction) {
   try {
-    const { data } = yield call(axios.get, `${API.booksUrl}${payload}`);
+    const { data } = yield call(axios.get, `${API.booksUrl}/${payload}`);
 
     yield put(setOneBook(data));
     yield put(sortReviewDown());

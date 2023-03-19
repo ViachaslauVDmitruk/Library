@@ -43,7 +43,13 @@ export const AboutBook = () => {
             type='button'
             passStyle={classNames(styles.button, { [styles.bookingUser]: customerId === userId })}
             disabled={!!book.booking && customerId !== userId}
-            buttonText={book.booking ? 'Забронирована' : 'Забронировать'}
+            buttonText={
+              isDelivery?.dateHandedTo
+                ? `Занята до ${format(new Date(isDelivery.dateHandedTo), 'd MM')}`
+                : book.booking
+                ? 'Забронирована'
+                : 'Забронировать'
+            }
             id='booking-button'
             onClick={() => setIsOpenCalendar(true)}
           />
