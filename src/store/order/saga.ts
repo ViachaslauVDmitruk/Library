@@ -39,10 +39,10 @@ export function* cancelBookingWorker({ payload }: PayloadAction<BookingIdTypes>)
   try {
     yield call(axios.delete, `${API.bookingUrl}/${payload.bookingId}`);
     yield put(cancelBookingSuccess());
+    yield put(getBooks());
     yield delay(4000);
     yield put(closeBookingAlert());
     yield put(getOneBook(payload.bookIdUpdate));
-    yield put(getBooks());
   } catch (e) {
     yield put(cancelBookingError());
     yield delay(4000);

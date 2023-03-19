@@ -27,7 +27,13 @@ export const AlertMessage = ({ message, stylesAlert }: MessageType) => {
           </div>
           <div className={styles.text}>{message}</div>
         </div>
-        <Button type='button' onClick={() => dispatch(closeBookingAlert())} src={closeSrc} id='alert-close' />
+        <Button
+          type='button'
+          onClick={() => dispatch(closeBookingAlert())}
+          src={closeSrc}
+          id='alert-close'
+          passStyle={styles.closeButton}
+        />
       </div>
     </div>
   );
