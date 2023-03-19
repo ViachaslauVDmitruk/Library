@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import classNames from 'classnames';
 
 import { calendarState } from '../../const/calendar';
@@ -39,6 +39,12 @@ export const CalendarForm = ({
   const [isShowMonthes, setIsShowMonthes] = useState<boolean>(false);
   const { dateOrder } = useAppSelector(dateOrderSelector);
   const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    if (bookDateOrder) {
+      dispatch(getDateOrder(new Date(bookDateOrder)));
+    }
+  }, [bookDateOrder, dispatch]);
 
   return (
     <div className={styles.wrapper} data-test-id='calendar'>
@@ -98,9 +104,8 @@ export const CalendarForm = ({
           {state.calendarDays.map((day) => {
             const isToday = checkIsToday(day.date);
 
-            const isSelectedDay =
-              (dateOrder && dateOrder.toISOString() === day.date.toISOString()) ||
-              bookDateOrder === day.date.toISOString();
+            const isSelectedDay = dateOrder && dateOrder.toISOString() === day.date.toISOString();
+
             const isAdditionalDay = day.monthIndex !== state.selectedMonth.monthIndex;
 
             const isWeekendDay = day.dayNumberInWeek === 7 || day.dayNumberInWeek === 1;
