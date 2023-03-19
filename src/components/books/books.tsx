@@ -8,6 +8,7 @@ import { CardWindowView } from '../card';
 import { CardListView } from '../card/card-list-view';
 import { Filter } from '../filter';
 import { useAppDispatch } from '../hooks';
+import { Loader } from '../loader';
 
 import styles from './books.module.scss';
 
@@ -15,7 +16,7 @@ export const Books = () => {
   const dispatch = useAppDispatch();
   const [view, setView] = useState<string>('window');
   const [isWindow, setIsWindow] = useState<boolean>(true);
-  const { books, isError, isLoading } = useSelector(booksSelector);
+  const { books, isError, isLoadingBooks } = useSelector(booksSelector);
   const { selectedCategory } = useSelector(selectedCategorySelector);
   const { searchValue } = useSelector(inputSearchSelector);
 
@@ -41,7 +42,7 @@ export const Books = () => {
 
   return (
     <div className={styles.content}>
-      {!isError && !isLoading && <Filter changeView={setView} viewWindow={isWindow} />}
+      {!isError && !isLoadingBooks && <Filter changeView={setView} viewWindow={isWindow} />}
 
       {categoryMode.length ? (
         filteredCategoryBySearch.length ? (

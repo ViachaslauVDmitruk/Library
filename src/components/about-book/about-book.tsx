@@ -22,8 +22,6 @@ export const AboutBook = () => {
 
   const userId = user?.id;
 
-  //   console.log('is delivery handed', isDelivery?.handed);
-
   return (
     <div className={styles.aboutBook}>
       {message && <AlertMessage message={message} stylesAlert={alertMessage} />}

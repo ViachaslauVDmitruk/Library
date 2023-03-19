@@ -7,6 +7,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 import classNames from 'classnames';
 
 import { bookingSelector, dateOrderSelector, loginSelector, oneBookSelector } from '../../selectors';
+import { getBooks } from '../../store/books';
 import { sendBookingData, sendCancelBooking } from '../../store/order';
 import { BookingDataProps } from '../../store/order/type';
 import { clearDateOrder } from '../../store/order-date';
@@ -19,7 +20,6 @@ import { Loader } from '../loader';
 import closeSrc from './assets/close.png';
 
 import styles from './calendar.module.scss';
-import { getBooks } from '../../store/books';
 
 const modalCalendar = document.getElementById('modalCalendar') as HTMLElement;
 
@@ -60,12 +60,11 @@ export const Calendar = ({ isOpen, setIsOpen, bookId }: ModalFromState) => {
     dispatch(
       sendBookingData({
         order: data.order,
-        dateOrder: dateOrder,
+        dateOrder: selectedDate,
         book: data.book,
         customer: data.customer,
       })
     );
-    dispatch(getBooks());
     dispatch(clearDateOrder());
     setSelectedDay(new Date());
     reset();

@@ -16,6 +16,7 @@ export const MainPage = () => {
   const navigate = useNavigate();
   const { isError } = useAppSelector(booksSelector);
   const { isLoading } = useAppSelector(categoriesSelector);
+  const { isLoadingBooks } = useAppSelector(booksSelector);
   const { alertMessage, message } = useAppSelector(bookingSelector);
 
   useEffect(() => {
@@ -34,7 +35,7 @@ export const MainPage = () => {
 
   return (
     <div className={styles.container}>
-      {isLoading && <Loader />}
+      {(isLoading || isLoadingBooks) && <Loader />}
       {message && <AlertMessage message={message} stylesAlert={alertMessage} />}
       {isError && <AlertMessage message={REQUEST_BOOK} stylesAlert='error' />}
       <NavigateList />

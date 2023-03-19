@@ -16,6 +16,7 @@ import nextSrc from './assets/next.png';
 import prevSrc from './assets/prev.png';
 
 import styles from './calendar-form.module.scss';
+import { checkIsBlockedDate } from '../../helpers/calendar/check-is-bloked';
 
 export const CalendarForm = ({
   type = 'date',
@@ -118,7 +119,7 @@ export const CalendarForm = ({
                   styles[isSelectedWeekend ? 'selectWeekend' : '']
                 )}
                 data-test-id='day-button'
-                //  disabled={!isBookingDay || !isToday || !isWeekendDay}
+                disabled={checkIsBlockedDate(day)}
               >
                 {day.dayNumber}
               </button>

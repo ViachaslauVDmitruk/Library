@@ -4,7 +4,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { BookProps, BooksState } from './types';
 
 const initialState: BooksState = {
-  isLoading: false,
+  isLoadingBooks: false,
   books: [],
   isError: false,
 };
@@ -14,15 +14,15 @@ export const booksSlice = createSlice({
   initialState,
   reducers: {
     getBooks: (state, action: PayloadAction) => {
-      state.isLoading = true;
+      state.isLoadingBooks = true;
     },
     setBooks: (state, action: PayloadAction<BookProps[]>) => {
-      state.isLoading = false;
+      state.isLoadingBooks = false;
       state.books = action.payload;
       state.books = state.books.sort((a, b) => (a.rating == null ? 0 : a.rating) - (b.rating == null ? 0 : b.rating));
     },
     booksError: (state, action: PayloadAction) => {
-      state.isLoading = false;
+      state.isLoadingBooks = false;
       state.isError = true;
     },
     sortRatingUp: (state, action: PayloadAction) => {
