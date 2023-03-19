@@ -19,7 +19,7 @@ export const AlertMessage = ({ message, stylesAlert }: MessageType) => {
   const dispatch = useAppDispatch();
 
   return (
-    <div className={classNames(styles.container, { [styles.closeError]: isClosedMessage })}>
+    <div className={styles.container}>
       <div className={classNames(styles.errorMessage, styles[stylesAlert])} data-test-id='error'>
         <div className={styles.textError}>
           <div className={styles.image}>
