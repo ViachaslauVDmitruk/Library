@@ -82,6 +82,8 @@ export const Calendar = ({ isOpen, setIsOpen, bookId }: ModalFromState) => {
 
   const closeReviewModal = () => {
     setIsOpen(false);
+    dispatch(clearDateOrder());
+    setSelectedDay(new Date());
     reset();
   };
 
