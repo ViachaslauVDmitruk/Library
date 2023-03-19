@@ -6,7 +6,7 @@ import { useAppDispatch, useAppSelector } from '../../components/hooks';
 import { Loader } from '../../components/loader';
 import { NavigateList } from '../../components/navigate-list';
 import { REQUEST_BOOK } from '../../const/message';
-import { booksSelector, categoriesSelector, reviewSelector } from '../../selectors';
+import { bookingSelector, booksSelector, categoriesSelector } from '../../selectors';
 import { loginSuccess } from '../../store/login';
 
 import styles from './main-page.module.scss';
@@ -16,7 +16,7 @@ export const MainPage = () => {
   const navigate = useNavigate();
   const { isError } = useAppSelector(booksSelector);
   const { isLoading } = useAppSelector(categoriesSelector);
-  const { alertMessage, message } = useAppSelector(reviewSelector);
+  const { alertMessage, message } = useAppSelector(bookingSelector);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
