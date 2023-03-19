@@ -29,7 +29,7 @@ export const Calendar = ({ isOpen, setIsOpen, bookId, booking }: ModalFromState)
   const { dateOrder } = useAppSelector(dateOrderSelector);
   const { isLoadingModal, alertMessage } = useAppSelector(bookingSelector);
   const dispatch = useAppDispatch();
-  const bookingId = book.booking?.id ?? '';
+  const bookingId = (book.booking?.id || booking?.id) ?? '';
   const bookIdUpdate = bookId ?? '';
   const bookDateOrder = booking?.dateOrder || book.booking?.dateOrder;
 
@@ -148,7 +148,6 @@ export const Calendar = ({ isOpen, setIsOpen, bookId, booking }: ModalFromState)
             />
             <Button
               type='submit'
-              //   disabled={bookDateOrder === dateOrder || !!bookDateOrder}
               disabled={
                 !dateOrder ||
                 !!(bookDateOrder && new Date(bookDateOrder)?.toLocaleDateString() === dateOrder.toLocaleDateString())
