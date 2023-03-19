@@ -111,7 +111,6 @@ export const CalendarForm = ({
             const isWeekendDay = day.dayNumberInWeek === 7 || day.dayNumberInWeek === 1;
             const isBookingDay = checkBookingDay(day.dayNumber);
             const isSelectedWeekend = isSelectedDay && isWeekendDay;
-            const isOrderDay = bookDateOrder === day.date.toISOString();
 
             return (
               <button
@@ -130,7 +129,7 @@ export const CalendarForm = ({
                   styles[isSelectedWeekend ? 'selectWeekend' : '']
                 )}
                 data-test-id='day-button'
-                disabled={checkIsBlockedDate(day) || isOrderDay}
+                disabled={checkIsBlockedDate(day)}
               >
                 {day.dayNumber}
               </button>

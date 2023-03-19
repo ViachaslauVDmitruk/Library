@@ -14,7 +14,7 @@ export type UseCalendarParams = {
   selectedDate: Date;
   selectDate: (date: Date) => void;
   firstWeekDayNumber?: number;
-  bookDateOrder?: string | undefined;
+  bookDateOrder?: string;
 };
 
 const DAYS_IN_WEEK = 7;

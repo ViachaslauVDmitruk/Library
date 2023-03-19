@@ -148,7 +148,11 @@ export const Calendar = ({ isOpen, setIsOpen, bookId, booking }: ModalFromState)
             />
             <Button
               type='submit'
-              disabled={customerId === userId || !!dateOrder === false || bookDateOrder === dateOrder}
+              //   disabled={bookDateOrder === dateOrder || !!bookDateOrder}
+              disabled={
+                !dateOrder ||
+                !!(bookDateOrder && new Date(bookDateOrder)?.toLocaleDateString() === dateOrder.toLocaleDateString())
+              }
               buttonText='Забронировать'
               passStyle={styles.button}
               id='booking-button'
