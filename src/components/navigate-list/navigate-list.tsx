@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { useState } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import classNames from 'classnames';
 import Cookies from 'js-cookie';
 
@@ -124,7 +124,9 @@ export const NavigateList = () => {
           </NavLink>
         </div>
         <div className={styles.loginNavigate}>
-          <div className={styles.title}>Профиль</div>
+          <Link to='/profile' className={styles.title}>
+            Профиль
+          </Link>
           <div className={styles.title} onClick={logOut} data-test-id='exit-button'>
             Выход
           </div>

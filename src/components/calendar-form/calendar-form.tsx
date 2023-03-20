@@ -92,15 +92,15 @@ export const CalendarForm = ({
           />
         </div>
       </header>
-      <table className={styles.month}>
-        <thead className={styles.week}>
+      <div className={styles.month}>
+        <ul className={styles.week}>
           {weekDayNames.map((day, i) => (
-            <tr key={day} className={styles.weekDayName}>
+            <li key={day} className={styles.weekDayName}>
               {day}
-            </tr>
+            </li>
           ))}
-        </thead>
-        <tbody className={styles.arrayDays}>
+        </ul>
+        <div className={styles.arrayDays}>
           {state.calendarDays.map((day) => {
             const isToday = checkIsToday(day.date);
 
@@ -135,8 +135,8 @@ export const CalendarForm = ({
               </button>
             );
           })}
-        </tbody>
-      </table>
+        </div>
+      </div>
     </div>
   );
 };

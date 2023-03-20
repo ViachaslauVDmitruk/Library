@@ -4,20 +4,22 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 
-import { burgeMenuSelector, profileMenuSelector } from '../../selectors';
+import { burgeMenuSelector, loginSelector, profileMenuSelector } from '../../selectors';
 import { closeBurgerMenu, openBurgerMenu } from '../../store/burger-menu';
 import { closeProfileMenu, openProfileMenu } from '../../store/profile-menu';
 import { useAppDispatch, useAppSelector } from '../hooks';
+import { ProfileMenu } from '../profile-menu';
 
+import deafultSrc from './assets/avatar-deafult.png';
 import avatar from './assets/avatar.png';
 import logo from './assets/logo.png';
 
 import styles from './header.module.scss';
-import { ProfileMenu } from '../profile-menu';
 
 export const Header = () => {
   const { activeBurger } = useAppSelector(burgeMenuSelector);
   const { isOpenProfileMenu } = useAppSelector(profileMenuSelector);
+  const { user } = useAppSelector(loginSelector);
 
   const dispatch = useAppDispatch();
 
@@ -66,8 +68,8 @@ export const Header = () => {
         <div className={styles.title}>Библиотека</div>
       </div>
       <div className={styles.account} onClick={ToggleProfileMenu}>
-        <span className={styles.accountName}>Привет, Иван!</span>
-        <img src={avatar} alt='img' />
+        <span className={styles.accountName}>Привет, {user?.firstName}!</span>
+        <img src={deafultSrc} alt='img' />
       </div>
       <ProfileMenu />
     </header>

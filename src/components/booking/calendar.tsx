@@ -82,7 +82,7 @@ export const Calendar = ({ isOpen, setIsOpen, bookId, booking }: ModalFromState)
     dispatch(clearDateOrder());
     setSelectedDay(new Date());
     reset();
-    window.scrollTo(0, 0);
+    //  window.scrollTo(0, 0);
   };
 
   const CancelBooking = () => {

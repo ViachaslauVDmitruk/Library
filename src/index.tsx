@@ -12,6 +12,7 @@ import { Rules } from './components/rules';
 import { AuthPage } from './pages/auth';
 import { BookPage } from './pages/book';
 import { MainPage } from './pages/main';
+import { Profile } from './pages/profile';
 import { store } from './store';
 
 import './index.scss';
@@ -46,6 +47,7 @@ root.render(
             </AuthPage>
           }
         />
+
         <Route path='/' element={<Layout />}>
           <Route path='/' element={<MainPage />}>
             <Route path='/' element={<Navigate to='/books/all' />} />
@@ -54,6 +56,7 @@ root.render(
             <Route path='/contract' element={<Contract />} />
           </Route>
           <Route path='/books/:category/:id' element={<BookPage />} />
+          <Route path='/profile' element={<Profile />} />
         </Route>
       </Routes>
     </HashRouter>

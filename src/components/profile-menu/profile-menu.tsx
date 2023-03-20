@@ -22,9 +22,13 @@ export const ProfileMenu = () => {
     navigate('/auth');
   };
 
+  const flowProfile = () => {
+    navigate('/profile');
+  };
+
   return (
     <div className={classNames(styles.profile, { [styles.visible]: isOpenProfileMenu })}>
-      <Button buttonText='Профиль' type='button' passStyle={styles.button} />
+      <Button buttonText='Профиль' type='button' passStyle={styles.button} onClick={flowProfile} />
       <Button buttonText='Выход' type='button' passStyle={styles.button} onClick={logOut} />
     </div>
   );
