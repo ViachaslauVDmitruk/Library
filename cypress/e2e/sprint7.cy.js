@@ -3166,8 +3166,8 @@ describe('Sprint 2', () => {
             cy.session([login, pass], () => {
                 cy.intercept('POST', /local/, USER_AUTH).as('authorize');
                 cy.visit('http://localhost:3000/#/auth');
-                cy.get('[data-test-id=input]').should('be.visible').type(login);
-                cy.get('[data-test-id=pass-input]').should('be.visible').type(pass);
+                cy.get('[data-test-id=auth-form] input[name=identifier]').should('be.visible').type(login);
+                cy.get('[data-test-id=auth-form] input[name=password]').should('be.visible').type(pass);
                 cy.get('[type=submit]').should('be.exist').click();
                 cy.wait('@authorize');
                 cy.get('[data-test-id=main-page]').should('be.visible');
@@ -3196,7 +3196,7 @@ describe('Sprint 2', () => {
             cy.get('[data-test-id=navigation-books]').should('not.be.visible');
             cy.get('[data-test-id=navigation-showcase]').click();
             cy.get('[data-test-id=navigation-books]').should('be.visible').should('be.exist');
-            cy.get('[data-test-id=navigation-terms]').should('be.exist').eq(1).click();
+            cy.get('[data-test-id=navigation-terms]').should('be.exist').click();
             cy.get('[data-test-id=navigation-books]').should('not.be.visible');
         });
 
@@ -3239,7 +3239,7 @@ describe('Sprint 2', () => {
             cy.get('[data-test-id=burger-books]').should('not.be.visible');
             cy.get('[data-test-id=burger-showcase]').click();
             cy.get('[data-test-id=burger-books]').should('be.visible').should('be.exist');
-            cy.get('[data-test-id=navigation-terms]').should('be.exist').eq(0).click();
+            cy.get('[data-test-id=burger-terms]').should('be.exist').click();
             cy.get('[data-test-id=burger-books]').should('not.be.visible');
         });
 
@@ -3295,8 +3295,8 @@ describe('Sprint 3', () => {
             cy.session([login, pass], () => {
                 cy.intercept('POST', /local/, USER_AUTH).as('authorize');
                 cy.visit('http://localhost:3000/#/auth');
-                cy.get('[data-test-id=input]').should('be.visible').type(login);
-                cy.get('[data-test-id=pass-input]').should('be.visible').type(pass);
+                cy.get('[data-test-id=auth-form] input[name=identifier]').should('be.visible').type(login);
+                cy.get('[data-test-id=auth-form] input[name=password]').should('be.visible').type(pass);
                 cy.get('[type=submit]').should('be.exist').click();
                 cy.wait('@authorize');
                 cy.get('[data-test-id=main-page]').should('be.visible');
@@ -3380,8 +3380,8 @@ describe('Sprint 4', () => {
             cy.session([login, pass], () => {
                 cy.intercept('POST', /local/, USER_AUTH).as('authorize');
                 cy.visit('http://localhost:3000/#/auth');
-                cy.get('[data-test-id=input]').should('be.visible').type(login);
-                cy.get('[data-test-id=pass-input]').should('be.visible').type(pass);
+                cy.get('[data-test-id=auth-form] input[name=identifier]').should('be.visible').type(login);
+                cy.get('[data-test-id=auth-form] input[name=password]').should('be.visible').type(pass);
                 cy.get('[type=submit]').should('be.exist').click();
                 cy.wait('@authorize');
                 cy.get('[data-test-id=main-page]').should('be.visible');
@@ -4563,8 +4563,8 @@ describe('Sprint 6', () => {
 
         cy.session([login, pass], () => {
             cy.visit('http://localhost:3000/#/auth');
-            cy.get('[data-test-id=input]').should('be.visible').type(login);
-            cy.get('[data-test-id=pass-input]').should('be.visible').type(pass);
+            cy.get('[data-test-id=auth-form] input[name=identifier]').should('be.visible').type(login);
+            cy.get('[data-test-id=auth-form] input[name=password]').should('be.visible').type(pass);
             cy.get('[type=submit]').should('be.exist').click();
             cy.get('[data-test-id=main-page]').should('be.visible');
             cy.wait('@authorize');
