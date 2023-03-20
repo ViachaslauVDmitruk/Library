@@ -1,7 +1,7 @@
 @import '../../index.scss';
 
 .cardWindow {
-  display: flex;
+  display: grid;
   flex-direction: column;
   background: #ffffff;
   box-shadow: 0px 2px 4px rgba(191, 196, 201, 0.2), 0px 3px 4px rgba(191, 196, 201, 0.18),
@@ -10,12 +10,15 @@
   padding-top: 8px;
   padding-left: 8px;
   padding-right: 8px;
-  padding-bottom: 16px;
   justify-content: center;
+  grid-auto-flow: row;
+  grid-template: 392px 70px/174px;
+  @include phones() {
+    grid-template: 392px 70px/242px;
+  }
 }
 
 .image {
-  margin-bottom: 16px;
   flex: 1 1 242px;
   border: 1px solid #a7a7a7;
   border-radius: 10px;
@@ -27,7 +30,7 @@
     height: 100%;
     display: block;
     border-radius: 10px;
-    object-fit: cover;
+    object-fit: contain;
   }
 
   @include phones() {
@@ -44,8 +47,13 @@
   color: #a7a7a7;
 }
 
+.content {
+  display: grid;
+  grid-auto-flow: row;
+  grid-template: 242px 58px 54px 30px/1fr;
+}
+
 .title {
-  margin-top: 22px;
   font-weight: 600;
   font-size: 14px;
   line-height: 18px;
@@ -68,10 +76,11 @@
   letter-spacing: 0.1px;
   color: #727272;
   display: inline-block;
+  overflow: hidden;
 }
 
 .button {
-  margin-top: 28px;
+  margin-top: 20px;
   @include activeColor();
   display: inline-block;
   font-weight: 600;
@@ -84,6 +93,23 @@
   letter-spacing: 0.2px;
   text-transform: uppercase;
   color: #ffffff;
-  padding: 10px 23px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   border-radius: 20px;
+  height: 40px;
+  margin-left: 8px;
+  margin-right: 8px;
+  align-items: center;
+}
+
+.button[disabled] {
+  color: #a7a7a7;
+  background: #f9f9fa;
+  border: 1px solid #bfc4c9;
+}
+
+.bookingUser {
+  background: #ffffff;
+  border: 1px solid #bfc4c9;
+  color: #363636;
 }

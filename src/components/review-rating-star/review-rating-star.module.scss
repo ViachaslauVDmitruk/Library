@@ -1,0 +1,52 @@
+@import '../../index.scss';
+
+.ratingStar {
+  position: relative;
+  margin-bottom: 35px;
+  font-size: 40px;
+  @include middle() {
+    margin-bottom: 27px;
+  }
+}
+
+.rowStars {
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  & .starRatingLabel:not(:last-child) {
+    margin-right: 20px;
+  }
+
+  @include middle() {
+    & .starRatingLabel:not(:last-child) {
+      margin-right: 12px;
+    }
+  }
+}
+
+.starRatingItem {
+  position: absolute;
+  width: 0%;
+  height: 0%;
+  opacity: 0;
+  visibility: hidden;
+  top: 0;
+  left: 0;
+}
+
+label {
+  @include middle() {
+    svg {
+      width: 26px;
+      height: 25px;
+    }
+  }
+}
+
+.starRatingLabel {
+  cursor: pointer;
+}
+
+.colorStar {
+  fill: #ffbc1f;
+}

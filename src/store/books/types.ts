@@ -1,5 +1,5 @@
 export type BooksState = {
-  isLoading: boolean;
+  isLoadingBooks: boolean;
   books: BookProps[];
   isError: boolean;
 };
@@ -12,7 +12,7 @@ export type BookProps = {
   image: ImageProps | null;
   categories: string[];
   id: number;
-  booking: BookProps;
+  booking: BookingProps;
   delivery: DeliveryProps;
   histories: HistoriesProps;
 };

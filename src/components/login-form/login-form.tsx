@@ -13,6 +13,7 @@ import { loginResetState, sendLogin } from '../../store/login';
 import { LoginFormProps } from '../../types/login-form';
 import { Button } from '../button';
 import { useAppDispatch, useAppSelector } from '../hooks';
+import { CustomInput } from '../input';
 import { Loader } from '../loader';
 import { RegisterLoginRow } from '../registation-form/register-login-row';
 import { ResultWindow } from '../result-window';
@@ -21,7 +22,6 @@ import eyeClose from './assets/eye-close.png';
 import eyeOpen from './assets/eye-open.png';
 
 import styles from './login-form.module.scss';
-import { CustomInput } from '../input';
 
 export const LoginForm = () => {
   const [isShowPassword, setIsShowPassword] = useState<boolean>(false);

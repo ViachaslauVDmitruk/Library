@@ -1,0 +1,170 @@
+@import '../../index.scss';
+
+.wrapper {
+  background: #ffffff;
+  box-shadow: 0px 2px 4px rgba(191, 196, 201, 0.2), 0px 3px 4px rgba(191, 196, 201, 0.18),
+    0px 1px 5px rgba(191, 196, 201, 0.24);
+  border-radius: 8px;
+  padding-top: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-bottom: 8px;
+  margin-bottom: 32px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.month {
+}
+
+.controlButtons {
+}
+
+.week {
+  text-align: center;
+  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1px 1px;
+}
+
+.weekDayName {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.2px;
+  @include activeColor();
+  background-color: #f83600;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  align-self: center;
+  justify-self: center;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dayNumber {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.2px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-image: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #a7a7a7;
+  cursor: pointer;
+
+  &:hover {
+    border: 1px solid #bfc4c9;
+  }
+}
+
+.activeNumber {
+  @include activeColor();
+  border-radius: 50%;
+  color: #363636;
+}
+
+.arrayDays {
+  font-size: 10px;
+  font-weight: 400;
+  text-align: center;
+  display: grid;
+  text-align: center;
+  align-items: center;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.bookingDay {
+  color: #363636;
+  background-image: #ffffff;
+}
+
+.todayItem {
+  background-image: #ffffff;
+  color: #f83600;
+}
+
+.weekendItem {
+  background: #feebea;
+}
+
+.selectedDay {
+  @include activeColor();
+  border-radius: 50%;
+  color: #ffffff;
+}
+
+.selectWeekend {
+  background: #feebea;
+  color: #a7a7a7;
+}
+
+.selectArrow {
+  background-image: none;
+  cursor: pointer;
+  img {
+    padding: 7px;
+  }
+}
+
+.listWrapper {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+}
+
+.listMonthes {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #ffffff;
+  padding: 8px;
+  height: 220px;
+  overflow-y: auto;
+  border: 1px solid #a7a7a7;
+  border-radius: 5px;
+}
+
+.dropDown {
+  background-image: none;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.listItemMonth {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 24px;
+  letter-spacing: 0.1px;
+  color: #a7a7a7;
+}
+.visibleMonth {
+  display: flex;
+}
+
+.selectedMonth {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.1px;
+  color: #a7a7a7;
+}

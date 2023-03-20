@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { BookStateProps, OneBookProps } from './types';
+import { BookStateProps, CommentsProps, OneBookProps } from './types';
 
 const initialState: BookStateProps = {
   isLoading: false,
@@ -59,9 +59,14 @@ export const oneBookSlice = createSlice({
       state.isLoading = false;
       state.isError = true;
     },
+    sortReviewDown: (state, action: PayloadAction) => {
+      state.book.comments = state.book.comments.sort(
+        (a, b) => new Date(b.createdAt).valueOf() - new Date(a.createdAt).valueOf()
+      );
+    },
   },
 });
 
-export const { getOneBook, setOneBook, oneBookError } = oneBookSlice.actions;
+export const { getOneBook, setOneBook, oneBookError, sortReviewDown } = oneBookSlice.actions;
 
 export const oneBookSliceReducer = oneBookSlice.reducer;

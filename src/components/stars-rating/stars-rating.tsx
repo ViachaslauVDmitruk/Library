@@ -13,9 +13,9 @@ export const StarsRating = ({ ratingStars }: StarsProps) => {
   const grade = ratingStars || 0;
 
   return (
-    <ul className={styles.rating}>
+    <ul className={styles.rating} data-test-id='rating'>
       {stars.map(({ count }) => (
-        <li key={count}>
+        <li key={count} data-test-id={count <= grade ? 'star-active' : ''}>
           {}
           <img src={count <= grade ? fullStar : emptyStar} alt='img' />
         </li>

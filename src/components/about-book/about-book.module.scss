@@ -71,6 +71,9 @@
     font-size: 14px;
     line-height: 18px;
   }
+  span {
+    margin-left: 5px;
+  }
 }
 
 .button {
@@ -94,6 +97,18 @@
     width: 270px;
     align-self: center;
   }
+}
+
+.button[disabled] {
+  color: #a7a7a7;
+  background: #f9f9fa;
+  border: 1px solid #bfc4c9;
+}
+
+.bookingUser {
+  background: #ffffff;
+  border: 1px solid #bfc4c9;
+  color: #363636;
 }
 
 .about {

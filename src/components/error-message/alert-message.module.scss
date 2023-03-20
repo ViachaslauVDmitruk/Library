@@ -5,19 +5,29 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #feebea;
-  border: 1.5px solid #f42c4f;
+
   border-radius: 5px;
-  padding: 27px 52px;
+  padding: 27px 20px;
   @include phones() {
     padding: 12px 15px;
     align-items: flex-start;
   }
 }
 
+.error {
+  background-color: #feebea;
+  border: 1.5px solid #f42c4f;
+}
+
+.success {
+  background: #ebf9f1;
+  border: 1.5px solid #00ca71;
+}
+
 .container {
   @include container();
   position: fixed;
+  z-index: 100;
   top: 64px;
   left: 50%;
   transform: translate(-50%);
@@ -46,4 +56,8 @@
   color: $mainTextColor;
   margin-left: 12px;
   margin-right: 12px;
+}
+
+.closeButton {
+  background-image: none;
 }

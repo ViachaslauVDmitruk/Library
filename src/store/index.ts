@@ -8,10 +8,13 @@ import { categoriesSlice } from './categories';
 import { errorSlice } from './error-request';
 import { inputSearchSlice } from './input-search';
 import { loginFormSlice } from './login';
+import { bookingSlice } from './order';
+import { dateOrderSlice } from './order-date';
 import { profileMenuSlice } from './profile-menu';
 import { recoveryEmailSlice } from './recovery-email';
 import { recoveryPasswordSlice } from './recovery-password';
 import { registrationFormSlice } from './registration';
+import { reviewFormSlice } from './review';
 import { rootSaga } from './saga';
 import { selectedCategorySlice } from './selected-category';
 
@@ -30,11 +33,14 @@ export const rootReducer = {
   recoveryEmail: recoveryEmailSlice.reducer,
   recoveryPassword: recoveryPasswordSlice.reducer,
   profileMenu: profileMenuSlice.reducer,
+  review: reviewFormSlice.reducer,
+  booking: bookingSlice.reducer,
+  dateOrder: dateOrderSlice.reducer,
 };
 
 export const store = configureStore({
   reducer: rootReducer,
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(sagaMiddleware),
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware({ serializableCheck: false }).concat(sagaMiddleware),
 });
 
 sagaMiddleware.run(rootSaga);

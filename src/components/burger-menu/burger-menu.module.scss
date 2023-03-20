@@ -30,15 +30,17 @@
 .navigateTitle:hover {
   @include activeColor();
   background-color: #f83600;
+  background-clip: text;
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 
 .active {
   @include activeColor();
   background-color: #f83600;
+  background-clip: text;
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: transparent;
   border-bottom: 1px solid rgb(230, 97, 20);
   padding-bottom: 8px;
 }
@@ -71,8 +73,9 @@
 .listItem:hover {
   @include activeColor();
   background-color: #f83600;
+  background-clip: text;
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 
 /*--------------burger-menu------------------*/

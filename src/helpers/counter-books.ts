@@ -1,5 +1,3 @@
-import { useSelector } from 'react-redux';
-
 import { BookProps } from '../store/books/types';
 
 type CounterProps = {
