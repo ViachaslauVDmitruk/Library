@@ -10,4 +10,5 @@ export const API = {
   reviewUrl: `${API_HOST}/api/comments`,
   bookingUrl: `${API_HOST}/api/bookings`,
   userUrl: `${API_HOST}/api/users`,
+  upLoadUrl: `${API_HOST}/api/upload`,
 };

@@ -67,7 +67,7 @@ export const Header = () => {
         </button>
         <div className={styles.title}>Библиотека</div>
       </div>
-      <div className={styles.account} onClick={ToggleProfileMenu}>
+      <div className={styles.account} onClick={ToggleProfileMenu} data-test-id='profile-avatar'>
         <span className={styles.accountName}>Привет, {user?.firstName}!</span>
         <img src={deafultSrc} alt='img' />
       </div>

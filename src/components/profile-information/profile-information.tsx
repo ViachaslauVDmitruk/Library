@@ -10,12 +10,12 @@ import { validateEmail, validateLogin, validatePassword } from '../../const/regi
 import { changedRegisterSelector, loginSelector } from '../../selectors';
 import { sendChangedRegisterData } from '../../store/user';
 import { ChangedRegisterDataPayload } from '../../store/user/type';
-import { FormData } from '../../types/registration-form';
 import { Button } from '../button';
 import { ErrorFormMessage } from '../error-form-message';
 import { AlertMessage } from '../error-message';
 import { useAppDispatch, useAppSelector } from '../hooks';
 import { CustomInput } from '../input';
+import { Loader } from '../loader';
 
 import check from './assets/check.png';
 import eyeClose from './assets/eye-close.png';
@@ -78,6 +78,7 @@ export const ProfileInformation = () => {
   return (
     <FormProvider {...methods}>
       {message && <AlertMessage stylesAlert={alertMessage} message={message} />}
+      {isLoadingModal && <Loader />}
       <form className={styles.container} data-test-id='profile-form' onSubmit={handleSubmit(onSubmit)}>
         <div className={styles.title}>Учётные данные</div>
         <div className={styles.discription}>Здесь вы можете отредактировать информацию о себе</div>

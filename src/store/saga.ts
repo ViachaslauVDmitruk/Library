@@ -1,5 +1,6 @@
 import { all } from 'redux-saga/effects';
 
+import { avatarUploadWatcher } from './avatar/saga';
 import { oneBookWatcher } from './book/saga';
 import { booksWatcher } from './books/saga';
 import { categoriesWatcher } from './categories/saga';
@@ -23,5 +24,6 @@ export function* rootSaga(): Generator {
     reviewWatcher(),
     bookingWatcher(),
     changedRegisterWatcher(),
+    avatarUploadWatcher(),
   ]);
 }

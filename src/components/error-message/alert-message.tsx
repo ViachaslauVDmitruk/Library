@@ -9,6 +9,8 @@ import errorSrc from './assets/error.png';
 import successSrc from './assets/success.png';
 
 import styles from './alert-message.module.scss';
+import { closeReviewAlert } from '../../store/review';
+import { closeAvatarAlert } from '../../store/avatar';
 
 type MessageType = {
   message: string;
@@ -17,6 +19,12 @@ type MessageType = {
 
 export const AlertMessage = ({ message, stylesAlert }: MessageType) => {
   const dispatch = useAppDispatch();
+
+  const closeAlert = () => {
+    dispatch(closeBookingAlert());
+    dispatch(closeReviewAlert());
+    dispatch(closeAvatarAlert());
+  };
 
   return (
     <div className={styles.container}>
@@ -27,13 +35,7 @@ export const AlertMessage = ({ message, stylesAlert }: MessageType) => {
           </div>
           <div className={styles.text}>{message}</div>
         </div>
-        <Button
-          type='button'
-          onClick={() => dispatch(closeBookingAlert())}
-          src={closeSrc}
-          id='alert-close'
-          passStyle={styles.closeButton}
-        />
+        <Button type='button' onClick={closeAlert} src={closeSrc} id='alert-close' passStyle={styles.closeButton} />
       </div>
     </div>
   );

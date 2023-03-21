@@ -6,7 +6,6 @@ import { loginSelector, recoveryEmailSelector } from '../../selectors';
 import { sendRecoveryEmail } from '../../store/recovery-email';
 import { RecoveryEmailType } from '../../store/recovery-email/type';
 import { Button } from '../button';
-
 import { useAppDispatch, useAppSelector } from '../hooks';
 import { CustomInput } from '../input';
 import { Loader } from '../loader';

@@ -42,3 +42,5 @@ export const bookingSelector = (state: RootState): ModalStateProps => state.book
 export const dateOrderSelector = (state: RootState): DateOrderType => state.dateOrder;
 
 export const changedRegisterSelector = (state: RootState): ModalStateProps => state.changedRegister;
+
+export const avatarSelector = (state: RootState): ModalStateProps => state.avatar;

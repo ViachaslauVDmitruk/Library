@@ -1,6 +1,7 @@
 import createSagaMiddleware from 'redux-saga';
 import { configureStore } from '@reduxjs/toolkit';
 
+import { avatarSlice } from './avatar';
 import { oneBookSlice } from './book';
 import { booksSlice } from './books';
 import { burgerMenuSlice } from './burger-menu';
@@ -38,6 +39,7 @@ export const rootReducer = {
   booking: bookingSlice.reducer,
   dateOrder: dateOrderSlice.reducer,
   changedRegister: changedRegisterSlice.reducer,
+  avatar: avatarSlice.reducer,
 };
 
 export const store = configureStore({
