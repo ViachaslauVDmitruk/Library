@@ -51,7 +51,6 @@ export function* cancelBookingWorker({ payload }: PayloadAction<BookingIdTypes>)
 }
 
 export function* changedBookingWorker({ payload }: PayloadAction<BookingIdChangedTypes>) {
-  console.log('payload', payload);
   try {
     yield call(axios.put, `${API.bookingUrl}/${payload.bookingId}`, {
       data: { order: payload.order, dateOrder: payload.dateOrder, book: payload.book, customer: payload.customer },

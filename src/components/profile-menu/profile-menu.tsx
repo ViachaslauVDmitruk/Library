@@ -23,12 +23,19 @@ export const ProfileMenu = () => {
   };
 
   const flowProfile = () => {
+    dispatch(closeProfileMenu());
     navigate('/profile');
   };
 
   return (
     <div className={classNames(styles.profile, { [styles.visible]: isOpenProfileMenu })}>
-      <Button buttonText='Профиль' type='button' passStyle={styles.button} onClick={flowProfile} />
+      <Button
+        buttonText='Профиль'
+        type='button'
+        passStyle={styles.button}
+        onClick={flowProfile}
+        data-test-id='profile-button'
+      />
       <Button buttonText='Выход' type='button' passStyle={styles.button} onClick={logOut} />
     </div>
   );

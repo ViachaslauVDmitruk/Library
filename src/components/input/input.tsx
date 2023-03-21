@@ -19,6 +19,7 @@ export const CustomInput = ({
   className,
   validationRules,
   customHint,
+  disabled,
 }: CustomInputProps) => {
   const [isFilled, setIsFilled] = useState(false);
   const inputClassName = classNames(styles.input, className, error && styles.error);
@@ -64,6 +65,7 @@ export const CustomInput = ({
           onBlur={handleBlur}
           onChange={handleChange}
           style={errors[name as string]?.message ? { borderBottom: '1px solid red' } : {}}
+          disabled={disabled}
         />
         <label htmlFor={name}>{placeholder}</label>
         {errors[name as string]?.message && <ErrorFormMessage message={errors[name as string]?.message} />}

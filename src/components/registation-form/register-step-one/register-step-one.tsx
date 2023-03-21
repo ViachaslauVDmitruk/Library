@@ -46,7 +46,7 @@ export const RegisterStepOne = () => {
           Customhint='password'
         />
         <div className={styles.eyeImage} onClick={ShowPassword}>
-          {watch('') && <img src={check} alt='img' data-test-id='checkmark' />}
+          {watch('password').length > 7 && <img src={check} alt='img' data-test-id='checkmark' />}
           <img
             src={isShowPassword ? eyeOpen : eyeClose}
             alt='img'

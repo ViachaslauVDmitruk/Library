@@ -26,4 +26,5 @@ export type CustomInputProps = DetailedHTMLProps<InputHTMLAttributes<HTMLInputEl
   lable?: string;
   mask?: string;
   requiredText?: string | '';
+  disabled?: boolean;
 };

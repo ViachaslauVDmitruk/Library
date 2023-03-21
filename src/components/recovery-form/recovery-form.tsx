@@ -29,7 +29,7 @@ export const RecoveryForm = () => {
 
   const {
     handleSubmit,
-    formState: { errors, isValid, isDirty },
+    formState: { errors },
   } = methods;
 
   const navigateToLogin = () => {

@@ -34,7 +34,7 @@ export const MainPage = () => {
   }, [navigate, dispatch]);
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} data-test-id='main-page'>
       {(isLoading || isLoadingBooks) && <Loader />}
       {message && <AlertMessage message={message} stylesAlert={alertMessage} />}
       {isError && <AlertMessage message={REQUEST_BOOK} stylesAlert='error' />}

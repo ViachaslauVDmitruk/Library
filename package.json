@@ -50,6 +50,7 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^2.9.11",
+    "@react-hook/resize-observer": "^1.2.6",
     "@reduxjs/toolkit": "^1.9.2",
     "@types/js-cookie": "^3.0.3",
     "@types/react-input-mask": "^3.0.2",
