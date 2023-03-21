@@ -9,11 +9,12 @@ import { avatarUploadError, avatarUploadSuccess, closeAvatarAlert, sendAvatarDat
 export function* avatarUploadWorker({ payload }: PayloadAction<any>) {
   const formData = new FormData();
 
-  formData.append('files', payload[0]);
+  formData.append('files', payload.avatar[0]);
 
   try {
-    yield call(axios.post, API.upLoadUrl, formData);
+    const { data } = yield call(axios.post, API.upLoadUrl, formData);
     yield put(avatarUploadSuccess());
+    yield call(axios.put, `${API.userUrl}/${payload.userId}`, { avatar: data[0].id });
     yield delay(4000);
     yield put(closeAvatarAlert());
   } catch (e) {

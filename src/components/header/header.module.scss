@@ -150,6 +150,12 @@
   @include laptop {
     display: none;
   }
+
+  img {
+    height: 58px;
+    width: 58px;
+    border-radius: 50%;
+  }
 }
 
 .accountName {

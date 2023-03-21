@@ -1,9 +1,10 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 
+import { API_HOST } from '../../api/const';
 import { burgeMenuSelector, loginSelector, profileMenuSelector, userSelector } from '../../selectors';
 import { closeBurgerMenu, openBurgerMenu } from '../../store/burger-menu';
 import { closeProfileMenu, openProfileMenu } from '../../store/profile-menu';
@@ -16,6 +17,7 @@ import logo from './assets/logo.png';
 import styles from './header.module.scss';
 
 export const Header = () => {
+  const [avatarScr, setAvatarSrc] = useState<string>(deafultSrc);
   const { activeBurger } = useAppSelector(burgeMenuSelector);
   const { isOpenProfileMenu } = useAppSelector(profileMenuSelector);
   const { user } = useAppSelector(userSelector);
@@ -46,6 +48,14 @@ export const Header = () => {
     }
   }, [activeBurger]);
 
+  useEffect(() => {
+    if (user?.avatar) {
+      setAvatarSrc(`${API_HOST}${user.avatar}`);
+    } else {
+      setAvatarSrc(deafultSrc);
+    }
+  }, [user]);
+
   return (
     <header className={styles.container} onClick={() => dispatch(closeBurgerMenu())}>
       <div className={styles.logoTitle}>
@@ -68,7 +78,7 @@ export const Header = () => {
       </div>
       <div className={styles.account} onClick={ToggleProfileMenu} data-test-id='profile-avatar'>
         <span className={styles.accountName}>Привет, {user?.firstName}!</span>
-        <img src={user?.avatar ? user.avatar : deafultSrc} alt='img' />
+        <img src={avatarScr} alt='img' />
       </div>
       <ProfileMenu />
     </header>

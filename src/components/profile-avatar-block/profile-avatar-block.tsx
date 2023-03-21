@@ -1,5 +1,8 @@
 /* eslint-disable no-debugger */
-import { avatarSelector, loginSelector } from '../../selectors';
+import { useEffect, useState } from 'react';
+
+import { API, API_HOST } from '../../api/const';
+import { avatarSelector, loginSelector, userSelector } from '../../selectors';
 import { sendAvatarData } from '../../store/avatar';
 import { AlertMessage } from '../error-message';
 import { useAppDispatch, useAppSelector } from '../hooks';
@@ -11,15 +14,24 @@ import camera from './assets/camera.png';
 import styles from './profile-avatar-block.module.scss';
 
 export const ProfileAvatarBlock = () => {
-  const { user } = useAppSelector(loginSelector);
+  const [avatarScr, setAvatarSrc] = useState<string>(deafultSrc);
+  const { user } = useAppSelector(userSelector);
   const { isLoadingModal, alertMessage, message } = useAppSelector(avatarSelector);
   const dispatch = useAppDispatch();
 
   const changeAvatar = (file: FileList | null) => {
     if (file) {
-      dispatch(sendAvatarData(file));
+      dispatch(sendAvatarData({ avatar: file, userId: user?.id }));
     }
   };
+
+  useEffect(() => {
+    if (user?.avatar) {
+      setAvatarSrc(`${API_HOST}${user.avatar}`);
+    } else {
+      setAvatarSrc(deafultSrc);
+    }
+  }, [user]);
 
   return (
     <div className={styles.container}>
@@ -27,7 +39,7 @@ export const ProfileAvatarBlock = () => {
       {isLoadingModal && <Loader />}
       <div className={styles.imageProfile}>
         <div className={styles.avatarWrapper}>
-          <img src={deafultSrc} alt='img' />
+          <img src={avatarScr} alt='img' />
         </div>
         <div className={styles.cameraWrapper}>
           <img src={camera} alt='img' />
