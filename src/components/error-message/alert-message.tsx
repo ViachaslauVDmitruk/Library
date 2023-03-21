@@ -1,6 +1,11 @@
 import classNames from 'classnames';
 
+import { closeAvatarAlert } from '../../store/avatar';
+import { closeBooksAlert } from '../../store/books';
+import { closeCategoriesAlert } from '../../store/categories';
 import { closeBookingAlert } from '../../store/order';
+import { closeReviewAlert } from '../../store/review';
+import { closeUserResponseAlert } from '../../store/user-data';
 import { Button } from '../button';
 import { useAppDispatch } from '../hooks';
 
@@ -9,8 +14,6 @@ import errorSrc from './assets/error.png';
 import successSrc from './assets/success.png';
 
 import styles from './alert-message.module.scss';
-import { closeReviewAlert } from '../../store/review';
-import { closeAvatarAlert } from '../../store/avatar';
 
 type MessageType = {
   message: string;
@@ -24,6 +27,9 @@ export const AlertMessage = ({ message, stylesAlert }: MessageType) => {
     dispatch(closeBookingAlert());
     dispatch(closeReviewAlert());
     dispatch(closeAvatarAlert());
+    dispatch(closeUserResponseAlert());
+    dispatch(closeCategoriesAlert());
+    dispatch(closeBooksAlert());
   };
 
   return (

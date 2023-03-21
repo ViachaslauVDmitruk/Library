@@ -12,6 +12,7 @@ import { RecoveyPasswordProps } from '../store/recovery-password/type';
 import { RegistrationStateTypes } from '../store/registration/type';
 import { ModalStateProps } from '../store/review/type';
 import { SelectedCategoryState } from '../store/selected-category/types';
+import { UserStateProps } from '../store/user-data/type';
 
 export const burgeMenuSelector = (state: RootState): BurgerStateTypes => state.burgerMenu;
 
@@ -44,3 +45,5 @@ export const dateOrderSelector = (state: RootState): DateOrderType => state.date
 export const changedRegisterSelector = (state: RootState): ModalStateProps => state.changedRegister;
 
 export const avatarSelector = (state: RootState): ModalStateProps => state.avatar;
+
+export const userSelector = (state: RootState): UserStateProps => state.user;

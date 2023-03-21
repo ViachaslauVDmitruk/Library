@@ -1,6 +1,6 @@
 export type CategoriesState = {
-  isLoading: boolean;
-  isError: boolean;
+  isLoadingCategories: boolean;
+  isErrorCategories: boolean;
   categories: CategoryProps[];
 };
 

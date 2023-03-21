@@ -1,7 +1,7 @@
 export type BooksState = {
   isLoadingBooks: boolean;
   books: BookProps[];
-  isError: boolean;
+  isErrorBooks: boolean;
 };
 
 export type BookProps = {

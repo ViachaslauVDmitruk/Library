@@ -22,7 +22,7 @@ import styles from './navigate-list.module.scss';
 export const NavigateList = () => {
   const [isShowNavigate, setIsShowNavigate] = useState<boolean>(true);
   const { activeBurger } = useAppSelector(burgeMenuSelector);
-  const { categories, isError, isLoading } = useAppSelector(categoriesSelector);
+  const { categories, isErrorCategories, isLoadingCategories } = useAppSelector(categoriesSelector);
   const { books } = useAppSelector(booksSelector);
 
   const dispatch = useAppDispatch();
@@ -61,7 +61,7 @@ export const NavigateList = () => {
             )}
           </div>
         </div>
-        {!isError && !isLoading && (
+        {!isErrorCategories && !isLoadingCategories && (
           <ul className={classNames(styles.listItems, { [styles.disableListItems]: !isShowNavigate })}>
             <li className={classNames(styles.listItem)} onClick={() => dispatch(closeBurgerMenu())}>
               <NavLink

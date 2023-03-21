@@ -4,14 +4,13 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 
-import { burgeMenuSelector, loginSelector, profileMenuSelector } from '../../selectors';
+import { burgeMenuSelector, loginSelector, profileMenuSelector, userSelector } from '../../selectors';
 import { closeBurgerMenu, openBurgerMenu } from '../../store/burger-menu';
 import { closeProfileMenu, openProfileMenu } from '../../store/profile-menu';
 import { useAppDispatch, useAppSelector } from '../hooks';
 import { ProfileMenu } from '../profile-menu';
 
 import deafultSrc from './assets/avatar-deafult.png';
-import avatar from './assets/avatar.png';
 import logo from './assets/logo.png';
 
 import styles from './header.module.scss';
@@ -19,7 +18,7 @@ import styles from './header.module.scss';
 export const Header = () => {
   const { activeBurger } = useAppSelector(burgeMenuSelector);
   const { isOpenProfileMenu } = useAppSelector(profileMenuSelector);
-  const { user } = useAppSelector(loginSelector);
+  const { user } = useAppSelector(userSelector);
 
   const dispatch = useAppDispatch();
 
@@ -69,7 +68,7 @@ export const Header = () => {
       </div>
       <div className={styles.account} onClick={ToggleProfileMenu} data-test-id='profile-avatar'>
         <span className={styles.accountName}>Привет, {user?.firstName}!</span>
-        <img src={deafultSrc} alt='img' />
+        <img src={user?.avatar ? user.avatar : deafultSrc} alt='img' />
       </div>
       <ProfileMenu />
     </header>

@@ -19,6 +19,7 @@ import { reviewFormSlice } from './review';
 import { rootSaga } from './saga';
 import { selectedCategorySlice } from './selected-category';
 import { changedRegisterSlice } from './user';
+import { userSlice } from './user-data';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -40,6 +41,7 @@ export const rootReducer = {
   dateOrder: dateOrderSlice.reducer,
   changedRegister: changedRegisterSlice.reducer,
   avatar: avatarSlice.reducer,
+  user: userSlice.reducer,
 };
 
 export const store = configureStore({

@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { booksSelector, inputSearchSelector, selectedCategorySelector } from '../../selectors';
 import { getBooks } from '../../store/books';
 import { getCategories } from '../../store/categories';
+import { getUserData } from '../../store/user-data';
 import { CardWindowView } from '../card';
 import { CardListView } from '../card/card-list-view';
 import { Filter } from '../filter';
@@ -16,7 +17,7 @@ export const Books = () => {
   const dispatch = useAppDispatch();
   const [view, setView] = useState<string>('window');
   const [isWindow, setIsWindow] = useState<boolean>(true);
-  const { books, isError, isLoadingBooks } = useSelector(booksSelector);
+  const { books, isErrorBooks, isLoadingBooks } = useSelector(booksSelector);
   const { selectedCategory } = useSelector(selectedCategorySelector);
   const { searchValue } = useSelector(inputSearchSelector);
 
@@ -36,13 +37,14 @@ export const Books = () => {
   }, [view]);
 
   useEffect(() => {
+    dispatch(getUserData());
     dispatch(getCategories());
     dispatch(getBooks());
   }, [dispatch]);
 
   return (
     <div className={styles.content}>
-      {!isError && !isLoadingBooks && <Filter changeView={setView} viewWindow={isWindow} />}
+      {!isErrorBooks && !isLoadingBooks && <Filter changeView={setView} viewWindow={isWindow} />}
 
       {categoryMode.length ? (
         filteredCategoryBySearch.length ? (

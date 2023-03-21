@@ -4,8 +4,8 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { CategoriesState, CategoryProps } from './types';
 
 const initialState: CategoriesState = {
-  isLoading: false,
-  isError: false,
+  isLoadingCategories: false,
+  isErrorCategories: false,
   categories: [],
 };
 
@@ -14,19 +14,23 @@ export const categoriesSlice = createSlice({
   initialState,
   reducers: {
     getCategories: (state, action: PayloadAction) => {
-      state.isLoading = true;
+      state.isLoadingCategories = true;
     },
     setCategories: (state, action: PayloadAction<CategoryProps[]>) => {
-      state.isLoading = false;
+      state.isLoadingCategories = false;
       state.categories = action.payload;
     },
     categoriesError: (state, action: PayloadAction) => {
-      state.isLoading = false;
-      state.isError = true;
+      state.isLoadingCategories = false;
+      state.isErrorCategories = true;
+    },
+    closeCategoriesAlert: (state) => {
+      state.isLoadingCategories = false;
+      state.isErrorCategories = false;
     },
   },
 });
 
-export const { getCategories, setCategories, categoriesError } = categoriesSlice.actions;
+export const { getCategories, setCategories, categoriesError, closeCategoriesAlert } = categoriesSlice.actions;
 
 export const categoriesSliceReducer = categoriesSlice.reducer;

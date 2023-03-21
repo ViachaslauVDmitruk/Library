@@ -12,7 +12,6 @@ export function* avatarUploadWorker({ payload }: PayloadAction<any>) {
   formData.append('files', payload[0]);
 
   try {
-    // const response: AxiosResponse<LoginResponseType> = yield call
     yield call(axios.post, API.upLoadUrl, formData);
     yield put(avatarUploadSuccess());
     yield delay(4000);

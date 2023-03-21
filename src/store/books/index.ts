@@ -6,7 +6,7 @@ import { BookProps, BooksState } from './types';
 const initialState: BooksState = {
   isLoadingBooks: false,
   books: [],
-  isError: false,
+  isErrorBooks: false,
 };
 
 export const booksSlice = createSlice({
@@ -23,7 +23,11 @@ export const booksSlice = createSlice({
     },
     booksError: (state, action: PayloadAction) => {
       state.isLoadingBooks = false;
-      state.isError = true;
+      state.isErrorBooks = true;
+    },
+    closeBooksAlert: (state) => {
+      state.isLoadingBooks = false;
+      state.isErrorBooks = false;
     },
     sortRatingUp: (state, action: PayloadAction) => {
       state.books = state.books.sort((a, b) => (a.rating == null ? 0 : a.rating) - (b.rating == null ? 0 : b.rating));
@@ -34,6 +38,6 @@ export const booksSlice = createSlice({
   },
 });
 
-export const { getBooks, setBooks, booksError, sortRatingDown, sortRatingUp } = booksSlice.actions;
+export const { getBooks, setBooks, booksError, sortRatingDown, sortRatingUp, closeBooksAlert } = booksSlice.actions;
 
 export const bookSliceReduser = booksSlice.reducer;

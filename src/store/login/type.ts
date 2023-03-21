@@ -18,7 +18,7 @@ export type UserType = {
   phone: string;
   role: RoleType;
   comments: CommentsType[];
-  avatar: string;
+  avatar: string | null;
   booking: BookingType;
   delivery: DeliveryType;
   history: HistoryType;

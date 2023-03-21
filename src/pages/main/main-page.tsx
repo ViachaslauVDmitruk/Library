@@ -6,7 +6,7 @@ import { useAppDispatch, useAppSelector } from '../../components/hooks';
 import { Loader } from '../../components/loader';
 import { NavigateList } from '../../components/navigate-list';
 import { REQUEST_BOOK } from '../../const/message';
-import { bookingSelector, booksSelector, categoriesSelector } from '../../selectors';
+import { bookingSelector, booksSelector, categoriesSelector, userSelector } from '../../selectors';
 import { loginSuccess } from '../../store/login';
 
 import styles from './main-page.module.scss';
@@ -14,13 +14,16 @@ import styles from './main-page.module.scss';
 export const MainPage = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const { isError } = useAppSelector(booksSelector);
-  const { isLoading } = useAppSelector(categoriesSelector);
-  const { isLoadingBooks } = useAppSelector(booksSelector);
+  const { isErrorBooks, isLoadingBooks } = useAppSelector(booksSelector);
+  const { isLoadingCategories, isErrorCategories } = useAppSelector(categoriesSelector);
+  const { isLoadingUser, isErrorUserResponse } = useAppSelector(userSelector);
   const { alertMessage, message } = useAppSelector(bookingSelector);
 
+  const loading = isLoadingBooks || isLoadingCategories || isLoadingUser;
+  const error = isErrorBooks || isErrorCategories || isErrorUserResponse;
+
   useEffect(() => {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('user');
     const user = localStorage.getItem('user');
 
     if (!token || !user) {
@@ -35,11 +38,11 @@ export const MainPage = () => {
 
   return (
     <div className={styles.container} data-test-id='main-page'>
-      {(isLoading || isLoadingBooks) && <Loader />}
+      {loading && <Loader />}
       {message && <AlertMessage message={message} stylesAlert={alertMessage} />}
-      {isError && <AlertMessage message={REQUEST_BOOK} stylesAlert='error' />}
+      {error && <AlertMessage message={REQUEST_BOOK} stylesAlert='error' />}
       <NavigateList />
-      {!isError && <Outlet />}
+      {!error && <Outlet />}
     </div>
   );
 };
