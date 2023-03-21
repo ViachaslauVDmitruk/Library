@@ -17,6 +17,7 @@ import { registrationFormSlice } from './registration';
 import { reviewFormSlice } from './review';
 import { rootSaga } from './saga';
 import { selectedCategorySlice } from './selected-category';
+import { changedRegisterSlice } from './user';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -36,6 +37,7 @@ export const rootReducer = {
   review: reviewFormSlice.reducer,
   booking: bookingSlice.reducer,
   dateOrder: dateOrderSlice.reducer,
+  changedRegister: changedRegisterSlice.reducer,
 };
 
 export const store = configureStore({

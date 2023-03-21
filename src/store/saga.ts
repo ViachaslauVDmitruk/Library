@@ -9,6 +9,7 @@ import { recoveryEmailWatcher } from './recovery-email/saga';
 import { recoveryPasswordWatcher } from './recovery-password/saga';
 import { registrationWatcher } from './registration/saga';
 import { reviewWatcher } from './review/saga';
+import { changedRegisterWatcher } from './user/saga';
 
 export function* rootSaga(): Generator {
   yield all([
@@ -21,5 +22,6 @@ export function* rootSaga(): Generator {
     recoveryPasswordWatcher(),
     reviewWatcher(),
     bookingWatcher(),
+    changedRegisterWatcher(),
   ]);
 }

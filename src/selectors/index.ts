@@ -40,3 +40,5 @@ export const reviewSelector = (state: RootState): ModalStateProps => state.revie
 export const bookingSelector = (state: RootState): ModalStateProps => state.booking;
 
 export const dateOrderSelector = (state: RootState): DateOrderType => state.dateOrder;
+
+export const changedRegisterSelector = (state: RootState): ModalStateProps => state.changedRegister;

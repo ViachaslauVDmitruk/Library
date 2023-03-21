@@ -9,7 +9,6 @@ import { ReviewProps } from './type';
 import { closeReviewAlert, reviewError, reviewSuccess, sendReviewData } from '.';
 
 export function* reviewWorker({ payload }: PayloadAction<ReviewProps>) {
-  console.log('review', payload);
   try {
     yield call(axios.post, API.reviewUrl, { data: payload });
     yield put(getOneBook(payload.book));
@@ -17,7 +16,6 @@ export function* reviewWorker({ payload }: PayloadAction<ReviewProps>) {
     yield delay(4000);
     yield put(closeReviewAlert());
   } catch (e) {
-    //  yield put(getOneBook(payload.book));
     yield put(reviewError());
     yield delay(4000);
     yield put(closeReviewAlert());

@@ -7,9 +7,14 @@ import classNames from 'classnames';
 
 import { regExPhone } from '../../const/reg-ex';
 import { validateEmail, validateLogin, validatePassword } from '../../const/register-schema';
+import { changedRegisterSelector, loginSelector } from '../../selectors';
+import { sendChangedRegisterData } from '../../store/user';
+import { ChangedRegisterDataPayload } from '../../store/user/type';
 import { FormData } from '../../types/registration-form';
 import { Button } from '../button';
 import { ErrorFormMessage } from '../error-form-message';
+import { AlertMessage } from '../error-message';
+import { useAppDispatch, useAppSelector } from '../hooks';
 import { CustomInput } from '../input';
 
 import check from './assets/check.png';
@@ -21,7 +26,10 @@ import styles from './profile-information.module.scss';
 export const ProfileInformation = () => {
   const [isShowPassword, setIsShowPassword] = useState<boolean>(false);
   const [isDisabledInput, setIsDisableInput] = useState<boolean>(true);
+  const { isLoadingModal, alertMessage, message } = useAppSelector(changedRegisterSelector);
+  const { user } = useAppSelector(loginSelector);
   const [isFilled, setIsFilled] = useState(false);
+  const dispatch = useAppDispatch();
   const ShowPassword = () => {
     setIsShowPassword(!isShowPassword);
   };
@@ -30,7 +38,7 @@ export const ProfileInformation = () => {
     setIsDisableInput(false);
   };
 
-  const methods = useForm<FormData>({
+  const methods = useForm<ChangedRegisterDataPayload>({
     mode: 'onBlur',
     reValidateMode: 'onChange',
     defaultValues: {
@@ -53,9 +61,24 @@ export const ProfileInformation = () => {
 
   const handleFocus = () => setIsFilled(true);
 
+  const onSubmit = (data: ChangedRegisterDataPayload) => {
+    dispatch(
+      sendChangedRegisterData({
+        firstName: data.firstName,
+        lastName: data.lastName,
+        username: data.username,
+        password: data.password,
+        phone: data.phone,
+        email: data.email,
+        userId: user?.id ?? '',
+      })
+    );
+  };
+
   return (
     <FormProvider {...methods}>
-      <div className={styles.container} data-test-id='profile-form'>
+      {message && <AlertMessage stylesAlert={alertMessage} message={message} />}
+      <form className={styles.container} data-test-id='profile-form' onSubmit={handleSubmit(onSubmit)}>
         <div className={styles.title}>Учётные данные</div>
         <div className={styles.discription}>Здесь вы можете отредактировать информацию о себе</div>
         <div className={styles.inputsWrapper}>
@@ -145,7 +168,7 @@ export const ProfileInformation = () => {
             data-test-id='save-button'
           />
         </div>
-      </div>
+      </form>
     </FormProvider>
   );
 };
