@@ -1,3 +1,5 @@
+import { BookingProps, DeliveryProps, HistoriesProps } from '../books/types';
+
 export type BookStateProps = {
   isLoading: boolean;
   book: OneBookProps;
@@ -21,7 +23,7 @@ export type OneBookProps = {
   images: ImageProps[];
   categories: string[];
   comments: CommentsProps[];
-  booking: BookingProps | null;
+  booking: BookingProps;
   delivery: DeliveryProps;
   histories: HistoriesProps[];
 };
@@ -43,28 +45,4 @@ export type UserProps = {
   firstName: string;
   lastName: string;
   avatarUrl: string | null;
-};
-
-export type BookingProps = {
-  id: number | string;
-  order: boolean;
-  dateOrder: string;
-  customerId: number | string;
-  customerFirstName: string;
-  customerLastName: string;
-};
-
-export type DeliveryProps = {
-  id: number | string;
-  handed: boolean;
-  dateHandedFrom: string;
-  dateHandedTo: string;
-  recipientId: number | string;
-  recipientFirstName: string;
-  recipientLastName: string;
-};
-
-export type HistoriesProps = {
-  id: number;
-  userId: number;
 };

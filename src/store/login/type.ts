@@ -5,7 +5,7 @@ export type LoginStateTypes = {
 } & LoginError;
 
 export type UserType = {
-  id: number;
+  id: number | '';
   username: string;
   email: string;
   provider: string;
@@ -19,8 +19,8 @@ export type UserType = {
   role: RoleType;
   comments: CommentsType[];
   avatar: string | null;
-  booking: BookingType;
-  delivery: DeliveryType;
+  booking: BookingUserType;
+  delivery: DeliveryUserType | null;
   history: HistoryType;
 };
 
@@ -38,7 +38,7 @@ export type CommentsType = {
   bookId: number;
 };
 
-export type BookingType = {
+export type BookingUserType = {
   id: number;
   order: boolean;
   dateOrder: string;
@@ -74,7 +74,7 @@ export type LoginErrorResponseType = {
   };
 };
 
-export type DeliveryType = {
+export type DeliveryUserType = {
   id: number;
   handed: false;
   dateHandedFrom: string;

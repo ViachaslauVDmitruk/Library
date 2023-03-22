@@ -22,20 +22,20 @@ export type ImageProps = {
 };
 
 export type BookingProps = {
-  id: number;
+  id: number | string;
   order: boolean;
   dateOrder: string;
-  customerId: number;
+  customerId: number | string;
   customerFirstName: string;
   customerLastName: string;
 };
 
 export type DeliveryProps = {
-  id: number;
+  id: number | string;
   handed: boolean;
   dateHandedFrom: string;
   dateHandedTo: string;
-  recipientId: number;
+  recipientId: number | string;
   recipientFirstName: string;
   recipientLastName: string;
 };

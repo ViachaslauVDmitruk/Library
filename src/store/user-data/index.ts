@@ -9,7 +9,7 @@ import { UserStateProps } from './type';
 export const initialState: UserStateProps = {
   isLoadingUser: false,
   isErrorUserResponse: false,
-  user: null,
+  user: {} as UserType,
 };
 
 export const userSlice = createSlice({

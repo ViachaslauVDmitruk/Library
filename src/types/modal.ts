@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from 'react';
 
-import { BookingProps } from '../store/book/types';
+import { BookingProps } from '../store/books/types';
 
 export type ModalFromState = {
   isOpen: boolean;

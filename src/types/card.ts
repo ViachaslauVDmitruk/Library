@@ -1,16 +1,15 @@
-import { BookingProps, DeliveryProps } from '../store/book/types';
+import { BookingProps, DeliveryProps } from '../store/books/types';
+import { BookingUserType } from '../store/login/type';
 
 export type CardProps = {
-  src: CardImages | null;
+  src: string | null;
   rating: number | null;
   title: string;
-  authors: string[];
-  id: number;
+  authors: string[] | [];
+  id: number | string;
   issueYear: string;
-  searchValue: string;
-  booking: BookingProps;
-  delivery: DeliveryProps;
-};
-export type CardImages = {
-  url: string | null;
+  searchValue?: string;
+  booking?: BookingProps;
+  delivery?: DeliveryProps;
+  bookingUser?: BookingUserType;
 };
