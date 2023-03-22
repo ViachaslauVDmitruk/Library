@@ -34,7 +34,7 @@ export const ProfileAvatarBlock = () => {
   }, [user]);
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} data-test-id='profile-avatar'>
       {message && <AlertMessage stylesAlert={alertMessage} message={message} />}
       {isLoadingModal && <Loader />}
       <div className={styles.imageProfile}>

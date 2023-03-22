@@ -25,7 +25,7 @@ export const CardWindowView = ({
   authors,
   id,
   issueYear,
-  searchValue,
+  searchValue = '',
   booking,
   delivery,
 }: CardProps) => {
@@ -41,14 +41,14 @@ export const CardWindowView = ({
     <div className={styles.cardWindow} data-test-id='card' key={id}>
       <Link to={`/books/${category}/${id}`} className={styles.content}>
         <div className={styles.image}>
-          <img src={src?.url == null ? noImage : `${API_HOST}${src?.url}`} alt='img' />
+          <img src={src ? `${API_HOST}${src}` : noImage} alt='img' />
         </div>
         {rating ? <StarsRating ratingStars={rating} /> : <div className={styles.noRaring}>еще нет оценок</div>}
         <div className={styles.title} data-test-id='book-title'>
           {highlight}
         </div>
         <div className={styles.author}>
-          {authors.map((item) => (
+          {authors?.map((item) => (
             <span key={item}>{item}, </span>
           ))}
           <span>{issueYear}</span>

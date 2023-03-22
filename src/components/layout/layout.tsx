@@ -6,7 +6,7 @@ import { Header } from '../header';
 import styles from '../../pages/main/main-page.module.scss';
 
 export const Layout = () => (
-  <div className={styles.wrapper}>
+  <div className={styles.wrapper} data-test-id='main-page'>
     <Header />
     <main className={styles.main}>
       <Outlet />

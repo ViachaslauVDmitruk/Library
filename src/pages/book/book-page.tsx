@@ -14,6 +14,7 @@ import { StarsRating } from '../../components/stars-rating';
 import { REQUEST_BOOK } from '../../const/message';
 import { burgeMenuSelector, oneBookSelector, reviewSelector } from '../../selectors';
 import { getOneBook } from '../../store/book';
+import { getUserData } from '../../store/user-data';
 
 import styles from './book-page.module.scss';
 
@@ -29,6 +30,7 @@ export const BookPage = () => {
   useEffect(() => {
     if (id) {
       dispatch(getOneBook(id));
+      dispatch(getUserData());
     }
   }, [id]);
 

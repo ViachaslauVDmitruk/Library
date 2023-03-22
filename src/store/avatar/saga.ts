@@ -13,6 +13,7 @@ export function* avatarUploadWorker({ payload }: PayloadAction<any>) {
 
   try {
     const { data } = yield call(axios.post, API.upLoadUrl, formData);
+
     yield put(avatarUploadSuccess());
     yield call(axios.put, `${API.userUrl}/${payload.userId}`, { avatar: data[0].id });
     yield delay(4000);

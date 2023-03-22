@@ -37,7 +37,7 @@ export const MainPage = () => {
   }, [navigate, dispatch]);
 
   return (
-    <div className={styles.container} data-test-id='main-page'>
+    <div className={styles.container}>
       {loading && <Loader />}
       {message && <AlertMessage message={message} stylesAlert={alertMessage} />}
       {error && <AlertMessage message={REQUEST_BOOK} stylesAlert='error' />}

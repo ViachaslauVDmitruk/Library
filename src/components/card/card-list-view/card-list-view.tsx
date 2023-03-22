@@ -1,22 +1,26 @@
 /* eslint-disable no-debugger */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import classNames from 'classnames';
 import { format } from 'date-fns';
 
 import { API_HOST } from '../../../api/const';
 import { ColorMatch } from '../../../helpers/color-match';
-import { loginSelector } from '../../../selectors';
+import { bookingSelector, loginSelector } from '../../../selectors';
 import { CardProps } from '../../../types/card';
 import { Calendar } from '../../booking';
 import { Button } from '../../button';
-import { useAppSelector } from '../../hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks';
 import { StarsRating } from '../../stars-rating';
 import noImage from '../assets/no-image.png';
 
 import styles from './card-list-view.module.scss';
+import { clearDateOrder } from '../../../store/order-date';
+import { sendCancelBooking } from '../../../store/order';
+import { AlertMessage } from '../../error-message';
+import { Loader } from '../../loader';
 
 export const CardListView = ({
   src,
@@ -25,23 +29,44 @@ export const CardListView = ({
   authors,
   id,
   issueYear,
-  searchValue,
+  searchValue = '',
   booking,
   delivery,
+  bookingUser,
 }: CardProps) => {
   const { category } = useParams();
   const highlight = ColorMatch({ searchValue, title });
   const [openModalCalendar, setIsOpenCalendar] = useState<boolean>(false);
   const { user } = useAppSelector(loginSelector);
+  const { alertMessage, message, isLoadingModal } = useAppSelector(bookingSelector);
+  const dispatch = useAppDispatch();
 
   const customerId = booking?.customerId;
   const isDelivery = delivery;
   const userId = user?.id;
 
+  //   useEffect(() => {
+  //      CancelBooking = () => {
+  //       if (bookingUser) {
+  //         dispatch(sendCancelBooking({ bookingId: bookingUser.id, bookIdUpdate: '' }));
+  //         dispatch(clearDateOrder());
+  //       }
+  //     };
+  //   }, [bookingUser, dispatch]);
+
+  const CancelBooking = () => {
+    if (bookingUser) {
+      dispatch(sendCancelBooking({ bookingId: bookingUser.id, bookIdUpdate: '' }));
+      dispatch(clearDateOrder());
+    }
+  };
+
   return (
     <div className={styles.cardList} data-test-id='card' key={id}>
+		{isLoadingModal && <Loader/>}                                 
+      {message && <AlertMessage stylesAlert={alertMessage} message={message} />}
       <Link to={`/books/${category}/${id}`} className={styles.image}>
-        <img src={src?.url == null ? noImage : `${API_HOST}${src?.url}`} alt='img' />
+        <img src={src ? `${API_HOST}${src}` : noImage} alt='img' />
       </Link>
       <div className={styles.contentWrapper}>
         <Link to={`/books/${category}/${id}`} className={styles.content}>
@@ -49,7 +74,7 @@ export const CardListView = ({
             {highlight}
           </div>
           <div className={styles.author}>
-            {authors.map((item) => (
+            {authors?.map((item) => (
               <span key={item}>{item}, </span>
             ))}
             <span>{issueYear}</span>
@@ -62,22 +87,33 @@ export const CardListView = ({
           }}
         >
           {rating ? <StarsRating ratingStars={rating} /> : <div className={styles.noRaring}>еще нет оценок</div>}
-          <Button
-            type='button'
-            passStyle={classNames(styles.button, { [styles.bookingUser]: customerId === userId })}
-            disabled={(!!booking && customerId !== userId) || !!isDelivery}
-            buttonText={
-              isDelivery?.dateHandedTo
-                ? `Занята до ${format(new Date(isDelivery.dateHandedTo), 'd.MM')}`
-                : booking
-                ? 'Забронирована'
-                : 'Забронировать'
-            }
-            id='booking-button'
-            onClick={() => {
-              setIsOpenCalendar(true);
-            }}
-          />
+          {booking && (
+            <Button
+              type='button'
+              passStyle={classNames(styles.button, { [styles.bookingUser]: customerId === userId })}
+              disabled={(!!booking && customerId !== userId) || !!isDelivery}
+              buttonText={
+                isDelivery?.dateHandedTo
+                  ? `Занята до ${format(new Date(isDelivery.dateHandedTo), 'd.MM')}`
+                  : booking
+                  ? 'Забронирована'
+                  : 'Забронировать'
+              }
+              id='booking-button'
+              onClick={() => {
+                setIsOpenCalendar(true);
+              }}
+            />
+          )}
+          {bookingUser && (
+            <Button
+              type='submit'
+              passStyle={styles.button}
+              buttonText='Отменить бронь'
+              onClick={CancelBooking}
+              data-test-id='cancel-booking-button'
+            />
+          )}
         </div>
       </div>
       <Calendar isOpen={openModalCalendar} setIsOpen={setIsOpenCalendar} bookId={id} booking={booking} />

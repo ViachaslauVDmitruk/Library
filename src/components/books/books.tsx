@@ -9,7 +9,6 @@ import { CardWindowView } from '../card';
 import { CardListView } from '../card/card-list-view';
 import { Filter } from '../filter';
 import { useAppDispatch } from '../hooks';
-import { Loader } from '../loader';
 
 import styles from './books.module.scss';
 
@@ -37,9 +36,9 @@ export const Books = () => {
   }, [view]);
 
   useEffect(() => {
+    dispatch(getBooks());
     dispatch(getUserData());
     dispatch(getCategories());
-    dispatch(getBooks());
   }, [dispatch]);
 
   return (
@@ -52,7 +51,7 @@ export const Books = () => {
             {filteredCategoryBySearch.map(({ image, rating, title, authors, id, issueYear, booking, delivery }) =>
               isWindow ? (
                 <CardWindowView
-                  src={image}
+                  src={image?.url || null}
                   rating={rating}
                   title={title}
                   authors={authors}
@@ -65,7 +64,7 @@ export const Books = () => {
                 />
               ) : (
                 <CardListView
-                  src={image}
+                  src={image?.url || null}
                   rating={rating}
                   title={title}
                   authors={authors}

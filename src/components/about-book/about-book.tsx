@@ -33,7 +33,7 @@ export const AboutBook = () => {
             {book.title}
           </div>
           <div className={styles.author}>
-            {book.authors.map((item) => (
+            {book.authors?.map((item) => (
               <span key={item}>{item}</span>
             ))}
           </div>
