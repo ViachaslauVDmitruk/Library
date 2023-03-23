@@ -33,7 +33,6 @@ export function* reviewWorker({ payload }: PayloadAction<ReviewProps>) {
 }
 
 export function* changeReviewWorker({ payload }: PayloadAction<ChangeRevieProps>) {
-  console.log('payload', payload);
   try {
     yield call(axios.put, `${API.reviewUrl}/${payload.commentId}`, {
       data: {

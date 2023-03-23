@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/jsx-no-duplicate-props */
 import { useEffect, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
@@ -11,13 +12,15 @@ type RatingBookUser = {
 };
 
 export const ReviewRatingStar = ({ rating }: RatingBookUser) => {
-  const [changedRating, setChangedRating] = useState<number>(rating);
+  //   const [changedRating, setChangedRating] = useState<number>(rating);
   const { register, watch } = useFormContext();
+  //   console.log('rating from user', rating);
+  //   useEffect(() => {
+  //     setChangedRating(watch('rating'));
+  //     console.log('rating star component');
+  //   }, [watch('rating')]);
 
-  useEffect(() => {
-    setChangedRating(watch('rating'));
-    console.log('rating star component');
-  }, [watch]);
+  const changedRating = watch('rating') ? watch('rating') : rating || 0;
 
   //* --TODO-------------Creat Input component---/
   //   console.log('rating star component', changedRating);

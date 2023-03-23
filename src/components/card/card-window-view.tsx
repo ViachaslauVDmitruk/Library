@@ -58,7 +58,12 @@ export const CardWindowView = ({
 
   return (
     <div className={styles.cardWindow} data-test-id='card' key={id}>
-      <ReviewForm isOpen={isOpenReviewModal} setIsOpen={setIsOpenReveiwModal} rating={commented?.rating} />
+      <ReviewForm
+        isOpen={isOpenReviewModal}
+        setIsOpen={setIsOpenReveiwModal}
+        rating={commented?.rating}
+        commentId={commented?.id}
+      />
       <Link to={`/books/${category}/${id}`} className={styles.content}>
         <div className={styles.image}>
           <img src={src ? `${API_HOST}${src}` : noImage} alt='img' />
