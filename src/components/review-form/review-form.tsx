@@ -5,8 +5,8 @@ import ReactDOM from 'react-dom';
 import { FormProvider, useForm } from 'react-hook-form';
 import classNames from 'classnames';
 
-import { loginSelector, oneBookSelector, reviewSelector } from '../../selectors';
-import { sendReviewData } from '../../store/review';
+import { oneBookSelector, reviewSelector, userSelector } from '../../selectors';
+import { sendChangedReviewData, sendReviewData } from '../../store/review';
 import { ReviewProps } from '../../store/review/type';
 import { ModalFromState } from '../../types/modal';
 import { Button } from '../button';
@@ -20,9 +20,9 @@ import styles from './review-form.module.scss';
 
 const modal = document.getElementById('modal') as HTMLElement;
 
-export const ReviewForm = ({ isOpen, setIsOpen, rating }: ModalFromState) => {
+export const ReviewForm = ({ isOpen, setIsOpen, rating, commentId }: ModalFromState) => {
   const { book } = useAppSelector(oneBookSelector);
-  const { user } = useAppSelector(loginSelector);
+  const { user } = useAppSelector(userSelector);
   const { isLoadingModal, alertMessage } = useAppSelector(reviewSelector);
   const dispatch = useAppDispatch();
 
@@ -46,14 +46,27 @@ export const ReviewForm = ({ isOpen, setIsOpen, rating }: ModalFromState) => {
   } = methods;
 
   const onSubmit = (data: ReviewProps) => {
-    dispatch(
-      sendReviewData({
-        rating: Number(data.rating),
-        text: data.text,
-        book: data.book,
-        user: data.user,
-      })
-    );
+    if (commentId) {
+      dispatch(
+        sendChangedReviewData({
+          rating: Number(data.rating),
+          text: data.text,
+          book: data.book,
+          user: data.user,
+          commentId,
+        })
+      );
+    } else {
+      dispatch(
+        sendReviewData({
+          rating: Number(data.rating),
+          text: data.text,
+          book: data.book,
+          user: data.user,
+        })
+      );
+    }
+
     reset();
   };
 
@@ -75,6 +88,8 @@ export const ReviewForm = ({ isOpen, setIsOpen, rating }: ModalFromState) => {
       setIsOpen(false);
     }
   });
+
+  console.log('rating', watch('rating'));
 
   if (!isOpen) return null;
 

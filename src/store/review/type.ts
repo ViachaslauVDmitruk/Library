@@ -10,3 +10,7 @@ export type ReviewProps = {
   book: string | number;
   user: string | number | null;
 };
+
+export type ChangeRevieProps = {
+  commentId: number;
+} & ReviewProps;

@@ -150,9 +150,15 @@
   text-transform: uppercase;
   color: #ffffff;
   padding: 10px 23px;
-  border-radius: 20px;
+  border-radius: 30px;
   width: 350px;
   @include tablets() {
     width: 100%;
   }
+}
+
+.commented {
+  background: #ffffff;
+  border: 1px solid #bfc4c9;
+  color: #363636;
 }

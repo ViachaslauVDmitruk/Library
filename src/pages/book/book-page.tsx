@@ -58,7 +58,7 @@ export const BookPage = () => {
         </div>
       )}
       {isGettingData && <Information />}
-      {isGettingData && <Review comments={book.comments} />}
+      {isGettingData && <Review comments={book.comments} idBook={Number(id) || null} />}
     </div>
   );
 };

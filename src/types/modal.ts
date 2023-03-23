@@ -8,4 +8,5 @@ export type ModalFromState = {
   bookId?: string | number;
   booking?: BookingProps;
   rating?: number;
+  commentId?: number;
 };

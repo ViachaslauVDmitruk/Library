@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 
 import { closeAvatarAlert } from '../../store/avatar';
+import { closeOneBookAlert } from '../../store/book';
 import { closeBooksAlert } from '../../store/books';
 import { closeCategoriesAlert } from '../../store/categories';
 import { closeBookingAlert } from '../../store/order';
@@ -14,7 +15,6 @@ import errorSrc from './assets/error.png';
 import successSrc from './assets/success.png';
 
 import styles from './alert-message.module.scss';
-import { closeOneBookAlert } from '../../store/book';
 
 type MessageType = {
   message: string;
