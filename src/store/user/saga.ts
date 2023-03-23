@@ -8,13 +8,12 @@ import { ChangedRegisterDataPayload } from './type';
 import { changedRegisterError, changedRegisterSuccess, closeChangedRegisterAlert, sendChangedRegisterData } from '.';
 
 export function* changedRegisterWorker({ payload }: PayloadAction<ChangedRegisterDataPayload>) {
-  console.log('changed data', payload);
   try {
     yield call(axios.put, `${API.userUrl}/${payload.userId}`, {
       data: {
         firstName: payload.firstName,
         lastName: payload.lastName,
-        username: payload.username,
+        username: payload.login,
         password: payload.password,
         phone: payload.phone,
         email: payload.email,

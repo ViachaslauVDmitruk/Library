@@ -12,7 +12,7 @@ import { NavigatePath } from '../../components/navigate-path';
 import { Review } from '../../components/review';
 import { StarsRating } from '../../components/stars-rating';
 import { REQUEST_BOOK } from '../../const/message';
-import { burgeMenuSelector, oneBookSelector, reviewSelector } from '../../selectors';
+import { burgeMenuSelector, oneBookSelector, reviewSelector, userSelector } from '../../selectors';
 import { getOneBook } from '../../store/book';
 import { getUserData } from '../../store/user-data';
 
@@ -23,9 +23,13 @@ export const BookPage = () => {
   const { activeBurger } = useAppSelector(burgeMenuSelector);
   const { isLoading, isError } = useAppSelector(oneBookSelector);
   const { book } = useAppSelector(oneBookSelector);
+
+  const { isLoadingUser, isErrorUserResponse } = useAppSelector(userSelector);
   const { alertMessage, message } = useAppSelector(reviewSelector);
   const dispatch = useAppDispatch();
   const isGettingData = !isError && !isLoading;
+  const error = isError || isErrorUserResponse;
+  const loading = isLoadingUser || isLoading;
 
   useEffect(() => {
     if (id) {
@@ -37,8 +41,8 @@ export const BookPage = () => {
   return (
     <div className={styles.main}>
       {message && <AlertMessage message={message} stylesAlert={alertMessage} />}
-      {isLoading && <Loader />}
-      {isError && <AlertMessage message={REQUEST_BOOK} stylesAlert='error' />}
+      {loading && <Loader />}
+      {error && <AlertMessage message={REQUEST_BOOK} stylesAlert='error' />}
       <NavigatePath title={book.title} />
       {activeBurger && <NavigateList />}
       {isGettingData && <AboutBook />}

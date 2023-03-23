@@ -11,5 +11,6 @@ export type CardProps = {
   searchValue?: string;
   booking?: BookingProps;
   delivery?: DeliveryProps;
-  bookingUser?: BookingUserType;
+  bookingUserBookId?: string | number | null;
+  deliveryUser?: string | null;
 };
