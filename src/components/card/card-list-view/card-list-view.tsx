@@ -1,7 +1,7 @@
 /* eslint-disable no-debugger */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import classNames from 'classnames';
 import { format } from 'date-fns';
@@ -9,18 +9,18 @@ import { format } from 'date-fns';
 import { API_HOST } from '../../../api/const';
 import { ColorMatch } from '../../../helpers/color-match';
 import { bookingSelector, loginSelector } from '../../../selectors';
+import { sendCancelBooking } from '../../../store/order';
+import { clearDateOrder } from '../../../store/order-date';
 import { CardProps } from '../../../types/card';
 import { Calendar } from '../../booking';
 import { Button } from '../../button';
+import { AlertMessage } from '../../error-message';
 import { useAppDispatch, useAppSelector } from '../../hooks';
+import { Loader } from '../../loader';
 import { StarsRating } from '../../stars-rating';
 import noImage from '../assets/no-image.png';
 
 import styles from './card-list-view.module.scss';
-import { clearDateOrder } from '../../../store/order-date';
-import { sendCancelBooking } from '../../../store/order';
-import { AlertMessage } from '../../error-message';
-import { Loader } from '../../loader';
 
 export const CardListView = ({
   src,
@@ -32,7 +32,8 @@ export const CardListView = ({
   searchValue = '',
   booking,
   delivery,
-  bookingUser,
+  bookingUserBookId,
+  deliveryUser = null,
 }: CardProps) => {
   const { category } = useParams();
   const highlight = ColorMatch({ searchValue, title });
@@ -45,25 +46,16 @@ export const CardListView = ({
   const isDelivery = delivery;
   const userId = user?.id;
 
-  //   useEffect(() => {
-  //      CancelBooking = () => {
-  //       if (bookingUser) {
-  //         dispatch(sendCancelBooking({ bookingId: bookingUser.id, bookIdUpdate: '' }));
-  //         dispatch(clearDateOrder());
-  //       }
-  //     };
-  //   }, [bookingUser, dispatch]);
-
   const CancelBooking = () => {
-    if (bookingUser) {
-      dispatch(sendCancelBooking({ bookingId: bookingUser.id, bookIdUpdate: '' }));
+    if (bookingUserBookId) {
+      dispatch(sendCancelBooking({ bookingId: bookingUserBookId, bookIdUpdate: '' }));
       dispatch(clearDateOrder());
     }
   };
 
   return (
     <div className={styles.cardList} data-test-id='card' key={id}>
-		{isLoadingModal && <Loader/>}                                 
+      {isLoadingModal && <Loader />}
       {message && <AlertMessage stylesAlert={alertMessage} message={message} />}
       <Link to={`/books/${category}/${id}`} className={styles.image}>
         <img src={src ? `${API_HOST}${src}` : noImage} alt='img' />
@@ -105,7 +97,7 @@ export const CardListView = ({
               }}
             />
           )}
-          {bookingUser && (
+          {bookingUserBookId && (
             <Button
               type='submit'
               passStyle={styles.button}
@@ -114,6 +106,7 @@ export const CardListView = ({
               data-test-id='cancel-booking-button'
             />
           )}
+          {deliveryUser && <div className={styles.dateHandedTo}>Возврат {format(new Date(deliveryUser), 'd.MM')}</div>}
         </div>
       </div>
       <Calendar isOpen={openModalCalendar} setIsOpen={setIsOpenCalendar} bookId={id} booking={booking} />
