@@ -7,4 +7,5 @@ export type ModalFromState = {
   setIsOpen: Dispatch<SetStateAction<boolean>>;
   bookId?: string | number;
   booking?: BookingProps;
+  rating?: number;
 };

@@ -14,6 +14,7 @@ import errorSrc from './assets/error.png';
 import successSrc from './assets/success.png';
 
 import styles from './alert-message.module.scss';
+import { closeOneBookAlert } from '../../store/book';
 
 type MessageType = {
   message: string;
@@ -30,6 +31,7 @@ export const AlertMessage = ({ message, stylesAlert }: MessageType) => {
     dispatch(closeUserResponseAlert());
     dispatch(closeCategoriesAlert());
     dispatch(closeBooksAlert());
+    dispatch(closeOneBookAlert());
   };
 
   return (

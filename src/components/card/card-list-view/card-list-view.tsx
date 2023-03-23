@@ -103,7 +103,7 @@ export const CardListView = ({
               passStyle={styles.button}
               buttonText='Отменить бронь'
               onClick={CancelBooking}
-              data-test-id='cancel-booking-button'
+              id='cancel-booking-button'
             />
           )}
           {deliveryUser && <div className={styles.dateHandedTo}>Возврат {format(new Date(deliveryUser), 'd.MM')}</div>}

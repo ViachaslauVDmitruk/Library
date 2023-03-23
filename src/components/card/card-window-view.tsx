@@ -1,13 +1,13 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import classNames from 'classnames';
 import { format } from 'date-fns';
 
 import { API_HOST } from '../../api/const';
 import { ColorMatch } from '../../helpers/color-match';
-import { loginSelector } from '../../selectors';
+import { loginSelector, userSelector } from '../../selectors';
 import { CardProps } from '../../types/card';
 import { Calendar } from '../booking';
 import { Button } from '../button';
@@ -17,6 +17,8 @@ import { StarsRating } from '../stars-rating';
 import noImage from './assets/no-image.png';
 
 import styles from './card.module.scss';
+import { ReviewForm } from '../review-form';
+import { CommentsType } from '../../store/login/type';
 
 export const CardWindowView = ({
   src,
@@ -28,17 +30,35 @@ export const CardWindowView = ({
   searchValue = '',
   booking,
   delivery,
+  commentsUser,
 }: CardProps) => {
-  const { category } = useParams();
-  const highlight = ColorMatch({ searchValue, title });
+  const [isAlreadyCommented, setIsAlreadyCommented] = useState<boolean>(false);
+  const [isOpenReviewModal, setIsOpenReveiwModal] = useState<boolean>(false);
   const [openModalCalendar, setIsOpenCalendar] = useState<boolean>(false);
-  const { user } = useAppSelector(loginSelector);
+  const [commented, setCommented] = useState<CommentsType | undefined>();
+  const { category } = useParams();
+  const { user } = useAppSelector(userSelector);
+  const highlight = ColorMatch({ searchValue, title });
   const customerId = booking?.customerId;
   const isDelivery = delivery;
   const userId = user?.id;
 
+  //   ntsUser.filter(({ bookId }) => bookId === id);
+
+  useEffect(() => {
+    if (commentsUser) {
+      const commentedBook = commentsUser.find(({ bookId }) => bookId === id);
+
+      if (commentedBook) {
+        setCommented(commentedBook);
+        setIsAlreadyCommented(true);
+      }
+    }
+  }, [commentsUser, id]);
+
   return (
     <div className={styles.cardWindow} data-test-id='card' key={id}>
+      <ReviewForm isOpen={isOpenReviewModal} setIsOpen={setIsOpenReveiwModal} rating={commented?.rating} />
       <Link to={`/books/${category}/${id}`} className={styles.content}>
         <div className={styles.image}>
           <img src={src ? `${API_HOST}${src}` : noImage} alt='img' />
@@ -54,20 +74,33 @@ export const CardWindowView = ({
           <span>{issueYear}</span>
         </div>
       </Link>
-      <Button
-        type='button'
-        passStyle={classNames(styles.button, { [styles.bookingUser]: customerId === userId })}
-        disabled={(!!booking && customerId !== userId) || !!isDelivery}
-        buttonText={
-          isDelivery?.dateHandedTo
-            ? `Занята до ${format(new Date(isDelivery.dateHandedTo), 'd.MM')}`
-            : booking
-            ? 'Забронирована'
-            : 'Забронировать'
-        }
-        id='booking-button'
-        onClick={() => setIsOpenCalendar(true)}
-      />
+
+      {!commentsUser && (
+        <Button
+          type='button'
+          passStyle={classNames(styles.button, { [styles.bookingUser]: customerId === userId })}
+          disabled={(!!booking && customerId !== userId) || !!isDelivery}
+          buttonText={
+            isDelivery?.dateHandedTo
+              ? `Занята до ${format(new Date(isDelivery.dateHandedTo), 'd.MM')}`
+              : booking
+              ? 'Забронирована'
+              : 'Забронировать'
+          }
+          id='booking-button'
+          onClick={() => setIsOpenCalendar(true)}
+        />
+      )}
+
+      {commentsUser && (
+        <Button
+          type='button'
+          buttonText={isAlreadyCommented ? 'Изменить оценку' : 'Оценить'}
+          passStyle={classNames(styles.button, { [styles.commented]: isAlreadyCommented })}
+          id='history-review-button'
+          onClick={() => setIsOpenReveiwModal(true)}
+        />
+      )}
       <Calendar isOpen={openModalCalendar} setIsOpen={setIsOpenCalendar} bookId={id} booking={booking} />
     </div>
   );

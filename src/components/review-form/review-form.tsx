@@ -20,7 +20,7 @@ import styles from './review-form.module.scss';
 
 const modal = document.getElementById('modal') as HTMLElement;
 
-export const ReviewForm = ({ isOpen, setIsOpen }: ModalFromState) => {
+export const ReviewForm = ({ isOpen, setIsOpen, rating }: ModalFromState) => {
   const { book } = useAppSelector(oneBookSelector);
   const { user } = useAppSelector(loginSelector);
   const { isLoadingModal, alertMessage } = useAppSelector(reviewSelector);
@@ -100,7 +100,7 @@ export const ReviewForm = ({ isOpen, setIsOpen }: ModalFromState) => {
                 Оцените книгу
               </div>
               <div className={styles.formText}>Ваша оценка</div>
-              <ReviewRatingStar />
+              <ReviewRatingStar rating={rating || 0} />
               <textarea
                 {...register('text')}
                 name='text'
@@ -111,7 +111,12 @@ export const ReviewForm = ({ isOpen, setIsOpen }: ModalFromState) => {
                 className={styles.textarea}
                 data-test-id='comment'
               />
-              <Button type='submit' buttonText='Оценить' passStyle={styles.button} id='button-comment' />
+              <Button
+                type='submit'
+                buttonText={rating ? 'Изменить комментарий' : 'Оценить'}
+                passStyle={styles.button}
+                id='button-comment'
+              />
             </form>
           </div>
         </div>

@@ -19,7 +19,7 @@ export const ProfileOnHands = () => {
   useEffect(() => {
     if (dateDelivery) {
       const moment = Date.now();
-      const isOver = moment - Date.parse(dateDelivery) <= 0;
+      const isOver = moment - Date.parse(dateDelivery) >= 0;
 
       setIsOverdueHandedTo(isOver);
     }
@@ -27,11 +27,11 @@ export const ProfileOnHands = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.wrapperHistory} data-test-id='empty-blue-card'>
+      <div className={styles.wrapperHistory}>
         <div className={styles.title}>Книга которую взяли</div>
         <div className={styles.discription}>Здесь можете просмотреть информацию о книге и узнать сроки возврата</div>
         {!deliveryProps && (
-          <div className={styles.content}>
+          <div className={styles.content} data-test-id='empty-blue-card'>
             Прочитав книгу, <br /> она отобразится в истории{' '}
           </div>
         )}

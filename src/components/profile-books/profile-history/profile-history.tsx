@@ -12,18 +12,18 @@ import './swiper-user.scss';
 import styles from '../profile-books.module.scss';
 
 export const ProfileHistory = () => {
-  const { user } = useAppSelector(userSelector);
-  //   const user = USER_FULL_DATA;
+  //   const { user } = useAppSelector(userSelector);
+  const user = USER_FULL_DATA;
 
   const books = user.history?.books || [];
 
   return (
     <div className={styles.container} data-test-id='history'>
-      <div className={styles.wrapperHistory} data-test-id='empty-blue-card'>
+      <div className={styles.wrapperHistory}>
         <div className={styles.title}>История</div>
         <div className={styles.discription}>Список прочитанных книг</div>
         {!user.history?.books && (
-          <div className={styles.content}>
+          <div className={styles.content} data-test-id='empty-blue-card'>
             Вы не читали книг
             <br />
             из нашей библиотеки
@@ -58,6 +58,7 @@ export const ProfileHistory = () => {
                     issueYear={issueYear}
                     bookingUserBookId={user.booking?.id ?? null}
                     searchValue=''
+                    commentsUser={user.comments}
                   />
                 </SwiperSlide>
               ))}
