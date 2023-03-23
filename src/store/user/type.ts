@@ -1,7 +1,7 @@
 export type ChangedRegisterDataPayload = {
   firstName?: string;
   lastName?: string;
-  username: string;
+  login: string;
   password: string;
   phone: string;
   email: string;

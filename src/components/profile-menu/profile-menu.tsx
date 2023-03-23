@@ -29,13 +29,7 @@ export const ProfileMenu = () => {
 
   return (
     <div className={classNames(styles.profile, { [styles.visible]: isOpenProfileMenu })}>
-      <Button
-        buttonText='Профиль'
-        type='button'
-        passStyle={styles.button}
-        onClick={flowProfile}
-        data-test-id='profile-button'
-      />
+      <Button buttonText='Профиль' type='button' passStyle={styles.button} onClick={flowProfile} id='profile-button' />
       <Button buttonText='Выход' type='button' passStyle={styles.button} onClick={logOut} />
     </div>
   );

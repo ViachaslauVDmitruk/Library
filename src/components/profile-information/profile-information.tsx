@@ -42,7 +42,7 @@ export const ProfileInformation = () => {
     mode: 'onBlur',
     reValidateMode: 'onChange',
     defaultValues: {
-      username: '',
+      login: '',
       password: '',
       firstName: '',
       lastName: '',
@@ -66,7 +66,7 @@ export const ProfileInformation = () => {
       sendChangedRegisterData({
         firstName: data.firstName,
         lastName: data.lastName,
-        username: data.username,
+        login: data.login,
         password: data.password,
         phone: data.phone,
         email: data.email,
@@ -89,7 +89,7 @@ export const ProfileInformation = () => {
             required={true}
             validationRules={validateLogin}
             Customhint='user'
-            name='username'
+            name='login'
             disabled={isDisabledInput}
           />
 
@@ -158,7 +158,7 @@ export const ProfileInformation = () => {
             type='button'
             buttonText='Редактировать'
             passStyle={classNames(styles.button, styles.redaction)}
-            data-test-id='edit-button'
+            id='edit-button'
             onClick={redactInputs}
           />
           <Button
@@ -166,7 +166,7 @@ export const ProfileInformation = () => {
             disabled={isDisabledInput}
             buttonText='Сохранить изменения'
             passStyle={styles.button}
-            data-test-id='save-button'
+            id='save-button'
           />
         </div>
       </form>

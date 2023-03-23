@@ -19,9 +19,9 @@ export type UserType = {
   role: RoleType;
   comments: CommentsType[];
   avatar: string | null;
-  booking: BookingUserType;
+  booking: BookingUserType | null;
   delivery: DeliveryUserType | null;
-  history: HistoryType;
+  history: HistoryType | null;
 };
 
 export type RoleType = {
