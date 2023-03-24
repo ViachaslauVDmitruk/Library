@@ -5,7 +5,7 @@ import { PayloadAction } from '@reduxjs/toolkit';
 import { axios } from '../../api/api';
 import { API } from '../../api/const';
 
-import { closeOneBookAlert, getOneBook, oneBookError, setOneBook, sortReviewDown } from '.';
+import { closeOneBookAlert, getOneBook, oneBookError, setOneBook } from '.';
 
 export const GetId = () => {
   const { id } = useParams();
@@ -18,7 +18,7 @@ export function* oneBookWoker({ payload }: PayloadAction) {
     const { data } = yield call(axios.get, `${API.booksUrl}/${payload}`);
 
     yield put(setOneBook(data));
-    yield put(sortReviewDown());
+
     yield delay(4000);
     yield put(closeOneBookAlert());
   } catch {

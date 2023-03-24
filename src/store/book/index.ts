@@ -56,6 +56,9 @@ export const oneBookSlice = createSlice({
     setOneBook: (state, action: PayloadAction<OneBookProps>) => {
       state.isLoadingBook = false;
       state.book = action.payload;
+      state.book.comments = state.book.comments?.sort(
+        (a, b) => new Date(b.createdAt).valueOf() - new Date(a.createdAt).valueOf()
+      );
     },
     oneBookError: (state, action: PayloadAction) => {
       state.isLoadingBook = false;
@@ -67,15 +70,9 @@ export const oneBookSlice = createSlice({
       state.alertMessage = '';
       state.messageBook = '';
     },
-
-    sortReviewDown: (state, action: PayloadAction) => {
-      state.book.comments = state.book.comments.sort(
-        (a, b) => new Date(b.createdAt).valueOf() - new Date(a.createdAt).valueOf()
-      );
-    },
   },
 });
 
-export const { getOneBook, setOneBook, oneBookError, sortReviewDown, closeOneBookAlert } = oneBookSlice.actions;
+export const { getOneBook, setOneBook, oneBookError, closeOneBookAlert } = oneBookSlice.actions;
 
 export const oneBookSliceReducer = oneBookSlice.reducer;

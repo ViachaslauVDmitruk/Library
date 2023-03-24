@@ -161,8 +161,9 @@
 }
 
 .commented {
-  //   background: rgb(255, 255, 255);
+  background-image: none;
   background-color: rgba(0, 0, 0, 0);
   border: 1px solid rgb(191, 196, 201);
-  color: #363636;
+
+  color: rgb(54, 54, 54);
 }

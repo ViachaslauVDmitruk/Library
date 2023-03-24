@@ -28,7 +28,7 @@ export const Information = () => {
           <div className={classNames(styles.parametrsItems, styles.secondItem)}>
             <div className={styles.discribe}>Жанр</div>
             <div className={styles.text}>
-              {book.categories.map((item) => (
+              {book.categories?.map((item) => (
                 <span key={item}>{item},</span>
               ))}
             </div>
