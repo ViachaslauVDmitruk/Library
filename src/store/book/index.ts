@@ -4,7 +4,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { BookStateProps, OneBookProps } from './types';
 
 const initialState: BookStateProps = {
-  isLoading: false,
+  isLoadingBook: false,
   book: {
     id: '',
     title: '',
@@ -41,7 +41,9 @@ const initialState: BookStateProps = {
     },
     histories: [],
   },
-  isError: false,
+
+  alertMessage: '',
+  messageBook: '',
 };
 
 export const oneBookSlice = createSlice({
@@ -49,20 +51,21 @@ export const oneBookSlice = createSlice({
   initialState,
   reducers: {
     getOneBook: (state, action: PayloadAction<number | string>) => {
-      state.isLoading = true;
+      state.isLoadingBook = true;
     },
     setOneBook: (state, action: PayloadAction<OneBookProps>) => {
-      state.isLoading = false;
+      state.isLoadingBook = false;
       state.book = action.payload;
     },
     oneBookError: (state, action: PayloadAction) => {
-      state.isLoading = false;
-      state.isError = true;
+      state.isLoadingBook = false;
+      state.alertMessage = 'error';
+      state.messageBook = 'Что-то пошло не так. Обновите страницу через некоторое время.';
     },
 
     closeOneBookAlert: (state, action: PayloadAction) => {
-      state.isLoading = false;
-      state.isError = false;
+      state.alertMessage = '';
+      state.messageBook = '';
     },
 
     sortReviewDown: (state, action: PayloadAction) => {

@@ -35,7 +35,7 @@ export const ProfileInformation = () => {
   };
 
   const redactInputs = () => {
-    setIsDisableInput(false);
+    setIsDisableInput(!isDisabledInput);
   };
 
   const methods = useForm<ChangedRegisterDataPayload>({

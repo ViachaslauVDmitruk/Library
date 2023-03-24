@@ -13,7 +13,7 @@ export type CustomInputProps = DetailedHTMLProps<InputHTMLAttributes<HTMLInputEl
   clearActionErrors?: () => void;
   validationRules?: (value: RetryPasswordValidate | string) => string | boolean;
   required?: boolean;
-  Customhint?: 'user' | 'password';
+  Customhint?: 'user' | 'password' | 'passwordConfirmation';
   className?: string;
   onFocus?: () => void;
   onChange?: () => void;

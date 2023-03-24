@@ -32,7 +32,7 @@ export const ProfileOnHands = () => {
         <div className={styles.discription}>Здесь можете просмотреть информацию о книге и узнать сроки возврата</div>
         {!deliveryProps && (
           <div className={styles.content} data-test-id='empty-blue-card'>
-            Прочитав книгу, <br /> она отобразится в истории{' '}
+            Прочитав книгу, она отобразится в истории{' '}
           </div>
         )}
         {deliveryProps && (

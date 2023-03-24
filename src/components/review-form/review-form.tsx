@@ -89,8 +89,6 @@ export const ReviewForm = ({ isOpen, setIsOpen, rating, commentId }: ModalFromSt
     }
   });
 
-  console.log('rating', watch('rating'));
-
   if (!isOpen) return null;
 
   return ReactDOM.createPortal(

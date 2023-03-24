@@ -179,8 +179,9 @@
 }
 
 .redaction {
-  background-image: none;
-  background: #ffffff;
+  //   background: rgb(255, 255, 255);
+  background-color: rgba(0, 0, 0, 0);
+
   color: #363636;
   border: 1px solid #bfc4c9;
   margin-right: 30px;

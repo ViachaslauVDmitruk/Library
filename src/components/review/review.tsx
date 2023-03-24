@@ -83,42 +83,43 @@ export const Review = ({ comments, idBook }: CommentsState) => {
 
         {isShowReview && (
           <div className={styles.reviewItems} data-test-id='reviews'>
-            {comments?.map((item) => (
-              <div className={styles.content} key={item.id} data-test-id='comment-wrapper'>
-                <div className={styles.information}>
-                  <div className={styles.avatar}>
-                    <img src={item.user.avatarUrl ? `${API_HOST}${item.user.avatarUrl}` : ava} alt='img' />
-                  </div>
-                  <div className={styles.accountData}>
-                    <div className={styles.account} data-test-id='comment-author'>
-                      {item.user.firstName} {item.user.lastName}
+            {[] ||
+              comments.map((item) => (
+                <div className={styles.content} key={item.id} data-test-id='comment-wrapper'>
+                  <div className={styles.information}>
+                    <div className={styles.avatar}>
+                      <img src={item.user.avatarUrl ? `${API_HOST}${item.user.avatarUrl}` : ava} alt='img' />
                     </div>
-                    <div className={styles.data} data-test-id='comment-date'>
-                      {intlFormat(
-                        new Date(item.createdAt),
-                        { year: 'numeric', month: 'long', day: 'numeric' },
-                        {
-                          locale: 'ru-Ru',
-                        }
-                      )}
+                    <div className={styles.accountData}>
+                      <div className={styles.account} data-test-id='comment-author'>
+                        {item.user.firstName} {item.user.lastName}
+                      </div>
+                      <div className={styles.data} data-test-id='comment-date'>
+                        {intlFormat(
+                          new Date(item.createdAt),
+                          { year: 'numeric', month: 'long', day: 'numeric' },
+                          {
+                            locale: 'ru-Ru',
+                          }
+                        )}
+                      </div>
                     </div>
                   </div>
+                  <div className={styles.stars}>
+                    <StarsRating ratingStars={item.rating} />
+                  </div>
+                  <div className={styles.text} data-test-id='comment-text'>
+                    {item.text}
+                  </div>
                 </div>
-                <div className={styles.stars}>
-                  <StarsRating ratingStars={item.rating} />
-                </div>
-                <div className={styles.text} data-test-id='comment-text'>
-                  {item.text}
-                </div>
-              </div>
-            ))}
+              ))}
           </div>
         )}
         <Button
           type='button'
           passStyle={classNames(styles.button, { [styles.commented]: isAlreadyCommented })}
           onClick={() => setIsOpenReveiwModal(true)}
-          buttonText={isAlreadyCommented ? 'Изменить оценку' : 'Оценить'}
+          buttonText={isAlreadyCommented ? 'Изменить оценку' : idBook ? 'Оценить книгу' : 'Оценить'}
           id='button-rate-book'
         />
       </div>

@@ -104,7 +104,7 @@ export const RecoveryPassword = () => {
                 placeholder='Повторите пароль'
                 required={true}
                 validationRules={validateRetryPassword}
-                Customhint='password'
+                Customhint='passwordConfirmation'
               />
               <div className={styles.eyeImage} onClick={ShowConfirmPassword}>
                 <img

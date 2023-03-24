@@ -33,8 +33,7 @@ export const ProfileBooking = () => {
         </div>
         {!bookProps && (
           <div className={styles.content} data-test-id='empty-blue-card'>
-            Забронируйте книгу
-            <br />и она отобразится
+            Забронируйте книгу и она отобразится
           </div>
         )}
 

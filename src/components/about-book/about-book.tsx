@@ -16,7 +16,6 @@ export const AboutBook = () => {
   const { book } = useAppSelector(oneBookSelector);
   const { alertMessage, message } = useAppSelector(bookingSelector);
   const { user } = useAppSelector(loginSelector);
-  const booking = book?.booking;
   const customerId = book.booking?.customerId;
   const isDelivery = book.delivery;
 
@@ -33,7 +32,7 @@ export const AboutBook = () => {
             {book.title}
           </div>
           <div className={styles.author}>
-            {book.authors?.map((item) => (
+            {book.authors.map((item) => (
               <span key={item}>{item}</span>
             ))}
           </div>

@@ -1,11 +1,11 @@
 import { useParams } from 'react-router-dom';
-import { call, put, takeLatest } from 'redux-saga/effects';
+import { call, delay, put, takeLatest } from 'redux-saga/effects';
 import { PayloadAction } from '@reduxjs/toolkit';
 
 import { axios } from '../../api/api';
 import { API } from '../../api/const';
 
-import { getOneBook, oneBookError, setOneBook, sortReviewDown } from '.';
+import { closeOneBookAlert, getOneBook, oneBookError, setOneBook, sortReviewDown } from '.';
 
 export const GetId = () => {
   const { id } = useParams();
@@ -19,8 +19,12 @@ export function* oneBookWoker({ payload }: PayloadAction) {
 
     yield put(setOneBook(data));
     yield put(sortReviewDown());
+    yield delay(4000);
+    yield put(closeOneBookAlert());
   } catch {
     yield put(oneBookError());
+    yield delay(4000);
+    yield put(closeOneBookAlert());
   }
 }
 

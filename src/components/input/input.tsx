@@ -1,5 +1,6 @@
+/* eslint-disable consistent-return */
 import { ChangeEventHandler, useState } from 'react';
-import { useFormContext } from 'react-hook-form';
+import { useFormContext, useWatch } from 'react-hook-form';
 import classNames from 'classnames';
 
 import { CustomInputProps } from '../../types/input';
@@ -22,6 +23,7 @@ export const CustomInput = ({
   disabled,
 }: CustomInputProps) => {
   const [isFilled, setIsFilled] = useState(false);
+  const passwordWatcher: string = useWatch({ name: 'password' });
   const inputClassName = classNames(styles.input, className, error && styles.error);
   const {
     register,
@@ -50,6 +52,19 @@ export const CustomInput = ({
     }
   };
 
+  const handleValidate = (fieldValue: string) => {
+    if (validationRules) {
+      if (name === 'passwordConfirmation') {
+        return validationRules({
+          fieldValue,
+          passwordWatcher,
+        });
+      }
+
+      return validationRules(fieldValue);
+    }
+  };
+
   return (
     <div className={styles.formControlInner}>
       <div className={styles.formInput}>
@@ -58,7 +73,7 @@ export const CustomInput = ({
           className={inputClassName}
           {...register(name || '', {
             required: required && 'Поле не может быть пустым',
-            validate: validationRules,
+            validate: { handleValidate },
           })}
           placeholder={placeholder}
           onFocus={handleFocus}

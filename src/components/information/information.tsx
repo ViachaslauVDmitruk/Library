@@ -1,11 +1,12 @@
 import classNames from 'classnames';
-import { useSelector } from 'react-redux';
+
 import { oneBookSelector } from '../../selectors';
+import { useAppSelector } from '../hooks';
 
 import styles from './information.module.scss';
 
 export const Information = () => {
-  const { book } = useSelector(oneBookSelector);
+  const { book } = useAppSelector(oneBookSelector);
 
   return (
     <div className={styles.container}>

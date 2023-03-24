@@ -12,8 +12,9 @@ import { NavigatePath } from '../../components/navigate-path';
 import { Review } from '../../components/review';
 import { StarsRating } from '../../components/stars-rating';
 import { REQUEST_BOOK } from '../../const/message';
-import { burgeMenuSelector, oneBookSelector, reviewSelector, userSelector } from '../../selectors';
+import { burgeMenuSelector, categoriesSelector, oneBookSelector, reviewSelector, userSelector } from '../../selectors';
 import { getOneBook } from '../../store/book';
+import { getCategories } from '../../store/categories';
 import { getUserData } from '../../store/user-data';
 
 import styles from './book-page.module.scss';
@@ -21,19 +22,21 @@ import styles from './book-page.module.scss';
 export const BookPage = () => {
   const { id } = useParams();
   const { activeBurger } = useAppSelector(burgeMenuSelector);
-  const { isLoading, isError } = useAppSelector(oneBookSelector);
+  const { isLoadingBook, messageBook } = useAppSelector(oneBookSelector);
+  const { isLoadingCategories, isErrorCategories } = useAppSelector(categoriesSelector);
   const { book } = useAppSelector(oneBookSelector);
 
   const { isLoadingUser, isErrorUserResponse } = useAppSelector(userSelector);
   const { alertMessage, message } = useAppSelector(reviewSelector);
   const dispatch = useAppDispatch();
-  const isGettingData = !isError && !isLoading;
-  const error = isError || isErrorUserResponse;
-  const loading = isLoadingUser || isLoading;
+  const isGettingData = !messageBook && !isLoadingBook;
+  const error = isErrorCategories || isErrorUserResponse || messageBook;
+  const loading = isLoadingUser || isLoadingBook || isLoadingCategories;
 
   useEffect(() => {
     if (id) {
       dispatch(getOneBook(id));
+      dispatch(getCategories());
       dispatch(getUserData());
     }
   }, [id]);

@@ -1,19 +1,17 @@
-import classNames from 'classnames';
 import { FreeMode, Navigation, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import { USER_FULL_DATA } from '../../../const/user-data';
 import { userSelector } from '../../../selectors';
 import { CardWindowView } from '../../card';
-import { CardListView } from '../../card/card-list-view';
 import { useAppSelector } from '../../hooks';
 
 import './swiper-user.scss';
 import styles from '../profile-books.module.scss';
 
 export const ProfileHistory = () => {
-  //   const { user } = useAppSelector(userSelector);
-  const user = USER_FULL_DATA;
+  const { user } = useAppSelector(userSelector);
+  //   const user = USER_FULL_DATA;
 
   const books = user.history?.books || [];
 
@@ -24,9 +22,7 @@ export const ProfileHistory = () => {
         <div className={styles.discription}>Список прочитанных книг</div>
         {!user.history?.books && (
           <div className={styles.content} data-test-id='empty-blue-card'>
-            Вы не читали книг
-            <br />
-            из нашей библиотеки
+            Вы не читали книг из нашей библиотеки
           </div>
         )}
 

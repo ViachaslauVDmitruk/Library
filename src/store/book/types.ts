@@ -1,9 +1,10 @@
 import { BookingProps, DeliveryProps, HistoriesProps } from '../books/types';
 
 export type BookStateProps = {
-  isLoading: boolean;
+  isLoadingBook: boolean;
   book: OneBookProps;
-  isError: boolean;
+  alertMessage: string;
+  messageBook: string;
 };
 
 export type OneBookProps = {

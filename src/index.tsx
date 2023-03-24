@@ -55,6 +55,7 @@ root.render(
             <Route path='/terms' element={<Rules />} />
             <Route path='/contract' element={<Contract />} />
           </Route>
+          <Route path='/books/all/:id' element={<BookPage />} />
           <Route path='/books/:category/:id' element={<BookPage />} />
           <Route path='/profile' element={<Profile />} />
         </Route>
