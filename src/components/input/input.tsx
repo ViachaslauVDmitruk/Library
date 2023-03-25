@@ -36,7 +36,7 @@ export const CustomInput = ({
 
   const watchedFieldValue = watch(name || '');
 
-  const handleFocus = () => setIsFilled(true);
+  const handleFocus = async () => setIsFilled(true);
 
   const handleBlur = () => {
     trigger(name);
@@ -75,6 +75,7 @@ export const CustomInput = ({
             required: required && 'Поле не может быть пустым',
             validate: { handleValidate },
           })}
+          name={name}
           placeholder={placeholder}
           onFocus={handleFocus}
           onBlur={handleBlur}
@@ -86,9 +87,9 @@ export const CustomInput = ({
         {errors[name as string]?.message ? (
           <ErrorFormMessage message={errors[name as string]?.message} />
         ) : Customhint === 'user' ? (
-          <ColorUserMatch inputValue={watch(name)} isError={!!watch(name).length} />
+          <ColorUserMatch inputValue={watch(name)} isError={watch(name)} />
         ) : Customhint === 'password' ? (
-          <ColorPasswordMatch inputValue={watch(name)} isError={!!watch(name).length} />
+          <ColorPasswordMatch inputValue={watch(name)} isError={watch(name)} />
         ) : null}
       </div>
     </div>

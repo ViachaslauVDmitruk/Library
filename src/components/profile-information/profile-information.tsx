@@ -42,12 +42,12 @@ export const ProfileInformation = () => {
     mode: 'onBlur',
     reValidateMode: 'onChange',
     defaultValues: {
-      login: '',
-      password: '',
-      firstName: '',
-      lastName: '',
-      phone: '',
-      email: '',
+      login: user?.username,
+      password: 'Qwerty123',
+      firstName: user?.firstName,
+      lastName: user?.lastName,
+      phone: user?.phone,
+      email: user?.email,
     },
   });
 
@@ -113,9 +113,9 @@ export const ProfileInformation = () => {
               />
             </div>
           </div>
-          <CustomInput type='text' name='firstName' placeholder='Имя' required={false} disabled={isDisabledInput} />
+          <CustomInput type='text' name='firstName' placeholder='Имя' required={true} disabled={isDisabledInput} />
 
-          <CustomInput type='text' name='lastName' placeholder='Фамилия' required={false} disabled={isDisabledInput} />
+          <CustomInput type='text' name='lastName' placeholder='Фамилия' required={true} disabled={isDisabledInput} />
 
           <div className={styles.formInput}>
             <InputMask
@@ -124,13 +124,14 @@ export const ProfileInformation = () => {
                 required: false,
                 pattern: {
                   value: regExPhone,
-                  message: watch('phone').length ? 'В формате +375 (xx) xxx-xx-xx' : 'Поле не может быть пустым',
+                  message: watch('phone') ? 'В формате +375 (xx) xxx-xx-xx' : 'Поле не может быть пустым',
                 },
               })}
               name='phone'
+              alwaysShowMask={true}
               maskChar='x'
               mask='+375 (99) 999-99-99'
-              placeholder='Номер телефона'
+              maskPlaceholder='+375 (xx) xxx-xx-xx'
               type='tel'
               onFocus={handleFocus}
               disabled={isDisabledInput}

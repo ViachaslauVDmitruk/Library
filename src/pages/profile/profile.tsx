@@ -1,13 +1,16 @@
 import { useEffect } from 'react';
 
+import { AlertMessage } from '../../components/error-message';
 import { useAppDispatch, useAppSelector } from '../../components/hooks';
+import { Loader } from '../../components/loader';
 import { NavigateList } from '../../components/navigate-list';
 import { ProfileAvatarBlock } from '../../components/profile-avatar-block';
 import { ProfileBooking } from '../../components/profile-books/profile-booking';
 import { ProfileHistory } from '../../components/profile-books/profile-history';
 import { ProfileOnHands } from '../../components/profile-books/profile-on-hands';
 import { ProfileInformation } from '../../components/profile-information';
-import { burgeMenuSelector } from '../../selectors';
+import { REQUEST_BOOK } from '../../const/message';
+import { booksSelector, burgeMenuSelector, categoriesSelector, userSelector } from '../../selectors';
 import { getBooks } from '../../store/books';
 import { getCategories } from '../../store/categories';
 import { getUserData } from '../../store/user-data';
@@ -15,8 +18,13 @@ import { getUserData } from '../../store/user-data';
 import styles from './profile.module.scss';
 
 export const Profile = () => {
+  const { isLoadingUser, isErrorUserResponse } = useAppSelector(userSelector);
+  const { isLoadingBooks, isErrorBooks } = useAppSelector(booksSelector);
+  const { isLoadingCategories, isErrorCategories } = useAppSelector(categoriesSelector);
   const { activeBurger } = useAppSelector(burgeMenuSelector);
   const dispatch = useAppDispatch();
+  const error = isErrorBooks || isErrorCategories || isErrorUserResponse;
+  const loading = isLoadingBooks || isLoadingCategories || isLoadingUser;
 
   useEffect(() => {
     dispatch(getBooks());
@@ -26,6 +34,8 @@ export const Profile = () => {
 
   return (
     <div className={styles.profile}>
+      {loading && <Loader />}
+      {error && <AlertMessage stylesAlert='error' message={REQUEST_BOOK} />}
       {activeBurger && <NavigateList />}
       <ProfileAvatarBlock />
       <ProfileInformation />
