@@ -13,12 +13,12 @@ import { useAppDispatch } from '../hooks';
 import styles from './books.module.scss';
 
 export const Books = () => {
-  const dispatch = useAppDispatch();
   const [view, setView] = useState<string>('window');
   const [isWindow, setIsWindow] = useState<boolean>(true);
   const { books, isErrorBooks, isLoadingBooks } = useSelector(booksSelector);
   const { selectedCategory } = useSelector(selectedCategorySelector);
   const { searchValue } = useSelector(inputSearchSelector);
+  const dispatch = useAppDispatch();
 
   const categoryMode =
     selectedCategory === '' ? books : books.filter((book) => book.categories.some((item) => item === selectedCategory));

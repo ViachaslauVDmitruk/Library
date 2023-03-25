@@ -45,13 +45,7 @@ export const Calendar = ({ isOpen, setIsOpen, bookId, booking }: ModalFromState)
     },
   });
 
-  const {
-    register,
-    handleSubmit,
-    reset,
-    watch,
-    formState: { isDirty },
-  } = methods;
+  const { handleSubmit, reset } = methods;
 
   const customerId = book.booking?.customerId || booking?.customerId;
 

@@ -54,7 +54,6 @@ export const ProfileInformation = () => {
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors },
     watch,
   } = methods;
@@ -83,15 +82,17 @@ export const ProfileInformation = () => {
         <div className={styles.title}>Учётные данные</div>
         <div className={styles.discription}>Здесь вы можете отредактировать информацию о себе</div>
         <div className={styles.inputsWrapper}>
-          <CustomInput
-            type='text'
-            placeholder='Придумайте логин для входа'
-            required={true}
-            validationRules={validateLogin}
-            Customhint='user'
-            name='login'
-            disabled={isDisabledInput}
-          />
+          <div>
+            <CustomInput
+              type='text'
+              placeholder='Придумайте логин для входа'
+              required={true}
+              validationRules={validateLogin}
+              Customhint='user'
+              name='login'
+              disabled={isDisabledInput}
+            />
+          </div>
 
           <div className={styles.wrapperInput}>
             <CustomInput

@@ -31,7 +31,7 @@ export const CustomInput = ({
     trigger,
     setValue,
     clearErrors,
-    formState: { errors, isDirty },
+    formState: { errors },
   } = useFormContext();
 
   const watchedFieldValue = watch(name || '');
@@ -83,16 +83,14 @@ export const CustomInput = ({
           disabled={disabled}
         />
         <label htmlFor={name}>{placeholder}</label>
-        {errors[name as string]?.message && <ErrorFormMessage message={errors[name as string]?.message} />}
+        {errors[name as string]?.message ? (
+          <ErrorFormMessage message={errors[name as string]?.message} />
+        ) : Customhint === 'user' ? (
+          <ColorUserMatch inputValue={watch(name)} isError={!!watch(name).length} />
+        ) : Customhint === 'password' ? (
+          <ColorPasswordMatch inputValue={watch(name)} isError={!!watch(name).length} />
+        ) : null}
       </div>
-
-      {errors[name as string]?.message ? (
-        <ErrorFormMessage message={errors.name?.message} />
-      ) : Customhint === 'user' ? (
-        <ColorUserMatch inputValue={watch(name)} isError={!!watch(name).length} />
-      ) : Customhint === 'password' ? (
-        <ColorPasswordMatch inputValue={watch(name)} isError={!!watch(name).length} />
-      ) : null}
     </div>
   );
 };
