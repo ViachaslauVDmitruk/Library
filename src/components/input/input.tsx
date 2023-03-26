@@ -36,7 +36,7 @@ export const CustomInput = ({
 
   const watchedFieldValue = watch(name || '');
 
-  const handleFocus = async () => setIsFilled(true);
+  const handleFocus = () => setIsFilled(true);
 
   const handleBlur = () => {
     trigger(name);

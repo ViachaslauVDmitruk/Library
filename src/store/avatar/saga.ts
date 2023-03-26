@@ -1,10 +1,11 @@
-import { call, delay, put, takeLatest } from 'redux-saga/effects';
+import { call, put, takeLatest } from 'redux-saga/effects';
 import { PayloadAction } from '@reduxjs/toolkit';
 
 import { axios } from '../../api/api';
 import { API } from '../../api/const';
+import { alertError, alertSuccess } from '../alert';
 
-import { avatarUploadError, avatarUploadSuccess, closeAvatarAlert, sendAvatarData } from '.';
+import { avatarUploadEnd, sendAvatarData } from '.';
 
 export function* avatarUploadWorker({ payload }: PayloadAction<any>) {
   const formData = new FormData();
@@ -14,14 +15,20 @@ export function* avatarUploadWorker({ payload }: PayloadAction<any>) {
   try {
     const { data } = yield call(axios.post, API.upLoadUrl, formData);
 
-    yield put(avatarUploadSuccess());
+    yield put(avatarUploadEnd());
+    yield put(
+      alertSuccess({
+        message: 'Фото успешно сохранено!',
+      })
+    );
     yield call(axios.put, `${API.userUrl}/${payload.userId}`, { avatar: data[0].id });
-    yield delay(4000);
-    yield put(closeAvatarAlert());
   } catch (e) {
-    yield put(avatarUploadError());
-    yield delay(4000);
-    yield put(closeAvatarAlert());
+    yield put(avatarUploadEnd());
+    yield put(
+      alertError({
+        message: 'Что-то пошло не так, фото не сохранилось. Попробуйте позже!',
+      })
+    );
   }
 }
 

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
-import { booksSelector, inputSearchSelector, selectedCategorySelector } from '../../selectors';
+import { booksSelector, inputSearchSelector, searchValueSelector, selectedCategorySelector } from '../../selectors';
 import { getBooks } from '../../store/books';
 import { getCategories } from '../../store/categories';
 import { getUserData } from '../../store/user-data';
@@ -17,7 +17,7 @@ export const Books = () => {
   const [isWindow, setIsWindow] = useState<boolean>(true);
   const { books, isErrorBooks, isLoadingBooks } = useSelector(booksSelector);
   const { selectedCategory } = useSelector(selectedCategorySelector);
-  const { searchValue } = useSelector(inputSearchSelector);
+  const { searchValue } = useSelector(searchValueSelector);
   const dispatch = useAppDispatch();
 
   const categoryMode =

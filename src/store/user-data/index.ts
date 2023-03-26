@@ -26,13 +26,9 @@ export const userSlice = createSlice({
     userResponseError: (state) => {
       state.isLoadingUser = false;
     },
-    closeUserResponseAlert: (state) => {
-      state.isLoadingUser = false;
-      state.isErrorUserResponse = false;
-    },
   },
 });
 
-export const { getUserData, userResponseSuccess, userResponseError, closeUserResponseAlert } = userSlice.actions;
+export const { getUserData, userResponseSuccess, userResponseError } = userSlice.actions;
 
 export const userReduser = userSlice.reducer;

@@ -144,6 +144,7 @@
 .account {
   display: flex;
   align-items: center;
+  cursor: pointer;
   & span {
     display: inline-block;
   }

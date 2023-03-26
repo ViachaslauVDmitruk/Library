@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 
 import { API_HOST } from '../../api/const';
-import { burgeMenuSelector, loginSelector, profileMenuSelector, userSelector } from '../../selectors';
+import { burgeMenuSelector, profileMenuSelector, userSelector } from '../../selectors';
 import { closeBurgerMenu, openBurgerMenu } from '../../store/burger-menu';
 import { closeProfileMenu, openProfileMenu } from '../../store/profile-menu';
 import { useAppDispatch, useAppSelector } from '../hooks';
@@ -21,8 +21,10 @@ export const Header = () => {
   const { activeBurger } = useAppSelector(burgeMenuSelector);
   const { isOpenProfileMenu } = useAppSelector(profileMenuSelector);
   const { user } = useAppSelector(userSelector);
-
   const dispatch = useAppDispatch();
+
+  const urlPath = window.location.href;
+  const isProfilePage = urlPath.includes('profile');
 
   function ToggleMenu() {
     if (activeBurger) {
@@ -74,7 +76,7 @@ export const Header = () => {
         >
           <span> </span>
         </button>
-        <div className={styles.title}>Библиотека</div>
+        <div className={styles.title}>{isProfilePage ? 'Личный кабинет' : 'Библиотека'}</div>
       </div>
       <div className={styles.account} onClick={ToggleProfileMenu}>
         <span className={styles.accountName}>Привет, {user?.firstName}!</span>

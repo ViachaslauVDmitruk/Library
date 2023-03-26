@@ -2,9 +2,11 @@
 import { useEffect, useState } from 'react';
 import classNames from 'classnames';
 
+import { searchValueSelector } from '../../selectors';
 import { sortRatingDown, sortRatingUp } from '../../store/books';
 import { setSearchValue } from '../../store/input-search';
-import { useAppDispatch } from '../hooks';
+import { sendSearchValue } from '../../store/search-value';
+import { useAppDispatch, useAppSelector } from '../hooks';
 
 import searchColor from './assets/icon-search-color.png';
 import searchGrey from './assets/icon-search-grey.png';
@@ -27,6 +29,7 @@ export const Filter = ({ viewWindow, changeView }: ChangeViewProps) => {
   const [isActiveSearch, setIsActiveSearch] = useState<boolean>(false);
   const [sortRatingMode, setSortRatingMode] = useState<boolean>(true);
   const [isColorIconSearch, setIsColorIconSearch] = useState<boolean>(false);
+  const { searchValue } = useAppSelector(searchValueSelector);
 
   const dispatch = useAppDispatch();
 
@@ -67,8 +70,9 @@ export const Filter = ({ viewWindow, changeView }: ChangeViewProps) => {
             spellCheck='false'
             data-test-id='input-search'
             onFocus={() => setIsColorIconSearch(true)}
-            onChange={(event) => dispatch(setSearchValue(event.target.value))}
+            onChange={(event) => dispatch(sendSearchValue(event.target.value))}
             onBlur={mobileSearchActive}
+            value={searchValue}
           />
           <button
             type='button'

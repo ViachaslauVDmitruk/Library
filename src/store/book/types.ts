@@ -3,8 +3,7 @@ import { BookingProps, DeliveryProps, HistoriesProps } from '../books/types';
 export type BookStateProps = {
   isLoadingBook: boolean;
   book: OneBookProps;
-  alertMessage: string;
-  messageBook: string;
+  isErrorOneBook: boolean;
 };
 
 export type OneBookProps = {

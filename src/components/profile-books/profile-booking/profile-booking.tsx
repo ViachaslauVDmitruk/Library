@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import classNames from 'classnames';
 
+import { moment } from '../../../const/moment';
 import { userSelector } from '../../../selectors';
 import { CardListView } from '../../card/card-list-view';
 import { useAppSelector } from '../../hooks';
@@ -17,7 +18,6 @@ export const ProfileBooking = () => {
 
   useEffect(() => {
     if (dateOrder) {
-      const moment = Date.now();
       const isOver = moment - Date.parse(dateOrder) > 60 * 60 * 24 * 1000;
 
       setIsOverdueBooking(isOver);
@@ -51,7 +51,7 @@ export const ProfileBooking = () => {
             />
             {isOverdueBooking && (
               <div className={classNames(styles.content, { [styles.alert]: isOverdueBooking })} data-test-id='expired'>
-                Дата бронирования <br /> книги истекла
+                Дата бронирования книги истекла
                 <span>Через 24 часа книга будет доступна всем</span>
               </div>
             )}

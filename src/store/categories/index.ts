@@ -24,13 +24,9 @@ export const categoriesSlice = createSlice({
       state.isLoadingCategories = false;
       state.isErrorCategories = true;
     },
-    closeCategoriesAlert: (state) => {
-      state.isLoadingCategories = false;
-      state.isErrorCategories = false;
-    },
   },
 });
 
-export const { getCategories, setCategories, categoriesError, closeCategoriesAlert } = categoriesSlice.actions;
+export const { getCategories, setCategories, categoriesError } = categoriesSlice.actions;
 
 export const categoriesSliceReducer = categoriesSlice.reducer;

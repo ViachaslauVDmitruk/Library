@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 import { FormProvider, useForm } from 'react-hook-form';
 import classNames from 'classnames';
 
-import { oneBookSelector, reviewSelector, userSelector } from '../../selectors';
+import { alertSelector, oneBookSelector, reviewSelector, userSelector } from '../../selectors';
 import { sendChangedReviewData, sendReviewData } from '../../store/review';
 import { ReviewProps } from '../../store/review/type';
 import { ModalFromState } from '../../types/modal';
@@ -23,7 +23,8 @@ const modal = document.getElementById('modal') as HTMLElement;
 export const ReviewForm = ({ isOpen, setIsOpen, rating, commentId }: ModalFromState) => {
   const { book } = useAppSelector(oneBookSelector);
   const { user } = useAppSelector(userSelector);
-  const { isLoadingModal, alertMessage } = useAppSelector(reviewSelector);
+  const { isLoadingModal } = useAppSelector(reviewSelector);
+  const { alertMessage } = useAppSelector(alertSelector);
   const dispatch = useAppDispatch();
 
   const methods = useForm<ReviewProps>({
@@ -37,13 +38,7 @@ export const ReviewForm = ({ isOpen, setIsOpen, rating, commentId }: ModalFromSt
     },
   });
 
-  const {
-    register,
-    handleSubmit,
-    reset,
-    watch,
-    formState: { isDirty },
-  } = methods;
+  const { register, handleSubmit, reset, watch } = methods;
 
   const onSubmit = (data: ReviewProps) => {
     if (commentId) {
@@ -126,6 +121,7 @@ export const ReviewForm = ({ isOpen, setIsOpen, rating, commentId }: ModalFromSt
               />
               <Button
                 type='submit'
+                disabled={!watch('rating')}
                 buttonText={rating ? 'Изменить комментарий' : 'Оценить'}
                 passStyle={styles.button}
                 id='button-comment'

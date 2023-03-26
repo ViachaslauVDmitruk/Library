@@ -5,8 +5,7 @@ import { AlertMessage } from '../../components/error-message';
 import { useAppDispatch, useAppSelector } from '../../components/hooks';
 import { Loader } from '../../components/loader';
 import { NavigateList } from '../../components/navigate-list';
-import { REQUEST_BOOK } from '../../const/message';
-import { bookingSelector, booksSelector, categoriesSelector, userSelector } from '../../selectors';
+import { alertSelector, booksSelector, categoriesSelector, userSelector } from '../../selectors';
 import { loginSuccess } from '../../store/login';
 
 import styles from './main-page.module.scss';
@@ -17,7 +16,7 @@ export const MainPage = () => {
   const { isErrorBooks, isLoadingBooks } = useAppSelector(booksSelector);
   const { isLoadingCategories, isErrorCategories } = useAppSelector(categoriesSelector);
   const { isLoadingUser, isErrorUserResponse } = useAppSelector(userSelector);
-  const { alertMessage, message } = useAppSelector(bookingSelector);
+  const { alertMessage, message } = useAppSelector(alertSelector);
 
   const loading = isLoadingBooks || isLoadingCategories || isLoadingUser;
   const error = isErrorBooks || isErrorCategories || isErrorUserResponse;
@@ -40,7 +39,6 @@ export const MainPage = () => {
     <div className={styles.container}>
       {loading && <Loader />}
       {message && <AlertMessage message={message} stylesAlert={alertMessage} />}
-      {error && <AlertMessage message={REQUEST_BOOK} stylesAlert='error' />}
       <NavigateList />
       {!error && <Outlet />}
     </div>

@@ -1,8 +1,8 @@
 /* eslint-disable no-debugger */
 import { useEffect, useState } from 'react';
 
-import { API, API_HOST } from '../../api/const';
-import { avatarSelector, loginSelector, userSelector } from '../../selectors';
+import { API_HOST } from '../../api/const';
+import { alertSelector, avatarSelector, userSelector } from '../../selectors';
 import { sendAvatarData } from '../../store/avatar';
 import { AlertMessage } from '../error-message';
 import { useAppDispatch, useAppSelector } from '../hooks';
@@ -16,7 +16,8 @@ import styles from './profile-avatar-block.module.scss';
 export const ProfileAvatarBlock = () => {
   const [avatarScr, setAvatarSrc] = useState<string>(deafultSrc);
   const { user } = useAppSelector(userSelector);
-  const { isLoadingModal, alertMessage, message } = useAppSelector(avatarSelector);
+  const { isLoadingModal } = useAppSelector(avatarSelector);
+  const { alertMessage, message } = useAppSelector(alertSelector);
   const dispatch = useAppDispatch();
 
   const changeAvatar = (file: FileList | null) => {
@@ -35,7 +36,7 @@ export const ProfileAvatarBlock = () => {
 
   return (
     <div className={styles.container} data-test-id='profile-avatar'>
-      {message && <AlertMessage stylesAlert={alertMessage} message={message} />}
+      {alertMessage && <AlertMessage stylesAlert={alertMessage} message={message} />}
       {isLoadingModal && <Loader />}
       <div className={styles.imageProfile}>
         <div className={styles.avatarWrapper}>

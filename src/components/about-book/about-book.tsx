@@ -2,7 +2,7 @@ import { useState } from 'react';
 import classNames from 'classnames';
 import { format } from 'date-fns';
 
-import { bookingSelector, loginSelector, oneBookSelector } from '../../selectors';
+import { alertSelector, loginSelector, oneBookSelector } from '../../selectors';
 import { Calendar } from '../booking';
 import { Button } from '../button';
 import { AlertMessage } from '../error-message';
@@ -14,7 +14,7 @@ import styles from './about-book.module.scss';
 export const AboutBook = () => {
   const [openModalCalendar, setIsOpenCalendar] = useState<boolean>(false);
   const { book } = useAppSelector(oneBookSelector);
-  const { alertMessage, message } = useAppSelector(bookingSelector);
+  const { alertMessage, message } = useAppSelector(alertSelector);
   const { user } = useAppSelector(loginSelector);
   const customerId = book.booking?.customerId;
   const isDelivery = book.delivery;

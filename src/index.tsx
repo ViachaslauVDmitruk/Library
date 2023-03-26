@@ -16,6 +16,7 @@ import { Profile } from './pages/profile';
 import { store } from './store';
 
 import './index.scss';
+import { RouterPath } from './const/routing';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 
@@ -24,7 +25,7 @@ root.render(
     <HashRouter>
       <Routes>
         <Route
-          path='/auth'
+          path={RouterPath.auth}
           element={
             <AuthPage>
               <LoginForm />
@@ -32,7 +33,7 @@ root.render(
           }
         />
         <Route
-          path='/registration'
+          path={RouterPath.registration}
           element={
             <AuthPage>
               <RegistrationForm />
@@ -40,7 +41,7 @@ root.render(
           }
         />
         <Route
-          path='/forgot-pass'
+          path={RouterPath.forgotPass}
           element={
             <AuthPage>
               <RecoveryForm />
@@ -48,16 +49,16 @@ root.render(
           }
         />
 
-        <Route path='/' element={<Layout />}>
-          <Route path='/' element={<MainPage />}>
-            <Route path='/' element={<Navigate to='/books/all' />} />
-            <Route path='/books/:category' element={<Books />} />
-            <Route path='/terms' element={<Rules />} />
-            <Route path='/contract' element={<Contract />} />
+        <Route path={RouterPath.home} element={<Layout />}>
+          <Route path={RouterPath.home} element={<MainPage />}>
+            <Route path={RouterPath.home} element={<Navigate to={RouterPath.booksAll} />} />
+            <Route path={RouterPath.category} element={<Books />} />
+            <Route path={RouterPath.terms} element={<Rules />} />
+            <Route path={RouterPath.contract} element={<Contract />} />
           </Route>
-          <Route path='/books/all/:id' element={<BookPage />} />
-          <Route path='/books/:category/:id' element={<BookPage />} />
-          <Route path='/profile' element={<Profile />} />
+          <Route path={`${RouterPath.booksAll}/:id`} element={<BookPage />} />
+          <Route path={`${RouterPath.book}`} element={<BookPage />} />
+          <Route path={RouterPath.profile} element={<Profile />} />
         </Route>
       </Routes>
     </HashRouter>

@@ -2,13 +2,13 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import { useState } from 'react';
-import { Link, useParams, useSearchParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import classNames from 'classnames';
 import { format } from 'date-fns';
 
 import { API_HOST } from '../../../api/const';
 import { ColorMatch } from '../../../helpers/color-match';
-import { bookingSelector, loginSelector } from '../../../selectors';
+import { alertSelector, bookingSelector, loginSelector, searchValueSelector } from '../../../selectors';
 import { sendCancelBooking } from '../../../store/order';
 import { clearDateOrder } from '../../../store/order-date';
 import { CardProps } from '../../../types/card';
@@ -29,16 +29,16 @@ export const CardListView = ({
   authors,
   id,
   issueYear,
-  searchValue = '',
   booking,
   delivery,
   bookingUserBookId,
   deliveryUser = null,
 }: CardProps) => {
   const { user } = useAppSelector(loginSelector);
-  const { alertMessage, message, isLoadingModal } = useAppSelector(bookingSelector);
+  const { isLoadingModal } = useAppSelector(bookingSelector);
+  const { alertMessage, message } = useAppSelector(alertSelector);
+  const { searchValue } = useAppSelector(searchValueSelector);
   const [openModalCalendar, setIsOpenCalendar] = useState<boolean>(false);
-  const [searchParams, setSearchParams] = useSearchParams();
   const { category } = useParams();
 
   const dispatch = useAppDispatch();
@@ -81,7 +81,7 @@ export const CardListView = ({
           }}
         >
           {rating ? <StarsRating ratingStars={rating} /> : <div className={styles.noRaring}>еще нет оценок</div>}
-          {booking && (
+          {!bookingUserBookId && (
             <Button
               type='button'
               passStyle={classNames(styles.button, { [styles.bookingUser]: customerId === userId })}

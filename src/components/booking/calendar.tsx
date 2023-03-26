@@ -6,7 +6,7 @@ import ReactDOM from 'react-dom';
 import { FormProvider, useForm } from 'react-hook-form';
 import classNames from 'classnames';
 
-import { bookingSelector, dateOrderSelector, loginSelector, oneBookSelector } from '../../selectors';
+import { alertSelector, bookingSelector, dateOrderSelector, loginSelector, oneBookSelector } from '../../selectors';
 import { sendBookingData, sendCancelBooking, sendChangeBooking } from '../../store/order';
 import { BookingDataProps } from '../../store/order/type';
 import { clearDateOrder } from '../../store/order-date';
@@ -27,7 +27,8 @@ export const Calendar = ({ isOpen, setIsOpen, bookId, booking }: ModalFromState)
   const { book } = useAppSelector(oneBookSelector);
   const { user } = useAppSelector(loginSelector);
   const { dateOrder } = useAppSelector(dateOrderSelector);
-  const { isLoadingModal, alertMessage } = useAppSelector(bookingSelector);
+  const { isLoadingModal } = useAppSelector(bookingSelector);
+  const { alertMessage } = useAppSelector(alertSelector);
   const dispatch = useAppDispatch();
   const bookingId = (book.booking?.id || booking?.id) ?? '';
   const bookIdUpdate = bookId ?? '';

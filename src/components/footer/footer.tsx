@@ -2,12 +2,7 @@ import { ICONS } from '../../const/social';
 
 import styles from './footer.module.scss';
 
-export type IconProps = {
-  src?: string;
-  id?: number;
-};
-
-export const Footer = ({ src, id }: IconProps) => (
+export const Footer = () => (
   <footer className={styles.footer}>
     <div className={styles.container}>
       <div className={styles.boxBorder}>

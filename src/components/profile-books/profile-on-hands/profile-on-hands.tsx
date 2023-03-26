@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import classNames from 'classnames';
 
-import { USER_FULL_DATA } from '../../../const/user-data';
+import { moment } from '../../../const/moment';
 import { userSelector } from '../../../selectors';
 import { CardListView } from '../../card/card-list-view';
 import { useAppSelector } from '../../hooks';
@@ -11,14 +11,12 @@ import styles from '../profile-books.module.scss';
 export const ProfileOnHands = () => {
   const [isOverdueHandedTo, setIsOverdueHandedTo] = useState<boolean>(false);
   const { user } = useAppSelector(userSelector);
-  //   const user = USER_FULL_DATA;
 
   const deliveryProps = user.delivery?.book;
   const dateDelivery = user.delivery?.dateHandedTo;
 
   useEffect(() => {
     if (dateDelivery) {
-      const moment = Date.now();
       const isOver = moment - Date.parse(dateDelivery) >= 0;
 
       setIsOverdueHandedTo(isOver);
@@ -49,8 +47,7 @@ export const ProfileOnHands = () => {
             />
             {isOverdueHandedTo && (
               <div className={classNames(styles.content, { [styles.alert]: isOverdueHandedTo })} data-test-id='expired'>
-                Вышел срок <br />
-                пользования книги
+                Вышел срок пользования книги
                 <span>Верните книгу, пожалуйста</span>
               </div>
             )}

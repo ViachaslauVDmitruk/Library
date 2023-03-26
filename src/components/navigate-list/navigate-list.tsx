@@ -4,14 +4,13 @@
 import { useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import classNames from 'classnames';
-import Cookies from 'js-cookie';
 
 import { CounterBooks } from '../../helpers/counter-books';
 import { booksSelector, burgeMenuSelector, categoriesSelector } from '../../selectors';
 import { closeBurgerMenu } from '../../store/burger-menu';
 import { getCategories } from '../../store/categories';
 import { loginResetState } from '../../store/login';
-import { selectCategoryAction } from '../../store/selected-category';
+import { clearSelectedCategory, selectCategoryAction } from '../../store/selected-category';
 import { useAppDispatch, useAppSelector } from '../hooks';
 
 import arrowHidden from './assets/list-hidden-color.png';
@@ -21,8 +20,8 @@ import styles from './navigate-list.module.scss';
 
 export const NavigateList = () => {
   const [isShowNavigate, setIsShowNavigate] = useState<boolean>(true);
-  const { activeBurger } = useAppSelector(burgeMenuSelector);
   const { categories, isErrorCategories, isLoadingCategories } = useAppSelector(categoriesSelector);
+  const { activeBurger } = useAppSelector(burgeMenuSelector);
   const { books } = useAppSelector(booksSelector);
 
   const dispatch = useAppDispatch();
@@ -50,7 +49,7 @@ export const NavigateList = () => {
           data-test-id={activeBurger ? 'burger-showcase' : 'navigation-showcase'}
           onClick={() => ToggleNavigateShow()}
         >
-          <div className={styles.titleTop} onClick={() => dispatch(getCategories())}>
+          <div className={styles.titleTop}>
             <NavLink to='/books/all' className={styles.title}>
               Витрина книг
             </NavLink>
@@ -66,7 +65,7 @@ export const NavigateList = () => {
             <li className={classNames(styles.listItem)} onClick={() => dispatch(closeBurgerMenu())}>
               <NavLink
                 to='/books/all'
-                onClick={() => dispatch(selectCategoryAction(''))}
+                onClick={() => dispatch(clearSelectedCategory())}
                 data-test-id={activeBurger ? 'burger-books' : 'navigation-books'}
               >
                 Все книги
@@ -82,7 +81,7 @@ export const NavigateList = () => {
                     className={styles.listItem}
                     onClick={() => {
                       dispatch(closeBurgerMenu());
-                      dispatch(selectCategoryAction(name));
+                      dispatch(selectCategoryAction({ selectedCategory: name, pathCategory: path }));
                     }}
                   >
                     <p data-test-id={activeBurger ? `burger-${path}` : `navigation-${path}`}>{name}</p>
@@ -124,9 +123,9 @@ export const NavigateList = () => {
           </NavLink>
         </div>
         <div className={styles.loginNavigate}>
-          <Link to='/profile' className={styles.title}>
-            Профиль
-          </Link>
+          <div className={styles.title}>
+            <Link to='/profile'>Профиль</Link>
+          </div>
           <div className={styles.title} onClick={logOut} data-test-id='exit-button'>
             Выход
           </div>

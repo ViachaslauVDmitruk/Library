@@ -41,9 +41,7 @@ const initialState: BookStateProps = {
     },
     histories: [],
   },
-
-  alertMessage: '',
-  messageBook: '',
+  isErrorOneBook: false,
 };
 
 export const oneBookSlice = createSlice({
@@ -60,19 +58,13 @@ export const oneBookSlice = createSlice({
         (a, b) => new Date(b.createdAt).valueOf() - new Date(a.createdAt).valueOf()
       );
     },
-    oneBookError: (state, action: PayloadAction) => {
+    oneBookError: (state) => {
       state.isLoadingBook = false;
-      state.alertMessage = 'error';
-      state.messageBook = 'Что-то пошло не так. Обновите страницу через некоторое время.';
-    },
-
-    closeOneBookAlert: (state, action: PayloadAction) => {
-      state.alertMessage = '';
-      state.messageBook = '';
+      state.isErrorOneBook = true;
     },
   },
 });
 
-export const { getOneBook, setOneBook, oneBookError, closeOneBookAlert } = oneBookSlice.actions;
+export const { getOneBook, setOneBook, oneBookError } = oneBookSlice.actions;
 
 export const oneBookSliceReducer = oneBookSlice.reducer;

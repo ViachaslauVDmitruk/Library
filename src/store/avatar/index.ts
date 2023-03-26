@@ -2,12 +2,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { AVATAR } from '../../const/avatar';
-import { ModalStateProps } from '../review/type';
+import { LoaderType } from '../../types/loader';
 
-export const initialState: ModalStateProps = {
+export const initialState: LoaderType = {
   isLoadingModal: false,
-  alertMessage: '',
-  message: '',
 };
 
 export const avatarSlice = createSlice({
@@ -17,23 +15,12 @@ export const avatarSlice = createSlice({
     sendAvatarData: (state, action: PayloadAction<any>) => {
       state.isLoadingModal = true;
     },
-    avatarUploadSuccess: (state) => {
+    avatarUploadEnd: (state) => {
       state.isLoadingModal = false;
-      state.alertMessage = 'success';
-      state.message = 'Фото успешно сохранено!';
-    },
-    avatarUploadError: (state) => {
-      state.isLoadingModal = false;
-      state.alertMessage = 'error';
-      state.message = 'Что-то пошло не так, фото не сохранилось. Попробуйте позже!';
-    },
-    closeAvatarAlert: (state) => {
-      state.alertMessage = '';
-      state.message = '';
     },
   },
 });
 
-export const { sendAvatarData, avatarUploadSuccess, avatarUploadError, closeAvatarAlert } = avatarSlice.actions;
+export const { sendAvatarData, avatarUploadEnd } = avatarSlice.actions;
 
 export const avatar = avatarSlice.reducer;

@@ -14,12 +14,16 @@ type PathProps = {
 };
 
 export const NavigatePath = ({ title }: PathProps) => {
-  const { selectedCategory } = useAppSelector(selectedCategorySelector);
+  const { selectedCategory, pathCategory } = useAppSelector(selectedCategorySelector);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const goBackUrl = () => {
     dispatch(getBooks());
-    navigate(-1);
+    if (selectedCategory) {
+      navigate(`/books/${pathCategory}`);
+    } else {
+      navigate('/');
+    }
   };
 
   return (

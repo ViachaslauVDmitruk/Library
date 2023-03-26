@@ -1,14 +1,10 @@
+import { useEffect } from 'react';
 import classNames from 'classnames';
 
-import { closeAvatarAlert } from '../../store/avatar';
-import { closeOneBookAlert } from '../../store/book';
-import { closeBooksAlert } from '../../store/books';
-import { closeCategoriesAlert } from '../../store/categories';
-import { closeBookingAlert } from '../../store/order';
-import { closeReviewAlert } from '../../store/review';
-import { closeUserResponseAlert } from '../../store/user-data';
+import { alertSelector } from '../../selectors';
+import { closeAlertMessage } from '../../store/alert';
 import { Button } from '../button';
-import { useAppDispatch } from '../hooks';
+import { useAppDispatch, useAppSelector } from '../hooks';
 
 import closeSrc from './assets/close.png';
 import errorSrc from './assets/error.png';
@@ -22,16 +18,17 @@ type MessageType = {
 };
 
 export const AlertMessage = ({ message, stylesAlert }: MessageType) => {
+  const { alertMessage } = useAppSelector(alertSelector);
   const dispatch = useAppDispatch();
 
+  useEffect(() => {
+    if (alertMessage) {
+      setTimeout(() => dispatch(closeAlertMessage()), 4000);
+    }
+  });
+
   const closeAlert = () => {
-    dispatch(closeBookingAlert());
-    dispatch(closeReviewAlert());
-    dispatch(closeAvatarAlert());
-    dispatch(closeUserResponseAlert());
-    dispatch(closeCategoriesAlert());
-    dispatch(closeBooksAlert());
-    dispatch(closeOneBookAlert());
+    dispatch(closeAlertMessage());
   };
 
   return (

@@ -7,18 +7,24 @@ import { SelectedCategoryState } from './types';
 
 const initialState: SelectedCategoryState = {
   selectedCategory: '',
+  pathCategory: '',
 };
 
 export const selectedCategorySlice = createSlice({
   name: SELECTED_CATEGORY,
   initialState,
   reducers: {
-    selectCategoryAction: (state, action: PayloadAction<string>) => {
-      state.selectedCategory = action.payload;
+    selectCategoryAction: (state, action: PayloadAction<SelectedCategoryState>) => {
+      state.selectedCategory = action.payload.selectedCategory;
+      state.pathCategory = action.payload.pathCategory;
+    },
+    clearSelectedCategory: (state) => {
+      state.selectedCategory = '';
+      state.pathCategory = '';
     },
   },
 });
 
-export const { selectCategoryAction } = selectedCategorySlice.actions;
+export const { selectCategoryAction, clearSelectedCategory } = selectedCategorySlice.actions;
 
 export const selectedCategorySliceReducer = selectedCategorySlice.reducer;

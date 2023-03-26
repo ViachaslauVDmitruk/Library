@@ -35,6 +35,7 @@ export const Profile = () => {
   return (
     <div className={styles.profile}>
       {loading && <Loader />}
+
       {error && <AlertMessage stylesAlert='error' message={REQUEST_BOOK} />}
       {activeBurger && <NavigateList />}
       <ProfileAvatarBlock />

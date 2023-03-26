@@ -1,13 +1,13 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import { useEffect, useState } from 'react';
-import { Link, useParams, useSearchParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import classNames from 'classnames';
 import { format } from 'date-fns';
 
 import { API_HOST } from '../../api/const';
 import { ColorMatch } from '../../helpers/color-match';
-import { reviewSelector, userSelector } from '../../selectors';
+import { alertSelector, searchValueSelector, userSelector } from '../../selectors';
 import { getOneBook } from '../../store/book';
 import { CommentsType } from '../../store/login/type';
 import { CardProps } from '../../types/card';
@@ -29,14 +29,13 @@ export const CardWindowView = ({
   authors,
   id,
   issueYear,
-  searchValue = '',
   booking,
   delivery,
   commentsUser,
 }: CardProps) => {
-  const { alertMessage, message } = useAppSelector(reviewSelector);
+  const { alertMessage, message } = useAppSelector(alertSelector);
   const { user } = useAppSelector(userSelector);
-
+  const { searchValue } = useAppSelector(searchValueSelector);
   const [isAlreadyCommented, setIsAlreadyCommented] = useState<boolean>(false);
   const [isOpenReviewModal, setIsOpenReveiwModal] = useState<boolean>(false);
   const [openModalCalendar, setIsOpenCalendar] = useState<boolean>(false);

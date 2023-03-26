@@ -1,11 +1,12 @@
-import { call, delay, put, takeLatest } from 'redux-saga/effects';
+import { call, put, takeLatest } from 'redux-saga/effects';
 import { AxiosResponse } from 'axios';
 
 import { axios } from '../../api/api';
 import { API } from '../../api/const';
+import { alertError } from '../alert';
 import { UserType } from '../login/type';
 
-import { closeUserResponseAlert, getUserData, userResponseError, userResponseSuccess } from '.';
+import { getUserData, userResponseError, userResponseSuccess } from '.';
 
 export function* userWorker() {
   try {
@@ -15,8 +16,11 @@ export function* userWorker() {
     yield put(userResponseSuccess(data));
   } catch (e) {
     yield put(userResponseError());
-	 yield delay(4000);
-	 yield put(closeUserResponseAlert());
+    yield put(
+      alertError({
+        message: 'Что-то пошло не так. Обновите страницу через некоторое время.',
+      })
+    );
   }
 }
 

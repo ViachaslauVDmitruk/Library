@@ -4,7 +4,6 @@ import { intlFormat } from 'date-fns';
 
 import { API_HOST } from '../../api/const';
 import { oneBookSelector, userSelector } from '../../selectors';
-import { UserProps } from '../../store/book/types';
 import { CommentsType } from '../../store/login/type';
 import { Button } from '../button';
 import { useAppSelector } from '../hooks';
@@ -17,23 +16,11 @@ import arrowDown from './assets/list-show.png';
 
 import styles from './review.module.scss';
 
-type CommentsState = {
-  comments: CommentsStateProps[] | null;
-} & BookIdType;
-
 type BookIdType = {
   idBook: number | null;
 };
 
-type CommentsStateProps = {
-  id: number;
-  rating: number;
-  text: string;
-  createdAt: string;
-  user: UserProps;
-};
-
-export const Review = ({ comments, idBook }: CommentsState) => {
+export const Review = ({ idBook }: BookIdType) => {
   const [isShowReview, setIsShowReview] = useState<boolean>(true);
   const [isOpenReviewModal, setIsOpenReveiwModal] = useState<boolean>(false);
   const [isAlreadyCommented, setIsAlreadyCommented] = useState<boolean>(false);
@@ -70,7 +57,7 @@ export const Review = ({ comments, idBook }: CommentsState) => {
         <div className={styles.title}>
           <div className={styles.textTitle}>
             Отзывы
-            <span />{' '}
+            <span>{commentsList.length || ''}</span>
           </div>
           <button
             type='button'

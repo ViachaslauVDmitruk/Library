@@ -1,6 +1,7 @@
 import createSagaMiddleware from 'redux-saga';
 import { configureStore } from '@reduxjs/toolkit';
 
+import { alertSlice } from './alert';
 import { avatarSlice } from './avatar';
 import { oneBookSlice } from './book';
 import { booksSlice } from './books';
@@ -17,6 +18,7 @@ import { recoveryPasswordSlice } from './recovery-password';
 import { registrationFormSlice } from './registration';
 import { reviewFormSlice } from './review';
 import { rootSaga } from './saga';
+import { searchValueSlice } from './search-value';
 import { selectedCategorySlice } from './selected-category';
 import { changedRegisterSlice } from './user';
 import { userSlice } from './user-data';
@@ -42,6 +44,8 @@ export const rootReducer = {
   changedRegister: changedRegisterSlice.reducer,
   avatar: avatarSlice.reducer,
   user: userSlice.reducer,
+  alert: alertSlice.reducer,
+  searchValue: searchValueSlice.reducer,
 };
 
 export const store = configureStore({

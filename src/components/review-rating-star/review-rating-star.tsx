@@ -15,8 +15,6 @@ export const ReviewRatingStar = ({ rating }: RatingBookUser) => {
 
   const changedRating = watch('rating') ? watch('rating') : rating || 0;
 
-  //* --TODO-------------Creat Input component---/
-
   return (
     <div className={styles.ratingStar}>
       <div className={styles.rowStars} data-test-id='rating'>
