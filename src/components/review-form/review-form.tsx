@@ -38,7 +38,7 @@ export const ReviewForm = ({ isOpen, setIsOpen, rating, commentId }: ModalFromSt
     },
   });
 
-  const { register, handleSubmit, reset, watch, getValues } = methods;
+  const { register, handleSubmit, reset, getValues } = methods;
 
   const onSubmit = (data: ReviewProps) => {
     if (commentId) {
