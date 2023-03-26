@@ -38,7 +38,7 @@ export const ReviewForm = ({ isOpen, setIsOpen, rating, commentId }: ModalFromSt
     },
   });
 
-  const { register, handleSubmit, reset, watch } = methods;
+  const { register, handleSubmit, reset, watch, getValues } = methods;
 
   const onSubmit = (data: ReviewProps) => {
     if (commentId) {
@@ -121,7 +121,7 @@ export const ReviewForm = ({ isOpen, setIsOpen, rating, commentId }: ModalFromSt
               />
               <Button
                 type='submit'
-                //  disabled={!watch('rating')}
+                disabled={!rating && !getValues('rating')}
                 buttonText={rating ? 'Изменить комментарий' : 'Оценить'}
                 passStyle={styles.button}
                 id='button-comment'

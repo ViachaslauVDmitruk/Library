@@ -43,7 +43,7 @@ export const ProfileInformation = () => {
     reValidateMode: 'onChange',
     defaultValues: {
       login: user?.username,
-      password: 'Qwerty123',
+      password: '',
       firstName: user?.firstName,
       lastName: user?.lastName,
       phone: user?.phone,
