@@ -13,6 +13,7 @@ import { Review } from '../../components/review';
 import { StarsRating } from '../../components/stars-rating';
 import {
   alertSelector,
+  bookingSelector,
   booksSelector,
   burgeMenuSelector,
   categoriesSelector,
@@ -32,12 +33,13 @@ export const BookPage = () => {
   const { isLoadingCategories } = useAppSelector(categoriesSelector);
   const { isLoadingBooks } = useAppSelector(booksSelector);
   const { isLoadingUser } = useAppSelector(userSelector);
+  const { isLoadingModal } = useAppSelector(bookingSelector);
   const { alertMessage, message } = useAppSelector(alertSelector);
   const { book } = useAppSelector(oneBookSelector);
 
   const dispatch = useAppDispatch();
   const isGettingData = !message && !isLoadingBook;
-  const loading = isLoadingUser || isLoadingBook || isLoadingCategories || isLoadingBooks;
+  const loading = isLoadingUser || isLoadingBook || isLoadingCategories || isLoadingBooks || isLoadingModal;
 
   useEffect(() => {
     if (id) {

@@ -33,7 +33,6 @@ export const CardWindowView = ({
   delivery,
   commentsUser,
 }: CardProps) => {
-  const { alertMessage, message } = useAppSelector(alertSelector);
   const { user } = useAppSelector(userSelector);
   const { searchValue } = useAppSelector(searchValueSelector);
   const [isAlreadyCommented, setIsAlreadyCommented] = useState<boolean>(false);
@@ -62,7 +61,6 @@ export const CardWindowView = ({
 
   return (
     <div className={styles.cardWindow} data-test-id='card' key={id}>
-      {message && <AlertMessage stylesAlert={alertMessage} message={message} />}
       <ReviewForm
         isOpen={isOpenReviewModal}
         setIsOpen={setIsOpenReveiwModal}

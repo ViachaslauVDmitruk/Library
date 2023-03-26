@@ -27,7 +27,6 @@ export const Calendar = ({ isOpen, setIsOpen, bookId, booking }: ModalFromState)
   const { book } = useAppSelector(oneBookSelector);
   const { user } = useAppSelector(loginSelector);
   const { dateOrder } = useAppSelector(dateOrderSelector);
-  const { isLoadingModal } = useAppSelector(bookingSelector);
   const { alertMessage } = useAppSelector(alertSelector);
   const dispatch = useAppDispatch();
   const bookingId = (book.booking?.id || booking?.id) ?? '';
@@ -109,7 +108,6 @@ export const Calendar = ({ isOpen, setIsOpen, bookId, booking }: ModalFromState)
 
   return ReactDOM.createPortal(
     <FormProvider {...methods}>
-      {isLoadingModal && <Loader />}
       <div
         className={classNames(styles.calendar, { [styles.visible]: isOpen })}
         onClick={closeReviewModal}

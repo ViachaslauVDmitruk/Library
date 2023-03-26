@@ -9,8 +9,7 @@ import { ProfileBooking } from '../../components/profile-books/profile-booking';
 import { ProfileHistory } from '../../components/profile-books/profile-history';
 import { ProfileOnHands } from '../../components/profile-books/profile-on-hands';
 import { ProfileInformation } from '../../components/profile-information';
-import { REQUEST_BOOK } from '../../const/message';
-import { booksSelector, burgeMenuSelector, categoriesSelector, userSelector } from '../../selectors';
+import { alertSelector, booksSelector, burgeMenuSelector, categoriesSelector, userSelector } from '../../selectors';
 import { getBooks } from '../../store/books';
 import { getCategories } from '../../store/categories';
 import { getUserData } from '../../store/user-data';
@@ -22,8 +21,9 @@ export const Profile = () => {
   const { isLoadingBooks, isErrorBooks } = useAppSelector(booksSelector);
   const { isLoadingCategories, isErrorCategories } = useAppSelector(categoriesSelector);
   const { activeBurger } = useAppSelector(burgeMenuSelector);
+  const { alertMessage, message } = useAppSelector(alertSelector);
   const dispatch = useAppDispatch();
-  const error = isErrorBooks || isErrorCategories || isErrorUserResponse;
+  //   const error = isErrorBooks || isErrorCategories || isErrorUserResponse;
   const loading = isLoadingBooks || isLoadingCategories || isLoadingUser;
 
   useEffect(() => {
@@ -35,8 +35,7 @@ export const Profile = () => {
   return (
     <div className={styles.profile}>
       {loading && <Loader />}
-
-      {error && <AlertMessage stylesAlert='error' message={REQUEST_BOOK} />}
+      {alertMessage && <AlertMessage stylesAlert={alertMessage} message={message} />}
       {activeBurger && <NavigateList />}
       <ProfileAvatarBlock />
       <ProfileInformation />

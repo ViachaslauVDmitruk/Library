@@ -5,7 +5,7 @@ import { AlertMessage } from '../../components/error-message';
 import { useAppDispatch, useAppSelector } from '../../components/hooks';
 import { Loader } from '../../components/loader';
 import { NavigateList } from '../../components/navigate-list';
-import { alertSelector, booksSelector, categoriesSelector, userSelector } from '../../selectors';
+import { alertSelector, bookingSelector, booksSelector, categoriesSelector, userSelector } from '../../selectors';
 import { loginSuccess } from '../../store/login';
 
 import styles from './main-page.module.scss';
@@ -16,9 +16,10 @@ export const MainPage = () => {
   const { isErrorBooks, isLoadingBooks } = useAppSelector(booksSelector);
   const { isLoadingCategories, isErrorCategories } = useAppSelector(categoriesSelector);
   const { isLoadingUser, isErrorUserResponse } = useAppSelector(userSelector);
+  const { isLoadingModal } = useAppSelector(bookingSelector);
   const { alertMessage, message } = useAppSelector(alertSelector);
 
-  const loading = isLoadingBooks || isLoadingCategories || isLoadingUser;
+  const loading = isLoadingBooks || isLoadingCategories || isLoadingUser || isLoadingModal;
   const error = isErrorBooks || isErrorCategories || isErrorUserResponse;
 
   useEffect(() => {
