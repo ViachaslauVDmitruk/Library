@@ -121,7 +121,6 @@ export const ReviewForm = ({ isOpen, setIsOpen, rating, commentId }: ModalFromSt
               />
               <Button
                 type='submit'
-                disabled={!rating && !getValues('rating')}
                 buttonText={rating ? 'Изменить комментарий' : 'Оценить'}
                 passStyle={styles.button}
                 id='button-comment'
