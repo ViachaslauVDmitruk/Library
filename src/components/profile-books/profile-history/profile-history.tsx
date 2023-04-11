@@ -7,9 +7,11 @@ import { useAppSelector } from '../../hooks';
 
 import './swiper-user.scss';
 import styles from '../profile-books.module.scss';
+import { USER_FULL_DATA } from '../../../const/user-data';
 
 export const ProfileHistory = () => {
-  const { user } = useAppSelector(userSelector);
+  //   const { user } = useAppSelector(userSelector);
+  const user = USER_FULL_DATA;
 
   const books = user.history?.books || [];
 

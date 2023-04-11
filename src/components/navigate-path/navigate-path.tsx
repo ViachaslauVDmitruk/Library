@@ -4,8 +4,7 @@
 import { useNavigate } from 'react-router-dom';
 
 import { selectedCategorySelector } from '../../selectors';
-import { getBooks } from '../../store/books';
-import { useAppDispatch, useAppSelector } from '../hooks';
+import { useAppSelector } from '../hooks';
 
 import styles from './navigate-path.module.scss';
 
@@ -15,10 +14,8 @@ type PathProps = {
 
 export const NavigatePath = ({ title }: PathProps) => {
   const { selectedCategory, pathCategory } = useAppSelector(selectedCategorySelector);
-  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const goBackUrl = () => {
-    dispatch(getBooks());
     if (selectedCategory) {
       navigate(`/books/${pathCategory}`);
     } else {

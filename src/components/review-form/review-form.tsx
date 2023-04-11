@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import { FormProvider, useForm } from 'react-hook-form';
 import classNames from 'classnames';
@@ -23,22 +23,24 @@ const modal = document.getElementById('modal') as HTMLElement;
 export const ReviewForm = ({ isOpen, setIsOpen, rating, commentId }: ModalFromState) => {
   const { book } = useAppSelector(oneBookSelector);
   const { user } = useAppSelector(userSelector);
+
   const { isLoadingModal } = useAppSelector(reviewSelector);
   const { alertMessage } = useAppSelector(alertSelector);
   const dispatch = useAppDispatch();
+  const userCommentedBook = user.comments?.find((comment) => comment.bookId === book.id);
 
   const methods = useForm<ReviewProps>({
     mode: 'onBlur',
     reValidateMode: 'onChange',
     defaultValues: {
-      text: '',
-      rating: null,
+      text: userCommentedBook?.text || '',
+      rating: userCommentedBook?.rating || 1,
       book: book?.id,
       user: user?.id,
     },
   });
 
-  const { register, handleSubmit, reset, getValues } = methods;
+  const { register, handleSubmit, reset, getValues, setValue, watch } = methods;
 
   const onSubmit = (data: ReviewProps) => {
     if (commentId) {

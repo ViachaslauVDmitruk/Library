@@ -81,7 +81,7 @@ export const CardListView = ({
           }}
         >
           {rating ? <StarsRating ratingStars={rating} /> : <div className={styles.noRaring}>еще нет оценок</div>}
-          {!bookingUserBookId && (
+          {!bookingUserBookId && !deliveryUser && (
             <Button
               type='button'
               passStyle={classNames(styles.button, { [styles.bookingUser]: customerId === userId })}

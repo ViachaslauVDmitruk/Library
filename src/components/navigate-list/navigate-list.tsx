@@ -123,7 +123,12 @@ export const NavigateList = () => {
           </NavLink>
         </div>
         <div className={styles.loginNavigate}>
-          <div className={styles.title}>
+          <div
+            className={styles.title}
+            onClick={() => {
+              dispatch(closeBurgerMenu());
+            }}
+          >
             <Link to='/profile'>Профиль</Link>
           </div>
           <div className={styles.title} onClick={logOut} data-test-id='exit-button'>

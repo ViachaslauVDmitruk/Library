@@ -34,6 +34,7 @@ export const USER_FULL_DATA = {
       issueYear: '2018',
       authors: ['Игорь Рыбаков'],
       image: null,
+      rating: 1,
     },
   },
   delivery: {

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import classNames from 'classnames';
 
 import { moment } from '../../../const/moment';
+import { USER_FULL_DATA } from '../../../const/user-data';
 import { userSelector } from '../../../selectors';
 import { CardListView } from '../../card/card-list-view';
 import { useAppSelector } from '../../hooks';
