@@ -11,14 +11,17 @@ import { Filter } from '../filter';
 import { useAppDispatch } from '../hooks';
 
 import styles from './books.module.scss';
+import { booksArray } from '../../const/mock-data/books';
 
 export const Books = () => {
   const [view, setView] = useState<string>('window');
   const [isWindow, setIsWindow] = useState<boolean>(true);
-  const { books, isErrorBooks, isLoadingBooks } = useSelector(booksSelector);
+  //   const { books, isErrorBooks, isLoadingBooks } = useSelector(booksSelector);
+  const { isErrorBooks, isLoadingBooks } = useSelector(booksSelector);
   const { selectedCategory } = useSelector(selectedCategorySelector);
   const { searchValue } = useSelector(searchValueSelector);
   const dispatch = useAppDispatch();
+  const books = booksArray;
 
   const categoryMode =
     selectedCategory === '' ? books : books.filter((book) => book.categories.some((item) => item === selectedCategory));
@@ -35,11 +38,11 @@ export const Books = () => {
     }
   }, [view]);
 
-  useEffect(() => {
-    dispatch(getBooks());
-    dispatch(getUserData());
-    dispatch(getCategories());
-  }, [dispatch]);
+  //   useEffect(() => {
+  //     dispatch(getBooks());
+  //     dispatch(getUserData());
+  //     dispatch(getCategories());
+  //   }, [dispatch]);
 
   return (
     <div className={styles.content}>

@@ -12,9 +12,9 @@ export type BookProps = {
   image: ImageProps | null;
   categories: string[];
   id: number;
-  booking: BookingProps;
-  delivery: DeliveryProps;
-  histories: HistoriesProps;
+  booking: BookingProps | null;
+  delivery: DeliveryProps | null;
+  histories: HistoriesProps[] | null;
 };
 
 export type ImageProps = {

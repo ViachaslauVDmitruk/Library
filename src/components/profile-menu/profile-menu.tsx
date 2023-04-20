@@ -15,11 +15,12 @@ export const ProfileMenu = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const logOut = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    dispatch(loginResetState());
+    //  localStorage.removeItem('token');
+    //  localStorage.removeItem('user');
+    //  dispatch(loginResetState());
+    //  navigate('/auth');
+    navigate('/');
     dispatch(closeProfileMenu());
-    navigate('/auth');
   };
 
   const flowProfile = () => {

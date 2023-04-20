@@ -24,7 +24,7 @@ root.render(
   <Provider store={store}>
     <HashRouter>
       <Routes>
-        <Route
+        {/* <Route  
           path={RouterPath.auth}
           element={
             <AuthPage>
@@ -47,7 +47,7 @@ root.render(
               <RecoveryForm />
             </AuthPage>
           }
-        />
+        /> */}
 
         <Route path={RouterPath.home} element={<Layout />}>
           <Route path={RouterPath.home} element={<MainPage />}>
