@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperClass from 'swiper/types/swiper-class';
 
 import { API_HOST } from '../../api/const';
+import noImage from './assets/no-image.png';
 
 import './slider-book.css';
 import './slider-book.scss';
@@ -17,7 +18,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
 type SliderProps = {
-  src: SlideUrl[];
+  src: SlideUrl[] | null;
 };
 
 type SlideUrl = {
@@ -44,7 +45,8 @@ export const SliderBook = ({ src }: SliderProps) => {
         {src2.map(({ url }) => (
           <SwiperSlide key={url}>
             <div className={styles.image}>
-              <img src={`${API_HOST}${url}`} alt='img' />
+              {/* <img src={`${API_HOST}${url}`} alt='img' /> */}
+              <img src={url ? url : noImage} alt='img' />
             </div>
           </SwiperSlide>
         ))}
@@ -62,7 +64,9 @@ export const SliderBook = ({ src }: SliderProps) => {
           {src2.map(({ url }) => (
             <SwiperSlide data-test-id='slide-mini' className={styles.sliderMini} key={url}>
               <div className={styles.imageMini}>
-                <img src={`${API_HOST}${url}`} alt='img' />
+                {/* <img src={`${API_HOST}${url}`} alt='img' />
+                 */}
+                <img src={url ? url : noImage} alt='img' />
               </div>
             </SwiperSlide>
           ))}

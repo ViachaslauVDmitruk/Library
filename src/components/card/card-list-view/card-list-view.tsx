@@ -60,7 +60,10 @@ export const CardListView = ({
       {isLoadingModal && <Loader />}
       {message && <AlertMessage stylesAlert={alertMessage} message={message} />}
       <Link to={bookingUserBookId ? `/books/all/${id}` : `/books/${category}/${id}`} className={styles.image}>
-        <img src={src ? `${API_HOST}${src}` : noImage} alt='img' />
+        {/*  							
+			 <img src={src ? `${API_HOST}${src}` : noImage} alt='img' /> 			image from server
+			  */}
+        <img src={src ? src : noImage} alt='img' />
       </Link>
       <div className={styles.contentWrapper}>
         <Link to={bookingUserBookId ? `/books/all/${id}` : `/books/${category}/${id}`} className={styles.content}>

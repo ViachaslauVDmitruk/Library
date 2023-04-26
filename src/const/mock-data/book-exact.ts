@@ -1,4 +1,141 @@
-
+import src002 from './covers/2.webp';
+import src003 from './covers/3.webp';
+import src004 from './covers/4.webp';
+import src005 from './covers/5.webp';
+import src006 from './covers/6.webp';
+// import src007 from './covers/7.webp';
+import src008 from './covers/8.webp';
+import src009 from './covers/9.webp';
+import src010 from './covers/10.webp';
+import src011 from './covers/11.webp';
+import src012 from './covers/12.webp';
+import src013 from './covers/13.webp';
+import src014 from './covers/14.webp';
+import src015 from './covers/15.webp';
+import src016 from './covers/16.webp';
+import src017 from './covers/17.webp';
+import src018 from './covers/18.webp';
+import src019 from './covers/19.webp';
+import src020 from './covers/20.webp';
+import src021 from './covers/21.webp';
+import src022 from './covers/22.webp';
+import src023 from './covers/23.webp';
+import src024 from './covers/24.webp';
+import src025 from './covers/25.webp';
+import src026 from './covers/26.webp';
+import src027 from './covers/27.webp';
+import src028 from './covers/28.webp';
+import src029 from './covers/29.webp';
+import src030 from './covers/30.webp';
+import src031 from './covers/31.webp';
+import src032 from './covers/32.webp';
+import src033 from './covers/33.webp';
+import src034 from './covers/34.webp';
+import src035 from './covers/35.webp';
+import src036 from './covers/36.webp';
+import src037 from './covers/37.webp';
+import src038 from './covers/38.webp';
+import src039 from './covers/39.webp';
+import src040 from './covers/40.webp';
+import src041 from './covers/41.webp';
+import src042 from './covers/42.webp';
+import src043 from './covers/43.webp';
+import src044 from './covers/44.webp';
+import src045 from './covers/45.webp';
+import src046 from './covers/46.webp';
+import src047 from './covers/47.webp';
+import src048 from './covers/48.webp';
+import src049 from './covers/49.webp';
+import src050 from './covers/50.webp';
+import src051 from './covers/51.webp';
+import src052 from './covers/52.webp';
+import src053 from './covers/53.webp';
+import src054 from './covers/54.webp';
+import src055 from './covers/55.webp';
+import src056 from './covers/56.webp';
+import src057 from './covers/57.webp';
+// import src058 from './covers/58.webp';
+import src059 from './covers/59.webp';
+import src060 from './covers/60.webp';
+import src061 from './covers/61.webp';
+import src062 from './covers/62.webp';
+import src063 from './covers/63.webp';
+import src064 from './covers/64.webp';
+import src065 from './covers/65.webp';
+import src066 from './covers/66.webp';
+import src067 from './covers/67.webp';
+import src068 from './covers/68.webp';
+import src069 from './covers/69.webp';
+// import src070 from './covers/70.webp';
+// import src071 from './covers/71.webp';
+import src072 from './covers/72.webp';
+import src073 from './covers/73.webp';
+// import src074 from './covers/74.webp';
+import src075 from './covers/75.webp';
+import src076 from './covers/76.webp';
+import src077 from './covers/77.webp';
+import src078 from './covers/78.webp';
+import src079 from './covers/79.webp';
+import src080 from './covers/80.webp';
+import src081 from './covers/81.webp';
+import src082 from './covers/82.webp';
+import src083 from './covers/83.webp';
+import src084 from './covers/84.webp';
+import src085 from './covers/85.webp';
+// import src086 from './covers/86.webp';
+import src087 from './covers/87.webp';
+import src088 from './covers/88.webp';
+import src089 from './covers/89.webp';
+import src090 from './covers/90.webp';
+import src091 from './covers/91.webp';
+import src092 from './covers/92.webp';
+import src093 from './covers/93.webp';
+import src094 from './covers/94.webp';
+import src095 from './covers/95.webp';
+import src096 from './covers/96.webp';
+import src097 from './covers/97.webp';
+import src098 from './covers/98.webp';
+import src099 from './covers/99.webp';
+import src100 from './covers/100.webp';
+import src101 from './covers/101.webp';
+import src102 from './covers/102.webp';
+import src103 from './covers/103.webp';
+import src104 from './covers/104.webp';
+import src105 from './covers/105.webp';
+import src106 from './covers/106.webp';
+import src107 from './covers/107.webp';
+import src108 from './covers/108.webp';
+import src109 from './covers/109.webp';
+import src110 from './covers/110.webp';
+import src111 from './covers/111.webp';
+import src112 from './covers/112.webp';
+import src113 from './covers/113.webp';
+import src114 from './covers/114.webp';
+import src115 from './covers/115.webp';
+import src116 from './covers/116.webp';
+import src117 from './covers/117.webp';
+import src118 from './covers/118.webp';
+import src119 from './covers/119.webp';
+import src120 from './covers/120.webp';
+import src121 from './covers/121.webp';
+import src122 from './covers/122.webp';
+import src123 from './covers/123.webp';
+import src124 from './covers/124.webp';
+import src125 from './covers/125.webp';
+import src126 from './covers/126.webp';
+import src127 from './covers/127.webp';
+import src128 from './covers/128.webp';
+import src129 from './covers/129.webp';
+import src130 from './covers/130.webp';
+import src131 from './covers/131.webp';
+import src132 from './covers/132.webp';
+import src133 from './covers/133.webp';
+import src134 from './covers/134.webp';
+// import src135 from './covers/135.webp';
+import src136 from './covers/136.webp';
+import src137 from './covers/137.webp';
+import src138 from './covers/138.webp';
+import src139 from './covers/139.webp';
 
 export const bookExact = [
   {
@@ -18,7 +155,8 @@ export const bookExact = [
     authors: ['Александр Остервальдер'],
     images: [
       {
-        url: '/uploads/10209755_0_Postroenie_biznes_modeley_Nastolnaya_kniga_stratega_i_novatora_Aleksandr_Ostervalder_Iv_Pine_931aabe20f.jpg',
+        //   url: '/uploads/10209755_0_Postroenie_biznes_modeley_Nastolnaya_kniga_stratega_i_novatora_Aleksandr_Ostervalder_Iv_Pine_931aabe20f.jpg',
+        url: src002,
       },
     ],
     categories: ['Бизнес'],
@@ -136,7 +274,8 @@ export const bookExact = [
     authors: ['Александр Остервальдер'],
     images: [
       {
-        url: '/uploads/10442229_0_5d1c5827e4.jpg',
+        //   url: '/uploads/10442229_0_5d1c5827e4.jpg',
+        url: src003,
       },
     ],
     categories: ['Бизнес'],
@@ -259,7 +398,8 @@ export const bookExact = [
     authors: ['Алексей Марков'],
     images: [
       {
-        url: '/uploads/10849349_0_89b742cffa.jpg',
+        //   url: '/uploads/10849349_0_89b742cffa.jpg',
+        url: src004,
       },
     ],
     categories: ['Бизнес'],
@@ -430,7 +570,8 @@ export const bookExact = [
     authors: ['Алексей Марков'],
     images: [
       {
-        url: '/uploads/10827932_0_b1fc6336fa.jpg',
+        //   url: '/uploads/10827932_0_b1fc6336fa.jpg',
+        url: src005,
       },
     ],
     categories: ['Бизнес'],
@@ -522,7 +663,8 @@ export const bookExact = [
     authors: ['Бенджамин Грэм'],
     images: [
       {
-        url: '/uploads/1027828_0_93fce05fab.jpg',
+        //   url: '/uploads/1027828_0_93fce05fab.jpg',
+        url: src005,
       },
     ],
     categories: ['Бизнес'],
@@ -585,7 +727,9 @@ export const bookExact = [
     authors: ['Брайан Трейси'],
     images: [
       {
-        url: '/uploads/10689720_0_Master_vremeni_Brayan_Treysi_e841bace3e.jpg',
+        //   url: '/uploads/10689720_0_Master_vremeni_Brayan_Treysi_e841bace3e.jpg',
+        // url: src007,
+        url: null,
       },
     ],
     categories: ['Бизнес'],
@@ -751,7 +895,8 @@ export const bookExact = [
     authors: ['Владимир Якуба'],
     images: [
       {
-        url: '/uploads/e912cd09078d6995ed49cececff66be7_e52b9aa044.jpg',
+        //   url: '/uploads/e912cd09078d6995ed49cececff66be7_e52b9aa044.jpg',
+        url: src008,
       },
     ],
     categories: ['Бизнес'],
@@ -802,7 +947,8 @@ export const bookExact = [
     authors: ['Владимир Якуба'],
     images: [
       {
-        url: '/uploads/10782569_0_3cdfa87016.jpg',
+        //   url: '/uploads/10782569_0_3cdfa87016.jpg',
+        url: src009,
       },
     ],
     categories: ['Бизнес'],
@@ -1052,7 +1198,8 @@ export const bookExact = [
     authors: ['Владмир Якуба'],
     images: [
       {
-        url: '/uploads/10903761_0_dd519b2e4c.jpg',
+        //   url: '/uploads/10903761_0_dd519b2e4c.jpg',
+        url: src010,
       },
     ],
     categories: ['Бизнес'],
@@ -1179,19 +1326,24 @@ export const bookExact = [
     authors: ['Вячеслав Семенчук'],
     images: [
       {
-        url: '/uploads/10859003_0_134ef8a55d.jpg',
+        //   url: '/uploads/10859003_0_134ef8a55d.jpg',
+        url: src011,
       },
       {
-        url: '/uploads/10859003_01_bdcbbc1bbc.jpg',
+        //   url: '/uploads/10859003_01_bdcbbc1bbc.jpg',
+        url: src011,
       },
       {
-        url: '/uploads/10859003_1_40422e2d96.jpg',
+        //   url: '/uploads/10859003_1_40422e2d96.jpg',
+        url: src011,
       },
       {
-        url: '/uploads/10859003_2_b26a8a8c92.jpg',
+        //   url: '/uploads/10859003_2_b26a8a8c92.jpg',
+        url: src011,
       },
       {
-        url: '/uploads/10859003_3_55bcc10aa1.jpg',
+        //   url: '/uploads/10859003_3_55bcc10aa1.jpg',
+        url: src011,
       },
     ],
     categories: ['Бизнес'],
@@ -1267,7 +1419,8 @@ export const bookExact = [
     authors: ['Гарри Беквит'],
     images: [
       {
-        url: '/uploads/10858981_0_Sam_sebe_brend_Iskusstvo_samoprezentacii_m_Rarri_Bekvit_Kristin_Bekvit_36345dbe51.jpg',
+        //   url: '/uploads/10858981_0_Sam_sebe_brend_Iskusstvo_samoprezentacii_m_Rarri_Bekvit_Kristin_Bekvit_36345dbe51.jpg',
+        url: src012,
       },
     ],
     categories: ['Бизнес'],
@@ -1366,7 +1519,8 @@ export const bookExact = [
     authors: ['Гарри Беквит'],
     images: [
       {
-        url: '/uploads/10791050_0_a50d785fac.jpg',
+        //   url: '/uploads/10791050_0_a50d785fac.jpg',
+        url: src013,
       },
     ],
     categories: ['Бизнес'],
@@ -1417,7 +1571,8 @@ export const bookExact = [
     authors: ['Говард Бехард'],
     images: [
       {
-        url: '/uploads/1047625_0_bf65328c95.jpg',
+        //   url: '/uploads/1047625_0_bf65328c95.jpg',
+        url: src014,
       },
     ],
     categories: ['Бизнес'],
@@ -1480,7 +1635,8 @@ export const bookExact = [
     authors: ['Джеффри Лайкер'],
     images: [
       {
-        url: '/uploads/10152616_0_a027f27f41.jpg',
+        //   url: '/uploads/10152616_0_a027f27f41.jpg',
+        url: src015,
       },
     ],
     categories: ['Бизнес'],
@@ -1599,7 +1755,8 @@ export const bookExact = [
     authors: ['Джим Коллинз'],
     images: [
       {
-        url: '/uploads/10604070_0_fdde108c97.jpg',
+        //   url: '/uploads/10604070_0_fdde108c97.jpg',
+        url: src016,
       },
     ],
     categories: ['Бизнес'],
@@ -1753,7 +1910,8 @@ export const bookExact = [
     authors: ['Дмитрий Лебедев'],
     images: [
       {
-        url: '/uploads/10926443_0_Dengi_delayut_dengi_Dmitriy_Lebedev_fe1c25beb7.jpg',
+        //   url: '/uploads/10926443_0_Dengi_delayut_dengi_Dmitriy_Lebedev_fe1c25beb7.jpg',
+        url: src017,
       },
     ],
     categories: ['Бизнес'],
@@ -1797,7 +1955,8 @@ export const bookExact = [
     authors: ['Дэвид Аллен'],
     images: [
       {
-        url: '/uploads/1030681_0_Kak_privesti_dela_v_poryadok_iskusstvo_produktivnosti_bez_stressa_Devid_Allen_ed426c115e.jpg',
+        //   url: '/uploads/1030681_0_Kak_privesti_dela_v_poryadok_iskusstvo_produktivnosti_bez_stressa_Devid_Allen_ed426c115e.jpg',
+        url: src018,
       },
     ],
     categories: ['Бизнес'],
@@ -1830,7 +1989,8 @@ export const bookExact = [
     authors: ['Дэн Кеннеди'],
     images: [
       {
-        url: '/uploads/10408083_0_Zhestkiy_menedzhment_Zastavte_lyudey_rabotat_na_rezultat_Den_Kennedi_7020239fe7.jpg',
+        //   url: '/uploads/10408083_0_Zhestkiy_menedzhment_Zastavte_lyudey_rabotat_na_rezultat_Den_Kennedi_7020239fe7.jpg',
+        url: src019,
       },
     ],
     categories: ['Бизнес'],
@@ -1917,7 +2077,8 @@ export const bookExact = [
     authors: ['Евгений Щепин'],
     images: [
       {
-        url: '/uploads/10777060_0_8debcb706d.jpg',
+        //   url: '/uploads/10777060_0_8debcb706d.jpg',
+        url: src020,
       },
     ],
     categories: ['Бизнес'],
@@ -2059,7 +2220,8 @@ export const bookExact = [
     authors: ['Евгений Щепин'],
     images: [
       {
-        url: '/uploads/10965486_0_9ec35a4c2c.jpg',
+        //   url: '/uploads/10965486_0_9ec35a4c2c.jpg',
+        url: src021,
       },
     ],
     categories: ['Бизнес'],
@@ -2085,7 +2247,8 @@ export const bookExact = [
     authors: ['Евгений Черняк'],
     images: [
       {
-        url: '/uploads/10861429_0_b4e5a2c768.jpg',
+        //   url: '/uploads/10861429_0_b4e5a2c768.jpg',
+        url: src022,
       },
     ],
     categories: ['Бизнес'],
@@ -2111,7 +2274,8 @@ export const bookExact = [
     authors: ['Игорь Манн'],
     images: [
       {
-        url: '/uploads/10252955_0_Tochki_kontakta_Prostie_idei_dlya_uluchsheniya_vashego_marketinga_Igor_Mann_Dmitriy_Turusin_ac8ddffebc.jpg',
+        //   url: '/uploads/10252955_0_Tochki_kontakta_Prostie_idei_dlya_uluchsheniya_vashego_marketinga_Igor_Mann_Dmitriy_Turusin_ac8ddffebc.jpg',
+        url: src023,
       },
     ],
     categories: ['Бизнес'],
@@ -2162,7 +2326,8 @@ export const bookExact = [
     authors: ['Игорь Манн'],
     images: [
       {
-        url: '/uploads/10355756_0_1babae347a.jpg',
+        //   url: '/uploads/10355756_0_1babae347a.jpg',
+        url: src024,
       },
     ],
     categories: ['Бизнес'],
@@ -2278,7 +2443,8 @@ export const bookExact = [
     authors: ['Игорь Рыбаков'],
     images: [
       {
-        url: '/uploads/Igor_Rybakov_Zhazhda_03e6027493.jpeg',
+        //   url: '/uploads/Igor_Rybakov_Zhazhda_03e6027493.jpeg',
+        url: src025,
       },
     ],
     categories: ['Бизнес'],
@@ -2303,7 +2469,8 @@ export const bookExact = [
     authors: ['Ицхак Пинтосевич'],
     images: [
       {
-        url: '/uploads/10217872_0_ae066e6b54.jpg',
+        //   url: '/uploads/10217872_0_ae066e6b54.jpg',
+        url: src026,
       },
     ],
     categories: ['Бизнес'],
@@ -2426,7 +2593,8 @@ export const bookExact = [
     authors: ['Карл Сьюэлл'],
     images: [
       {
-        url: '/uploads/1017697_0_Klienti_na_vsyu_zhizn_Karl_Syuell_Pol_Braun_b1e187d02c.jpg',
+        //   url: '/uploads/1017697_0_Klienti_na_vsyu_zhizn_Karl_Syuell_Pol_Braun_b1e187d02c.jpg',
+        url: src027,
       },
     ],
     categories: ['Бизнес'],
@@ -2676,7 +2844,8 @@ export const bookExact = [
     authors: ['Крис Бэйли'],
     images: [
       {
-        url: '/uploads/Kris_Bejli_Giperfokus_Kak_ya_nauchilsya_delat_bolshe_tratya_menshe_vremeni_57ded37b41.jpeg',
+        //   url: '/uploads/Kris_Bejli_Giperfokus_Kak_ya_nauchilsya_delat_bolshe_tratya_menshe_vremeni_57ded37b41.jpeg',
+        url: src028,
       },
     ],
     categories: ['Бизнес'],
@@ -2715,7 +2884,8 @@ export const bookExact = [
     authors: ['Людмила Ярухина'],
     images: [
       {
-        url: '/uploads/10613523_0_3d0607073f.jpg',
+        //   url: '/uploads/10613523_0_3d0607073f.jpg',
+        url: src029,
       },
     ],
     categories: ['Бизнес'],
@@ -2778,7 +2948,8 @@ export const bookExact = [
     authors: ['Марк Мэнсон'],
     images: [
       {
-        url: '/uploads/10614134_0_1e5d8cd9e0.jpg',
+        //   url: '/uploads/10614134_0_1e5d8cd9e0.jpg',
+        url: src030,
       },
     ],
     categories: ['Бизнес'],
@@ -2913,7 +3084,8 @@ export const bookExact = [
     authors: ['Максим Батырев (Комбат)'],
     images: [
       {
-        url: '/uploads/10327034_0_9ad72be374.jpg',
+        //   url: '/uploads/10327034_0_9ad72be374.jpg',
+        url: src031,
       },
     ],
     categories: ['Бизнес'],
@@ -2939,7 +3111,8 @@ export const bookExact = [
     authors: ['Максим Батырев (Комбат)'],
     images: [
       {
-        url: '/uploads/10761206_0_9e2b334fb5.jpg',
+        //   url: '/uploads/10761206_0_9e2b334fb5.jpg',
+        url: src032,
       },
     ],
     categories: ['Бизнес'],
@@ -2964,7 +3137,8 @@ export const bookExact = [
     authors: ['Максим Дорофеев'],
     images: [
       {
-        url: '/uploads/10902363_0_Put_dzhedaya_Poisk_sobstvennoy_metodiki_produktivnosti_Maksim_Dorofeev_74dfef5bd5.jpg',
+        //   url: '/uploads/10902363_0_Put_dzhedaya_Poisk_sobstvennoy_metodiki_produktivnosti_Maksim_Dorofeev_74dfef5bd5.jpg',
+        url: src033,
       },
     ],
     categories: ['Бизнес'],
@@ -2990,7 +3164,8 @@ export const bookExact = [
     authors: ['Максим Дорофеев'],
     images: [
       {
-        url: '/uploads/10584051_0_Dzhedayskie_tehniki_Kak_vospitat_svoyu_obezyanu_opustoshit_inboks_i_sberech_misletoplivo_Maksim_Dorofeev_0805fefdb1.jpg',
+        //   url: '/uploads/10584051_0_Dzhedayskie_tehniki_Kak_vospitat_svoyu_obezyanu_opustoshit_inboks_i_sberech_misletoplivo_Maksim_Dorofeev_0805fefdb1.jpg',
+        url: src034,
       },
     ],
     categories: ['Бизнес'],
@@ -3018,7 +3193,12 @@ export const bookExact = [
     ISBN: null,
     producer: null,
     authors: ['Максим Ильяхов'],
-    images: [{ url: '/uploads/10534756_0_e30262d68c.jpg' }],
+    images: [
+      {
+        //  url: '/uploads/10534756_0_e30262d68c.jpg'
+        url: src035,
+      },
+    ],
     categories: ['Бизнес'],
     comments: null,
     booking: null,
@@ -3042,7 +3222,8 @@ export const bookExact = [
     authors: ['Максим Ильяхов'],
     images: [
       {
-        url: '/uploads/10962043_0_f5936c92f7.jpg',
+        //   url: '/uploads/10962043_0_f5936c92f7.jpg',
+        url: src036,
       },
     ],
     categories: ['Бизнес'],
@@ -3068,7 +3249,8 @@ export const bookExact = [
     authors: ['Нассим Талеб'],
     images: [
       {
-        url: '/uploads/10734923_0_3735db09cc.jpg',
+        //   url: '/uploads/10734923_0_3735db09cc.jpg',
+        url: src037,
       },
     ],
     categories: ['Бизнес'],
@@ -3094,7 +3276,8 @@ export const bookExact = [
     authors: ['Олег Тиньков'],
     images: [
       {
-        url: '/uploads/10204302_0_c3bb9afbeb.jpg',
+        //   url: '/uploads/10204302_0_c3bb9afbeb.jpg',
+        url: src038,
       },
     ],
     categories: ['Бизнес'],
@@ -3169,7 +3352,8 @@ export const bookExact = [
     authors: ['Оливер Кемпкенс'],
     images: [
       {
-        url: '/uploads/10885498_0_27f9e6e81b.jpg',
+        //   url: '/uploads/10885498_0_27f9e6e81b.jpg',
+        url: src039,
       },
     ],
     categories: ['Бизнес'],
@@ -3195,7 +3379,8 @@ export const bookExact = [
     authors: ['Питер Тиль'],
     images: [
       {
-        url: '/uploads/10394145_0_47ee8ad494.jpg',
+        //   url: '/uploads/10394145_0_47ee8ad494.jpg',
+        url: src040,
       },
     ],
     categories: ['Бизнес'],
@@ -3221,7 +3406,8 @@ export const bookExact = [
     authors: ['Роб Фитцпатрик'],
     images: [
       {
-        url: '/uploads/10968986_0_34ca8465ed.jpg',
+        //   url: '/uploads/10968986_0_34ca8465ed.jpg',
+        url: src041,
       },
     ],
     categories: ['Бизнес'],
@@ -3247,7 +3433,8 @@ export const bookExact = [
     authors: ['Робин Шарма'],
     images: [
       {
-        url: '/uploads/10877173_0_c2e206cb40.jpg',
+        //   url: '/uploads/10877173_0_c2e206cb40.jpg',
+        url: src042,
       },
     ],
     categories: ['Бизнес'],
@@ -3304,7 +3491,8 @@ export const bookExact = [
     authors: ['Стивен Р. Кови'],
     images: [
       {
-        url: '/uploads/1018520_0_101ab285cf.jpg',
+        //   url: '/uploads/1018520_0_101ab285cf.jpg',
+        url: src043,
       },
     ],
     categories: ['Бизнес'],
@@ -3330,7 +3518,8 @@ export const bookExact = [
     authors: ['Сэм Уолтон'],
     images: [
       {
-        url: '/uploads/10549180_0_7676bfd021.jpg',
+        //   url: '/uploads/10549180_0_7676bfd021.jpg',
+        url: src044,
       },
     ],
     categories: ['Бизнес'],
@@ -3356,7 +3545,8 @@ export const bookExact = [
     authors: ['Тао Тань'],
     images: [
       {
-        url: '/uploads/3be5f977_ab60_48ff_9276_1308637d2131_d47b4a05d8.jpg',
+        //   url: '/uploads/3be5f977_ab60_48ff_9276_1308637d2131_d47b4a05d8.jpg',
+        url: src045,
       },
     ],
     categories: ['Бизнес'],
@@ -3382,7 +3572,8 @@ export const bookExact = [
     authors: ['Тинькофф'],
     images: [
       {
-        url: '/uploads/10802802_0_83f597a859.jpg',
+        //   url: '/uploads/10802802_0_83f597a859.jpg',
+        url: src046,
       },
     ],
     categories: ['Бизнес'],
@@ -3408,7 +3599,8 @@ export const bookExact = [
     authors: ['Тони Бьюзен'],
     images: [
       {
-        url: '/uploads/10760776_0_52d5bd6da6.jpg',
+        //   url: '/uploads/10760776_0_52d5bd6da6.jpg',
+        url: src047,
       },
     ],
     categories: ['Бизнес'],
@@ -3434,7 +3626,8 @@ export const bookExact = [
     authors: ['Фил Найт'],
     images: [
       {
-        url: '/uploads/10911315_0_Prodavec_obuvi_Kak_ya_sozdal_Nike_Versiya_dlya_detey_i_podrostkov_Fil_Nayt_f6efe6fb47.jpg',
+        //   url: '/uploads/10911315_0_Prodavec_obuvi_Kak_ya_sozdal_Nike_Versiya_dlya_detey_i_podrostkov_Fil_Nayt_f6efe6fb47.jpg',
+        url: src048,
       },
     ],
     categories: ['Бизнес'],
@@ -3464,7 +3657,8 @@ export const bookExact = [
     authors: ['Максим Котин'],
     images: [
       {
-        url: '/uploads/Dodo_kniga_702e2a4239.jpeg',
+        //   url: '/uploads/Dodo_kniga_702e2a4239.jpeg',
+        url: src049,
       },
     ],
     categories: ['Бизнес'],
@@ -3490,7 +3684,8 @@ export const bookExact = [
     authors: ['Евгений Черняк'],
     images: [
       {
-        url: '/uploads/b364bc3c_04d7_11e7_80c5_000c29ae1566_9b7bd3ec_f676_11ea_813d_000c29ae1566_1382b318df.jpg',
+        //   url: '/uploads/b364bc3c_04d7_11e7_80c5_000c29ae1566_9b7bd3ec_f676_11ea_813d_000c29ae1566_1382b318df.jpg',
+        url: src050,
       },
     ],
     categories: ['Бизнес'],
@@ -3516,7 +3711,8 @@ export const bookExact = [
     authors: ['Тони Бьюзен'],
     images: [
       {
-        url: '/uploads/1014568_0_4744f1508e.jpg',
+        //   url: '/uploads/1014568_0_4744f1508e.jpg',
+        url: src051,
       },
     ],
     categories: ['Бизнес'],
@@ -3542,7 +3738,8 @@ export const bookExact = [
     authors: ['Кевин Круз'],
     images: [
       {
-        url: '/uploads/1032391714_c835ddfc0c.webp',
+        //   url: '/uploads/1032391714_c835ddfc0c.webp',
+        url: src052,
       },
     ],
     categories: ['Бизнес'],
@@ -3573,7 +3770,8 @@ export const bookExact = [
     authors: ['Нассим Николас Талеб'],
     images: [
       {
-        url: '/uploads/e04f4b0fb7c03ae0401996fc1028c782_25886b37d5.webp',
+        //   url: '/uploads/e04f4b0fb7c03ae0401996fc1028c782_25886b37d5.webp',
+        url: src053,
       },
     ],
     categories: ['Бизнес'],
@@ -3599,10 +3797,12 @@ export const bookExact = [
     authors: ['Сергей Бехтерев'],
     images: [
       {
-        url: '/uploads/10792059_0_44b87ba445.jpg',
+        //   url: '/uploads/10792059_0_44b87ba445.jpg',
+        url: src054,
       },
       {
-        url: '/uploads/10792059_2_ba0e8d2eef.jpg',
+        //   url: '/uploads/10792059_2_ba0e8d2eef.jpg',
+        url: src054,
       },
     ],
     categories: ['Бизнес'],
@@ -3628,7 +3828,8 @@ export const bookExact = [
     authors: ['Роджер Дули'],
     images: [
       {
-        url: '/uploads/1021955469_81c91256ea.webp',
+        //   url: '/uploads/1021955469_81c91256ea.webp',
+        url: src055,
       },
     ],
     categories: ['Бизнес'],
@@ -3654,7 +3855,8 @@ export const bookExact = [
     authors: ['Рэй Далио'],
     images: [
       {
-        url: '/uploads/6020019394_43b89b7ee9.webp',
+        //   url: '/uploads/6020019394_43b89b7ee9.webp',
+        url: src056,
       },
     ],
     categories: ['Бизнес'],
@@ -3680,7 +3882,8 @@ export const bookExact = [
     authors: ['Максим Ильяхов'],
     images: [
       {
-        url: '/uploads/1037902535_00bde23ac1.webp',
+        //   url: '/uploads/1037902535_00bde23ac1.webp',
+        url: src057,
       },
     ],
     categories: ['Бизнес'],
@@ -3706,7 +3909,9 @@ export const bookExact = [
     authors: ['Джек Траут', 'Эл Райс'],
     images: [
       {
-        url: '/uploads/1030904156_711e68d181.webp',
+        //   url: '/uploads/1030904156_711e68d181.webp',
+        //   url: src058,
+        url: null,
       },
     ],
     categories: ['Бизнес'],
@@ -3732,7 +3937,8 @@ export const bookExact = [
     authors: ['Марки Форстер'],
     images: [
       {
-        url: '/uploads/6066960809_1c3e8bf8f9.webp',
+        //   url: '/uploads/6066960809_1c3e8bf8f9.webp',
+        url: src059,
       },
     ],
     categories: ['Бизнес'],
@@ -3772,7 +3978,8 @@ export const bookExact = [
     authors: ['Ричард Талер'],
     images: [
       {
-        url: '/uploads/6065900304_975e5c1634.webp',
+        //   url: '/uploads/6065900304_975e5c1634.webp',
+        url: src060,
       },
     ],
     categories: ['Бизнес'],
@@ -3798,7 +4005,8 @@ export const bookExact = [
     authors: ['Ли Якокка'],
     images: [
       {
-        url: '/uploads/1009079162_8a69bcb3f9.webp',
+        //   url: '/uploads/1009079162_8a69bcb3f9.webp',
+        url: src061,
       },
     ],
     categories: ['Бизнес'],
@@ -3824,7 +4032,8 @@ export const bookExact = [
     authors: ['Дэвид Блэнд', 'Алекс Остервальдер'],
     images: [
       {
-        url: '/uploads/6084791398_dba0a3b1fc.webp',
+        //   url: '/uploads/6084791398_dba0a3b1fc.webp',
+        url: src062,
       },
     ],
     categories: ['Бизнес'],
@@ -3850,7 +4059,8 @@ export const bookExact = [
     authors: ['Алекс Остервальдер', 'Ив Пинье', 'Фред Этьембль', 'Алан Смит'],
     images: [
       {
-        url: '/uploads/6061593167_01f052bf69.webp',
+        //   url: '/uploads/6061593167_01f052bf69.webp',
+        url: src063,
       },
     ],
     categories: ['Бизнес'],
@@ -3981,7 +4191,8 @@ export const bookExact = [
     authors: ['Андрей Курпатов'],
     images: [
       {
-        url: '/uploads/6060732985_6d5f8bb332.webp',
+        //   url: '/uploads/6060732985_6d5f8bb332.webp',
+        url: src064,
       },
     ],
     categories: ['Психология', 'Родителям'],
@@ -4039,7 +4250,8 @@ export const bookExact = [
     authors: ['Джон Кехо'],
     images: [
       {
-        url: '/uploads/1012371255_a3c279632b.webp',
+        //   url: '/uploads/1012371255_a3c279632b.webp',
+        url: src065,
       },
     ],
     categories: ['Психология'],
@@ -4097,7 +4309,8 @@ export const bookExact = [
     authors: ['Джон Кехо'],
     images: [
       {
-        url: '/uploads/1027833789_d26d341cc1.webp',
+        //   url: '/uploads/1027833789_d26d341cc1.webp',
+        url: src066,
       },
     ],
     categories: ['Психология'],
@@ -4123,7 +4336,8 @@ export const bookExact = [
     authors: ['Крис Бэйли'],
     images: [
       {
-        url: '/uploads/10571472_0_b89c0f6a0d.jpg',
+        //   url: '/uploads/10571472_0_b89c0f6a0d.jpg',
+        url: src067,
       },
     ],
     categories: ['Психология'],
@@ -4149,7 +4363,8 @@ export const bookExact = [
     authors: ['Мила Левчук'],
     images: [
       {
-        url: '/uploads/10648955_0_1db6c2472e.jpg',
+        //   url: '/uploads/10648955_0_1db6c2472e.jpg',
+        url: src068,
       },
     ],
     categories: ['Психология'],
@@ -4175,7 +4390,8 @@ export const bookExact = [
     authors: ['Михаил Лабковский'],
     images: [
       {
-        url: '/uploads/10582784_0_6ba1f42ade.jpg',
+        //   url: '/uploads/10582784_0_6ba1f42ade.jpg',
+        url: src069,
       },
     ],
     categories: ['Психология'],
@@ -4201,7 +4417,9 @@ export const bookExact = [
     authors: ['Михай Чиксентмихайи'],
     images: [
       {
-        url: '/uploads/10274442_0_2cf1ad9ecf.jpg',
+        //   url: '/uploads/10274442_0_2cf1ad9ecf.jpg',
+        // url: src070,
+        url: null,
       },
     ],
     categories: ['Психология'],
@@ -4227,7 +4445,8 @@ export const bookExact = [
     authors: ['Сатья Дас'],
     images: [
       {
-        url: '/uploads/10949964_0_Neskuchnaya_detskaya_psihologiya_Kak_obschatsya_s_rebenkom_chtobi_on_vas_i_slushalsya_i_slishal_Satya_Das_28c77fde4b.jpg',
+        //   url: '/uploads/10949964_0_Neskuchnaya_detskaya_psihologiya_Kak_obschatsya_s_rebenkom_chtobi_on_vas_i_slushalsya_i_slishal_Satya_Das_28c77fde4b.jpg',
+        url: null,
       },
     ],
     categories: ['Психология', 'Родителям'],
@@ -4253,7 +4472,8 @@ export const bookExact = [
     authors: ['Эмили Нагоски '],
     images: [
       {
-        url: '/uploads/10909446_0_88340ab92c.jpg',
+        //   url: '/uploads/10909446_0_88340ab92c.jpg',
+        url: src072,
       },
     ],
     categories: ['Психология'],
@@ -4279,7 +4499,8 @@ export const bookExact = [
     authors: ['Энди Паддикомб'],
     images: [
       {
-        url: '/uploads/10385271_0_7a930430ca.jpg',
+        //   url: '/uploads/10385271_0_7a930430ca.jpg',
+        url: src073,
       },
     ],
     categories: ['Психология'],
@@ -4305,7 +4526,8 @@ export const bookExact = [
     authors: ['Эрик Берн'],
     images: [
       {
-        url: '/uploads/10565611_0_Igri_v_kotorie_igrayut_lyudi_m_Erik_Bern_001fda3be0.jpg',
+        //   url: '/uploads/10565611_0_Igri_v_kotorie_igrayut_lyudi_m_Erik_Bern_001fda3be0.jpg',
+        url: null,
       },
     ],
     categories: ['Психология'],
@@ -4338,7 +4560,8 @@ export const bookExact = [
     authors: ['Эрик Берн'],
     images: [
       {
-        url: '/uploads/ljudi_kotorie_igrajut_v_igri_800x800_d1c05e670f.jpg',
+        //   url: '/uploads/ljudi_kotorie_igrajut_v_igri_800x800_d1c05e670f.jpg',
+        url: src075,
       },
     ],
     categories: ['Психология'],
@@ -4364,7 +4587,8 @@ export const bookExact = [
     authors: ['Келли Макгонигал'],
     images: [
       {
-        url: '/uploads/6053518200_478b4a0254.webp',
+        //   url: '/uploads/6053518200_478b4a0254.webp',
+        url: src076,
       },
     ],
     categories: ['Психология'],
@@ -4415,7 +4639,8 @@ export const bookExact = [
     authors: ['Кэролайн Форен'],
     images: [
       {
-        url: '/uploads/41821787_kerolayn_foren_uverennost_9014e969b5.jpg',
+        //   url: '/uploads/41821787_kerolayn_foren_uverennost_9014e969b5.jpg',
+        url: src077,
       },
     ],
     categories: ['Психология'],
@@ -4454,7 +4679,8 @@ export const bookExact = [
     authors: ['Андрей Курпатов'],
     images: [
       {
-        url: '/uploads/10689132_0_cabcde68c0.jpg',
+        //   url: '/uploads/10689132_0_cabcde68c0.jpg',
+        url: src078,
       },
     ],
     categories: ['Психология'],
@@ -4596,7 +4822,8 @@ export const bookExact = [
     authors: ['Андрей Курпатов'],
     images: [
       {
-        url: '/uploads/10909152_0_cc5f53fcd4.jpg',
+        //   url: '/uploads/10909152_0_cc5f53fcd4.jpg',
+        url: src079,
       },
     ],
     categories: ['Психология'],
@@ -4629,7 +4856,8 @@ export const bookExact = [
     authors: ['Андрей Курпатов'],
     images: [
       {
-        url: '/uploads/10718454_0_eba76b8c65.jpg',
+        //   url: '/uploads/10718454_0_eba76b8c65.jpg',
+        url: src080,
       },
     ],
     categories: ['Психология'],
@@ -4655,7 +4883,8 @@ export const bookExact = [
     authors: ['Би Джей Фогг'],
     images: [
       {
-        url: '/uploads/10952394_0_4090195633.jpg',
+        //   url: '/uploads/10952394_0_4090195633.jpg',
+        url: src081,
       },
     ],
     categories: ['Психология'],
@@ -4681,19 +4910,24 @@ export const bookExact = [
     authors: ['Пакчок Ринпоче', 'Эррик Соломон'],
     images: [
       {
-        url: '/uploads/101020558_0_1414393932.jpg',
+        //   url: '/uploads/101020558_0_1414393932.jpg',
+        url: src082,
       },
       {
-        url: '/uploads/101020558_01_c8d4182f11.jpg',
+        //   url: '/uploads/101020558_01_c8d4182f11.jpg',
+        url: src082,
       },
       {
-        url: '/uploads/101020558_1_8f0b70d534.jpg',
+        //   url: '/uploads/101020558_1_8f0b70d534.jpg',
+        url: src082,
       },
       {
-        url: '/uploads/101020558_11_6198741059.jpg',
+        //   url: '/uploads/101020558_11_6198741059.jpg',
+        url: src082,
       },
       {
-        url: '/uploads/101020558_100_ca173aff36.jpg',
+        //   url: '/uploads/101020558_100_ca173aff36.jpg',
+        url: src082,
       },
     ],
     categories: ['Психология'],
@@ -4719,7 +4953,8 @@ export const bookExact = [
     authors: ['Анна Быкова'],
     images: [
       {
-        url: '/uploads/10626944_0_Sekreti_spokoystviya_lenivoy_mami_Anna_Bikova_61672f37fd.jpg',
+        //   url: '/uploads/10626944_0_Sekreti_spokoystviya_lenivoy_mami_Anna_Bikova_61672f37fd.jpg',
+        url: src083,
       },
     ],
     categories: ['Родителям'],
@@ -4794,7 +5029,8 @@ export const bookExact = [
     authors: ['Анна Быкова'],
     images: [
       {
-        url: '/uploads/10507071_0_448402ad71.jpg',
+        //   url: '/uploads/10507071_0_448402ad71.jpg',
+        url: src084,
       },
     ],
     categories: ['Родителям'],
@@ -4888,7 +5124,8 @@ export const bookExact = [
     authors: ['Анна Быкова'],
     images: [
       {
-        url: '/uploads/10538154_0_f08240b913.jpg',
+        //   url: '/uploads/10538154_0_f08240b913.jpg',
+        url: src085,
       },
     ],
     categories: ['Родителям'],
@@ -4958,7 +5195,8 @@ export const bookExact = [
     authors: ['Елена Смирнова'],
     images: [
       {
-        url: '/uploads/2389005_detail_c289579b34.jpg',
+        //   url: '/uploads/2389005_detail_c289579b34.jpg',
+        url: null,
       },
     ],
     categories: ['Родителям'],
@@ -4997,7 +5235,8 @@ export const bookExact = [
     authors: ['Людмила Петрановская'],
     images: [
       {
-        url: '/uploads/6953094_1_fb4c5afd73.jpg',
+        //   url: '/uploads/6953094_1_fb4c5afd73.jpg',
+        url: src087,
       },
     ],
     categories: ['Родителям'],
@@ -5115,7 +5354,8 @@ export const bookExact = [
     authors: ['Мария Монтессори'],
     images: [
       {
-        url: '/uploads/1052205_0_Metodika_rannego_razvitiya_Marii_Montessori_Ot_6_mesyacev_do_6_let_Viktoriya_Dmitrieva_c299bc93fd.jpg',
+        //   url: '/uploads/1052205_0_Metodika_rannego_razvitiya_Marii_Montessori_Ot_6_mesyacev_do_6_let_Viktoriya_Dmitrieva_c299bc93fd.jpg',
+        url: src088,
       },
     ],
     categories: ['Родителям'],
@@ -5190,7 +5430,8 @@ export const bookExact = [
     authors: ['Бодо Шефер'],
     images: [
       {
-        url: '/uploads/1000351843_5be4c2c9fb.webp',
+        //   url: '/uploads/1000351843_5be4c2c9fb.webp',
+        url: src089,
       },
     ],
     categories: ['Родителям', 'Бизнес'],
@@ -5216,7 +5457,8 @@ export const bookExact = [
     authors: ['Любвь Сурудо'],
     images: [
       {
-        url: '/uploads/4389878_af7a651f38.jpg',
+        //   url: '/uploads/4389878_af7a651f38.jpg',
+        url: src090,
       },
     ],
     categories: ['Родителям'],
@@ -5298,44 +5540,50 @@ export const bookExact = [
     authors: ['Мэттью Уолкер'],
     images: [
       {
-        url: '/uploads/10747771_0_418ede3589.jpg',
+        //   url: '/uploads/10747771_0_418ede3589.jpg',
+        url: src091,
       },
       {
-        url: '/uploads/10747771_1_0fe4fe582f.jpg',
+        //   url: '/uploads/10747771_1_0fe4fe582f.jpg',
+        url: src091,
       },
       {
-        url: '/uploads/10747771_4_4bc9756120.jpg',
+        //   url: '/uploads/10747771_4_4bc9756120.jpg',
+        url: src091,
       },
       {
-        url: '/uploads/10747771_01_ac94e32fb8.jpg',
+        //   url: '/uploads/10747771_01_ac94e32fb8.jpg',
+        url: src091,
       },
       {
-        url: '/uploads/10747771_3_326a8584be.jpg',
+        //   url: '/uploads/10747771_3_326a8584be.jpg',
+        url: src091,
       },
       {
-        url: '/uploads/10747771_2_49c7492daa.jpg',
+        //   url: '/uploads/10747771_2_49c7492daa.jpg',
+        url: src091,
       },
-      {
-        url: '/uploads/10747771_5_b8c3ebeb1d.jpg',
-      },
-      {
-        url: '/uploads/10747771_6_52db7c8393.jpg',
-      },
-      {
-        url: '/uploads/10747771_7_a6e425b222.jpg',
-      },
-      {
-        url: '/uploads/10747771_20_510d7c04ba.jpg',
-      },
-      {
-        url: '/uploads/10747771_23_969f8913a8.jpg',
-      },
-      {
-        url: '/uploads/10747771_24_9046dca87d.jpg',
-      },
-      {
-        url: '/uploads/10747771_100_99cb9a0c71.jpg',
-      },
+      // {
+      //   url: '/uploads/10747771_5_b8c3ebeb1d.jpg',
+      // },
+      // {
+      //   url: '/uploads/10747771_6_52db7c8393.jpg',
+      // },
+      // {
+      //   url: '/uploads/10747771_7_a6e425b222.jpg',
+      // },
+      // {
+      //   url: '/uploads/10747771_20_510d7c04ba.jpg',
+      // },
+      // {
+      //   url: '/uploads/10747771_23_969f8913a8.jpg',
+      // },
+      // {
+      //   url: '/uploads/10747771_24_9046dca87d.jpg',
+      // },
+      // {
+      //   url: '/uploads/10747771_100_99cb9a0c71.jpg',
+      // },
     ],
     categories: ['Нон-фикшн'],
     comments: [
@@ -5524,7 +5772,8 @@ export const bookExact = [
     authors: ['Юваль Ной Харари'],
     images: [
       {
-        url: '/uploads/10673454_0_Homo_Deus_Kratkaya_istoriya_buduschego_Yuval_Harari_3d5bdcbd1f.jpg',
+        //   url: '/uploads/10673454_0_Homo_Deus_Kratkaya_istoriya_buduschego_Yuval_Harari_3d5bdcbd1f.jpg',
+        url: src092,
       },
     ],
     categories: ['Нон-фикшн'],
@@ -5683,7 +5932,8 @@ export const bookExact = [
     authors: ['Юваль Ной Харари'],
     images: [
       {
-        url: '/uploads/10919897_0_2c9b74c1ff.jpg',
+        //   url: '/uploads/10919897_0_2c9b74c1ff.jpg',
+        url: src093,
       },
     ],
     categories: ['Нон-фикшн'],
@@ -5782,7 +6032,8 @@ export const bookExact = [
     authors: ['С. Барсов'],
     images: [
       {
-        url: '/uploads/Tak_govorili_mudretsy_Aforizmy_061dc9816a.jpeg',
+        //   url: '/uploads/Tak_govorili_mudretsy_Aforizmy_061dc9816a.jpeg',
+        url: src094,
       },
     ],
     categories: ['Нон-фикшн'],
@@ -5857,7 +6108,8 @@ export const bookExact = [
     authors: ['Массимо Пильюччи'],
     images: [
       {
-        url: '/uploads/6059543389_ea1dbc93a6.webp',
+        //   url: '/uploads/6059543389_ea1dbc93a6.webp',
+        url: src095,
       },
     ],
     categories: ['Нон-фикшн'],
@@ -5932,7 +6184,8 @@ export const bookExact = [
     authors: ['Евгения Шестакова'],
     images: [
       {
-        url: '/uploads/1005691015_7064cebb9c.webp',
+        //   url: '/uploads/1005691015_7064cebb9c.webp',
+        url: src096,
       },
     ],
     categories: ['Нон-фикшн'],
@@ -5983,7 +6236,8 @@ export const bookExact = [
     authors: ['Билл Брайсон'],
     images: [
       {
-        url: '/uploads/kratkaya_istoriya_pochti_vsego_na_svete_5792ee1da1.jpg',
+        //   url: '/uploads/kratkaya_istoriya_pochti_vsego_na_svete_5792ee1da1.jpg',
+        url: src097,
       },
     ],
     categories: ['Нон-фикшн'],
@@ -6016,7 +6270,8 @@ export const bookExact = [
     authors: ['Айн Рэнд'],
     images: [
       {
-        url: '/uploads/6049001435_e5b5774cb1.webp',
+        //   url: '/uploads/6049001435_e5b5774cb1.webp',
+        url: src098,
       },
     ],
     categories: ['Художественная литература'],
@@ -6122,7 +6377,8 @@ export const bookExact = [
     authors: ['Айн Рэнд'],
     images: [
       {
-        url: '/uploads/6049001426_da8eb22c3b.webp',
+        //   url: '/uploads/6049001426_da8eb22c3b.webp',
+        url: src099,
       },
     ],
     categories: ['Художественная литература'],
@@ -6288,7 +6544,8 @@ export const bookExact = [
     authors: ['Айн Рэнд'],
     images: [
       {
-        url: '/uploads/6049001431_06f4e779f2.webp',
+        //   url: '/uploads/6049001431_06f4e779f2.webp',
+        url: src100,
       },
     ],
     categories: ['Художественная литература'],
@@ -6314,7 +6571,8 @@ export const bookExact = [
     authors: ['Антуан де Сент-Экзюпери'],
     images: [
       {
-        url: '/uploads/cover_a6724f3043.webp',
+        //   url: '/uploads/cover_a6724f3043.webp',
+        url: src101,
       },
     ],
     categories: ['Художественная литература'],
@@ -6468,7 +6726,8 @@ export const bookExact = [
     authors: ['Аркадий и Борис Стругацкие'],
     images: [
       {
-        url: '/uploads/31671_eb7f1b6d7d.jpg',
+        //   url: '/uploads/31671_eb7f1b6d7d.jpg',
+        url: src102,
       },
     ],
     categories: ['Художественная литература'],
@@ -6519,7 +6778,8 @@ export const bookExact = [
     authors: ['Венедикт Ерофеев'],
     images: [
       {
-        url: '/uploads/1035586_0_e948159aa3.jpg',
+        //   url: '/uploads/1035586_0_e948159aa3.jpg',
+        url: src103,
       },
     ],
     categories: ['Художественная литература'],
@@ -6661,7 +6921,8 @@ export const bookExact = [
     authors: ['Артур Конан Дойл'],
     images: [
       {
-        url: '/uploads/10191824_0_Zapiski_o_Sherloke_Holmse_Ser_Artur_Konan_Doyl_55742abb3f.jpg',
+        //   url: '/uploads/10191824_0_Zapiski_o_Sherloke_Holmse_Ser_Artur_Konan_Doyl_55742abb3f.jpg',
+        url: src104,
       },
     ],
     categories: ['Художественная литература'],
@@ -6851,7 +7112,8 @@ export const bookExact = [
     authors: ['Габриэль Гарсия Маркес'],
     images: [
       {
-        url: '/uploads/10609309_0_6a3fca8133.jpg',
+        //   url: '/uploads/10609309_0_6a3fca8133.jpg',
+        url: src105,
       },
     ],
     categories: ['Художественная литература'],
@@ -6877,7 +7139,8 @@ export const bookExact = [
     authors: ['Габриэль Гарсия Маркес'],
     images: [
       {
-        url: '/uploads/10348653_0_369c9c1da5.jpg',
+        //   url: '/uploads/10348653_0_369c9c1da5.jpg',
+        url: src106,
       },
     ],
     categories: ['Художественная литература'],
@@ -6903,7 +7166,8 @@ export const bookExact = [
     authors: ['Дженифер Уорф'],
     images: [
       {
-        url: '/uploads/10659753_0_de555cef7f.jpg',
+        //   url: '/uploads/10659753_0_de555cef7f.jpg',
+        url: src107,
       },
     ],
     categories: ['Художественная литература'],
@@ -6929,7 +7193,8 @@ export const bookExact = [
     authors: ['Дженифер Уорф'],
     images: [
       {
-        url: '/uploads/10680603_0_08dfd7eeb0.jpg',
+        //   url: '/uploads/10680603_0_08dfd7eeb0.jpg',
+        url: src108,
       },
     ],
     categories: ['Художественная литература'],
@@ -7011,7 +7276,8 @@ export const bookExact = [
     authors: ['Джон Р.Р. Толкин'],
     images: [
       {
-        url: '/uploads/10492145_0_82521e341f.jpg',
+        //   url: '/uploads/10492145_0_82521e341f.jpg',
+        url: src109,
       },
     ],
     categories: ['Художественная литература'],
@@ -7074,7 +7340,8 @@ export const bookExact = [
     authors: ['Дэниел Киз'],
     images: [
       {
-        url: '/uploads/1037906861_b5adeceb25.webp',
+        //   url: '/uploads/1037906861_b5adeceb25.webp',
+        url: src110,
       },
     ],
     categories: ['Художественная литература'],
@@ -7100,7 +7367,8 @@ export const bookExact = [
     authors: ['Милош Губачек'],
     images: [
       {
-        url: '/uploads/1015870_0_bcc252d7e3.jpg',
+        //   url: '/uploads/1015870_0_bcc252d7e3.jpg',
+        url: src111,
       },
     ],
     categories: ['Художественная литература'],
@@ -7126,7 +7394,8 @@ export const bookExact = [
     authors: ['Оноре де Бальзак'],
     images: [
       {
-        url: '/uploads/Onore_de_Balzak_Kodeks_poryadochnyh_lyudej_462b084835.jpeg',
+        //   url: '/uploads/Onore_de_Balzak_Kodeks_poryadochnyh_lyudej_462b084835.jpeg',
+        url: src112,
       },
     ],
     categories: ['Художественная литература'],
@@ -7152,7 +7421,8 @@ export const bookExact = [
     authors: ['Рэй Бредбери'],
     images: [
       {
-        url: '/uploads/6016428258_19dfc630df.webp',
+        //   url: '/uploads/6016428258_19dfc630df.webp',
+        url: src113,
       },
     ],
     categories: ['Художественная литература'],
@@ -7178,7 +7448,8 @@ export const bookExact = [
     authors: ['Фредерик Бакман'],
     images: [
       {
-        url: '/uploads/10673471_0_636c0df653.jpg',
+        //   url: '/uploads/10673471_0_636c0df653.jpg',
+        url: src114,
       },
     ],
     categories: ['Художественная литература'],
@@ -7204,7 +7475,8 @@ export const bookExact = [
     authors: ['Наринэ Абгарян'],
     images: [
       {
-        url: '/uploads/Narine_Abgaryan_Lyudi_kotorye_vsegda_so_mnoj_9aae66ae54.jpeg',
+        //   url: '/uploads/Narine_Abgaryan_Lyudi_kotorye_vsegda_so_mnoj_9aae66ae54.jpeg',
+        url: src115,
       },
     ],
     categories: ['Художественная литература'],
@@ -7230,7 +7502,8 @@ export const bookExact = [
     authors: ['Эрих Мария Ремарк'],
     images: [
       {
-        url: '/uploads/Erih_Mariya_Remark_Ot_poludnya_do_polunochi_sbornik_0ac31a5be6.jpeg',
+        //   url: '/uploads/Erih_Mariya_Remark_Ot_poludnya_do_polunochi_sbornik_0ac31a5be6.jpeg',
+        url: src116,
       },
     ],
     categories: ['Художественная литература'],
@@ -7269,7 +7542,8 @@ export const bookExact = [
     authors: ['Януш Леон Вишневский'],
     images: [
       {
-        url: '/uploads/10650207_0_55eef08c8b.jpg',
+        //   url: '/uploads/10650207_0_55eef08c8b.jpg',
+        url: src117,
       },
     ],
     categories: ['Художественная литература'],
@@ -7302,7 +7576,8 @@ export const bookExact = [
     authors: ['Луиза Мэй Олкотт'],
     images: [
       {
-        url: '/uploads/B08_JH_5_T9_J6_01_SCLZZZZZZZ_SX_500_a9e8d4d2f9.jpg',
+        //   url: '/uploads/B08_JH_5_T9_J6_01_SCLZZZZZZZ_SX_500_a9e8d4d2f9.jpg',
+        url: src118,
       },
     ],
     categories: ['Художественная литература'],
@@ -7328,7 +7603,8 @@ export const bookExact = [
     authors: ['Дж. К. Роулинг '],
     images: [
       {
-        url: '/uploads/10679903_0_7bbab522e0.jpg',
+        //   url: '/uploads/10679903_0_7bbab522e0.jpg',
+        url: src119,
       },
     ],
     categories: ['Художественная литература'],
@@ -7353,7 +7629,8 @@ export const bookExact = [
     authors: ['J. K. Rowling'],
     images: [
       {
-        url: '/uploads/51_Pc_U_Ahn15_L_2d1e67f1ea.jpg',
+        //   url: '/uploads/51_Pc_U_Ahn15_L_2d1e67f1ea.jpg',
+        url: src120,
       },
     ],
     categories: ['Художественная литература'],
@@ -7379,7 +7656,8 @@ export const bookExact = [
     authors: ['Дэниел Киз'],
     images: [
       {
-        url: '/uploads/6053509628_653f992e84.webp',
+        //   url: '/uploads/6053509628_653f992e84.webp',
+        url: src121,
       },
     ],
     categories: ['Художественная литература'],
@@ -7405,7 +7683,8 @@ export const bookExact = [
     authors: ['Мариам Петросян'],
     images: [
       {
-        url: '/uploads/38078_90f4a2d616.jpg',
+        //   url: '/uploads/38078_90f4a2d616.jpg',
+        url: src122,
       },
     ],
     categories: ['Художественная литература'],
@@ -7431,7 +7710,8 @@ export const bookExact = [
     authors: ['Мариам Петросян'],
     images: [
       {
-        url: '/uploads/38082_0e54508629.jpg',
+        //   url: '/uploads/38082_0e54508629.jpg',
+        url: src123,
       },
     ],
     categories: ['Художественная литература'],
@@ -7457,7 +7737,8 @@ export const bookExact = [
     authors: ['Мариам Петросян'],
     images: [
       {
-        url: '/uploads/38088_48b123ff43.jpg',
+        //   url: '/uploads/38088_48b123ff43.jpg',
+        url: src124,
       },
     ],
     categories: ['Художественная литература'],
@@ -7496,7 +7777,8 @@ export const bookExact = [
     authors: ['Евгений ЧеширКо'],
     images: [
       {
-        url: '/uploads/6008888071_1200fc05f9.webp',
+        //   url: '/uploads/6008888071_1200fc05f9.webp',
+        url: src125,
       },
     ],
     categories: ['Художественная литература'],
@@ -7521,10 +7803,12 @@ export const bookExact = [
     authors: ['Wilde Oscar'],
     images: [
       {
-        url: '/uploads/81f_RD_4_Ez_Go_L_15c4048a79.jpg',
+        //   url: '/uploads/81f_RD_4_Ez_Go_L_15c4048a79.jpg',
+        url: src126,
       },
       {
-        url: '/uploads/415_O05l_Cke_S_0cd24e0b8b.jpg',
+        //   url: '/uploads/415_O05l_Cke_S_0cd24e0b8b.jpg',
+        url: src126,
       },
     ],
     categories: ['Художественная литература'],
@@ -7550,7 +7834,8 @@ export const bookExact = [
     authors: ['Роберт Мартин '],
     images: [
       {
-        url: '/uploads/1001563239_b0cf866a9f.webp',
+        //   url: '/uploads/1001563239_b0cf866a9f.webp',
+        url: src127,
       },
     ],
     categories: ['Программирование'],
@@ -7620,7 +7905,8 @@ export const bookExact = [
     authors: ['Алексей Николаевич'],
     images: [
       {
-        url: '/uploads/6012958582_79835de350.webp',
+        //   url: '/uploads/6012958582_79835de350.webp',
+        url: src128,
       },
     ],
     categories: ['Программирование'],
@@ -7666,7 +7952,8 @@ export const bookExact = [
     authors: ['Владсон Феррейра Фило'],
     images: [
       {
-        url: '/uploads/1022639997_0f1c06f920.webp',
+        //   url: '/uploads/1022639997_0f1c06f920.webp',
+        url: src129,
       },
     ],
     categories: ['Программирование'],
@@ -7724,7 +8011,8 @@ export const bookExact = [
     authors: ['Адитья Бхаргава'],
     images: [
       {
-        url: '/uploads/image_book_c27c1aaf74.jpg',
+        //   url: '/uploads/image_book_c27c1aaf74.jpg',
+        url: src130,
       },
     ],
     categories: ['Программирование'],
@@ -7799,7 +8087,8 @@ export const bookExact = [
     authors: ['Мадлен Пакетт'],
     images: [
       {
-        url: '/uploads/10516002_0_58deebd77f.jpg',
+        //   url: '/uploads/10516002_0_58deebd77f.jpg',
+        url: src131,
       },
     ],
     categories: ['Хобби'],
@@ -7905,7 +8194,8 @@ export const bookExact = [
     authors: ['Робин Уильямс'],
     images: [
       {
-        url: '/uploads/1025027525_a2e92c2a7b.webp',
+        //   url: '/uploads/1025027525_a2e92c2a7b.webp',
+        url: src132,
       },
     ],
     categories: ['Дизайн'],
@@ -7975,7 +8265,8 @@ export const bookExact = [
     authors: ['Ричард Пулин'],
     images: [
       {
-        url: '/uploads/10907435_0_3937c2d1d6.jpg',
+        //   url: '/uploads/10907435_0_3937c2d1d6.jpg',
+        url: src133,
       },
     ],
     categories: ['Дизайн'],
@@ -8014,7 +8305,8 @@ export const bookExact = [
     authors: ['Ричард Пулин'],
     images: [
       {
-        url: '/uploads/10905898_0_e15299a48e.jpg',
+        //   url: '/uploads/10905898_0_e15299a48e.jpg',
+        url: src134,
       },
     ],
     categories: ['Дизайн'],
@@ -8131,7 +8423,8 @@ export const bookExact = [
     authors: ['Андрей Курпатов'],
     images: [
       {
-        url: '/uploads/ph_001_4a638f1923.webp',
+        //   url: '/uploads/ph_001_4a638f1923.webp',
+        url: src136,
       },
     ],
     categories: ['Детские'],
@@ -8218,7 +8511,8 @@ export const bookExact = [
     authors: ['Андрей Курпатов'],
     images: [
       {
-        url: '/uploads/cover1_a4e57025a3.webp',
+        //   url: '/uploads/cover1_a4e57025a3.webp',
+        url: src137,
       },
     ],
     categories: ['Детские'],
@@ -8312,7 +8606,8 @@ export const bookExact = [
     authors: ['Андрей Курпатов'],
     images: [
       {
-        url: '/uploads/cover2_aa0efc07fa.webp',
+        //   url: '/uploads/cover2_aa0efc07fa.webp',
+        url: src138,
       },
     ],
     categories: ['Детские'],
@@ -8382,7 +8677,8 @@ export const bookExact = [
     authors: ['J. K. Rowling'],
     images: [
       {
-        url: '/uploads/6016615311_edce0c111d.webp',
+        //   url: '/uploads/6016615311_edce0c111d.webp',
+        url: src139,
       },
     ],
     categories: ['Художественная литература'],

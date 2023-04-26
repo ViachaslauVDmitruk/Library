@@ -1,4 +1,5 @@
 import { BookProps } from '../../store/books/types';
+
 import src002 from './covers/2.webp';
 import src003 from './covers/3.webp';
 import src004 from './covers/4.webp';
@@ -132,7 +133,7 @@ import src131 from './covers/131.webp';
 import src132 from './covers/132.webp';
 import src133 from './covers/133.webp';
 import src134 from './covers/134.webp';
-import src135 from './covers/135.webp';
+// import src135 from './covers/135.webp';
 import src136 from './covers/136.webp';
 import src137 from './covers/137.webp';
 import src138 from './covers/138.webp';
