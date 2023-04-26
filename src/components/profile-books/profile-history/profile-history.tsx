@@ -10,7 +10,7 @@ import styles from '../profile-books.module.scss';
 import { USER_FULL_DATA } from '../../../const/user-data';
 
 export const ProfileHistory = () => {
-  //   const { user } = useAppSelector(userSelector);
+  //   const { user } = useAppSelector(userSelector); from server information
   const user = USER_FULL_DATA;
 
   const books = user.history?.books || [];

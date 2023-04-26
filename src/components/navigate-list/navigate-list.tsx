@@ -17,12 +17,17 @@ import arrowHidden from './assets/list-hidden-color.png';
 import arrowShow from './assets/list-show-color.png';
 
 import styles from './navigate-list.module.scss';
+import { categoriesList } from '../../const/mock-data/categories';
+import { booksArray } from '../../const/mock-data/books';
 
 export const NavigateList = () => {
   const [isShowNavigate, setIsShowNavigate] = useState<boolean>(true);
-  const { categories, isErrorCategories, isLoadingCategories } = useAppSelector(categoriesSelector);
+  //   const { categories, isErrorCategories, isLoadingCategories } = useAppSelector(categoriesSelector); 			from server data
+  const { isErrorCategories, isLoadingCategories } = useAppSelector(categoriesSelector);
   const { activeBurger } = useAppSelector(burgeMenuSelector);
-  const { books } = useAppSelector(booksSelector);
+  //   const { books } = useAppSelector(booksSelector); 			from server data
+  const categories = categoriesList;
+  const books = booksArray;
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -33,13 +38,13 @@ export const NavigateList = () => {
     setIsShowNavigate(!isShowNavigate);
   };
 
-  const logOut = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    dispatch(loginResetState());
-    dispatch(closeBurgerMenu());
-    navigate('/auth');
-  };
+  //   const logOut = () => {
+  //     localStorage.removeItem('token');
+  //     localStorage.removeItem('user');
+  //     dispatch(loginResetState());
+  //     dispatch(closeBurgerMenu());
+  //     navigate('/auth');
+  //   };
 
   return (
     <div className={styleNavigate} onClick={() => dispatch(closeBurgerMenu())}>
@@ -131,7 +136,11 @@ export const NavigateList = () => {
           >
             <Link to='/profile'>Профиль</Link>
           </div>
-          <div className={styles.title} onClick={logOut} data-test-id='exit-button'>
+          <div
+            className={styles.title}
+            //   onClick={logOut}
+            data-test-id='exit-button'
+          >
             Выход
           </div>
         </div>

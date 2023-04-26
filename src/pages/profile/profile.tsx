@@ -26,11 +26,11 @@ export const Profile = () => {
   //   const error = isErrorBooks || isErrorCategories || isErrorUserResponse;
   const loading = isLoadingBooks || isLoadingCategories || isLoadingUser;
 
-  useEffect(() => {
-    dispatch(getBooks());
-    dispatch(getUserData());
-    dispatch(getCategories());
-  }, [dispatch]);
+  //   useEffect(() => {
+  //     dispatch(getBooks());
+  //     dispatch(getUserData());
+  //     dispatch(getCategories());
+  //   }, [dispatch]); 							get data from server
 
   return (
     <div className={styles.profile}>

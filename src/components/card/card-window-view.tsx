@@ -69,7 +69,10 @@ export const CardWindowView = ({
       />
       <Link to={commentsUser ? `/books/all/${id}` : `/books/${category}/${id}`} className={styles.content}>
         <div className={styles.image}>
-          <img src={src ? `${API_HOST}${src}` : noImage} alt='img' />
+          {/*  							
+			 <img src={src ? `${API_HOST}${src}` : noImage} alt='img' /> 			image from server
+			  */}
+          <img src={src ? src : noImage} alt='img' />
         </div>
         {rating ? <StarsRating ratingStars={rating} /> : <div className={styles.noRaring}>еще нет оценок</div>}
         <div className={styles.title} data-test-id='book-title'>

@@ -79,7 +79,7 @@ export const Header = () => {
         <div className={styles.title}>{isProfilePage ? 'Личный кабинет' : 'Библиотека'}</div>
       </div>
       <div className={styles.account} onClick={ToggleProfileMenu}>
-        <span className={styles.accountName}>Привет, {user?.firstName}!</span>
+        <span className={styles.accountName}>Привет, {user?.firstName ? user?.firstName : 'My friend'}!</span>
         <img src={avatarScr} alt='img' />
       </div>
       <ProfileMenu />

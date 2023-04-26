@@ -22,19 +22,19 @@ export const MainPage = () => {
   const loading = isLoadingBooks || isLoadingCategories || isLoadingUser || isLoadingModal;
   const error = isErrorBooks || isErrorCategories || isErrorUserResponse;
 
-  useEffect(() => {
-    const token = localStorage.getItem('user');
-    const user = localStorage.getItem('user');
+  //   useEffect(() => {
+  //     const token = localStorage.getItem('user');
+  //     const user = localStorage.getItem('user');
 
-    if (!token || !user) {
-      localStorage.removeItem('token');
-      localStorage.removeItem('user');
-      navigate('/auth');
-    }
-    if (token && user) {
-      dispatch(loginSuccess(JSON.parse(user)));
-    }
-  }, [navigate, dispatch]);
+  //     if (!token || !user) {
+  //       localStorage.removeItem('token');
+  //       localStorage.removeItem('user');
+  //       navigate('/auth');
+  //     }
+  //     if (token && user) {
+  //       dispatch(loginSuccess(JSON.parse(user)));
+  //     }
+  //   }, [navigate, dispatch]);
 
   return (
     <div className={styles.container}>

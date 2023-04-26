@@ -5,16 +5,18 @@ export type BooksState = {
 };
 
 export type BookProps = {
+  description?: string | null;
   issueYear: string;
   rating: number | null;
   title: string;
   authors: string[];
-  image: ImageProps | null;
+  image?: ImageProps | null;
+  images?: ImageProps[] | null;
   categories: string[];
   id: number;
-  booking: BookingProps;
-  delivery: DeliveryProps;
-  histories: HistoriesProps;
+  booking: BookingProps | null;
+  delivery: DeliveryProps | null;
+  histories: HistoriesProps[] | null;
 };
 
 export type ImageProps = {

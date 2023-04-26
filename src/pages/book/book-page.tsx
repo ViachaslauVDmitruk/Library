@@ -25,6 +25,7 @@ import { getCategories } from '../../store/categories';
 import { getUserData } from '../../store/user-data';
 
 import styles from './book-page.module.scss';
+import { bookExact } from '../../const/mock-data/book-exact';
 
 export const BookPage = () => {
   const { id } = useParams();
@@ -35,34 +36,34 @@ export const BookPage = () => {
   const { isLoadingUser } = useAppSelector(userSelector);
   const { isLoadingModal } = useAppSelector(bookingSelector);
   const { alertMessage, message } = useAppSelector(alertSelector);
-  const { book } = useAppSelector(oneBookSelector);
+  //   const { book } = useAppSelector(oneBookSelector);
 
   const dispatch = useAppDispatch();
   const isGettingData = !message && !isLoadingBook;
   const loading = isLoadingUser || isLoadingBook || isLoadingCategories || isLoadingBooks || isLoadingModal;
-
-  useEffect(() => {
-    if (id) {
-      dispatch(getOneBook(id));
-      dispatch(getCategories());
-      dispatch(getUserData());
-    }
-  }, [id]);
+  const book = bookExact.find((book) => book.id === Number(id)) || null;
+  //   useEffect(() => {
+  //     if (id) {
+  //       dispatch(getOneBook(id));
+  //       dispatch(getCategories());
+  //       dispatch(getUserData());
+  //     }
+  //   }, [id]);
 
   return (
     <div className={styles.main}>
       {alertMessage && <AlertMessage message={message} stylesAlert={alertMessage} />}
       {loading && <Loader />}
-      <NavigatePath title={book.title} />
+      <NavigatePath title={book?.title || ''} />
       {activeBurger && <NavigateList />}
-      {isGettingData && <AboutBook />}
+      {isGettingData && <AboutBook book={book} />}
       {isGettingData && (
         <div className={styles.container}>
           <div className={styles.ratingBox}>
             <div className={styles.title}>Рейтинг</div>
             <div className={styles.stars}>
-              <StarsRating ratingStars={book.rating} />
-              <span>{book.rating}</span>
+              <StarsRating ratingStars={book?.rating || null} />
+              <span>{book?.rating || null}</span>
             </div>
           </div>
         </div>

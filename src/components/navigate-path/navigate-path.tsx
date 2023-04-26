@@ -9,7 +9,7 @@ import { useAppSelector } from '../hooks';
 import styles from './navigate-path.module.scss';
 
 type PathProps = {
-  title: string;
+  title: string | '';
 };
 
 export const NavigatePath = ({ title }: PathProps) => {

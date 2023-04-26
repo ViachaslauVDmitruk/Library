@@ -11,8 +11,8 @@ import styles from '../profile-books.module.scss';
 
 export const ProfileBooking = () => {
   const [isOverdueBooking, setIsOverdueBooking] = useState<boolean>(false);
-  const { user } = useAppSelector(userSelector);
-  //   const user = USER_FULL_DATA;
+  //   const { user } = useAppSelector(userSelector); from server information
+  const user = USER_FULL_DATA;
 
   const bookProps = user.booking?.book;
 

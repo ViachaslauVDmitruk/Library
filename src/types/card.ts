@@ -1,5 +1,5 @@
 import { BookingProps, DeliveryProps } from '../store/books/types';
-import { BookingUserType, CommentsType } from '../store/login/type';
+import { CommentsType } from '../store/login/type';
 
 export type CardProps = {
   src: string | null;
@@ -9,8 +9,8 @@ export type CardProps = {
   id: number | string;
   issueYear: string;
   searchValue?: string;
-  booking?: BookingProps;
-  delivery?: DeliveryProps;
+  booking?: BookingProps | null;
+  delivery?: DeliveryProps | null;
   bookingUserBookId?: string | number | null;
   deliveryUser?: string | null;
   commentsUser?: CommentsType[];

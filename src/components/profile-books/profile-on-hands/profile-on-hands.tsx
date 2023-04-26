@@ -11,7 +11,8 @@ import styles from '../profile-books.module.scss';
 
 export const ProfileOnHands = () => {
   const [isOverdueHandedTo, setIsOverdueHandedTo] = useState<boolean>(false);
-  const { user } = useAppSelector(userSelector);
+  //   const { user } = useAppSelector(userSelector); from server information
+  const user = USER_FULL_DATA;
 
   const deliveryProps = user.delivery?.book;
   const dateDelivery = user.delivery?.dateHandedTo;
