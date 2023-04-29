@@ -21,6 +21,7 @@ import { StarsRating } from '../stars-rating';
 import noImage from './assets/no-image.png';
 
 import styles from './card.module.scss';
+import { USER_FULL_DATA } from '../../const/user-data';
 
 export const CardWindowView = ({
   src,
@@ -33,7 +34,8 @@ export const CardWindowView = ({
   delivery,
   commentsUser,
 }: CardProps) => {
-  const { user } = useAppSelector(userSelector);
+  //   const { user } = useAppSelector(userSelector);
+  const user = USER_FULL_DATA;
   const { searchValue } = useAppSelector(searchValueSelector);
   const [isAlreadyCommented, setIsAlreadyCommented] = useState<boolean>(false);
   const [isOpenReviewModal, setIsOpenReveiwModal] = useState<boolean>(false);
