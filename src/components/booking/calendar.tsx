@@ -140,7 +140,8 @@ export const Calendar = ({ isOpen, setIsOpen, bookId, booking }: ModalFromState)
               bookDateOrder={booking?.dateOrder || book.booking?.dateOrder}
             />
             <Button
-              type='submit'
+              //   type='submit' turn-off without request
+              type='button' // need change to type subbmit when turn-on request
               disabled={
                 !dateOrder ||
                 !!(bookDateOrder && new Date(bookDateOrder)?.toLocaleDateString() === dateOrder.toLocaleDateString())
@@ -155,7 +156,7 @@ export const Calendar = ({ isOpen, setIsOpen, bookId, booking }: ModalFromState)
                 buttonText='Отменить бронь'
                 passStyle={classNames(styles.button, styles.cancel)}
                 id='booking-cancel-button'
-                onClick={CancelBooking}
+                //  onClick={CancelBooking}   turn-off without request
               />
             )}
           </form>
