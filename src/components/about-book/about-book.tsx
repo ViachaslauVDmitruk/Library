@@ -12,6 +12,7 @@ import { useAppSelector } from '../hooks';
 import { SliderBook } from '../slider';
 
 import styles from './about-book.module.scss';
+import { USER_FULL_DATA } from '../../const/user-data';
 
 type BookId = {
   book: BookProps | null;
@@ -21,12 +22,15 @@ export const AboutBook = ({ book }: BookId) => {
   const [openModalCalendar, setIsOpenCalendar] = useState<boolean>(false);
   //   const { book } = useAppSelector(oneBookSelector);
   const { alertMessage, message } = useAppSelector(alertSelector);
-  const { user } = useAppSelector(loginSelector);
+  //   const { user } = useAppSelector(loginSelector);
+  const user = USER_FULL_DATA;
 
   const customerId = book?.booking?.customerId;
   const isDelivery = book?.delivery;
 
   const userId = user?.id;
+  console.log('cutomerId', customerId);
+  console.log('userId', userId);
 
   return (
     <div className={styles.aboutBook}>
@@ -48,11 +52,12 @@ export const AboutBook = ({ book }: BookId) => {
             passStyle={classNames(styles.button, { [styles.bookingUser]: customerId === userId })}
             disabled={(!!book?.booking && customerId !== userId) || !!isDelivery}
             buttonText={
-              isDelivery?.dateHandedTo
-                ? `Занята до ${format(new Date(isDelivery.dateHandedTo), 'd.MM')}`
-                : book?.booking
-                ? 'Забронирована'
-                : 'Забронировать'
+              //   isDelivery?.dateHandedTo
+              //     ? `Занята до ${format(new Date(isDelivery.dateHandedTo), 'd.MM')}`
+              //     : book?.booking
+              //     ? 'Забронирована'
+              //     : 'Забронировать'
+              'Забронировать'
             }
             id='booking-button'
             onClick={() => setIsOpenCalendar(true)}
