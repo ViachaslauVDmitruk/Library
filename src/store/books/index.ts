@@ -1,11 +1,14 @@
 /* eslint-disable no-param-reassign */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+import { booksArray } from '../../const/mock-data/books';
+
 import { BookProps, BooksState } from './types';
 
 const initialState: BooksState = {
   isLoadingBooks: false,
-  books: [],
+  //   books: [], get from server data
+  books: booksArray,
   isErrorBooks: false,
 };
 

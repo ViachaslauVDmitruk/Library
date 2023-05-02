@@ -1,12 +1,15 @@
 /* eslint-disable no-param-reassign */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+import { categoriesList } from '../../const/mock-data/categories';
+
 import { CategoriesState, CategoryProps } from './types';
 
 const initialState: CategoriesState = {
   isLoadingCategories: false,
   isErrorCategories: false,
-  categories: [],
+  //   categories: [],   get from server data
+  categories: categoriesList,
 };
 
 export const categoriesSlice = createSlice({

@@ -2,7 +2,6 @@ import { useState } from 'react';
 import classNames from 'classnames';
 import { format } from 'date-fns';
 
-import { bookExact } from '../../const/mock-data/book-exact';
 import { alertSelector, loginSelector, oneBookSelector } from '../../selectors';
 import { BookProps } from '../../store/books/types';
 import { Calendar } from '../booking';
@@ -29,8 +28,6 @@ export const AboutBook = ({ book }: BookId) => {
   const isDelivery = book?.delivery;
 
   const userId = user?.id;
-  console.log('cutomerId', customerId);
-  console.log('userId', userId);
 
   return (
     <div className={styles.aboutBook}>
