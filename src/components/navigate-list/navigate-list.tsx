@@ -17,17 +17,12 @@ import arrowHidden from './assets/list-hidden-color.png';
 import arrowShow from './assets/list-show-color.png';
 
 import styles from './navigate-list.module.scss';
-import { categoriesList } from '../../const/mock-data/categories';
-import { booksArray } from '../../const/mock-data/books';
 
 export const NavigateList = () => {
   const [isShowNavigate, setIsShowNavigate] = useState<boolean>(true);
-  //   const { categories, isErrorCategories, isLoadingCategories } = useAppSelector(categoriesSelector); 			from server data
-  const { isErrorCategories, isLoadingCategories } = useAppSelector(categoriesSelector);
+  const { categories, isErrorCategories, isLoadingCategories } = useAppSelector(categoriesSelector);
   const { activeBurger } = useAppSelector(burgeMenuSelector);
-  //   const { books } = useAppSelector(booksSelector); 			from server data
-  const categories = categoriesList;
-  const books = booksArray;
+  const { books } = useAppSelector(booksSelector);
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
