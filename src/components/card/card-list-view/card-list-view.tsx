@@ -21,6 +21,7 @@ import { StarsRating } from '../../stars-rating';
 import noImage from '../assets/no-image.png';
 
 import styles from './card-list-view.module.scss';
+import { USER_FULL_DATA } from '../../../const/user-data';
 
 export const CardListView = ({
   src,
@@ -34,13 +35,13 @@ export const CardListView = ({
   bookingUserBookId,
   deliveryUser = null,
 }: CardProps) => {
-  const { user } = useAppSelector(loginSelector);
+  //   const { user } = useAppSelector(loginSelector);
   const { isLoadingModal } = useAppSelector(bookingSelector);
   const { alertMessage, message } = useAppSelector(alertSelector);
   const { searchValue } = useAppSelector(searchValueSelector);
   const [openModalCalendar, setIsOpenCalendar] = useState<boolean>(false);
   const { category } = useParams();
-
+  const user = USER_FULL_DATA;
   const dispatch = useAppDispatch();
   const highlight = ColorMatch({ searchValue, title });
 

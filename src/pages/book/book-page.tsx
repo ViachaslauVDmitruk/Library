@@ -11,6 +11,7 @@ import { NavigateList } from '../../components/navigate-list';
 import { NavigatePath } from '../../components/navigate-path';
 import { Review } from '../../components/review';
 import { StarsRating } from '../../components/stars-rating';
+import { bookExact } from '../../const/mock-data/book-exact';
 import {
   alertSelector,
   bookingSelector,
@@ -25,7 +26,6 @@ import { getCategories } from '../../store/categories';
 import { getUserData } from '../../store/user-data';
 
 import styles from './book-page.module.scss';
-import { bookExact } from '../../const/mock-data/book-exact';
 
 export const BookPage = () => {
   const { id } = useParams();
@@ -68,8 +68,20 @@ export const BookPage = () => {
           </div>
         </div>
       )}
-      {isGettingData && <Information />}
-      {isGettingData && <Review idBook={Number(id) || null} />}
+      {isGettingData && (
+        <Information
+          publish={book?.publish}
+          issueYear={book?.issueYear}
+          pages={book?.pages}
+          cover={book?.cover}
+          format={book?.format}
+          categories={book?.categories}
+          weight={book?.weight}
+          ISBN={book?.ISBN}
+          producer={book?.producer}
+        />
+      )}
+      {isGettingData && <Review idBook={Number(id) || null} commentsList={book?.comments || null} />}
     </div>
   );
 };

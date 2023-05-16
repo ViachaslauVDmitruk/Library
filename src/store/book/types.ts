@@ -23,9 +23,9 @@ export type OneBookProps = {
   images: ImageProps[];
   categories: string[];
   comments: CommentsProps[];
-  booking: BookingProps;
-  delivery: DeliveryProps;
-  histories: HistoriesProps[];
+  booking: BookingProps | null;
+  delivery: DeliveryProps | null;
+  histories: HistoriesProps[] | null;
 };
 
 export type ImageProps = {

@@ -104,6 +104,7 @@ export const NavigateList = () => {
             className={classNames(styles.title)}
             onClick={() => {
               setIsShowNavigate(false);
+              dispatch(closeBurgerMenu());
             }}
             data-test-id={activeBurger ? 'burger-terms' : 'navigation-terms'}
           >
@@ -116,6 +117,7 @@ export const NavigateList = () => {
             className={styles.title}
             onClick={() => {
               setIsShowNavigate(false);
+              dispatch(closeBurgerMenu());
             }}
             data-test-id={activeBurger ? 'burger-contract' : 'navigation-contract'}
           >
@@ -134,6 +136,9 @@ export const NavigateList = () => {
           <div
             className={styles.title}
             //   onClick={logOut}
+            onClick={() => {
+              setIsShowNavigate(false);
+            }}
             data-test-id='exit-button'
           >
             Выход

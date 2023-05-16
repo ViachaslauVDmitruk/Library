@@ -15,20 +15,24 @@ import arrowUp from './assets/list-hide.png';
 import arrowDown from './assets/list-show.png';
 
 import styles from './review.module.scss';
+import { USER_FULL_DATA } from '../../const/user-data';
+import { CommentsProps } from '../../store/book/types';
 
 type BookIdType = {
   idBook: number | null;
+  commentsList: CommentsProps[] | null;
 };
 
-export const Review = ({ idBook }: BookIdType) => {
+export const Review = ({ idBook, commentsList }: BookIdType) => {
   const [isShowReview, setIsShowReview] = useState<boolean>(true);
   const [isOpenReviewModal, setIsOpenReveiwModal] = useState<boolean>(false);
   const [isAlreadyCommented, setIsAlreadyCommented] = useState<boolean>(false);
   const [commented, setCommented] = useState<CommentsType>();
-  const { user } = useAppSelector(userSelector);
+  //   const { user } = useAppSelector(userSelector);
+  const user = USER_FULL_DATA;
   const { book } = useAppSelector(oneBookSelector);
   const commentsUser = user.comments;
-  const commentsList = book.comments ?? [];
+  //   const commentsList = book.comments ?? [];
 
   useEffect(() => {
     if (commentsUser) {
@@ -57,7 +61,7 @@ export const Review = ({ idBook }: BookIdType) => {
         <div className={styles.title}>
           <div className={styles.textTitle}>
             Отзывы
-            <span>{commentsList.length || ''}</span>
+            <span>{commentsList?.length || ''}</span>
           </div>
           <button
             type='button'
@@ -71,7 +75,7 @@ export const Review = ({ idBook }: BookIdType) => {
 
         {isShowReview && (
           <div className={styles.reviewItems} data-test-id='reviews'>
-            {commentsList.map((item) => (
+            {commentsList?.map((item) => (
               <div className={styles.content} key={item.id} data-test-id='comment-wrapper'>
                 <div className={styles.information}>
                   <div className={styles.avatar}>
